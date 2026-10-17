@@ -1,0 +1,219 @@
+@use "../../styles/variables" as *;
+
+.about {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  min-height: 100vh;
+  background: $ivory;
+  overflow: hidden;
+}
+
+// PHOTO
+
+.portrait {
+  position: relative;
+  min-height: 850px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+}
+
+.vertical {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: $bordeaux;
+}
+
+// CONTENT
+
+.content {
+  padding: clamp(50px, 6vw, 110px);
+  color: $bordeaux;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  margin-bottom: 50px;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+// TITLE
+
+.content h2 {
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-weight: 400;
+
+  font-size: clamp(50px, 5.5vw, 105px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+
+  margin-bottom: 35px;
+}
+
+// INTRO
+
+.intro {
+  max-width: 550px;
+
+  font-family: $sans;
+  font-size: clamp(15px, 1.2vw, 19px);
+  line-height: 1.7;
+
+  color: $black;
+  margin-bottom: 60px;
+}
+
+// QUALITIES
+
+.qualities {
+  display: flex;
+  flex-direction: column;
+}
+
+.quality {
+  display: grid;
+  grid-template-columns: 35px 1fr 110px;
+  align-items: center;
+  gap: 20px;
+
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(100, 20, 35, 0.25);
+
+  &:first-child {
+    border-top: 1px solid rgba(100, 20, 35, 0.25);
+  }
+
+  img {
+    width: 110px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+}
+
+.number {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+.qualityText {
+  h3 {
+    font-family: "Bodoni Moda", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(17px, 1.5vw, 25px);
+    letter-spacing: 0.07em;
+    margin: 0 0 8px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: $black;
+    margin: 0;
+  }
+}
+
+// SIGNATURE
+
+.signature {
+  margin-top: 60px;
+
+  span {
+    display: block;
+    font-family: "Bodoni Moda", Georgia, serif;
+    font-style: italic;
+    font-size: 46px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+  }
+}
+
+// TABLET
+
+@media (max-width: 1100px) {
+  .about {
+    grid-template-columns: 42% 58%;
+  }
+
+  .content {
+    padding: 50px 35px;
+  }
+
+  .quality {
+    grid-template-columns: 25px 1fr 80px;
+
+    img {
+      width: 80px;
+      height: 65px;
+    }
+  }
+}
+
+// MOBILE
+
+@media (max-width: 760px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    min-height: 0;
+    height: 110vw;
+    max-height: 650px;
+  }
+
+  .content {
+    padding: 55px 6%;
+  }
+
+  .content h2 {
+    font-size: clamp(48px, 12vw, 75px);
+  }
+
+  .intro {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .quality {
+    grid-template-columns: 25px 1fr;
+    gap: 12px;
+
+    img {
+      display: none;
+    }
+  }
+
+  .signature {
+    margin-top: 45px;
+  }
+}
