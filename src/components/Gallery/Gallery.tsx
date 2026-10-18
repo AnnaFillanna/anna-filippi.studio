@@ -41,7 +41,20 @@ export default function Gallery() {
   const step = (amount: number) => setSelected(value => (value + amount + collection.photos.length) % collection.photos.length);
   return <section id="fotografie" className={styles.gallery} aria-labelledby="gallery-title">
     <a className={styles.backLink} href="#leistungen">ZURÜCK ZUM ATELIER</a>
-    <div className={styles.heading}><p className={styles.eyebrow}>FOTO / AUSGEWÄHLTE ARBEITEN</p><h1 id="gallery-title" tabIndex={-1}>Die Kunst,<br /> <em>Details zu sehen.</em></h1><p className={styles.lead}>Produktfotografie von Anna Filippi.<br />Zwei Perspektiven auf das Besondere.</p></div>
+    <div className={styles.hero}>
+      <div className={styles.heading}>
+        <p className={styles.eyebrow}><span /> ANNA FILIPPI / PRODUKTFOTOGRAFIE</p>
+        <h1 id="gallery-title" tabIndex={-1}>Kleine Details.<br /><em>Große Wirkung.</em></h1>
+        <p className={styles.lead}>Licht, das Formen zeichnet. Materialien, die Geschichten erzählen. Ich mache sichtbar, was deine Produkte besonders macht.</p>
+        <a href="#foto-kollektion" className={styles.explore}>ARBEITEN ENTDECKEN <span aria-hidden="true">↓</span></a>
+        <p className={styles.heroNote}>SCHMUCK & PRODUKTE <span>ANDERNACH, DE</span></p>
+      </div>
+      <div className={styles.heroVisual}>
+        <img src="/images/portfolio/anna-filippi-2.jpg" alt="Perlenohrringe auf einem Spiegel neben weißem Satin" width="853" height="1280" fetchPriority="high" />
+        <div className={styles.visualCaption}><span>LICHT / MATERIAL / EMOTION</span><span>01 — 10</span></div>
+      </div>
+    </div>
+    <div className={styles.sectionIntro} id="foto-kollektion"><span>AUSGEWÄHLTE ARBEITEN</span><span>ZWEI PERSPEKTIVEN. EINE HANDSCHRIFT.</span></div>
     <div className={styles.filters} role="group" aria-label="Fotos nach Stil auswählen">
       {(Object.keys(collections) as Category[]).map(key => <button key={key} type="button" aria-pressed={key === category} onClick={() => { setCategory(key); setSelected(0); }}>{collections[key].label}</button>)}
     </div>
