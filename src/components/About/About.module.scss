@@ -106,3 +106,8 @@
 @media (prefers-reduced-motion: reduce) {
   .portrait img { transform: none !important; }
 }
+.about {overflow-x:clip;}
+.intro p {margin:0 0 16px;}
+.projectLink {display:inline-block; color:$bordeaux; font:500 12px/1.7 $sans; border-bottom:1px solid #650d2060; padding:10px 0; margin-top:4px; text-decoration:none;}
+.projectLink:focus-visible {outline:2px solid currentColor; outline-offset:5px;}
+.subtitle {font-style:normal; font-size:clamp(22px,2vw,30px);}
