@@ -48,13 +48,13 @@ export default function Gallery() {
   };
   const step = (amount: number) => setSelected(value => (value + amount + collection.photos.length) % collection.photos.length);
   return <section id="fotografie" className={styles.gallery} aria-labelledby="gallery-title">
-    <div className={styles.pageNavigation}><a className={styles.backLink} href="#leistungen">ZURÜCK ZUM ATELIER</a><a className={styles.backLink} href="#kontakt">KONTAKT ↗</a></div>
+    <div className={styles.pageNavigation}><a className={styles.backLink} href="#leistungen">ZURÜCK ZUM ATELIER</a><a className={styles.backLink} href="#kontakt">KONTAKT </a></div>
     <div className={styles.hero}>
       <div className={styles.heading}>
         <p className={styles.eyebrow}><span /> ANNA FILIPPI / PRODUKTFOTOGRAFIE</p>
         <h1 id="gallery-title" tabIndex={-1}>Kleine Details.<br /><em>Große Wirkung.</em></h1>
         <p className={styles.lead}>Licht, das Formen zeichnet. Materialien, die Geschichten erzählen. Ich mache sichtbar, was deine Produkte besonders macht.</p>
-        <a href="#foto-kollektion" className={styles.explore}>ARBEITEN ENTDECKEN <span aria-hidden="true">↓</span></a>
+        <a href="#foto-kollektion" className={styles.explore}>ARBEITEN ENTDECKEN </a>
         <p className={styles.heroNote}>SCHMUCK & PRODUKTE <span>ANDERNACH, DE</span></p>
       </div>
       <div className={styles.heroVisual}>

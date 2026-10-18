@@ -5,6 +5,8 @@ import styles from './AnimatedLetters.module.scss';
 /** Clip copies of the fully typeset title, preserving its original kerning and width. */
 export default function AnimatedLetters({ text }: { text: string }) {
   const source = useRef<HTMLSpanElement>(null);
+  const [replay, setReplay] = useState(0);
+  const lastReplay = useRef(0);
   const reduced = useReducedMotion();
   const [clips, setClips] = useState<Array<{ left: number; right: number }>>([]);
   useLayoutEffect(() => {
@@ -31,8 +33,16 @@ export default function AnimatedLetters({ text }: { text: string }) {
     void document.fonts.ready.then(measure);
     return () => { active = false; observer.disconnect(); };
   }, [text, reduced]);
-  return <span className={styles.root} aria-hidden="true">
+  const restart = () => {
+    if (reduced || Date.now() - lastReplay.current < 1600) return;
+    lastReplay.current = Date.now();
+    setReplay(value => value + 1);
+  };
+  return <span className={styles.root} aria-hidden="true"
+    onPointerEnter={event => { if (event.pointerType === 'mouse') restart(); }}
+    onPointerDown={event => { if (event.pointerType !== 'mouse') restart(); }}
+  >
     <span ref={source} className={clips.length && !reduced ? styles.source : undefined}>{text}</span>
-    {!reduced && clips.map((clip, index) => <motion.span key={`${text}-${index}`} className={styles.letter} style={{ clipPath: `inset(-40% ${clip.right}% -40% ${clip.left}%)` }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .85, delay: .18 + index * .045, ease: [.22, 1, .36, 1] }}>{text}</motion.span>)}
+    {!reduced && clips.map((clip, index) => <motion.span key={`${text}-${replay}-${index}`} className={styles.letter} style={{ clipPath: `inset(-40% ${clip.right}% -40% ${clip.left}%)` }} initial={{ opacity: 0, y: ".7em", filter: "blur(3px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: .95, delay: (replay === 0 ? .18 : 0) + index * .06, ease: [.22, 1, .36, 1] }}>{text}</motion.span>)}
   </span>;
 }

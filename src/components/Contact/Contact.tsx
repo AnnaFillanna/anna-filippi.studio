@@ -52,10 +52,10 @@ export default function Contact() {
             <label>Erzählen Sie mir von Ihrem Projekt *<textarea name="message" required minLength={10} maxLength={5000} rows={5} placeholder="Was ist Ihre Idee? Was ist Ihnen besonders wichtig?" /></label>
             <div className={styles.trap} aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" maxLength={200} /></label></div>
             <p className={styles.note}>Ihre Angaben werden zur Bearbeitung Ihrer Anfrage verwendet. {contact.privacyUrl ? <a href={contact.privacyUrl}>Datenschutzerklärung</a> : 'Die Datenschutzerklärung wird noch ergänzt. Der Formularversand ist bis dahin deaktiviert.'}</p>
-            <button className={styles.submit} type="submit" disabled={!contact.privacyUrl}>{status === 'sending' ? 'WIRD GESENDET …' : 'ANFRAGE ABSENDEN ↗'}</button>
+            <button className={styles.submit} type="submit" disabled={!contact.privacyUrl}>{status === 'sending' ? 'WIRD GESENDET …' : 'ANFRAGE ABSENDEN '}</button>
           </fieldset>
           <p className={styles.status} role="status" aria-live="polite" data-error={status === 'error'}>{message}</p>
-          <a className={styles.whatsapp} href={`https://wa.me/${contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" aria-label="Lieber per WhatsApp kontaktieren (öffnet einen neuen Tab)">LIEBER PER WHATSAPP KONTAKTIEREN <span aria-hidden="true">↗</span></a>
+          <a className={styles.whatsapp} href={`https://wa.me/${contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" aria-label="Lieber per WhatsApp kontaktieren (öffnet einen neuen Tab)">LIEBER PER WHATSAPP KONTAKTIEREN </a>
         </form>
       </div>
 

@@ -11,7 +11,7 @@ const projects = [
 export default function Projects() {
   const reveal = useScrollReveal();
   return <section id="projekte" className={styles.projects} aria-labelledby="projects-title">
-    <a className={styles.back} href="#leistungen">← ZURÜCK ZUM ATELIER</a>
+    <a className={styles.back} href="#leistungen"> ZURÜCK ZUM ATELIER</a>
     <motion.div {...reveal} className={styles.heading}>
       <p className={styles.eyebrow}>AUSGEWÄHLTE ARBEITEN / 01 — 03</p>
       <h1 id="projects-title" tabIndex={-1}>Ideen werden digital.<br /><em>Meine Arbeiten.</em></h1>
@@ -19,8 +19,8 @@ export default function Projects() {
     </motion.div>
     <ul className={styles.categories} aria-label="Projektbereiche"><li>Softwareentwicklung</li><li>Websites</li><li>Shopify</li></ul>
     <div className={styles.grid}>{projects.map((project, index) => <motion.article {...reveal} key={project.name} className={styles.card} aria-labelledby={`project-${index}`}>
-      <a className={styles.cover} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}><img src={project.image} alt={`Startseite von ${project.name}`} width="1440" height="900" loading={index === 0 ? 'eager' : 'lazy'} /><span className={styles.previewLabel}>WEBSITE ANSEHEN ↗</span></a>
-      <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.href && <a className={styles.link} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}>WEBSITE ANSEHEN <span aria-hidden="true">↗</span></a>}</div>
+      <a className={styles.cover} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}><img src={project.image} alt={`Startseite von ${project.name}`} width="1440" height="900" loading={index === 0 ? 'eager' : 'lazy'} /><span className={styles.previewLabel}>WEBSITE ANSEHEN </span></a>
+      <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.href && <a className={styles.link} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}>WEBSITE ANSEHEN </a>}</div>
     </motion.article>)}</div>
   </section>;
 }
