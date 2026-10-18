@@ -26,11 +26,14 @@ const descriptions: Record<InfoTopic, string> = {
     "Produktfotografie, visuelles Storytelling und Markenästhetik. Weitere Informationen zu diesen Leistungen folgen.",
 };
 export default function App() {
-  const [galleryPage, setGalleryPage] = useState(() => window.location.hash === '#fotografie');
+  const getPage = () => window.location.hash === '#fotografie' ? 'photo' : window.location.hash === '#projekte' ? 'web' : 'home';
+  const [page, setPage] = useState(getPage);
+  const galleryPage = page === 'photo';
+  const projectsPage = page === 'web';
   useEffect(() => {
     const navigate = () => {
       const hash = window.location.hash;
-      if (hash !== '#inhalt') setGalleryPage(hash === '#fotografie');
+      if (hash !== '#inhalt') setPage(getPage());
     };
     window.addEventListener('hashchange', navigate);
     return () => window.removeEventListener('hashchange', navigate);
@@ -38,17 +41,18 @@ export default function App() {
   useEffect(() => {
     const homeTitle = document.title;
     if (galleryPage) document.title = 'Produktfotografie – Anna Filippi';
+    if (projectsPage) document.title = 'Web & Software – Projekte | Anna Filippi';
     const frame = requestAnimationFrame(() => {
-      if (galleryPage) {
+      if (galleryPage || projectsPage) {
         window.scrollTo({ top: 0, behavior: 'instant' });
-        document.getElementById('gallery-title')?.focus({ preventScroll: true });
+        document.getElementById(projectsPage ? 'projects-title' : 'gallery-title')?.focus({ preventScroll: true });
       } else {
         const id = window.location.hash.slice(1);
         if (id) document.getElementById(id)?.scrollIntoView();
       }
     });
     return () => { cancelAnimationFrame(frame); document.title = homeTitle; };
-  }, [galleryPage]);
+  }, [galleryPage, projectsPage]);
   const dialog = useRef<HTMLDialogElement>(null);
   const [topic] = useState<InfoTopic>("Kontakt");
   return (
@@ -58,11 +62,10 @@ export default function App() {
       </a>
       <Header />
       <main id="inhalt">
-        {galleryPage ? <Gallery /> : <>
+        {galleryPage ? <Gallery /> : projectsPage ? <Projects /> : <>
           <Hero />
           <Services />
           <About />
-          <Projects />
         </>}
       </main>
       <Footer />
