@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import styles from './Gallery.module.scss';
 
-const dimensions: Record<number, { width: number; height: number }> = {"1": {"width": 1023, "height": 1280}, "2": {"width": 853, "height": 1280}, "3": {"width": 953, "height": 1191}, "4": {"width": 1023, "height": 1280}, "5": {"width": 914, "height": 1280}, "6": {"width": 1023, "height": 1280}, "7": {"width": 720, "height": 1280}, "8": {"width": 1280, "height": 853}, "9": {"width": 849, "height": 1280}, "10": {"width": 960, "height": 1280}, "11": {"width": 1066, "height": 1600}, "12": {"width": 1066, "height": 1600}, "13": {"width": 1142, "height": 1600}, "14": {"width": 1066, "height": 1600}, "15": {"width": 1143, "height": 1600}, "16": {"width": 1143, "height": 1600}, "17": {"width": 1067, "height": 1600}, "18": {"width": 1200, "height": 1600}};
+const dimensions: Record<number, { width: number; height: number }> = {"1": {"width": 1023, "height": 1280}, "2": {"width": 853, "height": 1280}, "3": {"width": 953, "height": 1191}, "4": {"width": 1023, "height": 1280}, "5": {"width": 914, "height": 1280}, "6": {"width": 1023, "height": 1280}, "7": {"width": 720, "height": 1280}, "8": {"width": 1346, "height": 1683}, "9": {"width": 849, "height": 1280}, "10": {"width": 960, "height": 1280}, "11": {"width": 1066, "height": 1600}, "12": {"width": 1066, "height": 1600}, "13": {"width": 1142, "height": 1600}, "14": {"width": 1066, "height": 1600}, "15": {"width": 1143, "height": 1600}, "16": {"width": 1143, "height": 1600}, "17": {"width": 1067, "height": 1600}, "18": {"width": 1200, "height": 1600}};
 const collections = {
   staged: { label: 'Inszenierte Produktfotografie', title: 'Licht. Material.', accent: 'Atmosphäre.', text: 'Schmuck im Dialog mit Stoff, Spiegelungen und natürlichen Texturen.', photos: [
     { id: 2, title: 'Perlen & Seide', alt: 'Goldfarbene Ohrringe mit Perlen auf einem Spiegel neben weißem Satin' },
@@ -21,7 +21,7 @@ const collections = {
     {"id": 18, "title": "Federleicht", "alt": "Goldfarbene Ohrringe in Blattform vor einer Feder"},
   ] },
   clean: { label: 'Produkt im Fokus', title: 'Klare Formen.', accent: 'Feine Details.', text: 'Reduzierte Hintergründe. Raum für Farbe, Form und die kleinen Besonderheiten.', photos: [
-    { id: 8, title: 'Rot & Gold', alt: 'Goldfarbene Ohrringe mit roten Steinen auf weißem Hintergrund' },
+    { id: 8, title: 'Goldene Sonne', alt: 'Goldfarbene Halskette mit rundem, mit hellen Steinen besetztem Sonnenanhänger auf hellem Hintergrund' },
     { id: 3, title: 'Eine fließende Linie', alt: 'Schlangenförmiger goldfarbener Ring mit blauem Stein auf weißem Hintergrund' },
     { id: 9, title: 'Organische Formen', alt: 'Grüne Ohrringe mit goldfarbenem Rand auf weißem Hintergrund' },
     { id: 4, title: 'Drei Facetten', alt: 'Goldfarbener Ring mit drei unterschiedlich geformten klaren Steinen auf weißem Hintergrund' },
@@ -65,12 +65,12 @@ export default function Gallery() {
     <p className={styles.srOnly} role="status">{collection.label}: {collection.photos.length} Fotografien</p>
     <div className={`${styles.grid} ${category === 'clean' ? styles.clean : ''}`}>
       {collection.photos.map((item, index) => <motion.figure key={item.id} className={styles.item} initial={reduced ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .1 }} transition={{ duration: reduced ? 0 : .7 }}>
-        <button type="button" className={styles.imageButton} onClick={event => show(index, event.currentTarget)} aria-label={`${item.title} – Foto vergrößern`} aria-haspopup="dialog"><img src={`/images/portfolio/anna-filippi-${item.id}.jpg`} alt={item.alt} width={dimensions[item.id].width} height={dimensions[item.id].height} loading="lazy" decoding="async" /><span className={styles.view}>ANSEHEN</span></button>
+        <button type="button" className={styles.imageButton} onClick={event => show(index, event.currentTarget)} aria-label={`${item.title} – Foto vergrößern`} aria-haspopup="dialog"><img src={item.id === 8 ? "/images/portfolio/anna-filippi-8-chain.webp" : `/images/portfolio/anna-filippi-${item.id}.jpg`} alt={item.alt} width={dimensions[item.id].width} height={dimensions[item.id].height} loading="lazy" decoding="async" /><span className={styles.view}>ANSEHEN</span></button>
         <figcaption><span>{item.title}</span><span>ANNA FILIPPI</span></figcaption>
       </motion.figure>)}
     </div>
     <dialog ref={dialog} className={styles.lightbox} aria-label="Fotografie in Großansicht" onClose={() => { setOpen(false); trigger.current?.focus(); }} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }} onKeyDown={event => { if (event.key === 'ArrowRight') { event.preventDefault(); step(1); } if (event.key === 'ArrowLeft') { event.preventDefault(); step(-1); } }}>
-      {open && <><div className={styles.viewerTop}><span>ANNA FILIPPI / FOTO</span><button type="button" autoFocus onClick={() => dialog.current?.close()}>SCHLIESSEN</button></div><img className={styles.fullImage} src={`/images/portfolio/anna-filippi-${photo.id}.jpg`} alt={photo.alt} /><div className={styles.viewerBottom}><button type="button" onClick={() => step(-1)}>ZURÜCK</button><p aria-live="polite">{photo.title} · {selected + 1} / {collection.photos.length}</p><button type="button" onClick={() => step(1)}>WEITER</button></div></>}
+      {open && <><div className={styles.viewerTop}><span>ANNA FILIPPI / FOTO</span><button type="button" autoFocus onClick={() => dialog.current?.close()}>SCHLIESSEN</button></div><img className={styles.fullImage} src={photo.id === 8 ? "/images/portfolio/anna-filippi-8-chain.webp" : `/images/portfolio/anna-filippi-${photo.id}.jpg`} alt={photo.alt} /><div className={styles.viewerBottom}><button type="button" onClick={() => step(-1)}>ZURÜCK</button><p aria-live="polite">{photo.title} · {selected + 1} / {collection.photos.length}</p><button type="button" onClick={() => step(1)}>WEITER</button></div></>}
     </dialog>
   </section>;
 }
