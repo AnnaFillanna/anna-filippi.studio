@@ -7,7 +7,7 @@ const projects = [
     "name": "FilliCat",
     "category": "EDTECH / SOFTWAREENTWICKLUNG",
     "description": "Eigenständig entwickelte, interaktive Lernplattform für JavaScript und TypeScript mit personalisierten Übungen, Fehleranalyse und gezielten Wiederholungen. Mehrsprachig auf Deutsch, Englisch und Russisch.",
-    "scope": "React · TypeScript · Vite",
+    "scope": "React · TypeScript · Vite · KI-Integration",
     "status": "Eigenprojekt · In aktiver Entwicklung · KI-Lernassistent in Entwicklung",
     "image": "/images/projects/fillicat.png",
     "href": "https://fillicat.com"
@@ -16,7 +16,7 @@ const projects = [
     "name": "RUJOLY",
     "category": "SHOPIFY / E-COMMERCE DEVELOPMENT",
     "description": "Umfassendes Redesign der Startseite eines Shopify-Shops mit individueller Gestaltung, Anpassung der Theme-Struktur und Änderungen am Code. Optimierung von Layout, Produktdarstellung und responsivem Design.",
-    "scope": "Shopify · HTML · CSS",
+    "scope": "Shopify · Liquid · HTML · CSS · JavaScript",
     "status": "",
     "image": "/images/projects/rujoly.png",
     "href": "https://www.rujoly.de/"
@@ -44,7 +44,7 @@ export default function Projects() {
     <ul className={styles.categories} aria-label="Projektbereiche"><li>Softwareentwicklung</li><li>Websites</li><li>Shopify</li></ul>
     <div className={styles.grid}>{projects.map((project, index) => <motion.article {...reveal} key={project.name} className={styles.card} aria-labelledby={`project-${index}`}>
       <a className={styles.cover} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}><img src={project.image} alt={`Startseite von ${project.name}`} width="1440" height="900" loading={index === 0 ? 'eager' : 'lazy'} /><span className={styles.previewLabel}>WEBSITE ANSEHEN </span></a>
-      <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.status && <p className={styles.description}>{project.status}</p>}{project.href && <a className={styles.link} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}>WEBSITE ANSEHEN </a>}</div>
+      <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.status && <p className={styles.description}>{project.status}</p>}</div>
     </motion.article>)}</div>
   </section>;
 }
