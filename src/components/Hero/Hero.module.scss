@@ -43,7 +43,7 @@
   position: relative;
   z-index: 1;
 
-  padding: 110px 5% 0;
+  padding: 110px 3% 0;
 }
 
 // ==========================================
@@ -65,7 +65,7 @@
   font-family: "Bodoni Moda", Georgia, serif;
   font-weight: 400;
 
-  font-size: clamp(28px, 8.5vw, 150px);
+  font-size: clamp(28px, 7.8vw, 138px);
   line-height: 1.05;
   letter-spacing: -0.055em;
 
@@ -161,7 +161,7 @@
   }
 
  .copy {
-  padding: 110px 6% 45px;
+  padding: 110px 4% 45px;
 }
 
   .eyebrow {
@@ -204,7 +204,7 @@
     font-size: 8px;
   }
 }
-// Actual outpainted organza, overlapping only the lower fabric area.
+// Die ergänzte Stoffbahn, die den Hintergrund des Hero-Bildes nach unten verlängert, um einen sanften Übergang zum nächsten Abschnitt zu schaffen. Sie ist nur auf größeren Bildschirmen sichtbar und wird auf kleineren Bildschirmen ausgeblendet, um die Lesbarkeit und das Layout zu verbessern.
 .fabricExtension {
   position: absolute;
   top: calc(100% - 9vw);

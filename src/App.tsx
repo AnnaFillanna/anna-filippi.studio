@@ -3,14 +3,15 @@ import { MotionConfig } from "motion/react";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
+import Gallery from "./components/Gallery/Gallery";
 import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 export type InfoTopic =
   | "Über mich"
   | "Projekte"
   | "Kontakt"
-  | "DIGITAL"
-  | "VISUAL";
+  | "WEB"
+  | "FOTO";
 const descriptions: Record<InfoTopic, string> = {
   "Über mich":
     "Die persönliche Vorstellung folgt im nächsten Entwicklungsschritt.",
@@ -18,9 +19,9 @@ const descriptions: Record<InfoTopic, string> = {
     "Die Projektgalerie folgt. Hier werden künftig ausgewählte, reale Arbeiten vorgestellt.",
   Kontakt:
     "Der Kontaktbereich wird im nächsten Schritt ergänzt. Es ist noch keine Kontaktadresse hinterlegt.",
-  DIGITAL:
+  WEB:
     "Websites, Web-Applikationen und KI-Integrationen. Weitere Informationen zu diesen Leistungen folgen.",
-  VISUAL:
+  FOTO:
     "Produktfotografie, visuelles Storytelling und Markenästhetik. Weitere Informationen zu diesen Leistungen folgen.",
 };
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
       <main id="inhalt">
         <Hero />
         <Services onInfo={openInfo} />
+        <Gallery />
         <About />
       </main>
       <Footer />

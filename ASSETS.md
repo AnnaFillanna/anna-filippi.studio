@@ -2,7 +2,7 @@
 
 ## Originalporträt
 
-Datei: `public/images/anna-original.jpg`.
+Datei: `public/images/anna-original.png`.
 Vom Nutzer bereitgestellt als Foto 1.jpg; unverändert kopiert.
 
 ## Laptop

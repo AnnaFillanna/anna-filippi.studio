@@ -1,11 +1,135 @@
-@use '../../styles/variables' as *;
-.services { background: $ivory; color: $bordeaux; padding: calc(clamp(70px,9vw,145px) + 24vw) 8% clamp(70px,9vw,145px); }
-.intro { display:flex; align-items:start; justify-content:space-between; gap:40px; h2 { width:57%; font-family:$serif; font-size:clamp(36px,4.1vw,65px); font-weight:400; line-height:1.06; letter-spacing:-.025em; em{font-weight:400} } }
-.eyebrow { font-size:9px; letter-spacing:.19em; line-height:1.7; padding-top:9px; }
-.columns { display:grid; grid-template-columns:1fr 1fr; gap:12%; margin-top:85px; }
-.service { &:nth-child(2){margin-top:115px} h3{font-family:'Bodoni Moda',Georgia,serif; font-size:clamp(42px,5.5vw,84px); font-weight:400; letter-spacing:-.045em; line-height:1.15; margin:24px 0 22px; span{font-style:italic}} button{display:flex; gap:40px; align-items:center; margin-top:30px; padding:12px 0; border:0; border-bottom:1px solid #650d2070; background:none; font-size:9px;letter-spacing:.1em;transition:border-color .3s;span{font-size:23px;transition:transform .35s}&:hover{border-color:$bordeaux;span{transform:translate(4px,-4px)}}} }
-.number{font-size:10px;letter-spacing:.14em}
-.subtitle{font-family:$serif;font-style:italic;font-size:clamp(24px,2.4vw,35px);line-height:1.2;max-width:360px;margin-bottom:24px}
-.description,.detail{font-size:12px;line-height:1.9;max-width:320px;color:#534447}
-.detail{margin-top:10px}
-@media(max-width:640px){.services{padding:calc(65px + 36vw) 7% 65px}.intro{display:block;h2{width:auto;margin-top:25px;font-size:42px}}.columns{grid-template-columns:1fr;gap:64px;margin-top:60px}.service{&:nth-child(2){margin-top:0;padding-left:10%}h3{font-size:clamp(42px,12vw,65px);margin-top:18px}}.subtitle{font-size:28px}.description,.detail{font-size:12px}}
+@use "../../styles/variables" as *;
+.services {
+  background: $ivory;
+  color: $bordeaux;
+  padding: calc(clamp(45px, 5vw, 85px) + 24vw) 8% clamp(70px, 9vw, 145px);
+}
+.intro {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 40px;
+  h2 {
+    width: 57%;
+    font-family: $serif;
+    font-size: clamp(36px, 4.1vw, 65px);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    em {
+      font-weight: 400;
+    }
+  }
+}
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.19em;
+  line-height: 1.7;
+  padding-top: 9px;
+}
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12%;
+  margin-top: 85px;
+}
+.service {
+  &:nth-child(2) {
+    margin-top: 115px;
+  }
+  h3 {
+    font-family: "Bodoni Moda", Georgia, serif;
+    font-size: clamp(42px, 5.5vw, 84px);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 1.15;
+    margin: 24px 0 22px;
+    span {
+      font-style: italic;
+    }
+  }
+  button {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 30px;
+    padding: 12px 0;
+    border: 0;
+    border-bottom: 1px solid #650d2070;
+    background: none;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    transition: border-color 0.3s;
+    span {
+      font-size: 23px;
+      transition: transform 0.35s;
+    }
+    &:hover {
+      border-color: $bordeaux;
+      span {
+        transform: translate(4px, -4px);
+      }
+    }
+  }
+}
+.number {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+.subtitle {
+  font-family: $serif;
+  font-style: italic;
+  font-size: clamp(24px, 2.4vw, 35px);
+  line-height: 1.2;
+  max-width: 360px;
+  margin-bottom: 24px;
+}
+.description,
+.detail {
+  font-size: 12px;
+  line-height: 1.9;
+  max-width: 320px;
+  color: #534447;
+}
+.detail {
+  margin-top: 10px;
+}
+@media (max-width: 640px) {
+  .services {
+    padding: calc(40px + 36vw) 7% 65px;
+  }
+  .intro {
+    display: block;
+    h2 {
+      width: auto;
+      margin-top: 25px;
+      font-size: 42px;
+    }
+  }
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 64px;
+    margin-top: 60px;
+  }
+  .service {
+    &:nth-child(2) {
+      margin-top: 0;
+      padding-left: 10%;
+    }
+    h3 {
+      font-size: clamp(42px, 12vw, 65px);
+      margin-top: 18px;
+    }
+  }
+  .subtitle {
+    font-size: 28px;
+  }
+  .description,
+  .detail {
+    font-size: 12px;
+  }
+}
+
+.galleryLink { display: inline-block; margin-top: 30px; padding: 12px 0; border-bottom: 1px solid #650d2070; color: inherit; font-size: 9px; letter-spacing: .1em; text-decoration: none; }
+.galleryLink:hover { border-color: currentColor; }
+.galleryLink:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
