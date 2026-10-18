@@ -133,3 +133,5 @@
 .galleryLink { display: inline-block; margin-top: 30px; padding: 12px 0; border-bottom: 1px solid #650d2070; color: inherit; font-size: 9px; letter-spacing: .1em; text-decoration: none; }
 .galleryLink:hover { border-color: currentColor; }
 .galleryLink:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.services {overflow-x:clip;}
+.headingLine {display:block; width:max-content; max-width:100%; padding-right:.08em;}

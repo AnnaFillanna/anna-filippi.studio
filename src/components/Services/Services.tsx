@@ -1,5 +1,5 @@
-import { motion } from 'motion/react';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useEffect, useState } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import styles from './Services.module.scss';
 
 const services = [
@@ -8,17 +8,33 @@ const services = [
 ] as const;
 
 export default function Services() {
-  const reveal = useScrollReveal();
+  const reduced = useReducedMotion();
+  const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 761px)').matches);
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 761px)');
+    const update = () => setDesktop(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
   return (
     <section id="leistungen" className={styles.services} aria-labelledby="services-title">
-      <motion.div {...reveal} className={styles.intro}>
+      <div className={styles.intro}>
         <p className={styles.eyebrow}>DAS ATELIER / LEISTUNGEN</p>
-        <h2 id="services-title">Zwei Perspektiven.<br /><em>Eine Handschrift.</em></h2>
-      </motion.div>
+        <h2 id="services-title">
+          {['Zwei Perspektiven', 'Eine Handschrift'].map((line, index) => <motion.span key={line} className={styles.headingLine}
+            initial={reduced ? false : { clipPath: 'inset(-15% 100% -15% 0)', opacity: 0 }}
+            whileInView={{ clipPath: 'inset(-15% -4% -15% 0)', opacity: 1 }}
+            viewport={{ once: true, amount: .7 }}
+            transition={{ duration: reduced ? 0 : 1, delay: reduced ? 0 : index * .65, ease: [.22, 1, .36, 1] }}
+          >{index ? <em>{line}</em> : line}</motion.span>)}
+        </h2>
+      </div>
       <div className={styles.columns}>
         {services.map((service, index) => (
-          <motion.article key={service.title} className={styles.service} {...reveal} transition={{ ...reveal.transition, delay: reveal.transition.duration === 0 ? 0 : index * .1 }} aria-labelledby={`title-${service.title.toLowerCase()}`}>
-            <h3 id={`title-${service.title.toLowerCase()}`}>{service.title}<span>.</span></h3>
+          <motion.article key={service.title} className={styles.service} initial={reduced ? false : { opacity: 0, x: desktop ? (index === 0 ? -70 : 70) : 0, y: desktop ? 0 : 18 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }} viewport={{ once: true, amount: .2 }}
+            transition={{ duration: reduced ? 0 : 1.1, ease: [.22, 1, .36, 1] }} aria-labelledby={`title-${service.title.toLowerCase()}`}>
+            <h3 id={`title-${service.title.toLowerCase()}`}>{service.title}</h3>
             <p className={styles.subtitle}>{service.subtitle}</p>
             <p className={styles.description}>{service.text}</p>
             <p className={styles.detail}>{service.detail}</p>
