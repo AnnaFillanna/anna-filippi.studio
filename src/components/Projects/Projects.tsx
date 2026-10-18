@@ -3,9 +3,33 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 import styles from './Projects.module.scss';
 
 const projects = [
-  { name: 'FilliCat', category: 'SOFTWAREENTWICKLUNG', description: 'Eine interaktive Lernanwendung für JavaScript und TypeScript. Mit Übungen, Lernpfaden und einem persönlichen Coding-Begleiter.', scope: 'Konzept · Webentwicklung', image: '/images/projects/fillicat.png', href: 'https://fillicat.com' },
-  { name: 'RUJOLY', category: 'SHOPIFY / E-COMMERCE', description: 'Redesign eines Shopify-Shops mit überarbeiteten Produktkarten, Bannern und Kategorien sowie individuellen Anpassungen im Code.', scope: 'Shopify · Redesign · CSS', image: '/images/projects/rujoly.png', href: 'https://www.rujoly.de/' },
-  { name: 'Dana Tattoo Studio', category: 'WEBENTWICKLUNG', description: 'Eine individuelle Website für ein Tattoo-Studio in Andernach. Mit Stilübersicht, Galerie und direktem Weg zur Terminanfrage.', scope: 'React · TypeScript · SCSS', image: '/images/projects/dana.png', href: 'https://tattoodana.de' },
+  {
+    "name": "FilliCat",
+    "category": "EDTECH / SOFTWAREENTWICKLUNG",
+    "description": "Eigenständig entwickelte, interaktive Lernplattform für JavaScript und TypeScript mit personalisierten Übungen, Fehleranalyse und gezielten Wiederholungen. Mehrsprachig auf Deutsch, Englisch und Russisch.",
+    "scope": "React · TypeScript · Vite",
+    "status": "Eigenprojekt · In aktiver Entwicklung · KI-Lernassistent in Entwicklung",
+    "image": "/images/projects/fillicat.png",
+    "href": "https://fillicat.com"
+  },
+  {
+    "name": "RUJOLY",
+    "category": "SHOPIFY / E-COMMERCE DEVELOPMENT",
+    "description": "Umfassendes Redesign der Startseite eines Shopify-Shops mit individueller Gestaltung, Anpassung der Theme-Struktur und Änderungen am Code. Optimierung von Layout, Produktdarstellung und responsivem Design.",
+    "scope": "Shopify · HTML · CSS",
+    "status": "",
+    "image": "/images/projects/rujoly.png",
+    "href": "https://www.rujoly.de/"
+  },
+  {
+    "name": "Dana Tattoo Studio",
+    "category": "FULL-STACK WEBENTWICKLUNG",
+    "description": "Konzeption und Entwicklung einer individuellen, responsiven Website mit modernen Animationen, interaktiven Galerien und direkter Terminanfrage. Integration von Supabase für die geschützte Verwaltung von Medieninhalten.",
+    "scope": "React · TypeScript · SCSS · Supabase",
+    "status": "",
+    "image": "/images/projects/dana.png",
+    "href": "https://tattoodana.de"
+  }
 ];
 
 export default function Projects() {
@@ -20,7 +44,7 @@ export default function Projects() {
     <ul className={styles.categories} aria-label="Projektbereiche"><li>Softwareentwicklung</li><li>Websites</li><li>Shopify</li></ul>
     <div className={styles.grid}>{projects.map((project, index) => <motion.article {...reveal} key={project.name} className={styles.card} aria-labelledby={`project-${index}`}>
       <a className={styles.cover} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}><img src={project.image} alt={`Startseite von ${project.name}`} width="1440" height="900" loading={index === 0 ? 'eager' : 'lazy'} /><span className={styles.previewLabel}>WEBSITE ANSEHEN </span></a>
-      <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.href && <a className={styles.link} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}>WEBSITE ANSEHEN </a>}</div>
+      <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.status && <p className={styles.description}>{project.status}</p>}{project.href && <a className={styles.link} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}>WEBSITE ANSEHEN </a>}</div>
     </motion.article>)}</div>
   </section>;
 }
