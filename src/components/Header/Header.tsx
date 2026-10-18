@@ -39,10 +39,6 @@ export default function Header() {
           Webentwicklung
         </a>
 
-        <a href="#leistungen" onClick={() => setOpen(false)}>
-          Softwareentwicklung
-        </a>
-
         <a href="#fotografie" onClick={() => setOpen(false)}>
           Produktfotografie
         </a>
