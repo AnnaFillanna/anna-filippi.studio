@@ -20,14 +20,13 @@ export default function Services() {
     <section id="leistungen" className={styles.services} aria-labelledby="services-title">
       <div className={styles.intro}>
         <p className={styles.eyebrow}>DAS ATELIER / LEISTUNGEN</p>
-        <h2 id="services-title">
+        <motion.h2 id="services-title" initial={reduced ? false : 'hidden'} whileInView="visible"
+          viewport={{ once: true, amount: .1, margin: '0px 0px 80px 0px' }}>
           {['Zwei Perspektiven', 'Eine Handschrift'].map((line, index) => <motion.span key={line} className={styles.headingLine}
-            initial={reduced ? false : { clipPath: 'inset(-15% 100% -15% 0)', opacity: 0 }}
-            whileInView={{ clipPath: 'inset(-15% -4% -15% 0)', opacity: 1 }}
-            viewport={{ once: true, amount: .7 }}
-            transition={{ duration: reduced ? 0 : 1, delay: reduced ? 0 : index * .65, ease: [.22, 1, .36, 1] }}
+            variants={{ hidden: { clipPath: 'inset(-15% 100% -15% 0)', opacity: 0 }, visible: { clipPath: 'inset(-15% -4% -15% 0)', opacity: 1 } }}
+            transition={{ duration: reduced ? 0 : 1, delay: reduced ? 0 : index * .35, ease: [.22, 1, .36, 1] }}
           >{index ? <em>{line}</em> : line}</motion.span>)}
-        </h2>
+        </motion.h2>
       </div>
       <div className={styles.columns}>
         {services.map((service, index) => (

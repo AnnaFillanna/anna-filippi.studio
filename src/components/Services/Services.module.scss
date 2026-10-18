@@ -2,7 +2,7 @@
 .services {
   background: $ivory;
   color: $bordeaux;
-  padding: calc(clamp(45px, 5vw, 85px) + 24vw) 8% clamp(70px, 9vw, 145px);
+  padding: calc(clamp(28px, 3vw, 48px) + 16vw) 8% clamp(70px, 9vw, 145px);
 }
 .intro {
   display: flex;
@@ -31,11 +31,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12%;
-  margin-top: 85px;
+  margin-top: 56px;
 }
 .service {
   &:nth-child(2) {
-    margin-top: 115px;
+    margin-top: 65px;
   }
   h3 {
     font-family: "Bodoni Moda", Georgia, serif;
@@ -96,7 +96,7 @@
 }
 @media (max-width: 640px) {
   .services {
-    padding: calc(40px + 36vw) 7% 65px;
+    padding: calc(16px + 36vw) 7% 65px;
   }
   .intro {
     display: block;
