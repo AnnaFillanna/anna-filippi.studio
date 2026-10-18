@@ -13,13 +13,18 @@ export default function Footer() {
     <div className={styles.inner}>
       <div className={styles.topline}><span>DIGITAL ATELIER</span><span>ANDERNACH · DE</span></div>
       <div className={styles.content}>
-        <a href="#start" className={styles.wordmark} aria-label="Anna Filippi – Startseite">Anna<br /><em>Filippi.</em></a>
-        <p>Webentwicklung. Fotografie.<br />Mit einem Blick für das Besondere.</p>
-        <nav className={styles.navigation} aria-label="Navigation im Footer">
-          <a href="#projekte">Projekte ↗</a>
-          <a href="#fotografie">Fotografie ↗</a>
-          <a href="#kontakt">Kontakt ↗</a>
-        </nav>
+        <a href="#start" className={styles.wordmark} aria-label="Anna Filippi – Startseite">ANNA FILIPPI</a>
+        <h2 className={styles.invitation}>Eine Idee. Eine Frage.<br /><em>Einfach ins Gespräch kommen.</em></h2>
+        <div className={styles.channels}>
+          <div className={styles.channel}>
+            <p>Du hast eine Frage oder möchtest mir von deiner Idee erzählen?</p>
+            {contact.email ? <a href={`mailto:${contact.email}`}>SCHREIB MIR PER E-MAIL <span aria-hidden="true">↗</span></a> : <span className={styles.pending} aria-disabled="true">SCHREIB MIR PER E-MAIL ↗</span>}
+          </div>
+          <div className={styles.channel}>
+            <p>Du möchtest mich lieber direkt per WhatsApp erreichen?</p>
+            <a href={`https://wa.me/${contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" aria-label="Schreib mir per WhatsApp (neuer Tab)">SCHREIB MIR PER WHATSAPP <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
       </div>
       <div className={styles.bottom}>
         <span>© {new Date().getFullYear()} Anna Filippi</span>

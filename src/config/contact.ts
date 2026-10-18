@@ -1,6 +1,7 @@
 /** Public settings only. Never put API keys here. */
 export const contact = {
   endpoint: '/api/contact',
+  email: 'annafilippi@web.de',
   whatsappNumber: '4917662310068',
   // Set only after publishing a reviewed privacy notice covering the services below.
   privacyUrl: '',
