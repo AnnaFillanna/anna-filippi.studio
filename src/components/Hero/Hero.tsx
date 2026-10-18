@@ -41,13 +41,15 @@ export default function Hero() {
         <h1 id="hero-title" aria-label="ANNA FILIPPI">
           <AnimatedLetters text="ANNA FILIPPI" flock />
         </h1>
-        <motion.p {...intro(2.05)} className={styles.tagline}>
-          Webentwicklung.
-          <br />
-          Produktfotografie.
-          <br />
-          Digitale Lösungen.
-        </motion.p>
+        <p className={styles.tagline}>
+          {['Webentwicklung', 'Produktfotografie', 'Digitale Lösungen'].map((line, index) => (
+            <motion.span key={line} className={styles.taglineLine}
+              initial={reduced ? false : { clipPath: 'inset(-15% 100% -15% 0)', opacity: 0 }}
+              animate={{ clipPath: 'inset(-15% -4% -15% 0)', opacity: 1 }}
+              transition={{ duration: reduced ? 0 : .9, delay: reduced ? 0 : 2.9 + index * 1.05, ease: [.22, 1, .36, 1] }}
+            >{line}</motion.span>
+          ))}
+        </p>
       </div>
       <motion.a {...intro(0.65)} href="#leistungen" className={styles.scroll}>
         SCROLL
