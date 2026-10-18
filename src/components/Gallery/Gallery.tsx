@@ -40,7 +40,8 @@ export default function Gallery() {
   };
   const step = (amount: number) => setSelected(value => (value + amount + collection.photos.length) % collection.photos.length);
   return <section id="fotografie" className={styles.gallery} aria-labelledby="gallery-title">
-    <div className={styles.heading}><p className={styles.eyebrow}>FOTO / AUSGEWÄHLTE ARBEITEN</p><h2 id="gallery-title">Die Kunst,<br /> <em>Details zu sehen.</em></h2><p className={styles.lead}>Produktfotografie von Anna Filippi.<br />Zwei Perspektiven auf das Besondere.</p></div>
+    <a className={styles.backLink} href="#leistungen">ZURÜCK ZUM ATELIER</a>
+    <div className={styles.heading}><p className={styles.eyebrow}>FOTO / AUSGEWÄHLTE ARBEITEN</p><h1 id="gallery-title" tabIndex={-1}>Die Kunst,<br /> <em>Details zu sehen.</em></h1><p className={styles.lead}>Produktfotografie von Anna Filippi.<br />Zwei Perspektiven auf das Besondere.</p></div>
     <div className={styles.filters} role="group" aria-label="Fotos nach Stil auswählen">
       {(Object.keys(collections) as Category[]).map(key => <button key={key} type="button" aria-pressed={key === category} onClick={() => { setCategory(key); setSelected(0); }}>{collections[key].label}</button>)}
     </div>

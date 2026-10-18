@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MotionConfig } from "motion/react";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
 import Gallery from "./components/Gallery/Gallery";
+import Projects from "./components/Projects/Projects";
 import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 export type InfoTopic =
@@ -25,12 +26,31 @@ const descriptions: Record<InfoTopic, string> = {
     "Produktfotografie, visuelles Storytelling und Markenästhetik. Weitere Informationen zu diesen Leistungen folgen.",
 };
 export default function App() {
+  const [galleryPage, setGalleryPage] = useState(() => window.location.hash === '#fotografie');
+  useEffect(() => {
+    const navigate = () => {
+      const hash = window.location.hash;
+      if (hash !== '#inhalt') setGalleryPage(hash === '#fotografie');
+    };
+    window.addEventListener('hashchange', navigate);
+    return () => window.removeEventListener('hashchange', navigate);
+  }, []);
+  useEffect(() => {
+    const homeTitle = document.title;
+    if (galleryPage) document.title = 'Produktfotografie – Anna Filippi';
+    const frame = requestAnimationFrame(() => {
+      if (galleryPage) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        document.getElementById('gallery-title')?.focus({ preventScroll: true });
+      } else {
+        const id = window.location.hash.slice(1);
+        if (id) document.getElementById(id)?.scrollIntoView();
+      }
+    });
+    return () => { cancelAnimationFrame(frame); document.title = homeTitle; };
+  }, [galleryPage]);
   const dialog = useRef<HTMLDialogElement>(null);
-  const [topic, setTopic] = useState<InfoTopic>("Kontakt");
-  const openInfo = (value: InfoTopic) => {
-    setTopic(value);
-    dialog.current?.showModal();
-  };
+  const [topic] = useState<InfoTopic>("Kontakt");
   return (
     <MotionConfig reducedMotion="user">
       <a className="skip-link" href="#inhalt">
@@ -38,10 +58,12 @@ export default function App() {
       </a>
       <Header />
       <main id="inhalt">
-        <Hero />
-        <Services onInfo={openInfo} />
-        <Gallery />
-        <About />
+        {galleryPage ? <Gallery /> : <>
+          <Hero />
+          <Services />
+          <About />
+          <Projects />
+        </>}
       </main>
       <Footer />
       <dialog

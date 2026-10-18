@@ -35,7 +35,7 @@ export default function Header() {
         aria-label="Hauptnavigation"
         className={`${styles.nav} ${open ? styles.open : ""}`}
       >
-        <a href="#leistungen" onClick={() => setOpen(false)}>
+        <a href="#projekte" onClick={() => setOpen(false)}>
           Webentwicklung
         </a>
 
@@ -43,7 +43,7 @@ export default function Header() {
           Softwareentwicklung
         </a>
 
-        <a href="#leistungen" onClick={() => setOpen(false)}>
+        <a href="#fotografie" onClick={() => setOpen(false)}>
           Produktfotografie
         </a>
 
