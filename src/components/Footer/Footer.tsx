@@ -38,6 +38,7 @@ export default function Footer() {
           <p className={styles.eyebrow}>04 / KONTAKT</p>
           <h2 id="contact-title">Lass uns etwas <em>Schönes schaffen.</em></h2>
           <p className={styles.description}>Erzählen Sie mir von Ihrer Idee. Je mehr ich über Ihr Projekt weiß, desto besser kann ich Ihre Anfrage einschätzen.</p>
+          <img className={styles.flower} src="/images/footer.png" alt="" width="1456" height="816" loading="lazy" />
         </div>
         <form className={styles.form} onSubmit={submit} aria-busy={status === 'sending'}>
           <fieldset disabled={status === 'sending'}>

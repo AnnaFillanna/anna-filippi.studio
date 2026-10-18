@@ -10,8 +10,8 @@ export default function About() {
     <section id="ueber-mich" className={styles.about} aria-labelledby="about-title">
       <div className={styles.portrait}>
         <motion.img
-          src="/images/about-anna.jpg"
-          alt="Anna Filippi im schwarzen Pullover"
+          src="/images/about-anna-red.jpg"
+          alt="Anna Filippi in einem roten Kleid vor einer hellen Wand"
           loading="lazy"
           initial={reduced ? false : { scale: 1.04 }}
           whileInView={{ scale: 1 }}

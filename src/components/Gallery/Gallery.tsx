@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import styles from './Gallery.module.scss';
 
-const dimensions: Record<number, { width: number; height: number }> = {"1": {"width": 1023, "height": 1280}, "2": {"width": 853, "height": 1280}, "3": {"width": 953, "height": 1191}, "4": {"width": 1023, "height": 1280}, "5": {"width": 914, "height": 1280}, "6": {"width": 1023, "height": 1280}, "7": {"width": 720, "height": 1280}, "8": {"width": 1280, "height": 853}, "9": {"width": 849, "height": 1280}, "10": {"width": 960, "height": 1280}};
+const dimensions: Record<number, { width: number; height: number }> = {"1": {"width": 1023, "height": 1280}, "2": {"width": 853, "height": 1280}, "3": {"width": 953, "height": 1191}, "4": {"width": 1023, "height": 1280}, "5": {"width": 914, "height": 1280}, "6": {"width": 1023, "height": 1280}, "7": {"width": 720, "height": 1280}, "8": {"width": 1280, "height": 853}, "9": {"width": 849, "height": 1280}, "10": {"width": 960, "height": 1280}, "11": {"width": 1066, "height": 1600}, "12": {"width": 1066, "height": 1600}, "13": {"width": 1142, "height": 1600}, "14": {"width": 1066, "height": 1600}, "15": {"width": 1143, "height": 1600}, "16": {"width": 1143, "height": 1600}, "17": {"width": 1067, "height": 1600}, "18": {"width": 1200, "height": 1600}};
 const collections = {
   staged: { label: 'Inszenierte Produktfotografie', title: 'Licht. Material.', accent: 'Atmosphäre.', text: 'Schmuck im Dialog mit Stoff, Spiegelungen und natürlichen Texturen.', photos: [
     { id: 2, title: 'Perlen & Seide', alt: 'Goldfarbene Ohrringe mit Perlen auf einem Spiegel neben weißem Satin' },
@@ -11,6 +11,14 @@ const collections = {
     { id: 6, title: 'Grünes Leuchten', alt: 'Ohrringe mit grünen Steinen auf einer Glasschale mit weißem Tüll' },
     { id: 7, title: 'Form & Struktur', alt: 'Goldfarbene Kette mit Blattanhänger auf einem weißen strukturierten Stein' },
     { id: 10, title: 'Natürliche Nuancen', alt: 'Schmuck mit grünen Perlen und einem perlmuttfarbenen Element in einer Muschelschale' },
+    {"id": 11, "title": "Licht & Schatten", "alt": "Goldfarbener Schlangenring mit blauem Stein auf weißen Sockeln"},
+    {"id": 12, "title": "Gold & Tüll", "alt": "Goldfarbene runde Ohrringe in einer Glasschale mit weißem Tüll"},
+    {"id": 13, "title": "Stein & Metall", "alt": "Gold- und silberfarbene Ohrringe vor rötlichem Stein"},
+    {"id": 14, "title": "Goldene Kreise", "alt": "Goldfarbene Creolen an einem Grashalm mit Spiegelung"},
+    {"id": 15, "title": "Fließendes Gold", "alt": "Lange goldfarbene Kettenohrringe auf dunklem Stein"},
+    {"id": 16, "title": "Botanische Akzente", "alt": "Goldfarbene Creolen auf grauem Stein vor blauen Blüten"},
+    {"id": 17, "title": "Grün & Stein", "alt": "Grüne Ohrringe mit goldfarbenem Rand auf einem grauen Stein"},
+    {"id": 18, "title": "Federleicht", "alt": "Goldfarbene Ohrringe in Blattform vor einer Feder"},
   ] },
   clean: { label: 'Produkt im Fokus', title: 'Klare Formen.', accent: 'Feine Details.', text: 'Reduzierte Hintergründe. Raum für Farbe, Form und die kleinen Besonderheiten.', photos: [
     { id: 8, title: 'Rot & Gold', alt: 'Goldfarbene Ohrringe mit roten Steinen auf weißem Hintergrund' },
@@ -40,7 +48,7 @@ export default function Gallery() {
   };
   const step = (amount: number) => setSelected(value => (value + amount + collection.photos.length) % collection.photos.length);
   return <section id="fotografie" className={styles.gallery} aria-labelledby="gallery-title">
-    <a className={styles.backLink} href="#leistungen">ZURÜCK ZUM ATELIER</a>
+    <div className={styles.pageNavigation}><a className={styles.backLink} href="#leistungen">ZURÜCK ZUM ATELIER</a><a className={styles.backLink} href="#kontakt">KONTAKT ↗</a></div>
     <div className={styles.hero}>
       <div className={styles.heading}>
         <p className={styles.eyebrow}><span /> ANNA FILIPPI / PRODUKTFOTOGRAFIE</p>
@@ -50,8 +58,8 @@ export default function Gallery() {
         <p className={styles.heroNote}>SCHMUCK & PRODUKTE <span>ANDERNACH, DE</span></p>
       </div>
       <div className={styles.heroVisual}>
-        <img src="/images/portfolio/anna-filippi-2.jpg" alt="Perlenohrringe auf einem Spiegel neben weißem Satin" width="853" height="1280" fetchPriority="high" />
-        <div className={styles.visualCaption}><span>LICHT / MATERIAL / EMOTION</span><span>01 — 10</span></div>
+        <img src="/images/gallery-calla.jpg" alt="Rote Calla vor einer sonnenbeschienenen hellen Wand" width="816" height="1456" fetchPriority="high" />
+        <div className={styles.visualCaption}><span>FORM / FARBE / LICHT</span><span>VISUAL STUDY</span></div>
       </div>
     </div>
     <div className={styles.sectionIntro} id="foto-kollektion"><span>AUSGEWÄHLTE ARBEITEN</span><span>ZWEI PERSPEKTIVEN. EINE HANDSCHRIFT.</span></div>
