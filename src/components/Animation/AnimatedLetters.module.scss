@@ -5,3 +5,5 @@
   .source { visibility: visible; }
   .letter { display: none; }
 }
+.bird {position:absolute; top:40%; width:32px; height:20px; margin-left:-16px; pointer-events:none; color:inherit;}
+@media(prefers-reduced-motion:reduce) {.bird {display:none;}}

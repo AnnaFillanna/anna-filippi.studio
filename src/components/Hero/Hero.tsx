@@ -39,9 +39,9 @@ export default function Hero() {
           DIGITAL ATELIER
         </motion.p>
         <h1 id="hero-title" aria-label="ANNA FILIPPI">
-          <AnimatedLetters text="ANNA FILIPPI" />
+          <AnimatedLetters text="ANNA FILIPPI" flock />
         </h1>
-        <motion.p {...intro(0.42)} className={styles.tagline}>
+        <motion.p {...intro(2.05)} className={styles.tagline}>
           Webentwicklung.
           <br />
           Produktfotografie.
