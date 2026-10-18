@@ -7,6 +7,7 @@ import Gallery from "./components/Gallery/Gallery";
 import Projects from "./components/Projects/Projects";
 import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
+import Contact from "./components/Contact/Contact";
 export type InfoTopic =
   | "Über mich"
   | "Projekte"
@@ -67,6 +68,7 @@ export default function App() {
           <Services />
           <About />
         </>}
+        <Contact />
       </main>
       <Footer />
       <dialog
