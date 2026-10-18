@@ -17,3 +17,4 @@
 @media(max-width: 1000px) { .layout { grid-template-columns: minmax(0,1fr); gap: 40px; } .description { max-width: 55ch; } .form { max-width: 720px; } }
 @media(max-width: 540px) { .footer { padding: 52px 7% 24px; } .row { grid-template-columns: minmax(0,1fr); gap: 0; } .intro h2 { font-size: clamp(42px, 11vw, 60px); } .bottom { margin-top: 48px; } }
 @media(prefers-reduced-motion: reduce) { .submit,.whatsapp { transition: none; } }
+.footer { border-top: 1px solid #650d2030; scroll-margin-top: 28px; }

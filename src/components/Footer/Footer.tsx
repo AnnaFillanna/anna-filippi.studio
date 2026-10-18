@@ -1,11 +1,8 @@
 import { useRef, useState, type FormEvent } from 'react';
-import { motion } from 'motion/react';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { contact, projectTypes, budgets } from '../../config/contact';
 import styles from './Footer.module.scss';
 
 export default function Footer() {
-  const reveal = useScrollReveal();
   const busy = useRef(false);
   const attempt = useRef({ body: '', id: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -37,12 +34,12 @@ export default function Footer() {
   return (
     <footer id="kontakt" className={styles.footer} aria-labelledby="contact-title">
       <div className={styles.layout}>
-        <motion.div {...reveal} className={styles.intro}>
+        <div className={styles.intro}>
           <p className={styles.eyebrow}>04 / KONTAKT</p>
           <h2 id="contact-title">Lass uns etwas <em>Schönes schaffen.</em></h2>
           <p className={styles.description}>Erzählen Sie mir von Ihrer Idee. Je mehr ich über Ihr Projekt weiß, desto besser kann ich Ihre Anfrage einschätzen.</p>
-        </motion.div>
-        <motion.form {...reveal} className={styles.form} onSubmit={submit} aria-busy={status === 'sending'}>
+        </div>
+        <form className={styles.form} onSubmit={submit} aria-busy={status === 'sending'}>
           <fieldset disabled={status === 'sending'}>
             <legend className={styles.srOnly}>Projektanfrage</legend>
             <div className={styles.row}>
@@ -59,7 +56,7 @@ export default function Footer() {
           </fieldset>
           <p className={styles.status} role="status" aria-live="polite" data-error={status === 'error'}>{message}</p>
           <a className={styles.whatsapp} href={`https://wa.me/${contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" aria-label="Lieber per WhatsApp kontaktieren (öffnet einen neuen Tab)">LIEBER PER WHATSAPP KONTAKTIEREN <span aria-hidden="true">↗</span></a>
-        </motion.form>
+        </form>
       </div>
       <div className={styles.bottom}><a href="#start" className={styles.signature}>Anna Filippi<span>Digital Atelier</span></a><span>© {new Date().getFullYear()} Anna Filippi</span><a href="#start">NACH OBEN</a></div>
     </footer>
