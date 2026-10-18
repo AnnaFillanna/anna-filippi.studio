@@ -54,19 +54,14 @@ export default function Gallery() {
         <p className={styles.eyebrow}><span /> ANNA FILIPPI / PRODUKTFOTOGRAFIE</p>
         <h1 id="gallery-title" tabIndex={-1}>Kleine Details.<br /><em>Große Wirkung.</em></h1>
         <p className={styles.lead}>Licht, das Formen zeichnet. Materialien, die Geschichten erzählen. Ich mache sichtbar, was deine Produkte besonders macht.</p>
-        <a href="#foto-kollektion" className={styles.explore}>ARBEITEN ENTDECKEN </a>
-        <p className={styles.heroNote}>SCHMUCK & PRODUKTE <span>ANDERNACH, DE</span></p>
       </div>
       <div className={styles.heroVisual}>
         <img src="/images/gallery-calla.jpg" alt="Rote Calla vor einer sonnenbeschienenen hellen Wand" width="816" height="1456" fetchPriority="high" />
-        <div className={styles.visualCaption}><span>FORM / FARBE / LICHT</span><span>VISUAL STUDY</span></div>
       </div>
     </div>
-    <div className={styles.sectionIntro} id="foto-kollektion"><span>AUSGEWÄHLTE ARBEITEN</span><span>ZWEI PERSPEKTIVEN. EINE HANDSCHRIFT.</span></div>
-    <div className={styles.filters} role="group" aria-label="Fotos nach Stil auswählen">
-      {(Object.keys(collections) as Category[]).map(key => <button key={key} type="button" aria-pressed={key === category} onClick={() => { setCategory(key); setSelected(0); }}>{collections[key].label}</button>)}
+    <div id="foto-kollektion" className={styles.filters} role="group" aria-label="Fotos nach Stil auswählen">
+      {(Object.keys(collections) as Category[]).map(key => <button key={key} type="button" aria-pressed={key === category} onClick={() => { setCategory(key); setSelected(0); }}>{collections[key].title} {collections[key].accent}</button>)}
     </div>
-    <div className={styles.collectionHeading}><h3>{collection.title} <em>{collection.accent}</em></h3><p>{collection.text}</p></div>
     <p className={styles.srOnly} role="status">{collection.label}: {collection.photos.length} Fotografien</p>
     <div className={`${styles.grid} ${category === 'clean' ? styles.clean : ''}`}>
       {collection.photos.map((item, index) => <motion.figure key={item.id} className={styles.item} initial={reduced ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .1 }} transition={{ duration: reduced ? 0 : .7 }}>
@@ -74,7 +69,6 @@ export default function Gallery() {
         <figcaption><span>{item.title}</span><span>ANNA FILIPPI</span></figcaption>
       </motion.figure>)}
     </div>
-    <p className={styles.closing}>Ein Gespür für Licht.<br /><em>Ein Blick für das Wesentliche.</em></p>
     <dialog ref={dialog} className={styles.lightbox} aria-label="Fotografie in Großansicht" onClose={() => { setOpen(false); trigger.current?.focus(); }} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }} onKeyDown={event => { if (event.key === 'ArrowRight') { event.preventDefault(); step(1); } if (event.key === 'ArrowLeft') { event.preventDefault(); step(-1); } }}>
       {open && <><div className={styles.viewerTop}><span>ANNA FILIPPI / FOTO</span><button type="button" autoFocus onClick={() => dialog.current?.close()}>SCHLIESSEN</button></div><img className={styles.fullImage} src={`/images/portfolio/anna-filippi-${photo.id}.jpg`} alt={photo.alt} /><div className={styles.viewerBottom}><button type="button" onClick={() => step(-1)}>ZURÜCK</button><p aria-live="polite">{photo.title} · {selected + 1} / {collection.photos.length}</p><button type="button" onClick={() => step(1)}>WEITER</button></div></>}
     </dialog>
