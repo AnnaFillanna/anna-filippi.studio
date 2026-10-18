@@ -5,5 +5,9 @@
   .source { visibility: visible; }
   .letter { display: none; }
 }
-.bird {position:absolute; top:40%; width:32px; height:20px; margin-left:-16px; pointer-events:none; color:inherit;}
-@media(prefers-reduced-motion:reduce) {.bird {display:none;}}
+
+.particleRoot {position:relative; display:inline-block; white-space:inherit;}
+.particleCanvas {position:absolute; inset:0; width:100%; height:100%; pointer-events:none;}
+.particleSource {display:inline-block; transition:opacity .4s;}
+.assembling {opacity:0;}
+@media(prefers-reduced-motion:reduce) {.particleCanvas {display:none;} .particleSource {opacity:1; transition:none;}}
