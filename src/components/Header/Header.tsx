@@ -43,7 +43,7 @@ export default function Header() {
           Produktfotografie
         </a>
 
-        <a href="/#ueber-mich" onClick={() => setOpen(false)}>Über mich</a>
+        <a href="/ueber-mich" onClick={() => setOpen(false)}>Über mich</a>
         <a href="#kontakt" onClick={() => setOpen(false)}>Kontakt</a>
       </nav>
       <motion.a {...magnetic} href="#kontakt" className={styles.startProject} onClick={() => setOpen(false)}>PROJEKT STARTEN</motion.a>

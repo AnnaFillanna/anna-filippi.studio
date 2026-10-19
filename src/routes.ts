@@ -1,8 +1,12 @@
 export const origin = 'https://annafilippi.studio';
 export const pages = {
   '/': {
-    title: 'ANNA FILIPPI — Digital Atelier',
-    description: 'ANNA FILIPPI — Digital Atelier in Andernach. Websites, Web-Applikationen, KI-Integrationen und Produktfotografie. Anna Filippi, auch bekannt als Fillanna.',
+    title: 'ANNA FILIPPI Studio — Webentwicklung, KI & Fotografie',
+    description: 'ANNA FILIPPI Studio in Andernach: Websites, Web-Applikationen, Softwareentwicklung, KI-Integrationen, Automatisierung, Shopify und Produktfotografie. Auch bekannt als Fillanna.',
+  },
+  '/ueber-mich': {
+    title: 'Über mich — Anna Filippi | Webentwicklung & Fotografie',
+    description: 'Lerne Anna Filippi kennen: moderne Websites, digitale Ideen und Begeisterung für KI, Design und Schmuckfotografie. Persönlich, kreativ und mit Liebe zum Detail.',
   },
   '/projekte': {
     title: 'Web & Software – Projekte | Anna Filippi',
@@ -17,7 +21,7 @@ export type PagePath = keyof typeof pages;
 
 export function pageForPath(pathname: string): PagePath {
   const path = pathname.replace(/\/+$/, '') || '/';
-  return path === '/projekte' || path === '/fotografie' ? path : '/';
+  return path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
 }
 
 export function migrateLegacyLink() {
