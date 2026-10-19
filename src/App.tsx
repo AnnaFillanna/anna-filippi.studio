@@ -76,7 +76,7 @@ function Site() {
       if (target) target.scrollIntoView();
       else {
         window.scrollTo({ top: 0, behavior: 'instant' });
-        const heading = pagePath === '/softwareentwicklung' ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
+        const heading = pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : pagePath === '/softwareentwicklung' ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
         if (heading) document.getElementById(heading)?.focus({ preventScroll: true });
       }
     });

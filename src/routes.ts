@@ -20,12 +20,14 @@ export const pages = {
     title: 'Produktfotografie – Anna Filippi',
     description: 'Produktfotografie von Anna Filippi in Andernach: Schmuck, Licht, Material und Atmosphäre. Entdecke inszenierte Fotografien und klare Produktaufnahmen.',
   },
+  '/impressum': { title: 'Impressum — Anna Filippi', description: 'Impressum von Anna Filippi.' },
+  '/datenschutz': { title: 'Datenschutzerklärung — Anna Filippi', description: 'Datenschutzerklärung von Anna Filippi.' },
 } as const;
 export type PagePath = keyof typeof pages;
 
 export function pageForPath(pathname: string): PagePath {
   const path = pathname.replace(/\/+$/, '') || '/';
-  return path === '/softwareentwicklung' || path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
+  return path === '/impressum' || path === '/datenschutz' || path === '/softwareentwicklung' || path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
 }
 
 export function migrateLegacyLink() {

@@ -17,6 +17,14 @@
     {
       "source": "/softwareentwicklung",
       "destination": "/softwareentwicklung/index.html"
+    },
+    {
+      "source": "/impressum",
+      "destination": "/impressum/index.html"
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/datenschutz/index.html"
     }
   ]
 }

@@ -1,0 +1,9 @@
+@use '../../styles/variables' as *;
+.legal-page {
+  padding: clamp(130px, 15vw, 210px) 7vw 90px;
+  &__container { max-width: 900px; margin: 0 auto; }
+  h1 { font-family: $serif; font-weight: 400; font-size: clamp(36px, 5vw, 64px); color: $bordeaux; margin-bottom: 36px; overflow-wrap: anywhere; }
+  p, &__text { font-size: 16px; line-height: 1.85; }
+  &__text { white-space: pre-wrap; overflow-wrap: anywhere; }
+  button { background: transparent; border: 0; border-bottom: 1px solid $bordeaux; padding: 12px 0; margin-top: 18px; color: $bordeaux; }
+}
