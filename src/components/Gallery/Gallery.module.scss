@@ -57,3 +57,9 @@
   .heroVisual {max-width:440px;}
   .heroVisual img {aspect-ratio:5/4; object-position:50% 36%;}
 }
+
+/* Preserve the full original flower on tablet and desktop. */
+@media(min-width:761px) {
+  .heroVisual {max-width:300px;}
+  .heroVisual img {aspect-ratio:896/1600; object-fit:cover; object-position:center;}
+}
