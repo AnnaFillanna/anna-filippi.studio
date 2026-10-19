@@ -10,6 +10,9 @@ import Gallery from "./components/Gallery/Gallery";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
 import Contact from "./components/Contact/Contact";
+import Impressum from "./components/LegalPages/Impressum";
+import Datenschutz from "./components/LegalPages/Datenschutz";
+
 export type InfoTopic =
   | "Über mich"
   | "Projekte"
@@ -94,6 +97,8 @@ function Site() {
           <Route path="/projekte" element={<Projects />} />
           <Route path="/fotografie" element={<Gallery />} />
           <Route path="/ueber-mich" element={<AboutPage />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
         </Routes>
         <Contact />
       </main>
