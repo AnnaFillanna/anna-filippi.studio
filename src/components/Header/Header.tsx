@@ -16,7 +16,6 @@ export default function Header() {
         aria-label="Anna Filippi – Startseite"
       >
         A<span>F</span>
-        <i aria-hidden="true">.</i>
       </a>
 
       <button

@@ -6,7 +6,7 @@ import { transformWithEsbuild } from 'vite';
 
 const origin = 'https://annafilippi.studio';
 const examples = [
-  ['/', 'ANNA FILIPPI', 'auch bekannt als Fillanna'],
+  ['/', 'ANNA FILIPPI', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],
   ['/fotografie', 'Große Wirkung.', 'Perlen &amp; Seide'],
@@ -43,7 +43,7 @@ test('legacy hashes migrate with query strings intact', async () => {
     const context = { module: { exports: {} }, window: { location: { pathname: '/', hash, search: '?ref=old' }, history: { state: null, replaceState: (...args) => calls.push(args) } } };
     vm.runInNewContext(code, context);
     context.module.exports.migrateLegacyLink();
-    if (hash === '#projekte' || hash === '#fotografie') assert.equal(calls[0][2], `/${hash.slice(1)}?ref=old`);
+    if (hash === '#projekte' || hash === '#fotografie' || hash === '#ueber-mich') assert.equal(calls[0][2], `/${hash.slice(1)}?ref=old`);
     else assert.equal(calls.length, 0, `Anchor must be retained: ${hash}`);
   }
 });
@@ -61,12 +61,15 @@ test('sitemap and Vercel rules cover all four existing pages', async () => {
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
 });
 
-test('home retains its existing sections and shows six distinct services', async () => {
+test('home shows six unnumbered services while the profile stays on its own page', async () => {
   const html = await readFile('dist/index.html', 'utf8');
-  for (const id of ['start', 'leistungen', 'ueber-mich', 'kontakt']) assert.ok(html.includes(`id="${id}"`));
+  for (const id of ['start', 'leistungen', 'kontakt']) assert.ok(html.includes(`id="${id}"`));
   for (const title of ['Webentwicklung &amp; Redesign', 'Softwareentwicklung', 'KI-Integration &amp; Automatisierung', 'E-Commerce', 'Optimierung &amp; Betreuung', 'Produktfotografie']) {
     assert.ok(html.includes(title), `Missing service: ${title}`);
   }
+  assert.ok(!html.includes('id="ueber-mich"'));
+  assert.ok(!html.includes('04 / KONTAKT'));
+  assert.ok(!/<span[^>]*>0[1-6] —<\/span>/.test(html));
   assert.ok(html.includes('Meine Leistungen'));
   assert.ok(html.includes('Digitale Ideen. Individuelle Lösungen.'));
   assert.ok(html.includes('mailto:annafilippi@web.de'));

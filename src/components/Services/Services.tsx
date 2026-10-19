@@ -22,20 +22,19 @@ export default function Services() {
         <h2 id="services-title">Meine Leistungen</h2>
         <p className={styles.subtitle}>Digitale Ideen. Individuelle Lösungen.</p>
       </motion.div>
-      <ol className={styles.list}>
+      <ul className={styles.list}>
         {services.map((service, index) => (
           <motion.li key={service.title} className={styles.service}
             initial={reduced ? false : { opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }}
             transition={{ duration: reduced ? 0 : .85, delay: reduced ? 0 : index % 2 * .08 }}>
-            <span className={styles.number} aria-hidden="true">{String(index + 1).padStart(2, '0')} —</span>
             <h3 id={index === 0 ? 'title-web' : index === 5 ? 'title-foto' : undefined}>{service.title}</h3>
             <p className={styles.description}>{service.text}</p>
             {index === 0 && <a className={styles.galleryLink} href="/projekte">PROJEKTE ENTDECKEN</a>}
             {index === 5 && <a className={styles.galleryLink} href="/fotografie">FOTOGRAFIEN ENTDECKEN</a>}
           </motion.li>
         ))}
-      </ol>
+      </ul>
     </section>
   );
 }
