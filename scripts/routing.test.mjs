@@ -7,6 +7,7 @@ import { transformWithEsbuild } from 'vite';
 const origin = 'https://annafilippi.studio';
 const examples = [
   ['/', 'ANNA FILIPPI', 'auch bekannt als Fillanna'],
+  ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],
   ['/fotografie', 'Große Wirkung.', 'Perlen &amp; Seide'],
 ];
@@ -23,7 +24,7 @@ for (const [path, heading, content] of examples) {
     assert.ok(!/href="#(?:projekte|fotografie)"/.test(html));
     assert.ok(html.includes('href="/projekte"'));
     assert.ok(html.includes('href="/fotografie"'));
-    assert.ok(html.includes('href="/#ueber-mich"'));
+    assert.ok(html.includes('href="/ueber-mich"'));
     for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) {
       assert.ok(html.includes(`id="${id}"`), `Missing local anchor: ${id}`);
     }
@@ -47,15 +48,38 @@ test('legacy hashes migrate with query strings intact', async () => {
   }
 });
 
-test('sitemap and Vercel rules cover exactly the existing pages', async () => {
+test('sitemap and Vercel rules cover all four existing pages', async () => {
   const sitemap = await readFile('dist/sitemap.xml', 'utf8');
   const sourceSitemap = await readFile('public/sitemap.xml', 'utf8');
   assert.equal(sitemap, sourceSitemap);
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 3);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 4);
   for (const [path] of examples) assert.ok(sitemap.includes(`<loc>${origin}${path}</loc>`));
   const config = JSON.parse(await readFile('vercel.json', 'utf8'));
   assert.equal(config.trailingSlash, false);
-  assert.equal(config.rewrites.length, 2);
+  assert.equal(config.rewrites.length, 3);
   for (const rule of config.rewrites) await access(`dist${rule.destination}`);
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
+});
+
+test('home retains its existing sections and shows six distinct services', async () => {
+  const html = await readFile('dist/index.html', 'utf8');
+  for (const id of ['start', 'leistungen', 'ueber-mich', 'kontakt']) assert.ok(html.includes(`id="${id}"`));
+  for (const title of ['Webentwicklung &amp; Redesign', 'Softwareentwicklung', 'KI-Integration &amp; Automatisierung', 'E-Commerce', 'Optimierung &amp; Betreuung', 'Produktfotografie']) {
+    assert.ok(html.includes(title), `Missing service: ${title}`);
+  }
+  assert.ok(html.includes('Meine Leistungen'));
+  assert.ok(html.includes('Digitale Ideen. Individuelle Lösungen.'));
+  assert.ok(html.includes('mailto:annafilippi@web.de'));
+  for (const label of ['Impressum', 'Datenschutz', 'Cookies']) assert.ok(html.includes(label));
+});
+
+test('about page includes the requested personal text and original portrait', async () => {
+  const html = await readFile('dist/ueber-mich/index.html', 'utf8');
+  assert.ok(html.includes('Was als Hobby begann'));
+  assert.ok(html.includes('künstlichen Intelligenz'));
+  assert.ok(html.includes('/images/about-anna-red.jpg'));
+  assert.ok(html.includes('width="993" height="1600"'));
+  assert.ok(html.includes('href="/#start"'));
+  assert.ok(!html.includes('ausgebildete Berufsfotografin'));
+  assert.ok(!html.includes('MEHR ALS')); // Keep the old profile on home, without duplicating it here.
 });
