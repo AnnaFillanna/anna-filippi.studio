@@ -72,7 +72,7 @@ export default function ParticleText({ text }: { text: string }) {
       const draw = (now: number) => {
         if (!alive) return;
         const elapsed = now - began;
-        context.clearRect(0, 0, width, height);
+        context.clearRect(0, 0, Math.ceil(width), Math.ceil(height));
         const fade = Math.min(1, Math.max(0, (elapsed - 2450) / 400));
         for (const dot of dots) {
           const progress = Math.max(0, Math.min(1, (elapsed - dot.delay) / 1600));
@@ -85,7 +85,7 @@ export default function ParticleText({ text }: { text: string }) {
         }
         if (elapsed >= 2450) setAssembling(false);
         if (elapsed < 2850) frame = requestAnimationFrame(draw);
-        else { playing = false; context.clearRect(0, 0, width, height); }
+        else { playing = false; context.clearRect(0, 0, Math.ceil(width), Math.ceil(height)); }
       };
       frame = requestAnimationFrame(draw);
     };
@@ -99,7 +99,7 @@ export default function ParticleText({ text }: { text: string }) {
       const bounds = label.getBoundingClientRect();
       if (Math.abs(bounds.width - width) < .5 && Math.abs(bounds.height - height) < .5) return;
       cancelAnimationFrame(frame); playing = false;
-      context.clearRect(0, 0, width, height); setAssembling(false);
+      context.clearRect(0, 0, Math.ceil(width), Math.ceil(height)); setAssembling(false);
       try { measure(); } catch { dots = []; }
     });
     observer.observe(label);
