@@ -26,7 +26,7 @@ export function pageForPath(pathname: string): PagePath {
 
 export function migrateLegacyLink() {
   const { pathname, hash, search } = window.location;
-  if (pathname === '/' && (hash === '#projekte' || hash === '#fotografie')) {
+  if (pathname === '/' && (hash === '#projekte' || hash === '#fotografie' || hash === '#ueber-mich')) {
     window.history.replaceState(window.history.state, '', `/${hash.slice(1)}${search}`);
   }
 }
