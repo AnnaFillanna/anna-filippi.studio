@@ -47,7 +47,7 @@
 
 /* Compact original-image crop; keep the complete calla bloom in view. */
 .heroVisual {width:100%; max-width:440px; padding:0; border:0; justify-self:center;}
-.heroVisual img {display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; object-position:50% 33%; border:0; border-radius:0; box-shadow:none;}
+.heroVisual img {display:block; width:100%; height:auto; aspect-ratio:5/4; object-fit:cover; object-position:50% 36%; border:0; border-radius:0; box-shadow:none;}
 .hero {padding-bottom:44px;}
 .heading h1 {-webkit-user-select:none; user-select:none; -webkit-tap-highlight-color:transparent;}
 /* This heading is a programmatic navigation target, not an interactive control. */
@@ -55,5 +55,5 @@
 @media(max-width:760px) {
   .hero {gap:24px; padding-bottom:30px;}
   .heroVisual {max-width:440px;}
-  .heroVisual img {aspect-ratio:4/3; object-position:50% 33%;}
+  .heroVisual img {aspect-ratio:5/4; object-position:50% 36%;}
 }
