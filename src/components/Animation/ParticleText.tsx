@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'motion/react';
 import styles from './AnimatedLetters.module.scss';
@@ -21,6 +22,8 @@ export default function ParticleText({ text }: { text: string }) {
     let dots: Dot[] = [];
     let width = 0;
     let height = 0;
+    let viewportWidth = 0;
+    let viewportHeight = 0;
     const context = surface.getContext('2d');
     if (!context) { setAssembling(false); return; }
 
@@ -56,36 +59,43 @@ export default function ParticleText({ text }: { text: string }) {
       const stride = Math.max(1, Math.ceil(points.length / 1400));
       dots = points.filter((_, i) => i % stride === 0).map((point, i) => {
         const random = (seed: number) => { const n = Math.sin(seed * 127.1 + 311.7) * 43758.5453; return n - Math.floor(n); };
-        return { ...point, fromX: random(i + 1) * width, fromY: random(i + 90) * height, delay: random(i + 400) * 500 + point.x / width * 350 };
+        return { ...point, fromX: 8 + random(i + 1) * (window.innerWidth - 16), fromY: 8 + random(i + 90) * (window.innerHeight - 16), delay: random(i + 400) * 500 + point.x / width * 350 };
       });
-      const ratio = Math.min(window.devicePixelRatio || 1, 2);
-      surface.width = Math.ceil(width * ratio); surface.height = Math.ceil(height * ratio);
+      viewportWidth = window.innerWidth; viewportHeight = window.innerHeight;
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+      surface.width = Math.ceil(viewportWidth * ratio); surface.height = Math.ceil(viewportHeight * ratio);
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
       context.fillStyle = font.color;
       return dots.length > 0;
     };
 
     const start = () => {
-      if (!alive || playing || !dots.length) return;
+      if (!alive || playing) return;
+      try { if (!measure()) { setAssembling(false); return; } } catch { setAssembling(false); return; }
       playing = true; setAssembling(true);
       const began = performance.now();
       const draw = (now: number) => {
         if (!alive) return;
         const elapsed = now - began;
-        context.clearRect(0, 0, Math.ceil(width), Math.ceil(height));
-        const fade = Math.min(1, Math.max(0, (elapsed - 2450) / 400));
+        context.clearRect(0, 0, Math.ceil(viewportWidth), Math.ceil(viewportHeight));
+        const bounds = label.getBoundingClientRect();
+        const fade = Math.min(1, Math.max(0, (elapsed - 3500) / 400));
         for (const dot of dots) {
-          const progress = Math.max(0, Math.min(1, (elapsed - dot.delay) / 1600));
+          const outward = Math.min(1, elapsed / 950);
+          const spread = 1 - Math.pow(1 - outward, 3);
+          const progress = Math.max(0, Math.min(1, (elapsed - 1050 - dot.delay) / 1600));
           const ease = 1 - Math.pow(1 - progress, 3);
-          const curve = Math.sin(progress * Math.PI) * (1 - progress);
-          const x = dot.fromX + (dot.x - dot.fromX) * ease;
-          const y = dot.fromY + (dot.y - dot.fromY) * ease + curve * 12;
-          context.globalAlpha = Math.min(1, elapsed / 220) * (1 - fade);
+          const targetX = bounds.left + dot.x;
+          const targetY = bounds.top + dot.y;
+          const distance = spread * (1 - ease);
+          const x = targetX + (dot.fromX - targetX) * distance;
+          const y = targetY + (dot.fromY - targetY) * distance;
+          context.globalAlpha = Math.min(1, elapsed / 100) * (1 - fade);
           context.beginPath(); context.arc(x, y, 1.05, 0, Math.PI * 2); context.fill();
         }
-        if (elapsed >= 2450) setAssembling(false);
-        if (elapsed < 2850) frame = requestAnimationFrame(draw);
-        else { playing = false; context.clearRect(0, 0, Math.ceil(width), Math.ceil(height)); }
+        if (elapsed >= 3500) setAssembling(false);
+        if (elapsed < 3900) frame = requestAnimationFrame(draw);
+        else { playing = false; context.clearRect(0, 0, Math.ceil(viewportWidth), Math.ceil(viewportHeight)); }
       };
       frame = requestAnimationFrame(draw);
     };
@@ -97,19 +107,24 @@ export default function ParticleText({ text }: { text: string }) {
     });
     const observer = new ResizeObserver(() => {
       const bounds = label.getBoundingClientRect();
-      if (Math.abs(bounds.width - width) < .5 && Math.abs(bounds.height - height) < .5) return;
+      if (Math.abs(bounds.width - width) < .5 && Math.abs(bounds.height - height) < .5 && viewportWidth === window.innerWidth && viewportHeight === window.innerHeight) return;
       cancelAnimationFrame(frame); playing = false;
-      context.clearRect(0, 0, Math.ceil(width), Math.ceil(height)); setAssembling(false);
+      context.clearRect(0, 0, Math.ceil(viewportWidth), Math.ceil(viewportHeight)); setAssembling(false);
       try { measure(); } catch { dots = []; }
     });
     observer.observe(label);
-    return () => { alive = false; cancelAnimationFrame(frame); observer.disconnect(); play.current = () => {}; };
+    const resize = () => {
+      cancelAnimationFrame(frame); playing = false; setAssembling(false);
+      try { measure(); } catch { dots = []; }
+    };
+    window.addEventListener('resize', resize);
+    return () => { window.removeEventListener('resize', resize); alive = false; cancelAnimationFrame(frame); observer.disconnect(); play.current = () => {}; };
   }, [text, reduced]);
 
   return <span className={styles.particleRoot} aria-hidden="true"
     onPointerEnter={event => { if (event.pointerType === 'mouse') play.current(); }}
     onPointerDown={event => { if (event.pointerType !== 'mouse') play.current(); }}>
     <span ref={source} className={`${styles.particleSource} ${assembling && !reduced ? styles.assembling : ''}`}>{text}</span>
-    <canvas ref={canvas} className={styles.particleCanvas} />
+    {typeof document !== 'undefined' && !reduced && createPortal(<canvas ref={canvas} className={styles.particleCanvas} aria-hidden="true" />, document.body)}
   </span>;
 }

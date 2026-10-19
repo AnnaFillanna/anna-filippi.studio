@@ -217,7 +217,7 @@ export default function Gallery() {
             <span className={styles.filterTitle}>{collections[key].title} {collections[key].accent}</span>
             <span className={styles.filterMeta}>
               <span>{key === "clean" ? "AUF HELLEM HINTERGRUND" : "KOMPOSITIONEN"}</span>
-              <span className={styles.filterAction}>{key === category ? "Ausgewählt" : "Ansehen"}</span>
+              <span className={styles.filterAction}>{key === "clean" ? "Galerie ansehen" : "Jetzt entdecken"}</span>
             </span>
           </button>
         ))}

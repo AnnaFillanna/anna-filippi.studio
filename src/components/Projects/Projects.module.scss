@@ -211,3 +211,11 @@
     transition: none;
   }
 }
+
+.categoryLink { display: inline-block; padding: 12px 0; color: $bordeaux; text-decoration: none; border-bottom: 1px solid #650d2055; font-size: 9px; letter-spacing: .1em; }
+.categoryLink:hover { border-bottom-color: $bordeaux; }
+.categoryLink:focus-visible { outline: 2px solid $bordeaux; outline-offset: 5px; }
+.software { margin-top: clamp(64px, 8vw, 110px); scroll-margin-top: 110px; }
+.software h2 { font-family: $serif; font-size: clamp(38px, 5vw, 66px); line-height: 1.1; font-weight: 400; margin: 18px 0 24px; }
+
+@media (min-width: 761px) { .sectionLabel { display: none; } }

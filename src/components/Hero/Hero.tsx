@@ -55,7 +55,7 @@ export default function Hero() {
         SCROLL
         <span className={styles.srOnly}> zu den Leistungen</span>
       </motion.a>
-      <p className={styles.location}>ANDERNACH · DE</p>
+      <p className={styles.location}>MIT KI GENERIERT</p>
       <p className={styles.aiCredit}>MIT KI GENERIERT</p>
     </section>
   );

@@ -24,3 +24,5 @@
   .service h3 { font-size: clamp(28px, 6.8vw, 36px); }
   .eyebrow { margin-bottom: 22px; }
 }
+
+@media (min-width: 761px) { .intro > .eyebrow { display: none; } }

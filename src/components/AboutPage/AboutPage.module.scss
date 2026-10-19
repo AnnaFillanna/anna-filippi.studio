@@ -19,3 +19,5 @@
   .copy h1 { font-size: clamp(52px, 12vw, 76px); }
   .portrait { width: min(100%, 440px); justify-self: center; max-height: none; img { height: auto; aspect-ratio: 993/1600; object-fit: contain; } }
 }
+
+@media (min-width: 761px) { .signature .ampersand { font-family: $sans; font-style: normal; font-weight: 400; font-size: .8em; } }

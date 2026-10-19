@@ -23,7 +23,7 @@ export default function AboutPage() {
             <p>Besonders faszinieren mich die Möglichkeiten der künstlichen Intelligenz und die Verbindung von Design und Funktionalität.</p>
             <p>Neben der Webentwicklung widme ich mich mit Leidenschaft der Schmuckfotografie. Was als Hobby begann, ist für mich eine kreative Möglichkeit, besondere Details, Licht und Ästhetik in Bildern festzuhalten.</p>
           </div>
-          <p className={styles.signature}>Anna Filippi — Webentwicklung, digitale Ideen &amp; Fotografie aus Leidenschaft.</p>
+          <p className={styles.signature}>Anna Filippi — Webentwicklung, digitale Ideen <span className={styles.ampersand}>&amp;</span> Fotografie aus Leidenschaft.</p>
         </motion.div>
         <motion.div className={styles.portrait} {...reveal(30)}>
           <img src="/images/about-anna-red.jpg" alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" width="993" height="1600" fetchPriority="high" />

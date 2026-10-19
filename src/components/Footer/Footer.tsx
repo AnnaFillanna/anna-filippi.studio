@@ -12,7 +12,7 @@ export default function Footer() {
   return <footer className={styles.footer} aria-label="Seitenabschluss">
     <img className={styles.background} src="/images/footer.png" alt="" width="1456" height="816" loading="lazy" />
     <div className={styles.inner}>
-      <div className={styles.topline}><span>DIGITAL ATELIER</span><span>ANDERNACH · DE</span></div>
+      <div className={styles.topline}><span>DIGITAL ATELIER</span><span className={styles.location}>ANDERNACH · DE</span></div>
       <div className={styles.content}>
         <a href="/#start" className={styles.wordmark} aria-label="Anna Filippi – Startseite"><AnimatedLetters text="ANNA FILIPPI" /></a>
         <h2 className={styles.invitation}>Eine Idee. Eine Frage.<br /><em>Einfach ins Gespräch kommen.</em></h2>

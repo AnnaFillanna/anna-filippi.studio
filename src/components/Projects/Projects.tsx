@@ -6,9 +6,9 @@ const projects = [
   {
     "name": "FilliCat",
     "category": "EDTECH / SOFTWAREENTWICKLUNG",
-    "description": "Eigenständig entwickelte, interaktive Lernplattform für JavaScript und TypeScript mit personalisierten Übungen, Fehleranalyse und gezielten Wiederholungen. Mehrsprachig auf Deutsch, Englisch und Russisch.",
+    "description": "Eigenständig entwickelte, interaktive Lernplattform für JavaScript und TypeScript mit personalisierten Übungen, Fehleranalyse und gezielten Wiederholungen. Mehrsprachig auf Deutsch, Englisch und Russisch. FilliCat ist als App für Smartphone, Laptop und Tablet geplant; aktuell ist die Lernplattform im Browser erreichbar.",
     "scope": "React · TypeScript · Vite · KI-Integration",
-    "status": "Eigenprojekt · In aktiver Entwicklung · KI-Lernassistent in Entwicklung",
+    "status": "Eigenprojekt · In aktiver Entwicklung · Geräteübergreifende App geplant · KI-Lernassistent in Entwicklung",
     "image": "/images/projects/fillicat.png",
     "href": "https://fillicat.com"
   },
@@ -34,17 +34,28 @@ const projects = [
 
 export default function Projects() {
   const reveal = useScrollReveal();
+  const renderProject = (project: typeof projects[number], index: number) => (
+<motion.article {...reveal} key={project.name} className={styles.card} aria-labelledby={`project-${index}`}>
+      <a className={styles.cover} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}><img src={project.image} alt={`Startseite von ${project.name}`} width="1440" height="900" loading={index === 0 ? 'eager' : 'lazy'} /><span className={styles.previewLabel}>WEBSITE ANSEHEN </span></a>
+      <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.status && <p className={styles.description}>{project.status}</p>}</div>
+    </motion.article>
+  );
   return <section id="projekte" className={styles.projects} aria-labelledby="projects-title">
     <a className={styles.back} href="/#leistungen"> ZURÜCK ZUM ATELIER</a>
     <motion.div {...reveal} className={styles.heading}>
-      <p className={styles.eyebrow}>AUSGEWÄHLTE ARBEITEN / 01 — 03</p>
+      <p className={`${styles.eyebrow} ${styles.sectionLabel}`}>AUSGEWÄHLTE ARBEITEN / 01 — 03</p>
       <h1 id="projects-title" tabIndex={-1}>Ideen werden digital.<br /><em>Meine Arbeiten.</em></h1>
       <p className={styles.lead}>Drei Projekte. Drei eigene Geschichten. Individuell entwickelt und mit einem Blick für das Detail umgesetzt.</p>
     </motion.div>
-    <ul className={styles.categories} aria-label="Projektbereiche"><li>Softwareentwicklung</li><li>Websites</li><li>Shopify</li></ul>
-    <div className={styles.grid}>{projects.map((project, index) => <motion.article {...reveal} key={project.name} className={styles.card} aria-labelledby={`project-${index}`}>
-      <a className={styles.cover} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: Website öffnen (neuer Tab)`}><img src={project.image} alt={`Startseite von ${project.name}`} width="1440" height="900" loading={index === 0 ? 'eager' : 'lazy'} /><span className={styles.previewLabel}>WEBSITE ANSEHEN </span></a>
-      <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.status && <p className={styles.description}>{project.status}</p>}</div>
-    </motion.article>)}</div>
+    <ul className={styles.categories} aria-label="Projektbereiche"><li><a className={styles.categoryLink} href="#softwareentwicklung">SOFTWAREPROJEKTE ENTDECKEN</a></li><li>Websites</li><li>Shopify</li></ul>
+    <div className={styles.grid}>{projects.map((project, index) => renderProject(project, index))}</div>
+    <section id="softwareentwicklung" className={styles.software} aria-labelledby="software-title">
+      <motion.div {...reveal} className={styles.heading}>
+        <p className={styles.eyebrow}>SOFTWAREENTWICKLUNG</p>
+        <h2 id="software-title">Eine Idee. <em>Auf allen Geräten.</em></h2>
+        <p className={styles.lead}>Geplant sind Apps für Smartphone, Laptop und Tablet. Hier zeige ich meine Softwareprojekte und ihren aktuellen Entwicklungsstand.</p>
+      </motion.div>
+      <div className={styles.grid}>{renderProject(projects[0], projects.length)}</div>
+    </section>
   </section>;
 }

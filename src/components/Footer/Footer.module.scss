@@ -29,3 +29,5 @@
 @media(max-width:760px) {.content {max-width:440px;} .wordmark {font-size:24px;} .invitation {font-size:36px;} .footer::before {background:linear-gradient(90deg,#f5f0e9f5 0%,#f5f0e9de 55%,#f5f0e955 100%);} }
 @media(max-width:480px) {.wordmark {font-size:22px;} .invitation {font-size:32px;} .channels {max-width:100%;} .content {padding-block:36px;} }
 @media(prefers-reduced-motion:reduce) {.channel a span {transition:none;}}
+
+@media (min-width: 761px) { .topline .location { display: none; } }
