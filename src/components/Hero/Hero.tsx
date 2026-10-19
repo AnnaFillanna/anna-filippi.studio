@@ -21,8 +21,8 @@ export default function Hero() {
         <img
           src="/images/anna-original.png"
           alt="Anna Filippi im Profil, mit wehendem blondem Haar und bordeauxrotem Stoff, nach links blickend."
-          width="1280"
-          height="445"
+          width="1675"
+          height="939"
           fetchPriority="high"
         />
       </div>
@@ -56,6 +56,7 @@ export default function Hero() {
         <span className={styles.srOnly}> zu den Leistungen</span>
       </motion.a>
       <p className={styles.location}>ANDERNACH · DE</p>
+      <p className={styles.aiCredit}>MIT KI GENERIERT</p>
     </section>
   );
 }
