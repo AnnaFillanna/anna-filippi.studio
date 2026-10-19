@@ -1,0 +1,61 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile, access } from 'node:fs/promises';
+import vm from 'node:vm';
+import { transformWithEsbuild } from 'vite';
+
+const origin = 'https://annafilippi.studio';
+const examples = [
+  ['/', 'ANNA FILIPPI', 'auch bekannt als Fillanna'],
+  ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],
+  ['/fotografie', 'Große Wirkung.', 'Perlen &amp; Seide'],
+];
+for (const [path, heading, content] of examples) {
+  test(`${path}: prerendered content, metadata and internal links`, async () => {
+    const html = await readFile(`dist${path === '/' ? '' : path}/index.html`, 'utf8');
+    assert.equal((html.match(/<h1\b/g) || []).length, 1);
+    assert.ok(html.includes(heading));
+    assert.ok(html.includes(content));
+    assert.ok(html.includes(`<link rel="canonical" href="${origin}${path}"`));
+    assert.ok(html.includes(`<meta property="og:url" content="${origin}${path}"`));
+    assert.ok(html.includes('<noscript><style>'));
+    assert.ok(!/content="noindex/.test(html));
+    assert.ok(!/href="#(?:projekte|fotografie)"/.test(html));
+    assert.ok(html.includes('href="/projekte"'));
+    assert.ok(html.includes('href="/fotografie"'));
+    assert.ok(html.includes('href="/#ueber-mich"'));
+    for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) {
+      assert.ok(html.includes(`id="${id}"`), `Missing local anchor: ${id}`);
+    }
+    for (const [, src] of html.matchAll(/(?:src|href)="(\/assets\/[^"?#]+)"/g)) {
+      await access(`dist${src}`);
+    }
+    JSON.parse(html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)[1]);
+  });
+}
+
+test('legacy hashes migrate with query strings intact', async () => {
+  const source = await readFile('src/routes.ts', 'utf8');
+  const { code } = await transformWithEsbuild(source, 'routes.ts', { loader: 'ts', format: 'cjs' });
+  for (const hash of ['#projekte', '#fotografie', '#kontakt', '#ueber-mich', '#leistungen', '#inhalt']) {
+    const calls = [];
+    const context = { module: { exports: {} }, window: { location: { pathname: '/', hash, search: '?ref=old' }, history: { state: null, replaceState: (...args) => calls.push(args) } } };
+    vm.runInNewContext(code, context);
+    context.module.exports.migrateLegacyLink();
+    if (hash === '#projekte' || hash === '#fotografie') assert.equal(calls[0][2], `/${hash.slice(1)}?ref=old`);
+    else assert.equal(calls.length, 0, `Anchor must be retained: ${hash}`);
+  }
+});
+
+test('sitemap and Vercel rules cover exactly the existing pages', async () => {
+  const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  const sourceSitemap = await readFile('public/sitemap.xml', 'utf8');
+  assert.equal(sitemap, sourceSitemap);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 3);
+  for (const [path] of examples) assert.ok(sitemap.includes(`<loc>${origin}${path}</loc>`));
+  const config = JSON.parse(await readFile('vercel.json', 'utf8'));
+  assert.equal(config.trailingSlash, false);
+  assert.equal(config.rewrites.length, 2);
+  for (const rule of config.rewrites) await access(`dist${rule.destination}`);
+  assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
+});
