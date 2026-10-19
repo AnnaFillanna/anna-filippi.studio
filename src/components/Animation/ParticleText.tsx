@@ -39,12 +39,13 @@ export default function ParticleText({ text }: { text: string }) {
       const metrics = ink.measureText(text);
       const ascent = metrics.fontBoundingBoxAscent || metrics.actualBoundingBoxAscent;
       const descent = metrics.fontBoundingBoxDescent || metrics.actualBoundingBoxDescent;
-      const baseline = (height - ascent - descent) / 2 + ascent;
       const range = document.createRange();
       // Browser ranges retain the heading's exact kerning and letter spacing.
       for (let i = 0; i < text.length; i++) {
         range.setStart(label.firstChild, i); range.setEnd(label.firstChild, i + 1);
-        ink.fillText(text[i], range.getBoundingClientRect().left - bounds.left, baseline);
+        const glyph = range.getBoundingClientRect();
+        const baseline = glyph.top - bounds.top + (glyph.height - ascent - descent) / 2 + ascent;
+        ink.fillText(text[i], glyph.left - bounds.left, baseline);
       }
       const pixels = ink.getImageData(0, 0, mask.width, mask.height).data;
       const step = Math.max(2, Math.round(parseFloat(font.fontSize) / 38));
