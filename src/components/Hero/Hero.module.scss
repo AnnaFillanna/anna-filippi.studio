@@ -153,55 +153,55 @@
 // MOBILE RESPONSIVE
 // ==========================================
 
+ .aiCredit { display: none; }
+
 @media (max-width: 760px) {
   .hero {
-    height: auto;
-    min-height: 100svh;
-    padding-bottom: 77vw;
+    height: max(100svh, 178vw);
+    min-height: 640px;
+    padding-bottom: 0;
   }
 
- .copy {
-  padding: 135px 4% 45px;
-}
+  .copy {
+    padding: clamp(140px, 35vw, 240px) 6% 0;
+    width: 53%;
+  }
 
   .eyebrow {
-    font-size: 8px;
-    margin-bottom: 22px;
+    font-size: clamp(8px, 2.1vw, 13px);
+    letter-spacing: .26em;
+    white-space: nowrap;
+    margin-bottom: 12px;
   }
 
   .copy h1 {
-    font-size: clamp(24px, 8vw, 66px);
-    letter-spacing: -.015em;
-    line-height: 1.1;
-    white-space: nowrap;
+    font-size: clamp(43px, 12vw, 82px);
+    letter-spacing: -.025em;
+    line-height: 1.02;
+    white-space: normal;
+    width: min-content;
   }
 
   .tagline {
-    font-size: 25px;
-    margin-top: 40px;
+    font-size: clamp(19px, 4.8vw, 33px);
+    margin-top: 25px;
+    line-height: 1.3;
+    max-width: none;
   }
 
- .portrait {
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-height: none;
+  .portrait img { object-position: 53% center; }
+  .scroll, .location { display: none; }
 
-  img {
-    object-position: 65% center;
-  }
-}
-
-  .scroll {
-    left: 6%;
-    bottom: 23px;
-  }
-
-  .location {
-    right: 14px;
-    top: auto;
-    bottom: 70px;
-    font-size: 8px;
+  .aiCredit {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    right: 6%;
+    bottom: 36px;
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    letter-spacing: .17em;
+    color: $white;
   }
 }
 // Die ergänzte Stoffbahn, die den Hintergrund des Hero-Bildes nach unten verlängert, um einen sanften Übergang zum nächsten Abschnitt zu schaffen. Sie ist nur auf größeren Bildschirmen sichtbar und wird auf kleineren Bildschirmen ausgeblendet, um die Lesbarkeit und das Layout zu verbessern.
