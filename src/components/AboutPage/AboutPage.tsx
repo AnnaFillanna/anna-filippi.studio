@@ -29,6 +29,9 @@ export default function AboutPage() {
           <img src="/images/about-anna-red.jpg" alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" width="993" height="1600" fetchPriority="high" />
         </motion.div>
       </div>
+      <motion.div className={styles.portraitDivider} aria-hidden="true"
+        initial={reduced ? false : { scaleX: 0 }} whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, amount: 1 }} transition={{ duration: reduced ? 0 : 1.4, ease: [.22, 1, .36, 1] }} />
     </section>
   );
 }

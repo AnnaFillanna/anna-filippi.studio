@@ -129,3 +129,13 @@
 }
 
 @media (min-width: 761px) and (max-width: 1100px) { .startProject { display: none; } }
+
+@media (max-width:760px) {
+ .nav { left: 6%; right: 6%; top: 70px; padding: 14px 24px; gap: 0; background: rgba(250,247,242,.97); border: 1px solid #650d2020; border-radius: 3px; box-shadow: 0 12px 32px #1915160d; max-height: calc(100dvh - 100px); overflow-y: auto; }
+ .nav a { font-family: $serif; font-size: clamp(24px,6vw,31px); line-height: 1.2; letter-spacing: 0; padding: 17px 0; min-height: 48px; }
+ .nav a + a { border-top: 1px solid #650d2018; }
+ .nav.open { animation: menuAppear .3s ease both; }
+ .menuToggle:focus-visible,.nav a:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
+}
+@keyframes menuAppear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@media(prefers-reduced-motion:reduce) { .nav.open { animation: none; } }

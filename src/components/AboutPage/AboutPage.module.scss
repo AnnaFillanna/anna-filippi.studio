@@ -21,3 +21,10 @@
 }
 
 @media (min-width: 761px) { .signature .ampersand { font-family: $sans; font-style: normal; font-weight: 400; font-size: .8em; } }
+
+.portraitDivider { display: none; }
+@media (max-width: 760px) {
+ .signature .ampersand { font-family: $sans; font-style: normal; font-size: .8em; }
+ .aboutPage { padding-bottom: 72px; }
+ .portraitDivider { display: block; height: 1px; width: 100%; margin: 42px auto 0; background: #ad8950; transform-origin: center; }
+}

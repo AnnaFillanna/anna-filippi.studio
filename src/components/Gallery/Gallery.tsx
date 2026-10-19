@@ -222,7 +222,7 @@ export default function Gallery() {
             <span className={styles.filterTitle}>{collections[key].title} {collections[key].accent}</span>
             <span className={styles.filterMeta}>
               <span>{key === "clean" ? "AUF HELLEM HINTERGRUND" : "KOMPOSITIONEN"}</span>
-              <span className={styles.filterAction}>{key === "clean" ? "Galerie ansehen" : "Jetzt entdecken"}</span>
+              <span className={styles.filterAction}><span className={styles.arrowCircle} aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" /></svg></span>{key === "clean" ? "Galerie ansehen" : "Jetzt entdecken"}</span>
             </span>
           </button>
         ))}

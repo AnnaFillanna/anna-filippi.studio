@@ -640,3 +640,11 @@
 @media (prefers-reduced-motion: reduce) {
   .hero:not(.lineReady)::before, .hero:not(.lineReady)::after { transform: none; }
 }
+
+.arrowCircle { display: none; }
+@media (max-width:760px) {
+ .filters button .filterAction::before { content: none; }
+ .arrowCircle { display: grid; place-items: center; width: 52px; height: 52px; flex: 0 0 52px; border: 1px solid $bordeaux; border-radius: 50%; }
+ .arrowCircle svg { display: block; width: 26px; height: 26px; }
+ .filters button[aria-pressed="true"] .arrowCircle { background: $bordeaux; color: $ivory; }
+}

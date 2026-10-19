@@ -43,7 +43,11 @@ export default function Projects({ softwareOnly = false }: { softwareOnly?: bool
   if (softwareOnly) return <section className={styles.projects} aria-labelledby="software-title">
     <a className={styles.back} href="/#leistungen">ZURÜCK ZUM ATELIER</a>
     <div className={styles.heading}><h1 id="software-title" tabIndex={-1}>Softwareentwicklung</h1></div>
-    <div className={styles.grid}>{renderProject(projects[0], 0)}</div>
+    <p className={styles.eyebrow}>APP-ENTWICKLUNG</p>
+    <div className={styles.grid}><article className={styles.card}>
+      <a className={styles.cover} href={projects[0].href} target="_blank" rel="noopener noreferrer" aria-label="FilliCat öffnen (neuer Tab)"><img src={projects[0].image} alt="Startseite von FilliCat" width="1440" height="900" fetchPriority="high" /><span className={styles.previewLabel}>FILLICAT ANSEHEN</span></a>
+      <div className={styles.copy}><h2>FilliCat</h2></div>
+    </article></div>
   </section>;
   return <section id="projekte" className={styles.projects} aria-labelledby="projects-title">
     <a className={styles.back} href="/#leistungen"> ZURÜCK ZUM ATELIER</a>
