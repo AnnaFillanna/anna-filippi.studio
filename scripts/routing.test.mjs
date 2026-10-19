@@ -6,6 +6,7 @@ import { transformWithEsbuild } from 'vite';
 
 const origin = 'https://annafilippi.studio';
 const examples = [
+  ['/softwareentwicklung', 'Softwareentwicklung', 'FilliCat'],
   ['/', 'ANNA FILIPPI', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],
@@ -48,15 +49,15 @@ test('legacy hashes migrate with query strings intact', async () => {
   }
 });
 
-test('sitemap and Vercel rules cover all four existing pages', async () => {
+test('sitemap and Vercel rules cover all portfolio pages', async () => {
   const sitemap = await readFile('dist/sitemap.xml', 'utf8');
   const sourceSitemap = await readFile('public/sitemap.xml', 'utf8');
   assert.equal(sitemap, sourceSitemap);
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 4);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 5);
   for (const [path] of examples) assert.ok(sitemap.includes(`<loc>${origin}${path}</loc>`));
   const config = JSON.parse(await readFile('vercel.json', 'utf8'));
   assert.equal(config.trailingSlash, false);
-  assert.equal(config.rewrites.length, 3);
+  assert.equal(config.rewrites.length, 4);
   for (const rule of config.rewrites) await access(`dist${rule.destination}`);
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
 });
@@ -85,4 +86,14 @@ test('about page includes the requested personal text and original portrait', as
   assert.ok(html.includes('href="/#start"'));
   assert.ok(!html.includes('ausgebildete Berufsfotografin'));
   assert.ok(!html.includes('MEHR ALS')); // Keep the old profile on home, without duplicating it here.
+});
+
+test('software page contains only the software project, without the general portfolio introduction', async () => {
+  const html = await readFile('dist/softwareentwicklung/index.html', 'utf8');
+  assert.ok(!html.includes('Ideen werden digital.'));
+  assert.ok(!html.includes('Meine Arbeiten.'));
+  assert.ok(!html.includes('Dana Tattoo Studio'));
+  assert.ok(!html.includes('RUJOLY'));
+  assert.ok(!html.includes('Eine Idee. <em>Auf allen Geräten.'));
+  assert.equal((html.match(/Startseite von FilliCat/g) || []).length, 1);
 });

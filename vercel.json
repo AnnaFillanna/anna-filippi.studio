@@ -13,6 +13,10 @@
     {
       "source": "/ueber-mich",
       "destination": "/ueber-mich/index.html"
+    },
+    {
+      "source": "/softwareentwicklung",
+      "destination": "/softwareentwicklung/index.html"
     }
   ]
 }

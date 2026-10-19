@@ -578,8 +578,9 @@
   .hero {
     position: relative;
     // Keep the line inside the layout, with breathing room around the portrait.
-    padding-right: clamp(24px, 3vw, 44px);
-    padding-bottom: 44px;
+    padding-right: 18px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+    padding-bottom: 18px;
     margin-bottom: clamp(52px, 6vw, 80px);
     &::before, &::after {
       content: '';
@@ -588,8 +589,8 @@
       background: rgba(101, 13, 32, .35);
       right: 0;
       bottom: 0;
-      animation-duration: 1.35s;
-      animation-timing-function: cubic-bezier(.22, 1, .36, 1);
+      animation-duration: 2.1s;
+      animation-timing-function: cubic-bezier(.45, 0, .2, 1);
       animation-fill-mode: both;
     }
     &::before {
@@ -629,4 +630,13 @@
 @keyframes galleryCornerLeft { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) {
   .hero::before, .hero::after { animation: none; }
+}
+
+@media (min-width: 761px) {
+  .hero:not(.lineReady)::before { animation: none; transform: scaleY(0); }
+  .hero:not(.lineReady)::after { animation: none; transform: scaleX(0); }
+  .heroVisual { justify-self: end; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero:not(.lineReady)::before, .hero:not(.lineReady)::after { transform: none; }
 }

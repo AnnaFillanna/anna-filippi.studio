@@ -73,7 +73,7 @@ function Site() {
       if (target) target.scrollIntoView();
       else {
         window.scrollTo({ top: 0, behavior: 'instant' });
-        const heading = pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
+        const heading = pagePath === '/softwareentwicklung' ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
         if (heading) document.getElementById(heading)?.focus({ preventScroll: true });
       }
     });
@@ -90,6 +90,7 @@ function Site() {
       <main id="inhalt">
         <Routes>
           <Route path="/" element={<><Hero /><Services /></>} />
+          <Route path="/softwareentwicklung" element={<Projects softwareOnly />} />
           <Route path="/projekte" element={<Projects />} />
           <Route path="/fotografie" element={<Gallery />} />
           <Route path="/ueber-mich" element={<AboutPage />} />

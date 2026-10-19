@@ -32,7 +32,7 @@ const projects = [
   }
 ];
 
-export default function Projects() {
+export default function Projects({ softwareOnly = false }: { softwareOnly?: boolean }) {
   const reveal = useScrollReveal();
   const renderProject = (project: typeof projects[number], index: number) => (
 <motion.article {...reveal} key={project.name} className={styles.card} aria-labelledby={`project-${index}`}>
@@ -40,6 +40,11 @@ export default function Projects() {
       <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.status && <p className={styles.description}>{project.status}</p>}</div>
     </motion.article>
   );
+  if (softwareOnly) return <section className={styles.projects} aria-labelledby="software-title">
+    <a className={styles.back} href="/#leistungen">ZURÜCK ZUM ATELIER</a>
+    <div className={styles.heading}><h1 id="software-title" tabIndex={-1}>Softwareentwicklung</h1></div>
+    <div className={styles.grid}>{renderProject(projects[0], 0)}</div>
+  </section>;
   return <section id="projekte" className={styles.projects} aria-labelledby="projects-title">
     <a className={styles.back} href="/#leistungen"> ZURÜCK ZUM ATELIER</a>
     <motion.div {...reveal} className={styles.heading}>
@@ -47,15 +52,8 @@ export default function Projects() {
       <h1 id="projects-title" tabIndex={-1}>Ideen werden digital.<br /><em>Meine Arbeiten.</em></h1>
       <p className={styles.lead}>Drei Projekte. Drei eigene Geschichten. Individuell entwickelt und mit einem Blick für das Detail umgesetzt.</p>
     </motion.div>
-    <ul className={styles.categories} aria-label="Projektbereiche"><li><a className={styles.categoryLink} href="#softwareentwicklung">SOFTWAREPROJEKTE ENTDECKEN</a></li><li>Websites</li><li>Shopify</li></ul>
+    <ul className={styles.categories} aria-label="Projektbereiche"><li><a className={styles.categoryLink} href="/softwareentwicklung">SOFTWAREPROJEKTE ENTDECKEN</a></li><li>Websites</li><li>Shopify</li></ul>
     <div className={styles.grid}>{projects.map((project, index) => renderProject(project, index))}</div>
-    <section id="softwareentwicklung" className={styles.software} aria-labelledby="software-title">
-      <motion.div {...reveal} className={styles.heading}>
-        <p className={styles.eyebrow}>SOFTWAREENTWICKLUNG</p>
-        <h2 id="software-title">Eine Idee. <em>Auf allen Geräten.</em></h2>
-        <p className={styles.lead}>Geplant sind Apps für Smartphone, Laptop und Tablet. Hier zeige ich meine Softwareprojekte und ihren aktuellen Entwicklungsstand.</p>
-      </motion.div>
-      <div className={styles.grid}>{renderProject(projects[0], projects.length)}</div>
-    </section>
+
   </section>;
 }

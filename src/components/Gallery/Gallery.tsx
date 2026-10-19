@@ -138,6 +138,11 @@ export default function Gallery() {
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
   const reduced = useReducedMotion();
+  const [lineReady, setLineReady] = useState(false);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setLineReady(true), 180);
+    return () => window.clearTimeout(timer);
+  }, []);
   const collection = collections[category];
   const photo = collection.photos[selected];
   useEffect(() => {
@@ -173,7 +178,7 @@ export default function Gallery() {
           KONTAKT{" "}
         </a>
       </div>
-      <div className={styles.hero}>
+      <div className={`${styles.hero} ${lineReady ? styles.lineReady : ""}`}>
         <div className={styles.heading}>
           <p className={styles.eyebrow}>
             <span /> ANNA FILIPPI / PRODUKTFOTOGRAFIE

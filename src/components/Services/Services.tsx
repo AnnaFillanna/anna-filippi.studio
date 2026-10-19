@@ -31,7 +31,7 @@ export default function Services() {
             <h3 id={index === 0 ? 'title-web' : index === 5 ? 'title-foto' : undefined}>{service.title}</h3>
             <p className={styles.description}>{service.text}</p>
             {index === 0 && <a className={styles.galleryLink} href="/projekte">PROJEKTE ENTDECKEN</a>}
-            {index === 1 && <a className={styles.galleryLink} href="/projekte#softwareentwicklung">PROJEKTE ENTDECKEN</a>}
+            {index === 1 && <a className={styles.galleryLink} href="/softwareentwicklung">PROJEKTE ENTDECKEN</a>}
             {index === 5 && <a className={styles.galleryLink} href="/fotografie">FOTOGRAFIEN ENTDECKEN</a>}
           </motion.li>
         ))}

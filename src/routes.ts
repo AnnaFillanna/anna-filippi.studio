@@ -12,6 +12,10 @@ export const pages = {
     title: 'Web & Software – Projekte | Anna Filippi',
     description: 'Websites, Shopify und Software von Anna Filippi: FilliCat, RUJOLY und Dana Tattoo Studio. FilliCat ist als App für Smartphone, Laptop und Tablet geplant.',
   },
+  '/softwareentwicklung': {
+    title: 'Softwareentwicklung – Anna Filippi',
+    description: 'FilliCat: Lernplattform im Browser und geplante App für Smartphone, Laptop und Tablet. Ein Softwareprojekt von Anna Filippi.',
+  },
   '/fotografie': {
     title: 'Produktfotografie – Anna Filippi',
     description: 'Produktfotografie von Anna Filippi in Andernach: Schmuck, Licht, Material und Atmosphäre. Entdecke inszenierte Fotografien und klare Produktaufnahmen.',
@@ -21,7 +25,7 @@ export type PagePath = keyof typeof pages;
 
 export function pageForPath(pathname: string): PagePath {
   const path = pathname.replace(/\/+$/, '') || '/';
-  return path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
+  return path === '/softwareentwicklung' || path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
 }
 
 export function migrateLegacyLink() {
