@@ -48,7 +48,7 @@ export default function Gallery() {
   };
   const step = (amount: number) => setSelected(value => (value + amount + collection.photos.length) % collection.photos.length);
   return <section id="fotografie" className={styles.gallery} aria-labelledby="gallery-title">
-    <div className={styles.pageNavigation}><a className={styles.backLink} href="#leistungen">ZURÜCK ZUM ATELIER</a><a className={styles.backLink} href="#kontakt">KONTAKT </a></div>
+    <div className={styles.pageNavigation}><a className={styles.backLink} href="/#leistungen">ZURÜCK ZUM ATELIER</a><a className={styles.backLink} href="#kontakt">KONTAKT </a></div>
     <div className={styles.hero}>
       <div className={styles.heading}>
         <p className={styles.eyebrow}><span /> ANNA FILIPPI / PRODUKTFOTOGRAFIE</p>
