@@ -9,7 +9,7 @@ const services = [
 
 export default function Services() {
   const reduced = useReducedMotion();
-  const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 761px)').matches);
+  const [desktop, setDesktop] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 761px)').matches);
   useEffect(() => {
     const query = window.matchMedia('(min-width: 761px)');
     const update = () => setDesktop(query.matches);
@@ -37,7 +37,7 @@ export default function Services() {
             <p className={styles.subtitle}>{service.subtitle}</p>
             <p className={styles.description}>{service.text}</p>
             <p className={styles.detail}>{service.detail}</p>
-            {service.title === 'FOTO' ? <a className={styles.galleryLink} href="#fotografie">FOTOGRAFIEN ENTDECKEN</a> : <a className={styles.galleryLink} href="#projekte">PROJEKTE ENTDECKEN</a>}
+            {service.title === 'FOTO' ? <a className={styles.galleryLink} href="/fotografie">FOTOGRAFIEN ENTDECKEN</a> : <a className={styles.galleryLink} href="/projekte">PROJEKTE ENTDECKEN</a>}
           </motion.article>
         ))}
       </div>
