@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header className={styles.header} onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); toggle.current?.focus(); } }}>
       <a
-        href="#start"
+        href="/#start"
         className={styles.monogram}
         aria-label="Anna Filippi – Startseite"
       >
@@ -35,15 +35,15 @@ export default function Header() {
         aria-label="Hauptnavigation"
         className={`${styles.nav} ${open ? styles.open : ""}`}
       >
-        <a href="#projekte" onClick={() => setOpen(false)}>
+        <a href="/projekte" onClick={() => setOpen(false)}>
           Webentwicklung
         </a>
 
-        <a href="#fotografie" onClick={() => setOpen(false)}>
+        <a href="/fotografie" onClick={() => setOpen(false)}>
           Produktfotografie
         </a>
 
-        <a href="#ueber-mich" onClick={() => setOpen(false)}>Über mich</a>
+        <a href="/#ueber-mich" onClick={() => setOpen(false)}>Über mich</a>
         <a href="#kontakt" onClick={() => setOpen(false)}>Kontakt</a>
       </nav>
       <motion.a {...magnetic} href="#kontakt" className={styles.startProject} onClick={() => setOpen(false)}>PROJEKT STARTEN</motion.a>
