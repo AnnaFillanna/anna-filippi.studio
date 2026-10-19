@@ -35,7 +35,7 @@ const projects = [
 export default function Projects() {
   const reveal = useScrollReveal();
   return <section id="projekte" className={styles.projects} aria-labelledby="projects-title">
-    <a className={styles.back} href="#leistungen"> ZURÜCK ZUM ATELIER</a>
+    <a className={styles.back} href="/#leistungen"> ZURÜCK ZUM ATELIER</a>
     <motion.div {...reveal} className={styles.heading}>
       <p className={styles.eyebrow}>AUSGEWÄHLTE ARBEITEN / 01 — 03</p>
       <h1 id="projects-title" tabIndex={-1}>Ideen werden digital.<br /><em>Meine Arbeiten.</em></h1>
