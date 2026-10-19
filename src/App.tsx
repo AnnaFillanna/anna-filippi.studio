@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { MotionConfig } from "motion/react";
-import { pages, origin, pageForPath, migrateLegacyLink, type PagePath } from "./routes";
+import { BrowserRouter, StaticRouter, Route, Routes, useLocation, useNavigate } from "react-router";
+import { pages, origin, pageForPath, type PagePath } from "./routes";
+import AboutPage from "./components/AboutPage/AboutPage";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
@@ -28,45 +30,37 @@ const descriptions: Record<InfoTopic, string> = {
     "Produktfotografie, visuelles Storytelling und Markenästhetik. Weitere Informationen zu diesen Leistungen folgen.",
 };
 export default function App({ initialPath = '/' }: { initialPath?: PagePath }) {
-  const readLocation = () => {
-    if (typeof window === 'undefined') return { path: initialPath, hash: '' };
-    const { pathname, hash } = window.location;
-    const legacy = pathname === '/' && (hash === '#fotografie' || hash === '#projekte');
-    return { path: pageForPath(legacy ? `/${hash.slice(1)}` : pathname), hash: legacy ? '' : hash };
-  };
-  const [route, setRoute] = useState(readLocation);
-  const galleryPage = route.path === '/fotografie';
-  const projectsPage = route.path === '/projekte';
+  return typeof window === 'undefined'
+    ? <StaticRouter location={initialPath}><Site /></StaticRouter>
+    : <BrowserRouter><Site /></BrowserRouter>;
+}
+
+function Site() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const pagePath = pageForPath(location.pathname);
   useEffect(() => {
-    const navigate = () => {
-      migrateLegacyLink();
-      const next = readLocation();
-      setRoute(previous => previous.path === next.path && previous.hash === next.hash ? previous : next);
-    };
+    if (location.pathname === '/' && (location.hash === '#projekte' || location.hash === '#fotografie')) {
+      void navigate(`/${location.hash.slice(1)}${location.search}`, { replace: true });
+    }
+  }, [location.pathname, location.hash, location.search, navigate]);
+  useEffect(() => {
+    // Preserve existing anchor components while React Router handles navigation.
     const followLink = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const anchor = event.target instanceof Element ? event.target.closest('a') : null;
       if (!anchor || anchor.hasAttribute('download') || (anchor.target && anchor.target !== '_self')) return;
       const url = new URL(anchor.href, window.location.href);
-      if (url.origin !== window.location.origin || !(url.pathname in pages)) return;
-      if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+      if (url.origin !== window.location.origin || !Object.hasOwn(pages, url.pathname)) return;
       event.preventDefault();
-      window.history.pushState(null, '', url.pathname + url.search + url.hash);
-      navigate();
+      void navigate(url.pathname + url.search + url.hash);
     };
-    navigate();
-    window.addEventListener('popstate', navigate);
-    window.addEventListener('hashchange', navigate);
     document.addEventListener('click', followLink);
-    return () => {
-      window.removeEventListener('popstate', navigate);
-      window.removeEventListener('hashchange', navigate);
-      document.removeEventListener('click', followLink);
-    };
-  }, []);
+    return () => document.removeEventListener('click', followLink);
+  }, [navigate]);
   useEffect(() => {
-    const meta = pages[route.path];
-    const canonical = origin + route.path;
+    const meta = pages[pagePath];
+    const canonical = origin + pagePath;
     document.title = meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
@@ -74,15 +68,18 @@ export default function App({ initialPath = '/' }: { initialPath?: PagePath }) {
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', meta.description);
     document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonical);
     const frame = requestAnimationFrame(() => {
-      const target = route.hash ? document.getElementById(decodeURIComponent(route.hash.slice(1))) : null;
+      let id = location.hash.slice(1);
+      try { id = decodeURIComponent(id); } catch { /* Retain malformed hashes as harmless literal anchors. */ }
+      const target = id ? document.getElementById(id) : null;
       if (target) target.scrollIntoView();
       else {
         window.scrollTo({ top: 0, behavior: 'instant' });
-        if (galleryPage || projectsPage) document.getElementById(projectsPage ? 'projects-title' : 'gallery-title')?.focus({ preventScroll: true });
+        const heading = pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
+        if (heading) document.getElementById(heading)?.focus({ preventScroll: true });
       }
     });
     return () => cancelAnimationFrame(frame);
-  }, [route.path, route.hash, galleryPage, projectsPage]);
+  }, [pagePath, location.hash, location.key]);
   const dialog = useRef<HTMLDialogElement>(null);
   const [topic] = useState<InfoTopic>("Kontakt");
   return (
@@ -92,11 +89,12 @@ export default function App({ initialPath = '/' }: { initialPath?: PagePath }) {
       </a>
       <Header />
       <main id="inhalt">
-        {galleryPage ? <Gallery /> : projectsPage ? <Projects /> : <>
-          <Hero />
-          <Services />
-          <About />
-        </>}
+        <Routes>
+          <Route path="/" element={<><Hero /><Services /><About /></>} />
+          <Route path="/projekte" element={<Projects />} />
+          <Route path="/fotografie" element={<Gallery />} />
+          <Route path="/ueber-mich" element={<AboutPage />} />
+        </Routes>
         <Contact />
       </main>
       <Footer />
