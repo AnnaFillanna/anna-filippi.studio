@@ -8,7 +8,6 @@ import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
 import Gallery from "./components/Gallery/Gallery";
 import Projects from "./components/Projects/Projects";
-import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 import Contact from "./components/Contact/Contact";
 export type InfoTopic =
@@ -40,7 +39,7 @@ function Site() {
   const navigate = useNavigate();
   const pagePath = pageForPath(location.pathname);
   useEffect(() => {
-    if (location.pathname === '/' && (location.hash === '#projekte' || location.hash === '#fotografie')) {
+    if (location.pathname === '/' && (location.hash === '#projekte' || location.hash === '#fotografie' || location.hash === '#ueber-mich')) {
       void navigate(`/${location.hash.slice(1)}${location.search}`, { replace: true });
     }
   }, [location.pathname, location.hash, location.search, navigate]);
@@ -90,7 +89,7 @@ function Site() {
       <Header />
       <main id="inhalt">
         <Routes>
-          <Route path="/" element={<><Hero /><Services /><About /></>} />
+          <Route path="/" element={<><Hero /><Services /></>} />
           <Route path="/projekte" element={<Projects />} />
           <Route path="/fotografie" element={<Gallery />} />
           <Route path="/ueber-mich" element={<AboutPage />} />
