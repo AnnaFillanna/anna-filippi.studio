@@ -1,0 +1,22 @@
+@use '../../styles/variables' as *;
+.process { padding: 0 8% clamp(70px, 9vw, 145px); color: $bordeaux; scroll-margin-top: 100px; }
+.process h2 { max-width: 850px; font: 400 clamp(36px, 4.3vw, 62px)/1.12 $serif; letter-spacing: -.02em; }
+.intro { max-width: 65ch; margin-top: 24px; font: 14px/1.8 $sans; color: #534447; }
+.steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); list-style: none; padding: 0; margin: 52px 0 0; }
+.step { min-width: 0; border-top: 1px solid #650d2040; padding: 22px 20px 0 0; }
+.step:last-child { padding-right: 0; }
+.number { display: block; font: 11px/1.5 $sans; letter-spacing: .12em; margin-bottom: 20px; }
+.step h3 { font: 400 clamp(24px, 2.1vw, 30px)/1.2 $serif; margin-bottom: 14px; overflow-wrap: anywhere; hyphens: auto; }
+.step p { font: 12px/1.85 $sans; color: #534447; }
+.link { display: inline-block; max-width: 100%; margin-top: 38px; padding: 10px 0; border-bottom: 1px solid #650d2070; font: 10px/1.7 $sans; letter-spacing: .1em; }
+.link:hover { border-color: currentColor; }
+.link:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+@media (max-width: 1000px) {
+  .steps { grid-template-columns: 1fr; margin-top: 36px; }
+  .step { position: relative; border-top: 0; border-left: 1px solid #650d2040; padding: 0 0 32px 58px; }
+  .step:last-child { padding-bottom: 0; }
+  .number { position: absolute; left: 15px; top: 5px; margin: 0; }
+  .step h3 { font-size: 29px; }
+  .step p { max-width: 60ch; }
+}
+@media (max-width: 760px) { .process { padding: 0 7% 65px; } }

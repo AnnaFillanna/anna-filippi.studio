@@ -6,6 +6,7 @@ import AboutPage from "./components/AboutPage/AboutPage";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
+import ProjectProcess from "./components/ProjectProcess/ProjectProcess";
 import Gallery from "./components/Gallery/Gallery";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
@@ -92,7 +93,7 @@ function Site() {
       <Header />
       <main id="inhalt">
         <Routes>
-          <Route path="/" element={<><Hero /><Services /></>} />
+          <Route path="/" element={<><Hero /><Services /><ProjectProcess /></>} />
           <Route path="/softwareentwicklung" element={<Projects softwareOnly />} />
           <Route path="/projekte" element={<Projects />} />
           <Route path="/fotografie" element={<Gallery />} />

@@ -20,7 +20,7 @@ export default function Contact() {
       attempt.current = { body, id: crypto.randomUUID() };
     busy.current = true;
     setStatus("sending");
-    setMessage("Ihre Anfrage wird gesendet …");
+    setMessage("Deine Anfrage wird gesendet …");
     try {
       const response = await fetch(contact.endpoint, {
         method: "POST",
@@ -34,12 +34,12 @@ export default function Contact() {
       const result = await response.json();
       if (!response.ok || result.ok !== true)
         throw new Error(
-          result.message ||
-            "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+          (typeof result.message === "string" ? personalMessage(result.message) : "") ||
+            "Die Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.",
         );
       setStatus("success");
       setMessage(
-        "Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet. Ich melde mich so bald wie möglich bei Ihnen.",
+        "Vielen Dank! Deine Anfrage wurde erfolgreich gesendet. Ich melde mich so bald wie möglich bei dir.",
       );
       form.reset();
       attempt.current = { body: "", id: "" };
@@ -49,7 +49,7 @@ export default function Contact() {
         error instanceof Error &&
           !["SyntaxError", "TimeoutError", "TypeError"].includes(error.name)
           ? error.message
-          : "Die Übermittlung konnte nicht bestätigt werden. Ihre Eingaben bleiben erhalten. Bitte versuchen Sie es erneut oder kontaktieren Sie mich per WhatsApp.",
+          : "Die Übermittlung konnte nicht bestätigt werden. Deine Eingaben bleiben erhalten. Bitte versuche es erneut oder kontaktiere mich per WhatsApp.",
       );
     } finally {
       busy.current = false;
@@ -64,7 +64,7 @@ export default function Contact() {
       <div className={styles.layout}>
         <div className={styles.intro}>
           <h2 id="contact-title">Lass uns etwas <em>Schönes schaffen.</em></h2>
-          <p className={styles.description}>Erzählen Sie mir von Ihrer Idee. Je mehr ich über Ihr Projekt weiß, desto besser kann ich Ihre Anfrage einschätzen.</p>
+          <p className={styles.description}>Erzähl mir von deiner Idee. Je mehr ich über dein Projekt weiß, desto besser kann ich deine Anfrage einschätzen.</p>
         </div>
         <form
           className={styles.form}
@@ -75,7 +75,7 @@ export default function Contact() {
             <legend className={styles.srOnly}>Projektanfrage</legend>
             <div className={styles.row}>
               <label>
-                Ihr Name *
+                Dein Name *
                 <input
                   name="name"
                   autoComplete="name"
@@ -85,7 +85,7 @@ export default function Contact() {
                 />
               </label>
               <label>
-                Ihre E-Mail-Adresse *
+                Deine E-Mail-Adresse *
                 <input
                   name="email"
                   type="email"
@@ -96,7 +96,7 @@ export default function Contact() {
               </label>
             </div>
             <label>
-              Was möchten Sie umsetzen? *
+              Was möchtest du umsetzen? *
               <select name="project" required defaultValue="">
                 <option value="" disabled>
                   Bitte auswählen
@@ -107,7 +107,7 @@ export default function Contact() {
               </select>
             </label>
             <label>
-              Ihr ungefähres Budget
+              Dein ungefähres Budget
               <select
                 name="budget"
                 defaultValue=""
@@ -124,14 +124,14 @@ export default function Contact() {
               Preisangabe dar.
             </p>
             <label>
-              Erzählen Sie mir von Ihrem Projekt *
+              Erzähl mir von deinem Projekt *
               <textarea
                 name="message"
                 required
                 minLength={10}
                 maxLength={5000}
                 rows={5}
-                placeholder="Was ist Ihre Idee? Was ist Ihnen besonders wichtig?"
+                placeholder="Was ist deine Idee? Was ist dir besonders wichtig?"
               />
             </label>
             <div className={styles.trap} aria-hidden="true">
@@ -146,7 +146,7 @@ export default function Contact() {
               </label>
             </div>
             <p className={styles.note}>
-              Ihre Angaben werden zur Bearbeitung Ihrer Anfrage verwendet.{" "}
+              Deine Angaben werden zur Bearbeitung deiner Anfrage verwendet.{" "}
               {contact.privacyUrl ? (
                 <a href={contact.privacyUrl}>Datenschutzerklärung</a>
               ) : (
@@ -182,4 +182,20 @@ export default function Contact() {
       </div>
     </section>
   );
+}
+
+// Presentation-only translation of existing API messages; the API contract is unchanged.
+function personalMessage(message: string) {
+  return message
+    .replaceAll('Bitte versuchen Sie', 'Bitte versuche')
+    .replaceAll('nutzen Sie', 'nutze')
+    .replaceAll('Bitte verwenden Sie', 'Bitte verwende')
+    .replaceAll('Bitte prüfen Sie', 'Bitte prüfe')
+    .replaceAll('Ihre Eingaben', 'deine Eingaben')
+    .replaceAll('Bitte geben Sie', 'Bitte gib')
+    .replaceAll('Bitte laden Sie', 'Bitte lade')
+    .replaceAll('Bitte warten Sie', 'Bitte warte')
+    .replaceAll('versuchen Sie', 'versuche')
+    .replaceAll('Ihrer', 'deiner')
+    .replaceAll('Ihre', 'Deine');
 }

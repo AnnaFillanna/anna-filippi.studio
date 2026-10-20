@@ -41,6 +41,10 @@ export default function Hero() {
         <h1 id="hero-title" aria-label="ANNA FILIPPI">
           <AnimatedLetters text="ANNA FILIPPI" flock />
         </h1>
+        <div className={styles.summary}>
+          <p className={styles.summaryTitle}>Individuelle Websites &amp; digitale Lösungen</p>
+          <p>Ich entwickle moderne Websites und digitale Lösungen für Selbstständige, Studios und kleine Unternehmen – persönlich, durchdacht und auf deine Wünsche abgestimmt.</p>
+        </div>
         <p className={styles.tagline}>
           {['Webentwicklung', 'Produktfotografie', 'Digitale Lösungen'].map((line, index) => (
             <motion.span key={line} className={styles.taglineLine}

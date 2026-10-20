@@ -223,3 +223,19 @@
 .taglineLine {display:block; width:max-content; max-width:100%; padding-right:.08em;}
 
 @media (min-width: 761px) { .scroll { display: none; } }
+
+// Compact offer copy stays within the clear left side of the portrait.
+.summary {
+  max-width: min(43vw, 490px);
+  margin-top: 24px;
+  font: 13px/1.75 $sans;
+  .summaryTitle { font: 400 clamp(22px, 2.1vw, 30px)/1.2 $serif; margin-bottom: 10px; }
+}
+.summary + .tagline { margin-top: 24px; }
+@media (max-width: 760px) {
+  .hero { min-height: 780px; }
+  .copy { width: 60%; }
+  .summary { max-width: none; font-size: 12px; line-height: 1.7; margin-top: 20px; }
+  .summary .summaryTitle { font-size: 23px; }
+  .summary + .tagline { margin-top: 20px; }
+}

@@ -28,3 +28,6 @@
 @media (min-width: 761px) { .intro > .eyebrow { display: none; } }
 
 .intro > .eyebrow { display: none; }
+.webScope { padding-left: 1.1em; margin: 16px 0 0; max-width: 46ch; font: 12px/1.8 $sans; color: #534447; }
+.webScope li + li { margin-top: 5px; }
+.scopeNote { margin-top: 16px; max-width: 46ch; font: 12px/1.8 $sans; color: #534447; }
