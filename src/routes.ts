@@ -10,7 +10,7 @@ export const pages = {
   },
   '/projekte': {
     title: 'Web & Software – Projekte | Anna Filippi',
-    description: 'Websites, Shopify und Software von Anna Filippi: FilliCat, RUJOLY und Dana Tattoo Studio. FilliCat ist als App für Smartphone, Laptop und Tablet geplant.',
+    description: 'Websites und Software von Anna Filippi: FilliCat und Dana Tattoo Studio. FilliCat ist als App für Smartphone, Laptop und Tablet geplant.',
   },
   '/softwareentwicklung': {
     title: 'Softwareentwicklung – Anna Filippi',

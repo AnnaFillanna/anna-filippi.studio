@@ -13,15 +13,6 @@ const projects = [
     "href": "https://fillicat.com"
   },
   {
-    "name": "RUJOLY",
-    "category": "SHOPIFY / E-COMMERCE DEVELOPMENT",
-    "description": "Umfassendes Redesign der Startseite eines Shopify-Shops mit individueller Gestaltung, Anpassung der Theme-Struktur und Änderungen am Code. Optimierung von Layout, Produktdarstellung und responsivem Design.",
-    "scope": "Shopify · Liquid · HTML · CSS · JavaScript",
-    "status": "",
-    "image": "/images/projects/rujoly.png",
-    "href": "https://www.rujoly.de/"
-  },
-  {
     "name": "Dana Tattoo Studio",
     "category": "FULL-STACK WEBENTWICKLUNG",
     "description": "Konzeption und Entwicklung einer individuellen, responsiven Website mit modernen Animationen, interaktiven Galerien und direkter Terminanfrage. Integration von Supabase für die geschützte Verwaltung von Medieninhalten.",
@@ -52,11 +43,11 @@ export default function Projects({ softwareOnly = false }: { softwareOnly?: bool
   return <section id="projekte" className={styles.projects} aria-labelledby="projects-title">
     <a className={styles.back} href="/#leistungen"> ZURÜCK ZUM ATELIER</a>
     <motion.div {...reveal} className={styles.heading}>
-      <p className={`${styles.eyebrow} ${styles.sectionLabel}`}>AUSGEWÄHLTE ARBEITEN / 01 — 03</p>
+      <p className={`${styles.eyebrow} ${styles.sectionLabel}`}>AUSGEWÄHLTE ARBEITEN / 01 — 02</p>
       <h1 id="projects-title" tabIndex={-1}>Ideen werden digital.<br /><em>Meine Arbeiten.</em></h1>
-      <p className={styles.lead}>Drei Projekte. Drei eigene Geschichten. Individuell entwickelt und mit einem Blick für das Detail umgesetzt.</p>
+      <p className={styles.lead}>Zwei Projekte. Zwei eigene Geschichten. Individuell entwickelt und mit einem Blick für das Detail umgesetzt.</p>
     </motion.div>
-    <ul className={styles.categories} aria-label="Projektbereiche"><li><a className={styles.categoryLink} href="/softwareentwicklung">SOFTWAREPROJEKTE ENTDECKEN</a></li><li>Websites</li><li>Shopify</li></ul>
+    <ul className={styles.categories} aria-label="Projektbereiche"><li><a className={styles.categoryLink} href="/softwareentwicklung">SOFTWAREPROJEKTE ENTDECKEN</a></li><li>Websites</li></ul>
     <div className={styles.grid}>{projects.map((project, index) => renderProject(project, index))}</div>
 
   </section>;
