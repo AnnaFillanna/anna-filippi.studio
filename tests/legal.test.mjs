@@ -74,3 +74,16 @@ test('body limits, media type and invalid UTF-8 are rejected',async()=>{
  const stream=Readable.from([envelope({action:'getversion'})]); Object.assign(stream,{method:'POST',url:'/api/legal',headers:{'content-type':'text/xml'}});
  let output=''; await handler(stream,{setHeader(){},status(){return this;},send(s){output=s;}}); assert.match(output,/<status>success/);
 });
+
+test('existing Production secret alias works and the canonical token takes precedence', async () => {
+  for (const canonical of [undefined, 'canonicalTestToken']) {
+    const store = storage();
+    const handler = createLegalHandler({
+      env: { ...env, UPSTASH_REDIS_REST_TOKEN: canonical, UPSPLASH_REDIS_REST_TOKEN: 'legacyTestToken' },
+      fetchImpl: store.fetchImpl,
+    });
+    const response = await request(handler, undefined, 'GET', '/api/legal?type=datenschutz');
+    assert.equal(response.code, 404); // Configuration succeeded; no document in this test store.
+    assert.equal(store.calls[0].options.headers.Authorization, `Bearer ${canonical || 'legacyTestToken'}`);
+  }
+});

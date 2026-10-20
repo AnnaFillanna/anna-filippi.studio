@@ -68,11 +68,13 @@ function authenticated(received, expected) {
 }
 function storageConfig(env) {
   let url;
+  // Compatibility with the existing write-only Production secret in Vercel.
+  const token = env.UPSTASH_REDIS_REST_TOKEN || env.UPSPLASH_REDIS_REST_TOKEN;
   try { url = new URL(env.UPSTASH_REDIS_REST_URL); } catch { fail(80, 'Configure Upstash Redis storage in Vercel.'); }
-  if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash || !env.UPSTASH_REDIS_REST_TOKEN) fail(80, 'Invalid storage configuration.');
+  if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash || !token) fail(80, 'Invalid storage configuration.');
   const prefix = env.IT_RECHT_STORAGE_PREFIX || 'legal:annafilippi.studio';
   if (!/^[a-zA-Z0-9:_.-]{1,100}$/.test(prefix)) fail(80, 'Invalid storage prefix.');
-  return { url: url.href, token: env.UPSTASH_REDIS_REST_TOKEN, prefix };
+  return { url: url.href, token, prefix };
 }
 async function command(config, fetchImpl, args) {
   const response = await fetchImpl(config.url, {

@@ -7,3 +7,14 @@
   &__text { white-space: pre-wrap; overflow-wrap: anywhere; }
   button { background: transparent; border: 0; border-bottom: 1px solid $bordeaux; padding: 12px 0; margin-top: 18px; color: $bordeaux; }
 }
+
+.legal-page__embed {
+  font-size: 16px;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  a { color: $bordeaux; text-underline-offset: .2em; }
+  img, iframe { max-width: 100%; }
+}
+.legal-page__direct { margin-top: 32px; }
+.legal-page__direct a { color: $bordeaux; text-underline-offset: .2em; }
