@@ -3,6 +3,7 @@ import './legal.scss';
 
 type Props = { type: 'impressum' | 'datenschutz'; title: string };
 type Document = { title: string; text: string };
+const LOAD_ERROR = 'Der Rechtstext konnte nicht geladen werden. Bitte versuchen Sie es erneut.';
 
 export default function LegalDocument({ type, title }: Props) {
   const [legalDocument, setDocument] = useState<Document | null>(null);
@@ -14,18 +15,28 @@ export default function LegalDocument({ type, title }: Props) {
     const load = async () => {
       controller?.abort();
       controller = new AbortController();
-      const signal = controller.signal;
+      const requestController = controller;
+      const signal = requestController.signal;
+      const timeout = window.setTimeout(() => requestController.abort(new Error('timeout')), 10000);
       try {
         const response = await fetch(`/api/legal?type=${type}`, { cache: 'no-store', signal });
-        const data = await response.json();
-        if (!response.ok) throw new Error(response.status === 404 ? 'Dieser Rechtstext wurde noch nicht bereitgestellt.' : 'Der Rechtstext konnte nicht geladen werden. Bitte versuchen Sie es erneut.');
-        if (typeof data.title !== 'string' || typeof data.text !== 'string' || !data.text.trim()) throw new Error('Der Rechtstext konnte nicht geladen werden.');
-        if (active && !signal.aborted) { setDocument(data); setError(''); }
-      } catch (cause) {
-        if (active && !signal.aborted) {
-          setDocument(null);
-          setError(cause instanceof Error ? cause.message : 'Der Rechtstext konnte nicht geladen werden.');
+        if (!response.ok) {
+          if (active && !signal.aborted) {
+            setDocument(null);
+            setError(response.status === 404 ? 'Dieser Rechtstext wurde noch nicht bereitgestellt.' : LOAD_ERROR);
+          }
+          return;
         }
+        const data = await response.json();
+        if (!data || typeof data.title !== 'string' || !data.title.trim() || typeof data.text !== 'string' || !data.text.trim()) throw new Error(LOAD_ERROR);
+        if (active && !signal.aborted) { setDocument(data); setError(''); }
+      } catch {
+        if (active && (!signal.aborted || signal.reason?.message === 'timeout')) {
+          setDocument(null);
+          setError(LOAD_ERROR);
+        }
+      } finally {
+        window.clearTimeout(timeout);
       }
     };
     void load();

@@ -1,6 +1,6 @@
 # IT-Recht Kanzlei: Einrichtung und Test
 
-Stand: 19.10.2026. Kein Deployment und kein Git-Push ausgeführt.
+Stand: 20.10.2026. Lokal integriert; kein Deployment und kein Git-Push ausgeführt.
 
 ## Implementierung
 
@@ -18,6 +18,7 @@ https://github.com/it-recht-kanzlei/itrk-plugin-sdk/blob/main/docs/SDK_de.md
 - Redis speichert Titel, Klartext, Typ und Empfangszeit atomar per SET, ohne Ablaufzeit. Fehler oder nicht bestätigte Schreibvorgänge ergeben Fehler 50; fehlende Konfiguration Fehler 80.
 - `GET /api/legal?type=impressum` bzw. `datenschutz` ist eine eigene öffentliche JSON-Lese-API für das Frontend, kein zusätzlich erfundenes LTI-Protokoll.
 - Seiten laden ohne Cache beim Öffnen und beim Wiederaktivieren des Tabs. Kein Neubau nach Textübertragung nötig. Bereits dauerhaft sichtbare Tabs werden beim nächsten Fokus/Öffnen aktualisiert.
+- Nach zehn Sekunden wird eine hängende Anfrage abgebrochen. Netzwerkfehler, ungültige JSON-Antworten und Serverfehler zeigen eine deutsche Meldung mit Wiederholen-Schaltfläche statt technischer Fehlermeldungen.
 - Texte erscheinen unverändert als React-Text mit erhaltenen Zeilenumbrüchen. Keine HTML-Ausführung. Darstellung benötigt JavaScript; der statische Build enthält den Ladezustand, nicht eine möglicherweise veraltete Textkopie.
 
 ## Speicher: noch nicht bestätigt/eingerichtet
@@ -54,4 +55,4 @@ Automatisierte Tests decken XML, Authentifizierung, Validierung, Fehlercodes, pe
 
 Ein interaktiver Browser-Test war in dieser Arbeitsumgebung nicht möglich: Das Starten des lokalen Webservers wurde durch die Umgebung mit EPERM abgewiesen. Die Darstellung wurde über React-Rendering-Tests und Build geprüft; mobile/desktop Sichtprüfung bleibt vor Freigabe offen.
 
-`api/contact.js`, `src/config/contact.ts`, Footer und `src/config/legal.ts` bleiben unverändert. Die bestehenden Impressum-/Datenschutz-Links sind korrekt. Das Kontaktformular wird durch diese Integration nicht automatisch aktiviert; seine bestehende Datenschutz-/Freigabekonfiguration bleibt erhalten.
+`src/config/legal.ts` verweist auf `/impressum` und `/datenschutz`. Das Kontaktformular wird durch diese Integration nicht automatisch aktiviert; seine bestehende Datenschutz-/Freigabekonfiguration bleibt erhalten.
