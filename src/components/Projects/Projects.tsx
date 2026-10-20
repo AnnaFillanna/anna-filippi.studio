@@ -47,7 +47,6 @@ export default function Projects({ softwareOnly = false }: { softwareOnly?: bool
       <h1 id="projects-title" tabIndex={-1}>Ideen werden digital.<br /><em>Meine Arbeiten.</em></h1>
       <p className={styles.lead}>Zwei Projekte. Zwei eigene Geschichten. Individuell entwickelt und mit einem Blick für das Detail umgesetzt.</p>
     </motion.div>
-    <ul className={styles.categories} aria-label="Projektbereiche"><li><a className={styles.categoryLink} href="/softwareentwicklung">SOFTWAREPROJEKTE ENTDECKEN</a></li><li>Websites</li></ul>
     <div className={styles.grid}>{projects.map((project, index) => renderProject(project, index))}</div>
 
   </section>;
