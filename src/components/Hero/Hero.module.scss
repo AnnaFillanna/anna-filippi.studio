@@ -239,17 +239,14 @@
   color: #85483e;
 }
 .projectLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 38px;
+  display: inline-block;
   margin-top: 38px;
-  padding: 8px 10px 12px;
+  padding: 8px 0 12px;
   border-bottom: 1px solid currentColor;
   font: 400 clamp(22px, 2.2vw, 32px)/1.2 $serif;
-  span { font-family: Georgia, serif; transition: transform .2s; }
-  &:hover span { transform: translateX(5px); }
+  &:hover { border-bottom-width: 2px; }
 }
+
 @media (max-width: 760px) {
   .copy { width: 100%; padding: 130px 6% 0; }
   .copy h1 {
@@ -261,7 +258,7 @@
   .eyebrow { letter-spacing: .38em; margin-bottom: 16px; }
   .headline { font-size: clamp(27px, 7vw, 50px); margin-top: 18px; }
   .description { max-width: 78%; font-size: clamp(13px, 3.6vw, 22px); margin-top: 18px; }
-  .projectLink { font-size: clamp(21px, 5.4vw, 32px); margin-top: 28px; gap: 26px; padding: 8px 6px 10px; }
+  .projectLink { font-size: clamp(21px, 5.4vw, 32px); margin-top: 28px; padding: 8px 0 10px; }
 }
 @media (max-width: 760px) {
   .hero { background: #f3dec3; }

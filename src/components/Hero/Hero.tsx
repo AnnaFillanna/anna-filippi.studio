@@ -48,7 +48,7 @@ export default function Hero() {
           Individuelle Websites, digitale Lösungen &amp; kreative Perspektiven.
         </motion.p>
         <motion.a {...intro(0.55)} href="#kontakt" className={styles.projectLink}>
-          Projekt anfragen <span aria-hidden="true">→</span>
+          Projekt anfragen
         </motion.a>
       </div>
       <motion.a {...intro(0.65)} href="#leistungen" className={styles.scroll}>
