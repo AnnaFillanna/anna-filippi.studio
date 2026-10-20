@@ -41,19 +41,15 @@ export default function Hero() {
         <h1 id="hero-title" aria-label="ANNA FILIPPI">
           <AnimatedLetters text="ANNA FILIPPI" flock />
         </h1>
-        <div className={styles.summary}>
-          <p className={styles.summaryTitle}>Individuelle Websites &amp; digitale Lösungen</p>
-          <p>Ich entwickle moderne Websites und digitale Lösungen für Selbstständige, Studios und kleine Unternehmen – persönlich, durchdacht und auf deine Wünsche abgestimmt.</p>
-        </div>
-        <p className={styles.tagline}>
-          {['Webentwicklung', 'Produktfotografie', 'Digitale Lösungen'].map((line, index) => (
-            <motion.span key={line} className={styles.taglineLine}
-              initial={reduced ? false : { clipPath: 'inset(-15% 100% -15% 0)', opacity: 0 }}
-              animate={{ clipPath: 'inset(-15% -4% -15% 0)', opacity: 1 }}
-              transition={{ duration: reduced ? 0 : .9, delay: reduced ? 0 : 2.9 + index * 1.05, ease: [.22, 1, .36, 1] }}
-            >{line}</motion.span>
-          ))}
-        </p>
+        <motion.h2 {...intro(0.25)} className={styles.headline}>
+          Webentwicklung mit<br />Persönlichkeit.
+        </motion.h2>
+        <motion.p {...intro(0.4)} className={styles.description}>
+          Individuelle Websites, digitale Lösungen &amp; kreative Perspektiven.
+        </motion.p>
+        <motion.a {...intro(0.55)} href="#kontakt" className={styles.projectLink}>
+          Projekt anfragen <span aria-hidden="true">→</span>
+        </motion.a>
       </div>
       <motion.a {...intro(0.65)} href="#leistungen" className={styles.scroll}>
         SCROLL
