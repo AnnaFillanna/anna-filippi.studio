@@ -105,3 +105,6 @@ p {
     animation-iteration-count: 1 !important;
   }
 }
+
+// Route headings receive programmatic focus, but are not interactive controls.
+h1[tabindex="-1"]:focus { outline: none; }

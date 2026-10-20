@@ -16,6 +16,10 @@ export const pages = {
     title: 'Softwareentwicklung – Anna Filippi',
     description: 'FilliCat: Lernplattform im Browser und geplante App für Smartphone, Laptop und Tablet. Ein Softwareprojekt von Anna Filippi.',
   },
+  '/dana-tattoo-studio': {
+    title: 'Dana Tattoo Studio – Webdesign | Anna Filippi',
+    description: 'Individueller Webauftritt für Dana Tattoo Studio in Andernach: responsives Design, interaktive Galerien und direkte Kontaktmöglichkeiten.',
+  },
   '/fotografie': {
     title: 'Produktfotografie – Anna Filippi',
     description: 'Produktfotografie von Anna Filippi in Andernach: Schmuck, Licht, Material und Atmosphäre. Entdecke inszenierte Fotografien und klare Produktaufnahmen.',
@@ -27,7 +31,7 @@ export type PagePath = keyof typeof pages;
 
 export function pageForPath(pathname: string): PagePath {
   const path = pathname.replace(/\/+$/, '') || '/';
-  return path === '/impressum' || path === '/datenschutz' || path === '/softwareentwicklung' || path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
+  return path === '/dana-tattoo-studio' || path === '/impressum' || path === '/datenschutz' || path === '/softwareentwicklung' || path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
 }
 
 export function migrateLegacyLink() {

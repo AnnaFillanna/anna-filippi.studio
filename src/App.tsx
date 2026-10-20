@@ -78,7 +78,7 @@ function Site() {
       if (target) target.scrollIntoView();
       else {
         window.scrollTo({ top: 0, behavior: 'instant' });
-        const heading = pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : pagePath === '/softwareentwicklung' ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
+        const heading = pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : (pagePath === '/softwareentwicklung' || pagePath === '/dana-tattoo-studio') ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
         if (heading) document.getElementById(heading)?.focus({ preventScroll: true });
       }
     });
@@ -96,6 +96,7 @@ function Site() {
         <Routes>
           <Route path="/" element={<><Hero /><Services /><ProjectProcess /></>} />
           <Route path="/softwareentwicklung" element={<Projects softwareOnly />} />
+          <Route path="/dana-tattoo-studio" element={<Projects danaOnly />} />
           <Route path="/projekte" element={<Projects />} />
           <Route path="/fotografie" element={<Gallery />} />
           <Route path="/ueber-mich" element={<AboutPage />} />

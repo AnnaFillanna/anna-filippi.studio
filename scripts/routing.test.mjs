@@ -8,6 +8,7 @@ const origin = 'https://annafilippi.studio';
 const examples = [
   ['/impressum', 'Impressum', 'Rechtstext wird geladen'],
   ['/datenschutz', 'Datenschutzerklärung', 'Rechtstext wird geladen'],
+  ['/dana-tattoo-studio', 'Kunst auf der Haut.', 'Dana Tattoo Studio'],
   ['/softwareentwicklung', 'Programmieren', 'FilliCat'],
   ['/', 'ANNA FILIPPI', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
@@ -55,11 +56,11 @@ test('sitemap and Vercel rules cover all portfolio pages', async () => {
   const sitemap = await readFile('dist/sitemap.xml', 'utf8');
   const sourceSitemap = await readFile('public/sitemap.xml', 'utf8');
   assert.equal(sitemap, sourceSitemap);
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 7);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 8);
   for (const [path] of examples) assert.ok(sitemap.includes(`<loc>${origin}${path}</loc>`));
   const config = JSON.parse(await readFile('vercel.json', 'utf8'));
   assert.equal(config.trailingSlash, false);
-  assert.equal(config.rewrites.length, 6);
+  assert.equal(config.rewrites.length, 7);
   for (const rule of config.rewrites) await access(`dist${rule.destination}`);
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
 });
