@@ -22,10 +22,11 @@ const env = {
 async function request(
   overrides = {},
   responses = [{ result: 1 }, { id: "email-test" }],
+  envOverrides = {},
 ) {
   const originalFetch = globalThis.fetch;
   const originalEnv = { ...process.env };
-  Object.assign(process.env, env);
+  Object.assign(process.env, env, envOverrides);
   let calls = 0;
   const res = {
     headers: {},
@@ -115,3 +116,15 @@ test("provider rejection does not report success", async () =>
   ));
 test("missing provider receipt does not report success", async () =>
   assert.equal((await request({}, [{ result: 1 }, {}])).code, 502));
+
+
+test("existing Redis secret alias supports sending", async () => {
+  const r = await request({}, undefined, { UPSTASH_REDIS_REST_TOKEN: '', UPSPLASH_REDIS_REST_TOKEN: 'legacy-test' });
+  assert.equal(r.code, 200);
+  assert.equal(r.calls, 2);
+});
+test("disabled sending never contacts external services", async () => {
+  const r = await request({}, undefined, { CONTACT_ENABLED: 'false' });
+  assert.equal(r.code, 503);
+  assert.equal(r.calls, 0);
+});

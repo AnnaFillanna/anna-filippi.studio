@@ -1,4 +1,4 @@
-import LegalDocument from './LegalDocument';
+import KanzleiDocument from './KanzleiDocument';
 export default function Datenschutz() {
-  return <LegalDocument type="datenschutz" title="Datenschutzerklärung" />;
+  return <KanzleiDocument type="datenschutz" />;
 }

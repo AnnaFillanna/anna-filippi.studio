@@ -42,6 +42,7 @@ function Site() {
   const location = useLocation();
   const navigate = useNavigate();
   const pagePath = pageForPath(location.pathname);
+  const isLegalPage = pagePath === '/impressum' || pagePath === '/datenschutz';
   useEffect(() => {
     if (location.pathname === '/' && (location.hash === '#projekte' || location.hash === '#fotografie' || location.hash === '#ueber-mich')) {
       void navigate(`/${location.hash.slice(1)}${location.search}`, { replace: true });
@@ -90,7 +91,7 @@ function Site() {
       <a className="skip-link" href="#inhalt">
         Zum Inhalt springen
       </a>
-      <Header />
+      <Header contactHref={isLegalPage ? '/#kontakt' : '#kontakt'} />
       <main id="inhalt">
         <Routes>
           <Route path="/" element={<><Hero /><Services /><ProjectProcess /></>} />
@@ -101,7 +102,7 @@ function Site() {
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
         </Routes>
-        <Contact />
+        {!isLegalPage && <Contact />}
       </main>
       <Footer />
       <dialog

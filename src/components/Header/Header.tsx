@@ -3,7 +3,7 @@ import styles from "./Header.module.scss";
 import { motion } from "motion/react";
 import { useMagnetic } from "../../hooks/useMagnetic";
 
-export default function Header() {
+export default function Header({ contactHref = '#kontakt' }: { contactHref?: string }) {
   const magnetic = useMagnetic();
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
@@ -43,9 +43,9 @@ export default function Header() {
         </a>
 
         <a href="/ueber-mich" onClick={() => setOpen(false)}>Über mich</a>
-        <a href="#kontakt" onClick={() => setOpen(false)}>Kontakt</a>
+        <a href={contactHref} onClick={() => setOpen(false)}>Kontakt</a>
       </nav>
-      <motion.a {...magnetic} href="#kontakt" className={styles.startProject} onClick={() => setOpen(false)}>PROJEKT STARTEN</motion.a>
+      <motion.a {...magnetic} href={contactHref} className={styles.startProject} onClick={() => setOpen(false)}>PROJEKT STARTEN</motion.a>
     </header>
   );
 }

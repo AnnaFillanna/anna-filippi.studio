@@ -2,11 +2,16 @@
 
 Stand: 20.10.2026. Lokal integriert; kein Deployment und kein Git-Push ausgeführt.
 
-## Aktueller Stand: Impressum per offiziellem Snippet
+## Aktueller Stand: beide Seiten per offiziellem Snippet
 
-`/impressum` lädt jetzt das offizielle Script `https://www.it-recht-kanzlei.de/js/itrk-legaltext.js` mit dem Container für `https://itrk.legal/1DBW.0.1cWV-de-iframe.html`. Das Script wird pro Seitenladung einmal eingebunden; sein Container bleibt bei interner React-Navigation erhalten. Neue vollständige Seitenaufrufe laden den aktuellen Anbietertext. Ein Direktlink bleibt auch ohne JavaScript verfügbar. Der externe Anbieter erhält beim Abruf Verbindungsdaten; diese Einbindung muss bei den Datenschutzinformationen berücksichtigt werden.
+`/impressum` und `/datenschutz` nutzen jetzt `KanzleiDocument.tsx` und das offizielle Script `https://www.it-recht-kanzlei.de/js/itrk-legaltext.js` einmal je Seitenladung. Beide Container werden vor dem einmaligen Scan registriert und bei interner Navigation wiederverwendet. Bei vollständigem Neuladen werden die aktuellen Anbietertexte abgerufen; dauerhaft offene Seiten werden nicht periodisch aktualisiert.
 
-`/datenschutz` nutzt weiterhin die folgende Redis-Integration. Der öffentliche GET-Endpunkt lieferte am 20.10.2026 HTTP 503. Das ist noch nicht behoben: Vercel-Konfiguration, Redis-Zugriff und gespeichertes Dokument müssen im produktiven Projekt geprüft werden. Im Vercel-Dashboard wurde als konkrete Ursache der abweichende Secret-Name `UPSPLASH_REDIS_REST_TOKEN` festgestellt. Die Rechtstext-API akzeptiert diesen Namen jetzt als Fallback; `UPSTASH_REDIS_REST_TOKEN` hat Vorrang. Der gespeicherte Secret-Wert wurde nicht geöffnet oder geändert. Die Korrektur muss noch deployed und anschließend mit dem echten Speicher geprüft werden. Der Impressum-Link darf nicht als Ersatzquelle für den Datenschutz verwendet werden.
+- Impressum: `https://itrk.legal/1DBW.0.1cWV-de-iframe.html`
+- Datenschutz: `https://itrk.legal/1DBW.8V.1cWV-informal-iframe.html`
+
+Die URLs stammen aus den vom Nutzer bereitgestellten Snippets. Die juristischen Inhalte bleiben unverändert. Der bereits vorhandene Seitentitel ersetzt visuell die identische Anbieterüberschrift. Direktlinks erlauben Zugriff ohne JavaScript. Externe Verbindungen zum Anbieter einschließlich dessen Copyright-Bild sind bei der Datenschutzprüfung zu berücksichtigen. Die gelieferten Angaben zu WhatsApp Business und Unsplash sind noch mit der tatsächlichen Nutzung abzugleichen.
+
+Die nachfolgende Redis-Schnittstelle bleibt als bestehende API erhalten, wird aber von diesen beiden Seiten nicht mehr benötigt. Ihr Datenschutz-GET lieferte zuletzt 404 (Dokument nicht übertragen), nachdem der bestehende Secret-Alias `UPSPLASH_REDIS_REST_TOKEN` unterstützt und der 503 behoben wurde.
 
 ## Implementierung
 

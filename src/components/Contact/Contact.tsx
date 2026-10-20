@@ -11,7 +11,7 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (busy.current || !contact.privacyUrl) return;
+    if (busy.current || !contact.privacyUrl || !contact.formEnabled) return;
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
     const data = Object.fromEntries(new FormData(form));
@@ -156,11 +156,15 @@ export default function Contact() {
             <button
               className={styles.submit}
               type="submit"
-              disabled={!contact.privacyUrl}
+              disabled={!contact.privacyUrl || !contact.formEnabled}
             >
               {status === "sending" ? "WIRD GESENDET …" : "ANFRAGE ABSENDEN "}
             </button>
           </fieldset>
+          {!contact.formEnabled && <p className={styles.note}>
+            Der Formularversand ist noch nicht verfügbar. Schreib mir gerne per{' '}
+            <a href={`mailto:${contact.email}`}>E-Mail</a> oder WhatsApp.
+          </p>}
           <p
             className={styles.status}
             role="status"

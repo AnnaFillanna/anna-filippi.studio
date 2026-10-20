@@ -18,3 +18,9 @@
 }
 .legal-page__direct { margin-top: 32px; }
 .legal-page__direct a { color: $bordeaux; text-underline-offset: .2em; }
+
+// The page already supplies the identical document title.
+.legal-page__embed .itrk-legaltext h1 { display: none; }
+.legal-page__embed h2 { margin: 32px 0 16px; color: $bordeaux; font-family: $serif; font-size: 28px; font-weight: 400; line-height: 1.25; }
+.legal-page__embed p + p { margin-top: 16px; }
+.legal-page__embed ul, .legal-page__embed ol { padding-left: 1.5em; margin: 16px 0; }

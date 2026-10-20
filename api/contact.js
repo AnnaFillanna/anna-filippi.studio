@@ -12,8 +12,9 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return send(405, 'Bitte verwenden Sie das Anfrageformular.'); }
   if (!/^application\/json(?:;|$)/i.test(req.headers['content-type'] || '')) return send(415, 'Ungültiges Anfrageformat.');
   const env = process.env;
-  const required = ['RESEND_API_KEY', 'CONTACT_FROM', 'CONTACT_TO', 'CONTACT_ALLOWED_ORIGINS', 'UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN', 'RATE_LIMIT_SECRET'];
-  if (required.some(key => !env[key]) || env.CONTACT_ENABLED !== 'true' || env.RATE_LIMIT_SECRET.length < 32) return send(503, unavailable);
+  const redisToken = env.UPSTASH_REDIS_REST_TOKEN || env.UPSPLASH_REDIS_REST_TOKEN;
+  const required = ['RESEND_API_KEY', 'CONTACT_FROM', 'CONTACT_TO', 'CONTACT_ALLOWED_ORIGINS', 'UPSTASH_REDIS_REST_URL', 'RATE_LIMIT_SECRET'];
+  if (required.some(key => !env[key]) || !redisToken || env.CONTACT_ENABLED !== 'true' || env.RATE_LIMIT_SECRET.length < 32) return send(503, unavailable);
   const origins = env.CONTACT_ALLOWED_ORIGINS.split(',').map(value => value.trim());
   if (!origins.includes(req.headers.origin)) return send(403, 'Diese Anfrage ist nicht erlaubt.');
   let data;
@@ -39,7 +40,7 @@ export default async function handler(req, res) {
   try {
     const digest = createHmac('sha256', env.RATE_LIMIT_SECRET).update(ip).digest('hex');
     const rate = await fetch(env.UPSTASH_REDIS_REST_URL, {
-      method: 'POST', headers: { Authorization: `Bearer ${env.UPSTASH_REDIS_REST_TOKEN}`, 'Content-Type': 'application/json' },
+      method: 'POST', headers: { Authorization: `Bearer ${redisToken}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(['EVAL', script, '1', `contact:rate:${digest}`, '600']), signal: AbortSignal.timeout(4000),
     });
     const counter = await rate.json();
