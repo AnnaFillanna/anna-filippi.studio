@@ -8,7 +8,7 @@ const origin = 'https://annafilippi.studio';
 const examples = [
   ['/impressum', 'Impressum', 'Rechtstext wird geladen'],
   ['/datenschutz', 'Datenschutzerklärung', 'Rechtstext wird geladen'],
-  ['/softwareentwicklung', 'Softwareentwicklung', 'FilliCat'],
+  ['/softwareentwicklung', 'Programmieren', 'FilliCat'],
   ['/', 'ANNA FILIPPI', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],

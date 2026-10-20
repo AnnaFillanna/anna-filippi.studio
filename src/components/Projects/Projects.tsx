@@ -31,14 +31,34 @@ export default function Projects({ softwareOnly = false }: { softwareOnly?: bool
       <div className={styles.copy}><p className={styles.eyebrow}>{project.category}</p><h3 id={`project-${index}`}>{project.name}</h3><p className={styles.description}>{project.description}</p><p className={styles.scope}>{project.scope}</p>{project.status && <p className={styles.description}>{project.status}</p>}</div>
     </motion.article>
   );
-  if (softwareOnly) return <section className={styles.projects} aria-labelledby="software-title">
-    <a className={styles.back} href="/#leistungen">ZURÜCK ZUM ATELIER</a>
-    <div className={styles.heading}><h1 id="software-title" tabIndex={-1}>Softwareentwicklung</h1></div>
-    <p className={styles.eyebrow}>APP-ENTWICKLUNG</p>
-    <div className={styles.grid}><article className={styles.card}>
-      <a className={styles.cover} href={projects[0].href} target="_blank" rel="noopener noreferrer" aria-label="FilliCat öffnen (neuer Tab)"><img src={projects[0].image} alt="Startseite von FilliCat" width="1440" height="900" fetchPriority="high" /><span className={styles.previewLabel}>FILLICAT ANSEHEN</span></a>
-      <div className={styles.copy}><h2>FilliCat</h2></div>
-    </article></div>
+  if (softwareOnly) return <section className={styles.caseStudy} aria-labelledby="software-title">
+    <div className={styles.caseInner}>
+      <a className={styles.back} href="/#leistungen"><span aria-hidden="true">← </span>ZURÜCK ZUM ATELIER</a>
+      <header className={styles.caseIntro}>
+        <p className={styles.caseEyebrow}>AUSGEWÄHLTES PROJEKT / 01 — 02</p>
+        <h1 id="software-title" tabIndex={-1}>Programmieren<br />verständlich <em>lernen.</em></h1>
+        <div className={styles.accent} aria-hidden="true" />
+        <p className={styles.caseLead}>FilliCat ist eine interaktive Lernplattform, die Programmieren einfach, motivierend und alltagsnah macht – mit personalisierten Übungen, perfekt für Einsteiger und alle, die ihr Wissen vertiefen möchten.</p>
+        <a className={styles.caseButton} href={projects[0].href} target="_blank" rel="noopener noreferrer">
+          PROJEKT ANSEHEN <span aria-hidden="true">→</span><span className={styles.visuallyHidden}> (neuer Tab)</span>
+        </a>
+      </header>
+      <a className={styles.devices} href={projects[0].href} target="_blank" rel="noopener noreferrer" aria-label="FilliCat öffnen (neuer Tab)">
+        <div className={styles.laptop}>
+          <div className={styles.laptopScreen}><img src="/images/projects/fillicat-desktop.png" alt="Startseite von FilliCat mit JavaScript-Training und Lernweg" width="1440" height="900" fetchPriority="high" /></div>
+          <div className={styles.laptopBase} aria-hidden="true" />
+        </div>
+        <div className={styles.phone}>
+          <img src="/images/projects/fillicat-mobile.png" alt="Mobile Ansicht von FilliCat mit Lernbegleiter und Übungen" width="390" height="844" />
+        </div>
+      </a>
+      <div className={styles.caseDetails}>
+        <p className={styles.caseEyebrow}>EDTECH / SOFTWAREENTWICKLUNG</p>
+        <h2>FilliCat</h2>
+        <p>Eine moderne Lernplattform für JavaScript und TypeScript mit interaktiven Übungen, Fehleranalyse und gezielter Wiederholung. Mehrsprachig auf Deutsch, Englisch und Russisch.</p>
+        <p>Aktuell im Browser verfügbar. Eine geräteübergreifende App für Smartphone, Laptop und Tablet ist geplant.</p>
+      </div>
+    </div>
   </section>;
   return <section id="projekte" className={styles.projects} aria-labelledby="projects-title">
     <a className={styles.back} href="/#leistungen"> ZURÜCK ZUM ATELIER</a>
