@@ -18,9 +18,11 @@ export default function Services() {
         initial={reduced ? false : { opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }}
         transition={{ duration: reduced ? 0 : .9 }}>
-        <p className={styles.eyebrow}>DAS ATELIER / LEISTUNGEN</p>
-        <h2 id="services-title">Meine Leistungen</h2>
-        <p className={styles.subtitle}>Digitale Ideen. Individuelle Lösungen.</p>
+        <p className={styles.eyebrow}>Meine Leistungen</p>
+        <h2 id="services-title">
+          <span>Digitale Ideen.</span>{" "}
+          <em>Individuelle Lösungen.</em>
+        </h2>
       </motion.div>
       <ul className={styles.list}>
         {services.map((service, index) => (

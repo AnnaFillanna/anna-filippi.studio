@@ -188,9 +188,6 @@ export default function Projects({
         ZURÜCK ZUM ATELIER
       </a>
       <motion.div {...reveal} className={styles.heading}>
-        <p className={`${styles.eyebrow} ${styles.sectionLabel}`}>
-          AUSGEWÄHLTE ARBEITEN / 01 — 02
-        </p>
         <h1 id="projects-title" tabIndex={-1}>
           Ideen werden digital.
           <br />
