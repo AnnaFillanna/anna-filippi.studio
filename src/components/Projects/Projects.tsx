@@ -44,22 +44,44 @@ export default function Projects({
       aria-labelledby={`project-${index}`}
     >
       <a
-        className={styles.cover}
+        className={styles.caseButton}
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Projekt ansehen
+        <span className={styles.visuallyHidden}>: {project.name} (neuer Tab)</span>
+      </a>
+      <a
+        className={styles.devices}
         href={index === 0 ? "/softwareentwicklung" : "/dana-tattoo-studio"}
         aria-label={`${project.name}: Projekt ansehen`}
       >
-        <img
-          src={project.image}
-          alt={`Startseite von ${project.name}`}
-          width="1440"
-          height="900"
-          loading={index === 0 ? "eager" : "lazy"}
-        />
-        <span className={styles.previewLabel}>PROJEKT ANSEHEN </span>
+        <div className={styles.laptop}>
+          <div className={styles.laptopScreen}>
+            <img
+              src={`/images/projects/${index === 0 ? "fillicat" : "dana"}-desktop.png`}
+              alt={`Desktop-Ansicht von ${project.name}`}
+              width="1440"
+              height="900"
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+          </div>
+          <div className={styles.laptopBase} aria-hidden="true" />
+        </div>
+        <div className={styles.phone}>
+          <img
+            src={`/images/projects/${index === 0 ? "fillicat" : "dana"}-mobile.png`}
+            alt={`Mobile Ansicht von ${project.name}`}
+            width="390"
+            height="844"
+            loading="lazy"
+          />
+        </div>
       </a>
       <div className={styles.copy}>
         <p className={styles.eyebrow}>{project.category}</p>
-        <h3 id={`project-${index}`}>{project.name}</h3>
+        <h2 id={`project-${index}`}>{project.name}</h2>
         <p className={styles.description}>{project.description}</p>
         <p className={styles.scope}>{project.scope}</p>
         {project.status && (
@@ -106,7 +128,7 @@ export default function Projects({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Project ansehen
+              Projekt ansehen
               <span className={styles.visuallyHidden}> (neuer Tab)</span>
             </a>
           </header>

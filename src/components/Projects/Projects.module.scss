@@ -268,18 +268,18 @@
   border-bottom: 1px solid currentColor;
   background: transparent;
   color: $bordeaux;
-  font: 400 clamp(22px, 2.2vw, 30px)/1.4 $serif;
+  font: 400 clamp(22px, 2.2vw, 32px)/1.2 $serif;
   letter-spacing: 0;
   text-transform: none;
   text-decoration: none;
   transition:
     opacity 0.3s ease,
     border-color 0.3s ease;
-  padding: 8px 0;
+  padding: 8px 0 12px;
   border-radius: 0;
 
   &:hover {
-    opacity: 0.7;
+    border-bottom-width: 2px;
   }
 
   &:focus-visible {
@@ -384,9 +384,8 @@
   }
   .caseButton {
     margin-top: 18px;
-    padding-left: 20px;
-    font-size: 10px;
-    gap: 18px;
+    padding: 8px 0 10px;
+    font-size: clamp(21px, 5.4vw, 32px);
   }
   .caseButton > span[aria-hidden] {
     width: 32px;
@@ -400,5 +399,29 @@
   }
   .caseDetails h2 {
     margin: 14px 0 12px;
+  }
+}
+
+// Portfolio overview uses the same full-width device presentation as the case studies.
+.projects {
+  padding-inline: max(6%, calc((100% - 1100px) / 2));
+  background: radial-gradient(ellipse at 70% 35%, #fffaf4 0, $ivory 75%);
+
+  .heading { max-width: 960px; }
+  .lead { font-size: clamp(15px, 1.8vw, 21px); color: #80747b; }
+  .grid { grid-template-columns: 1fr; max-width: none; gap: clamp(64px, 9vw, 120px); }
+  .sectionLabel { display: block; }
+  .card > .caseButton { margin-top: 0; }
+  .copy { padding-top: 0; max-width: 950px; }
+  .copy h2 {
+    font: 500 clamp(38px, 5vw, 64px)/1.1 $serif;
+    margin: 18px 0;
+  }
+  .eyebrow { font-size: clamp(9px, 1.1vw, 12px); }
+  .description { font-size: clamp(14px, 1.8vw, 21px); line-height: 1.7; color: #80747b; }
+  .scope { font-size: 11px; margin: 0 0 18px; }
+
+  @media (max-width: 760px) {
+    .devices { margin-inline: 0; }
   }
 }
