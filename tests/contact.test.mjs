@@ -11,10 +11,12 @@ const data = {
 };
 const env = {
   CONTACT_ENABLED: "true",
+  VITE_SUPABASE_URL: "https://test.supabase.co",
+  SUPABASE_SECRET_KEY: "sb_secret_testOnly",
   CONTACT_FROM: "test@example.org",
   CONTACT_TO: "owner@example.org",
   RESEND_API_KEY: "test",
-  CONTACT_ALLOWED_ORIGINS: "https://anna-filippi.studio",
+  CONTACT_ALLOWED_ORIGINS: "https://annafilippi.studio",
   UPSTASH_REDIS_REST_URL: "https://redis.example.org",
   UPSTASH_REDIS_REST_TOKEN: "test",
   RATE_LIMIT_SECRET: "x".repeat(32),
@@ -28,6 +30,8 @@ async function request(
   const originalEnv = { ...process.env };
   Object.assign(process.env, env, envOverrides);
   let calls = 0;
+  const records = new Map();
+  const inserts = [];
   const res = {
     headers: {},
     setHeader(k, v) {
@@ -42,7 +46,27 @@ async function request(
       return this;
     },
   };
-  globalThis.fetch = async () => {
+  globalThis.fetch = async (url, options) => {
+    if (url === 'https://test.supabase.co/rest/v1/kontaktanfragen') {
+      inserts.push(JSON.parse(options.body));
+      assert.equal(options.headers.Prefer, 'return=minimal');
+      assert.equal(options.headers.apikey, env.SUPABASE_SECRET_KEY);
+      return { status: 201 };
+    }
+    if (url === env.UPSTASH_REDIS_REST_URL) {
+      const args = JSON.parse(options.body);
+      if (args[0] === 'SET') {
+        const exists = records.has(args[1]);
+        if (!exists) records.set(args[1], args[2]);
+        return { ok: true, json: async () => ({ result: exists ? null : 'OK' }) };
+      }
+      if (args[0] === 'GET') return { ok: true, json: async () => ({ result: records.get(args[1]) ?? null }) };
+      if (args[0] === 'EVAL' && args[3].startsWith('contact:delivery:')) {
+        const matches = records.get(args[3]) === args[4];
+        if (matches) records.set(args[3], args[5]);
+        return { ok: true, json: async () => ({ result: matches ? 1 : 0 }) };
+      }
+    }
     const body = responses[calls++];
     if (body instanceof Error) throw body;
     return { ok: !body?.error, json: async () => body };
@@ -53,7 +77,7 @@ async function request(
         method: "POST",
         headers: {
           "content-type": "application/json",
-          origin: "https://anna-filippi.studio",
+          origin: "https://annafilippi.studio",
           "idempotency-key": "12345678-1234-1234-1234-123456789abc",
           "x-vercel-forwarded-for": "192.0.2.1",
           ...overrides.headers,
@@ -65,7 +89,7 @@ async function request(
       },
       res,
     );
-    return { ...res, calls };
+    return { ...res, calls, inserts };
   } finally {
     globalThis.fetch = originalFetch;
     for (const k of Object.keys(process.env))
@@ -127,4 +151,58 @@ test("disabled sending never contacts external services", async () => {
   const r = await request({}, undefined, { CONTACT_ENABLED: 'false' });
   assert.equal(r.code, 503);
   assert.equal(r.calls, 0);
+});
+
+test('API stores only the five normalized fields, never request metadata', async () => {
+  const r = await request({ body: { ...data, name: '  Test  ', id: 'injected', status: 'erledigt', created_at: 'invalid' } });
+  assert.equal(r.code, 200);
+  assert.deepEqual(r.inserts, [{ name: 'Test', email: data.email, project: data.project, budget: '', message: data.message }]);
+});
+test('missing server secret fails closed before any external call', async () => {
+  const r = await request({}, undefined, { SUPABASE_SECRET_KEY: '' });
+  assert.equal(r.code, 503);
+  assert.equal(r.calls, 0);
+  assert.equal(r.inserts.length, 0);
+});
+
+test('invalid UUID, missing IP, bad budget and malformed data never reach delivery', async () => {
+  for (const overrides of [
+    { headers: { 'idempotency-key': '-'.repeat(36) } },
+    { headers: { 'x-vercel-forwarded-for': '' } },
+    { body: { ...data, budget: 'unlisted' } },
+    { body: { ...data, name: 'Test\nInjected' } },
+    { body: { ...data, message: '          ' } },
+    { body: { ...data, email: 'a\u0000@example.org' } },
+    { body: '{invalid' },
+    { body: [] },
+  ]) {
+    const r = await request(overrides);
+    assert.notEqual(r.body.ok, true);
+    assert.equal(r.calls, 0);
+    assert.equal(r.inserts.length, 0);
+  }
+});
+test('allowlist rejects missing origins and non-exact production host variants', async () => {
+  for (const origin of [undefined, 'null', 'https://www.annafilippi.studio',
+    'https://anna-filippi.studio', 'http://annafilippi.studio',
+    'https://annafilippi.studio:444', 'https://preview.annafilippi.studio',
+    'https://annafilippi.studio.evil.example', 'https://evil.studio']) {
+    const r = await request({ headers: { origin } });
+    assert.equal(r.code, 403);
+    assert.equal(r.body.ok, false);
+    assert.equal(r.calls, 0);
+    assert.equal(r.inserts.length, 0);
+  }
+});
+test('explicitly configured production origin is accepted', async () => {
+  const r = await request({ headers: { origin: 'https://annafilippi.studio' } }, undefined, { CONTACT_ALLOWED_ORIGINS: 'https://annafilippi.studio' });
+  assert.equal(r.code, 200);
+  assert.equal(r.inserts.length, 1);
+});
+test('rate limit response never reports successful submission or writes to Supabase', async () => {
+  const r = await request({}, [{ result: 6 }]);
+  assert.equal(r.code, 429);
+  assert.equal(r.body.ok, false);
+  assert.equal(r.headers['Retry-After'], '600');
+  assert.equal(r.inserts.length, 0);
 });

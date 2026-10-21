@@ -1,4 +1,5 @@
-import { createHmac, createHash } from 'node:crypto';
+import { createHmac } from 'node:crypto';
+import { storageConfig, deliverContact } from '../server/contact-delivery.js';
 
 const projects = ['Website / Onlineshop', 'Software / Web-App', 'Produktfotografie', 'Etwas anderes'];
 const budgets = ['', 'Bis 500 €', '500–1.500 €', '1.500–3.000 €', 'Über 3.000 €', 'Noch offen / Ich brauche Beratung'];
@@ -15,6 +16,18 @@ export default async function handler(req, res) {
   const redisToken = env.UPSTASH_REDIS_REST_TOKEN || env.UPSPLASH_REDIS_REST_TOKEN;
   const required = ['RESEND_API_KEY', 'CONTACT_FROM', 'CONTACT_TO', 'CONTACT_ALLOWED_ORIGINS', 'UPSTASH_REDIS_REST_URL', 'RATE_LIMIT_SECRET'];
   if (required.some(key => !env[key]) || !redisToken || env.CONTACT_ENABLED !== 'true' || env.RATE_LIMIT_SECRET.length < 32) return send(503, unavailable);
+  let config;
+  try { config = storageConfig(env); } catch { return send(503, unavailable); }
+  const redis = async command => {
+    const response = await fetch(env.UPSTASH_REDIS_REST_URL, {
+      method: 'POST', headers: { Authorization: `Bearer ${redisToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(command), signal: AbortSignal.timeout(2000), redirect: 'error',
+    });
+    if (!response.ok) throw new Error('Redis unavailable');
+    const result = await response.json();
+    if (!result || result.error || !Object.hasOwn(result, 'result')) throw new Error('Redis unavailable');
+    return result.result;
+  };
   const origins = env.CONTACT_ALLOWED_ORIGINS.split(',').map(value => value.trim());
   if (!origins.includes(req.headers.origin)) return send(403, 'Diese Anfrage ist nicht erlaubt.');
   let data;
@@ -33,31 +46,22 @@ export default async function handler(req, res) {
   }
   if (!data.name || /[\r\n]/.test(data.name) || !email.test(data.email) || !projects.includes(data.project) || !budgets.includes(data.budget) || data.message.length < 10) return send(400, 'Bitte geben Sie einen Namen, eine gültige E-Mail-Adresse, ein Projekt und mindestens 10 Zeichen Beschreibung ein.');
   const id = req.headers['idempotency-key'];
-  if (typeof id !== 'string' || !/^[a-f0-9-]{36}$/i.test(id)) return send(400, 'Bitte laden Sie das Formular neu.');
+  if (typeof id !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(id)) return send(400, 'Bitte laden Sie das Formular neu.');
   // Vercel overwrites this header. Never trust arbitrary X-Forwarded-For values.
   const ip = req.headers['x-vercel-forwarded-for'] || (env.VERCEL ? '' : req.socket?.remoteAddress);
   if (typeof ip !== 'string' || !ip) return send(503, unavailable);
   try {
     const digest = createHmac('sha256', env.RATE_LIMIT_SECRET).update(ip).digest('hex');
-    const rate = await fetch(env.UPSTASH_REDIS_REST_URL, {
-      method: 'POST', headers: { Authorization: `Bearer ${redisToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(['EVAL', script, '1', `contact:rate:${digest}`, '600']), signal: AbortSignal.timeout(4000),
-    });
-    const counter = await rate.json();
-    if (!rate.ok || counter.error || !Number.isInteger(counter.result)) return send(503, unavailable);
-    if (counter.result > 5) { res.setHeader('Retry-After', '600'); return send(429, 'Zu viele Anfragen. Bitte warten Sie 10 Minuten und versuchen Sie es erneut.'); }
+    const counter = await redis(['EVAL', script, '1', `contact:rate:${digest}`, '600']);
+    if (!Number.isInteger(counter) || counter < 1) return send(503, unavailable);
+    if (counter > 5) { res.setHeader('Retry-After', '600'); return send(429, 'Zu viele Anfragen. Bitte warten Sie 10 Minuten und versuchen Sie es erneut.'); }
     const payload = {
       from: env.CONTACT_FROM, to: [env.CONTACT_TO], reply_to: data.email,
       subject: `Neue Projektanfrage · ${data.project}`,
       text: `Name: ${data.name}\nE-Mail: ${data.email}\nProjekt: ${data.project}\nBudget (unverbindlich): ${data.budget || 'Keine Angabe'}\n\n${data.message}`,
     };
-    const hash = createHash('sha256').update(JSON.stringify(payload)).digest('hex');
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST', headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json', 'Idempotency-Key': `contact/${id}/${hash}` },
-      body: JSON.stringify(payload), signal: AbortSignal.timeout(12000),
-    });
-    const result = await response.json();
-    if (!response.ok || typeof result.id !== 'string' || !result.id) return send(502, 'Der Versand konnte nicht bestätigt werden. Bitte versuchen Sie es erneut.');
-    return send(200);
+    const fields = Object.fromEntries(Object.keys(limits).map(key => [key, data[key]]));
+    const result = await deliverContact({ data: fields, id: id.toLowerCase(), payload, env, config, redis });
+    return send(result.code, result.message);
   } catch { return send(503, unavailable); }
 }

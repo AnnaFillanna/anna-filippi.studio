@@ -1,5 +1,7 @@
 # Kontaktformular – Einrichtung
 
+Aktuelle Ergänzung für Supabase-Speicherung, Wiederholungen und Testfreigabe: [Kontakt-Supabase-Anbindung](docs/KONTAKT-SUPABASE.md). Die folgende ursprüngliche Versanddokumentation beschreibt die bisherige Basis.
+
 ## Stand
 Nur der vorhandene Footer wird umgebaut. Hero, Services, About und App bleiben unverändert. Keine neuen Pakete oder kostenpflichtigen Dienste eingerichtet. Kein Deployment durchgeführt.
 Der Versand ist vorbereitet, aber erst nach Konfiguration nutzbar. `npm run dev` stellt nur Vite bereit und führt `/api/contact` nicht aus. Ein HTML-Fallback oder fehlender Endpunkt wird vom Formular als Fehler behandelt, niemals als Erfolg.
@@ -20,7 +22,7 @@ Vercel-Hosting war aus den lokalen Dateien nicht belegbar; die Website-Adresse w
    - RESEND_API_KEY
    - CONTACT_FROM: verifizierte Absenderadresse
    - CONTACT_TO: annafilippi@web.de
-   - CONTACT_ALLOWED_ORIGINS: https://anna-filippi.studio,https://www.anna-filippi.studio (nur tatsächlich genutzte Origins; Preview-URL bei Bedarf ausdrücklich hinzufügen)
+   - CONTACT_ALLOWED_ORIGINS: https://annafilippi.studio (nur tatsächlich genutzte Origins; Preview-URL bei Bedarf ausdrücklich hinzufügen)
    - UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN
    - RATE_LIMIT_SECRET: zufälliges Geheimnis, mindestens 32 Zeichen (z.B. `openssl rand -hex 32` lokal)
    - CONTACT_ENABLED: zunächst false, nach Abschluss true
