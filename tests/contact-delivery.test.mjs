@@ -1,17 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { deliverContact, storageConfig, replaceStateScript } from '../server/contact-delivery.js';
+import { deliverContact, storageConfig, replaceStateScript, reserveScript, mailGateScript, controlKey } from '../server/contact-delivery.js';
 const env = { SUPABASE_SECRET_KEY: 'sb_secret_testOnly', VITE_SUPABASE_URL: 'https://test.supabase.co', RATE_LIMIT_SECRET: 'x'.repeat(32), RESEND_API_KEY: 'test-only' };
 const data = { name: 'Example', email: 'test@example.org', project: 'Etwas anderes', budget: '', message: 'Test message only.' };
 const payload = { from: 'from@example.org', to: ['to@example.org'], text: data.message };
 function fixture() {
   const records = new Map(), calls = [];
-  const f = { records, calls, time: 100000, dbStatus: 201, emailOk: true, emailId: 'receipt', failDb: false, failMail: false, failPhase: '', blockDb: null };
+  const f = { enabled: 'true', gateError: false, records, calls, time: 100000, dbStatus: 201, emailOk: true, emailId: 'receipt', failDb: false, failMail: false, failPhase: '', blockDb: null };
   f.redis = async args => {
-    if (args[0] === 'SET') {
-      assert.deepEqual(args.slice(3), ['NX']); // permanent deduplication tombstone
-      if (records.has(args[1])) return null;
-      records.set(args[1], args[2]); return 'OK';
+    if (args[1] === reserveScript) {
+      assert.deepEqual(args.slice(2, 4), ['2', controlKey]);
+      if (f.enabled !== 'true') return -1;
+      if (records.has(args[4])) return 0;
+      records.set(args[4], args[5]); return 1;
+    }
+    if (args[1] === mailGateScript) {
+      assert.deepEqual(args.slice(2), ['1', controlKey]);
+      if (f.gateError) throw Error('private redis failure');
+      return f.enabled === 'true' ? 1 : 0;
     }
     if (args[0] === 'GET') return records.get(args[1]) ?? null;
     assert.equal(args[1], replaceStateScript);
@@ -115,7 +121,7 @@ test('lost reservation acknowledgement cannot cause a second INSERT', async () =
   const f = fixture(); const redis = f.redis;
   assert.equal((await f.run({ redis: async args => {
     const result = await redis(args);
-    if (args[0] === 'SET') throw Error('response lost');
+    if (args[1] === reserveScript) throw Error('response lost');
     return result;
   } })).code, 503);
   assert.equal((await f.run()).code, 503);
@@ -137,4 +143,40 @@ test('pending mail clock is retained and is not extended by retries', async () =
   await f.run();
   assert.equal(JSON.parse([...f.records.values()][0]).mailStartedAt, started);
   assert.equal(f.calls.filter(c => c.url.includes('/rest/v1/')).length, 1);
+});
+
+test('only exact true permits reservation; disabled states never insert or send', async () => {
+  for (const value of [undefined, null, '', 'false', 'TRUE', '1', ' true', 'true ', true]) {
+    const f = fixture(); f.enabled = value;
+    assert.equal((await f.run()).code, 503);
+    assert.equal(f.records.size, 0);
+    assert.equal(f.calls.length, 0);
+  }
+});
+test('switch is checked again after INSERT and re-enable never repeats INSERT', async () => {
+  const f = fixture(); let release;
+  f.blockDb = new Promise(resolve => { release = resolve; });
+  const pending = f.run(); await new Promise(resolve => setImmediate(resolve));
+  f.enabled = 'false'; release();
+  assert.equal((await pending).code, 503);
+  assert.equal(f.calls.length, 1);
+  f.enabled = 'true';
+  assert.equal((await f.run()).code, 200);
+  assert.equal(f.calls.length, 2);
+});
+test('Redis failure at mail gate preserves stored request and does not send', async () => {
+  const f = fixture(); f.gateError = true;
+  const r = await f.run(); assert.equal(r.code, 503);
+  assert.ok(!JSON.stringify(r).includes('private redis'));
+  assert.equal(f.calls.length, 1);
+  f.gateError = false; assert.equal((await f.run()).code, 200);
+  assert.equal(f.calls.length, 2);
+});
+test('disabled switch blocks completed and pending retries without external calls', async () => {
+  for (const failed of [false, true]) {
+    const f = fixture(); f.failMail = failed; await f.run();
+    const count = f.calls.length; f.enabled = 'false';
+    assert.equal((await f.run()).code, 503);
+    assert.equal(f.calls.length, count);
+  }
 });

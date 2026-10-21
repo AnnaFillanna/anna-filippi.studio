@@ -1,6 +1,12 @@
 // Server-only module. Never import from src/ or expose credentials through VITE_.
 import { createHash, createHmac } from 'node:crypto';
 
+export const controlKey = 'contact:control:enabled';
+// Atomic within this Redis script; not a cross-region linearizability guarantee.
+export const reserveScript = "if redis.call('GET',KEYS[1]) ~= 'true' then return -1 end; if redis.call('SET',KEYS[2],ARGV[1],'NX') then return 1 end; return 0";
+export const mailGateScript = "if redis.call('GET',KEYS[1]) == 'true' then return 1 end; return 0";
+const paused = { code: 503, message: 'Der Formularversand ist momentan nicht verfügbar. Bitte versuchen Sie es später erneut.' };
+
 export const replaceStateScript = "if redis.call('GET',KEYS[1]) == ARGV[1] then redis.call('SET',KEYS[1],ARGV[2]); return 1 end; return 0";
 const retryMessage = 'Die Verarbeitung konnte nicht vollständig bestätigt werden. Bitte versuche es mit unveränderten Angaben erneut.';
 const reviewMessage = 'Der Eingang muss geprüft werden. Bitte kontaktiere mich per E-Mail oder WhatsApp, statt die Anfrage neu abzusenden.';
@@ -21,9 +27,9 @@ export async function deliverContact({ data, id, payload, env, config, redis, fe
   let storageUncertain = false;
   try {
     // No expiry: an uncertain INSERT must never be blindly replayed after a TTL.
-    const acquired = await redis(['SET', key, initial, 'NX']);
+    const acquired = await redis(['EVAL', reserveScript, '2', controlKey, key, initial]);
     let raw;
-    if (acquired === 'OK') {
+    if (acquired === 1) {
       raw = initial;
       storageUncertain = true;
       // Exact allowlist; no RETURNING, .select(), count, upsert or client-controlled metadata.
@@ -37,10 +43,10 @@ export async function deliverContact({ data, id, payload, env, config, redis, fe
       if (await redis(['EVAL', replaceStateScript, '1', key, raw, stored]) !== 1) return { code: 503, message: reviewMessage };
       raw = stored;
       storageUncertain = false;
-    } else if (acquired === null) {
+    } else if (acquired === 0) {
       raw = await redis(['GET', key]);
     } else {
-      return { code: 503, message: retryMessage };
+      return paused;
     }
     let state = JSON.parse(raw);
     if (!state || state.fingerprint !== fingerprint) return { code: 409, message: 'Diese Anfrage-ID wurde bereits für andere Angaben verwendet. Bitte kontaktiere mich direkt.' };
@@ -57,6 +63,8 @@ export async function deliverContact({ data, id, payload, env, config, redis, fe
     // Resend retains idempotency keys for 24h. Leave a 1h margin; never reset this clock.
     if (state.phase !== 'mail_pending' || !Number.isFinite(state.mailStartedAt) || now() < state.mailStartedAt || now() - state.mailStartedAt >= 23 * 60 * 60 * 1000) return { code: 503, message: reviewMessage };
     const hash = createHash('sha256').update(JSON.stringify(payload)).digest('hex');
+    // Fresh check for every attempt, including retries. Never cache the switch.
+    if (await redis(['EVAL', mailGateScript, '1', controlKey]) !== 1) return paused;
     const response = await fetchImpl('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json', 'Idempotency-Key': `contact/${id}/${hash}` },

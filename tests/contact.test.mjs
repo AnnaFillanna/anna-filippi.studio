@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import handler from "../api/contact.js";
+import { reserveScript, mailGateScript } from '../server/contact-delivery.js';
 const data = {
   name: "Test",
   email: "test@example.org",
@@ -55,11 +56,12 @@ async function request(
     }
     if (url === env.UPSTASH_REDIS_REST_URL) {
       const args = JSON.parse(options.body);
-      if (args[0] === 'SET') {
-        const exists = records.has(args[1]);
-        if (!exists) records.set(args[1], args[2]);
-        return { ok: true, json: async () => ({ result: exists ? null : 'OK' }) };
+      if (args[1] === reserveScript) {
+        const exists = records.has(args[4]);
+        if (!exists) records.set(args[4], args[5]);
+        return { ok: true, json: async () => ({ result: exists ? 0 : 1 }) };
       }
+      if (args[1] === mailGateScript) return { ok: true, json: async () => ({ result: 1 }) };
       if (args[0] === 'GET') return { ok: true, json: async () => ({ result: records.get(args[1]) ?? null }) };
       if (args[0] === 'EVAL' && args[3].startsWith('contact:delivery:')) {
         const matches = records.get(args[3]) === args[4];
