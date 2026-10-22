@@ -43,24 +43,11 @@ const mammaDetails = [
   ["Funktionalität", "Individuelle Pizza-Zusammenstellung mit verschiedenen Teigarten, Größen und Zutaten, dynamischer Preisberechnung sowie Warenkorb und Bestellübersicht."],
   ["Besonderheit", "Kombination aus klassischer italienischer Ästhetik, modernen Interaktionen und einem intuitiven Pizza-Konfigurator."],
   ["Technologien", "React · TypeScript · Vite · CSS"],
+  ["Demo ausprobieren", "Teste als Demo-Gast ohne Registrierung den Pizza-Konfigurator, die Zutaten-Auswahl, den Warenkorb und deine Testbestellungen. Alle Bestellungen dienen ausschließlich zu Testzwecken."],
   ["Status", "Demo-Version – ein eigenständiges Portfolio- und Demonstrationsprojekt. Keine echte Pizzeria und kein kommerzieller Bestellservice."],
 ];
 
 const projects = [
-  {
-    name: "FilliCat",
-    category: "EDTECH / SOFTWAREENTWICKLUNG",
-    description:
-      "FilliCat ist eine intelligente Lernplattform, die Programmieren durch praktische Aufgaben und individuelles Training vermittelt.",
-    scope: "",
-    status: "",
-    imagePrefix: "fillicat",
-    imageExtension: "png",
-    detailHref: "/softwareentwicklung",
-    details: fillicatDetails,
-    buttonLabel: "Projekt ansehen",
-    href: "https://fillicat.com",
-  },
   {
     name: "Dana Tattoo Studio",
     category: "FULL-STACK WEBENTWICKLUNG",
@@ -83,10 +70,24 @@ const projects = [
     status: "",
     imagePrefix: "mamma-mia",
     imageExtension: "jpg",
-    detailHref: "https://annafillanna.github.io/Pizzeria-Mama-Mia/",
+    detailHref: "https://annafillanna.github.io/Pizzeria-Mama-Mia/#/login",
     details: mammaDetails,
-    buttonLabel: "Demo ansehen",
-    href: "https://annafillanna.github.io/Pizzeria-Mama-Mia/",
+    buttonLabel: "Demo ausprobieren",
+    href: "https://annafillanna.github.io/Pizzeria-Mama-Mia/#/login",
+  },
+  {
+    name: "FilliCat",
+    category: "EDTECH / SOFTWAREENTWICKLUNG",
+    description:
+      "FilliCat ist eine intelligente Lernplattform, die Programmieren durch praktische Aufgaben und individuelles Training vermittelt.",
+    scope: "",
+    status: "",
+    imagePrefix: "fillicat",
+    imageExtension: "png",
+    detailHref: "/softwareentwicklung",
+    details: fillicatDetails,
+    buttonLabel: "Projekt ansehen",
+    href: "https://fillicat.com",
   },
 ];
 
@@ -130,7 +131,7 @@ export default function Projects({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
   };
-  const selected = projects[danaOnly ? 1 : 0];
+  const selected = projects[danaOnly ? 0 : 2];
   const imagePrefix = danaOnly ? "dana" : "fillicat";
   const renderProject = (project: (typeof projects)[number], index: number) => (
     <motion.article
@@ -180,7 +181,7 @@ export default function Projects({
       <div className={styles.copy}>
         <p className={styles.eyebrow}>{project.category}</p>
         <h2 id={`project-${index}`}>{project.name}</h2>
-        {index === 0 && <p className={styles.description}>{fillicatSubtitle}</p>}
+        {project.imagePrefix === "fillicat" && <p className={styles.description}>{fillicatSubtitle}</p>}
         <p className={styles.description}>{project.description}</p>
         {project.details.map(([label, text]) => (
           <p key={label} className={styles.description}>
@@ -202,7 +203,7 @@ export default function Projects({
           </a>
           <header className={styles.caseIntro}>
             <p className={styles.caseEyebrow}>
-              AUSGEWÄHLTES PROJEKT / {danaOnly ? "02" : "01"} — 03
+              AUSGEWÄHLTES PROJEKT / {danaOnly ? "01" : "03"} — 03
             </p>
             <h1 id="software-title" tabIndex={-1}>
               {danaOnly ? (
