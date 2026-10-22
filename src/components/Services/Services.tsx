@@ -2,12 +2,12 @@ import { motion, useReducedMotion } from 'motion/react';
 import styles from './Services.module.scss';
 
 const services = [
-  { title: 'Webentwicklung & Redesign', text: 'Eine individuelle Website oder ein Redesign, das zu dir passt – von der technischen Umsetzung bis zur Veröffentlichung.' },
-  { title: 'Softwareentwicklung', text: 'Individuelle Software und Web-Apps für Smartphone, Laptop und Tablet – von der Idee bis zur technischen Umsetzung. Geräteübergreifende App-Projekte sind in Planung.' },
-  { title: 'KI-Integration & Automatisierung', text: 'Intelligente Chatbots, digitale Assistenten, KI-Agenten und automatisierte Geschäftsprozesse.' },
-  { title: 'E-Commerce', text: 'Shopify-Shops, individuelle Shop-Anpassungen und Optimierung bestehender Onlineshops.' },
-  { title: 'Optimierung & Betreuung', text: 'Technisches SEO, Performance-Optimierung, Wartung und Weiterentwicklung bestehender Websites.' },
-  { title: 'Produktfotografie', text: 'Ästhetische Schmuck- und Produktfotografie mit einem besonderen Gespür für Licht, Details und Bildkomposition.' },
+  { title: 'Webdesign & Webentwicklung', text: <>Individuelles <strong>Webdesign</strong>, Website-Erstellung und Redesign – von der Gestaltung bis zur technischen Entwicklung und Veröffentlichung.</> },
+  { title: 'Software & Web-Apps', text: <>Individuelle <strong>Software und Web-Apps</strong> für Smartphone, Laptop und Tablet – von der Idee bis zur technischen Umsetzung. Geräteübergreifende App-Projekte sind in Planung.</> },
+  { title: 'KI-Integration & Automatisierung', text: <>Intelligente <strong>Chatbots</strong>, digitale Assistenten, KI-Agenten und automatisierte Geschäftsprozesse.</> },
+  { title: 'Shopify, WordPress & CMS', text: <>Ergänzend zur individuellen Entwicklung: Websites und Onlineshops mit <strong>Shopify und WordPress</strong> – individuell angepasst, responsiv und mit benutzerfreundlicher Content-Verwaltung. CMS-Integration, Shop-Anpassungen und die Einbindung in bestehende Websites nach Bedarf.</> },
+  { title: 'SEO & Website-Betreuung', text: <><strong>Technisches SEO</strong> und verständliche Inhalte als Grundlage für deine Google-Sichtbarkeit. Dazu Performance-Optimierung, Website-Wartung und Weiterentwicklung – ohne Ranking-Versprechen.</> },
+  { title: 'Produkt- & Schmuckfotografie', text: <>Ästhetische Schmuck- und <strong>Produktfotografie</strong> mit einem besonderen Gespür für Licht, Details und Bildkomposition.</> },
 ] as const;
 
 export default function Services() {
@@ -18,11 +18,24 @@ export default function Services() {
         initial={reduced ? false : { opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }}
         transition={{ duration: reduced ? 0 : .9 }}>
+      <div className={styles.pricing} aria-labelledby="pricing-title">
+        <p className={styles.eyebrow}>Preisgestaltung</p>
+        <h2 id="pricing-title">So individuell wie <em>dein Projekt.</em></h2>
+        <p>Jedes Projekt ist einzigartig – deshalb gibt es bei mir keine starren
+          Preispakete. Gemeinsam finden wir eine Lösung, die zu deinen Vorstellungen,
+          Anforderungen und deinem Budget passt.</p>
+        <p>Nicht jedes Unternehmen braucht eine große Website. Manchmal genügt eine
+          kleine, sorgfältig entwickelte Seite, die genau das zeigt, worauf es ankommt.</p>
+        <p className={styles.pricingPromise}>Transparent. Persönlich. Unverbindlich.</p>
+        <a href="#kontakt">Über dein Projekt sprechen</a>
+      </div>
+        <div className={styles.serviceHeading}>
         <p className={styles.eyebrow}>Meine Leistungen</p>
         <h2 id="services-title">
           <span>Digitale Ideen.</span>{" "}
           <em>Individuelle Lösungen.</em>
         </h2>
+        </div>
       </motion.div>
       <ul className={styles.list}>
         {services.map((service, index) => (
@@ -35,7 +48,7 @@ export default function Services() {
             {index === 0 && <>
               <ul className={styles.webScope}>
                 <li>Passende Darstellung auf Smartphone, Tablet und Desktop</li>
-                <li>Kontaktformulare und gewünschte Funktionen</li>
+                <li>WhatsApp- und Kontaktformular-Integration</li>
                 <li>Technische Grundlagen für Suchmaschinenoptimierung (SEO)</li>
                 <li>Domain-Anbindung und Veröffentlichung (Deployment)</li>
                 <li>Erweiterungen und Anpassungen nach Absprache</li>
@@ -48,15 +61,6 @@ export default function Services() {
           </motion.li>
         ))}
       </ul>
-      <section className={styles.region} aria-labelledby="region-title">
-        <h3 id="region-title">Webdesign &amp; Webentwicklung in Koblenz und Umgebung</h3>
-        <p>Anna Filippi Studio entwickelt individuelle Websites und moderne Webanwendungen
-          für Unternehmen und Selbstständige. Mit Standort in Andernach bei Koblenz
-          betreue ich Kunden in der Region Mittelrhein und deutschlandweit.</p>
-        <p>Ob in Neuwied, Mayen oder Bad Ems: Die Zusammenarbeit erfolgt persönlich
-          und digital – von der ersten Idee bis zur Veröffentlichung.
-          Mein Angebot umfasst auch Softwareentwicklung und Produktfotografie.</p>
-      </section>
     </section>
   );
 }

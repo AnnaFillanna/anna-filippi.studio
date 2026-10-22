@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react';
 import styles from './ProjectProcess.module.scss';
+import { googleReviewHref } from '../../config/reviews';
 
 const steps = [
   ['Beratung', 'Wir sprechen über deine Idee, deine Wünsche und die Ziele deines Projekts.'],
@@ -14,6 +15,7 @@ const arrowVariants = { hidden: { opacity: 0 }, visible: { opacity: 1 } };
 
 export default function ProjectProcess() {
   const reduced = useReducedMotion();
+  const reviewHref = googleReviewHref();
   return (
     <section id="projektablauf" className={styles.process} aria-labelledby="process-title">
       <h2 id="process-title">Von der Idee bis zur fertigen Website</h2>
@@ -43,17 +45,16 @@ export default function ProjectProcess() {
         ))}
       </ol>
       </motion.div>
-      <div className={styles.pricing} aria-labelledby="pricing-title">
-        <p className={styles.pricingLabel}>Preisgestaltung</p>
-        <h2 id="pricing-title">So individuell wie <em>dein Projekt.</em></h2>
-        <p>Jedes Projekt ist einzigartig – deshalb gibt es bei mir keine starren
-          Preispakete. Gemeinsam finden wir eine Lösung, die zu deinen Vorstellungen,
-          Anforderungen und deinem Budget passt.</p>
-        <p>Nicht jedes Unternehmen braucht eine große Website. Manchmal genügt eine
-          kleine, sorgfältig entwickelte Seite, die genau das zeigt, worauf es ankommt.</p>
-        <p className={styles.pricingPromise}>Transparent. Persönlich. Unverbindlich.</p>
-        <a href="#kontakt">Über dein Projekt sprechen</a>
-      </div>
+      {reviewHref && (
+        <section className={styles.pricing} aria-labelledby="review-title">
+          <h2 id="review-title">Deine Erfahrung ist mir wichtig.</h2>
+          <p>Ich freue mich über deine ehrliche Bewertung auf Google.</p>
+          <a href={reviewHref} target="_blank" rel="noopener noreferrer"
+            aria-label="Bewertung auf Google schreiben (neuer Tab)">
+            Bewertung auf Google schreiben
+          </a>
+        </section>
+      )}
     </section>
   );
 }

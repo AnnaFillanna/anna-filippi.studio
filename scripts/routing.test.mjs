@@ -68,7 +68,7 @@ test('sitemap and Vercel rules cover all portfolio pages', async () => {
 test('home shows six unnumbered services while the profile stays on its own page', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   for (const id of ['start', 'leistungen', 'kontakt']) assert.ok(html.includes(`id="${id}"`));
-  for (const title of ['Webentwicklung &amp; Redesign', 'Softwareentwicklung', 'KI-Integration &amp; Automatisierung', 'E-Commerce', 'Optimierung &amp; Betreuung', 'Produktfotografie']) {
+  for (const title of ['Webdesign &amp; Webentwicklung', 'Software &amp; Web-Apps', 'KI-Integration &amp; Automatisierung', 'Shopify, WordPress &amp; CMS', 'SEO &amp; Website-Betreuung', 'Produkt- &amp; Schmuckfotografie']) {
     assert.ok(html.includes(title), `Missing service: ${title}`);
   }
   assert.ok(!html.includes('id="ueber-mich"'));
@@ -131,7 +131,9 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
   }
   await access('dist/favicon.svg');
   const home = await readFile('dist/index.html', 'utf8');
-  assert.ok(home.includes('id="region-title"'));
+  assert.ok(!home.includes('id="region-title"'));
+  assert.equal((home.match(/id="pricing-title"/g) || []).length, 1);
+  assert.ok(home.indexOf('id="pricing-title"') < home.indexOf('id="services-title"'));
   assert.ok(home.includes('deutschlandweit'));
   const robots = await readFile('dist/robots.txt', 'utf8');
   assert.ok(robots.includes(`Sitemap: ${origin}/sitemap.xml`));

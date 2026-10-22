@@ -21,7 +21,7 @@ export default function AboutPage() {
           <div className={styles.text}>
             <p>Ich entwickle moderne Websites und digitale Lösungen mit Liebe zum Detail, einem klaren Blick für Ästhetik und Begeisterung für neue Technologien.</p>
             <p>Besonders faszinieren mich die Möglichkeiten der künstlichen Intelligenz und die Verbindung von Design und Funktionalität.</p>
-            <p>Neben der Webentwicklung widme ich mich mit Leidenschaft der Schmuckfotografie. Was als Hobby begann, ist für mich eine kreative Möglichkeit, besondere Details, Licht und Ästhetik in Bildern festzuhalten.</p>
+            <p>Neben der <strong>Webentwicklung</strong> widme ich mich mit Leidenschaft der <strong>Schmuckfotografie</strong>. Was als Hobby begann, ist für mich eine kreative Möglichkeit, besondere Details, Licht und Ästhetik in Bildern festzuhalten.</p>
           </div>
           <p className={styles.signature}>Anna Filippi — Webentwicklung, digitale Ideen <span className={styles.ampersand}>&amp;</span> Fotografie aus Leidenschaft.</p>
         </motion.div>
