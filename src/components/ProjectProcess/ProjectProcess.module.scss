@@ -43,3 +43,13 @@
   .pricingPromise { color: $bordeaux; margin-top: 24px; }
   a { display: inline-block; color: $bordeaux; font: 400 24px/1.3 $serif; padding: 8px 0; border-bottom: 1px solid currentColor; text-decoration: none; }
 }
+
+.eyebrow {
+  font: 400 11px/1.7 $sans;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+  margin: 0 0 24px;
+}
+@media (min-width: 761px) {
+  .process { padding-inline: 7%; }
+}

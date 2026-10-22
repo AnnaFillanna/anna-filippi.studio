@@ -93,3 +93,14 @@
   .benefits li { grid-template-columns: 48px minmax(0, 1fr); gap: 16px; }
   .benefitIcon { width: 48px; height: 48px; }
 }
+
+.sectionLabel {
+  font: 400 11px/1.7 $sans;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+  margin: 40px 0 24px;
+}
+.sectionLabel + .list { margin-top: 0; }
+@media (min-width: 761px) {
+  .services { padding-inline: 7%; }
+}

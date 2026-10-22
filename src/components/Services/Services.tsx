@@ -48,7 +48,7 @@ export default function Services() {
           </li>
         </ul>
       </motion.div>
-      <h2 id="services-title" className={styles.srOnly}>Meine Leistungen</h2>
+      <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
       <ul className={styles.list}>
         {services.map((service, index) => (
           <motion.li key={service.title} className={styles.service}

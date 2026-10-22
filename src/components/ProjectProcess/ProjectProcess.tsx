@@ -18,6 +18,7 @@ export default function ProjectProcess() {
   const reviewHref = googleReviewHref();
   return (
     <section id="projektablauf" className={styles.process} aria-labelledby="process-title">
+      <p className={styles.eyebrow}>Ablauf</p>
       <h2 id="process-title">Von der Idee bis zur fertigen Website</h2>
       <p className={styles.intro}>Ein klarer Ablauf, persönliche Zusammenarbeit und eine digitale Lösung, die zu dir und deinem Unternehmen passt.</p>
       <motion.div className={styles.timeline}
