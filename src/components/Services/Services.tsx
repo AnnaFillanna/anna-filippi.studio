@@ -26,17 +26,29 @@ export default function Services() {
           Anforderungen und deinem Budget passt.</p>
         <p>Nicht jedes Unternehmen braucht eine große Website. Manchmal genügt eine
           kleine, sorgfältig entwickelte Seite, die genau das zeigt, worauf es ankommt.</p>
-        <p className={styles.pricingPromise}>Transparent. Persönlich. Unverbindlich.</p>
-        <a href="#kontakt">Über dein Projekt sprechen</a>
       </div>
-        <div className={styles.serviceHeading}>
-        <p className={styles.eyebrow}>Meine Leistungen</p>
-        <h2 id="services-title">
-          <span>Digitale Ideen.</span>{" "}
-          <em>Individuelle Lösungen.</em>
-        </h2>
-        </div>
+        <ul className={styles.benefits} aria-label="Unsere Zusammenarbeit">
+          <li>
+            <span className={styles.benefitIcon} aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M8 23C7 14 16 9 26 5c-2 10-6 20-16 19M6 28 22 10M11 22l1-7" /></svg>
+            </span>
+            <div><h3>Maßgeschneiderte Konzepte</h3><p>Lösungen, die zu deinen Zielen und deiner Marke passen.</p></div>
+          </li>
+          <li>
+            <span className={styles.benefitIcon} aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="m13 4 6 0 1 4 3 2 4-1 3 5-3 3v3l1 3-5 3-3-2-3 1-2 3-5-2v-4l-2-2-4-1v-6l4-1 2-3 0-3Z"/><circle cx="16" cy="16" r="4"/></svg>
+            </span>
+            <div><h3>Klare Prozesse</h3><p>Transparent, strukturiert und zuverlässig.</p></div>
+          </li>
+          <li>
+            <span className={styles.benefitIcon} aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M16 27 5 16C-2 7 10 1 16 10 22 1 34 7 27 16Z"/></svg>
+            </span>
+            <div><h3>Persönliche Begleitung</h3><p>Von der Idee bis zum Go-Live – und darüber hinaus.</p></div>
+          </li>
+        </ul>
       </motion.div>
+      <h2 id="services-title" className={styles.srOnly}>Meine Leistungen</h2>
       <ul className={styles.list}>
         {services.map((service, index) => (
           <motion.li key={service.title} className={styles.service}

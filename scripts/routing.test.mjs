@@ -75,7 +75,8 @@ test('home shows six unnumbered services while the profile stays on its own page
   assert.ok(!html.includes('04 / KONTAKT'));
   assert.ok(!/<span[^>]*>0[1-6] —<\/span>/.test(html));
   assert.ok(html.includes('Meine Leistungen'));
-  assert.match(html, /<h2[^>]*id="services-title"[^>]*><span>Digitale Ideen\.<\/span>.*?<em>Individuelle Lösungen\.<\/em><\/h2>/s);
+  assert.match(html, /<h2[^>]*id="services-title"[^>]*>Meine Leistungen<\/h2>/);
+  for (const benefit of ['Maßgeschneiderte Konzepte', 'Klare Prozesse', 'Persönliche Begleitung']) assert.ok(html.includes(benefit));
   assert.ok(html.includes('mailto:annafilippi@web.de'));
   for (const label of ['Impressum', 'Datenschutz', 'Cookies']) assert.ok(html.includes(label));
 });
