@@ -402,7 +402,7 @@
   }
 }
 
-// Portfolio overview uses the same full-width device presentation as the case studies.
+// Compact desktop overview; individual case studies keep their large previews.
 .projects {
   padding-inline: max(6%, calc((100% - 1100px) / 2));
   background: radial-gradient(ellipse at 70% 35%, #fffaf4 0, $ivory 75%);
@@ -420,6 +420,24 @@
   .eyebrow { font-size: clamp(9px, 1.1vw, 12px); }
   .description { font-size: clamp(14px, 1.8vw, 21px); line-height: 1.7; color: #80747b; }
   .scope { font-size: 11px; margin: 0 0 18px; }
+
+  @media (min-width: 1001px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 48px;
+      align-items: start;
+    }
+    .devices { margin: 28px 0 30px; }
+    .laptopScreen {
+      border-width: 7px;
+      border-radius: 10px 10px 3px 3px;
+    }
+    .laptopBase { height: 10px; }
+    .phone { border-width: 4px; border-radius: 16px; }
+    .copy h2 { font-size: clamp(32px, 3vw, 42px); }
+    .description { font-size: 15px; }
+    .caseButton { font-size: 25px; }
+  }
 
   @media (max-width: 760px) {
     .devices { margin-inline: 0; }
