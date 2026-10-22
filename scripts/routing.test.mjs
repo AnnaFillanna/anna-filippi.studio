@@ -106,3 +106,34 @@ test('software page contains only the software project, without the general port
   assert.ok(html.includes('href="/impressum"'));
   assert.ok(html.includes('href="/datenschutz"'));
  });
+
+test('SEO metadata stays consistent across prerendered pages and client routes', async () => {
+  const source = await readFile('src/routes.ts', 'utf8');
+  const { code } = await transformWithEsbuild(source, 'routes.ts', { loader: 'ts', format: 'cjs' });
+  const context = { module: { exports: {} } };
+  vm.runInNewContext(code, context);
+  const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
+  const titles = new Set();
+  for (const [path, meta] of Object.entries(context.module.exports.pages)) {
+    const html = await readFile(`dist${path === '/' ? '' : path}/index.html`, 'utf8');
+    assert.ok(html.includes(`<title>${escape(meta.title)}</title>`));
+    assert.ok(html.includes(`<meta name="description" content="${escape(meta.description)}"`));
+    assert.ok(html.includes(`<meta property="og:title" content="${escape(meta.title)}"`));
+    assert.ok(html.includes(`<meta property="og:description" content="${escape(meta.description)}"`));
+    assert.equal((html.match(/rel="canonical"/g) || []).length, 1);
+    assert.ok(html.includes('href="/favicon.svg"'));
+    assert.ok(!html.includes('.vercel.app'));
+    assert.ok(!titles.has(meta.title));
+    titles.add(meta.title);
+    const data = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)[1]);
+    const person = data['@graph'].find(item => item['@type'] === 'Person');
+    assert.equal(person.homeLocation.name, 'Andernach, Deutschland');
+  }
+  await access('dist/favicon.svg');
+  const home = await readFile('dist/index.html', 'utf8');
+  assert.ok(home.includes('id="region-title"'));
+  assert.ok(home.includes('deutschlandweit'));
+  const robots = await readFile('dist/robots.txt', 'utf8');
+  assert.ok(robots.includes(`Sitemap: ${origin}/sitemap.xml`));
+  assert.ok(!/Disallow:\s*\//i.test(robots));
+});

@@ -43,6 +43,17 @@ export default function ProjectProcess() {
         ))}
       </ol>
       </motion.div>
+      <div className={styles.pricing} aria-labelledby="pricing-title">
+        <p className={styles.pricingLabel}>Preisgestaltung</p>
+        <h2 id="pricing-title">So individuell wie <em>dein Projekt.</em></h2>
+        <p>Jedes Projekt ist einzigartig – deshalb gibt es bei mir keine starren
+          Preispakete. Gemeinsam finden wir eine Lösung, die zu deinen Vorstellungen,
+          Anforderungen und deinem Budget passt.</p>
+        <p>Nicht jedes Unternehmen braucht eine große Website. Manchmal genügt eine
+          kleine, sorgfältig entwickelte Seite, die genau das zeigt, worauf es ankommt.</p>
+        <p className={styles.pricingPromise}>Transparent. Persönlich. Unverbindlich.</p>
+        <a href="#kontakt">Über dein Projekt sprechen</a>
+      </div>
     </section>
   );
 }

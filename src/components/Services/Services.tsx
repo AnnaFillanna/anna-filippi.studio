@@ -48,6 +48,15 @@ export default function Services() {
           </motion.li>
         ))}
       </ul>
+      <section className={styles.region} aria-labelledby="region-title">
+        <h3 id="region-title">Webdesign &amp; Webentwicklung in Koblenz und Umgebung</h3>
+        <p>Anna Filippi Studio entwickelt individuelle Websites und moderne Webanwendungen
+          für Unternehmen und Selbstständige. Mit Standort in Andernach bei Koblenz
+          betreue ich Kunden in der Region Mittelrhein und deutschlandweit.</p>
+        <p>Ob in Neuwied, Mayen oder Bad Ems: Die Zusammenarbeit erfolgt persönlich
+          und digital – von der ersten Idee bis zur Veröffentlichung.
+          Mein Angebot umfasst auch Softwareentwicklung und Produktfotografie.</p>
+      </section>
     </section>
   );
 }
