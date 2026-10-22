@@ -19,6 +19,23 @@ function FilliCatDetails() {
   ));
 }
 
+const danaDetails = [
+  ["Ziel", "Eine stilvolle digitale Präsenz schaffen, die die Persönlichkeit des Studios widerspiegelt, Arbeiten hochwertig präsentiert und die Kontaktaufnahme erleichtert."],
+  ["Webentwicklung", "Umsetzung mit React und TypeScript, responsivem Layout, eleganten Animationen und interaktiven Tattoo- und Piercing-Galerien."],
+  ["Funktionalität", "Integration von Supabase zur geschützten Verwaltung von Bildern und Videos, direkte Terminanfragen über WhatsApp sowie eine interaktive Standortkarte."],
+  ["Besonderheit", "Individuelles Design mit hochwertigen visuellen Elementen, optimierter Performance und benutzerfreundlicher Navigation auf allen Endgeräten."],
+  ["Technologien", "React · TypeScript · Vite · SCSS · Supabase · Vercel"],
+  ["Status", "Abgeschlossen und veröffentlicht."],
+];
+
+function DanaDetails() {
+  return danaDetails.map(([label, text]) => (
+    <p key={label} className={styles.description}>
+      <strong>{label}:</strong> {text}
+    </p>
+  ));
+}
+
 const projects = [
   {
     name: "FilliCat",
@@ -34,7 +51,7 @@ const projects = [
     name: "Dana Tattoo Studio",
     category: "FULL-STACK WEBENTWICKLUNG",
     description:
-      "Konzeption und Entwicklung einer individuellen, responsiven Website mit modernen Animationen, interaktiven Galerien und direkter Terminanfrage. Integration von Supabase für die geschützte Verwaltung von Medieninhalten.",
+      "Konzeption und Entwicklung einer individuellen, responsiven Website für ein Tattoo- und Piercingstudio mit modernem Design und interaktiven Funktionen.",
     scope: "React · TypeScript · SCSS · Supabase",
     status: "",
     image: "/images/projects/dana.png",
@@ -100,7 +117,7 @@ export default function Projects({
         <h2 id={`project-${index}`}>{project.name}</h2>
         {index === 0 && <p className={styles.description}>{fillicatSubtitle}</p>}
         <p className={styles.description}>{project.description}</p>
-        {index === 0 ? <FilliCatDetails /> : <p className={styles.scope}>{project.scope}</p>}
+        {index === 0 ? <FilliCatDetails /> : <DanaDetails />}
         {project.status && (
           <p className={styles.description}>{project.status}</p>
         )}
@@ -135,9 +152,7 @@ export default function Projects({
             </h1>
             <div className={styles.accent} aria-hidden="true" />
             <p className={styles.caseLead}>
-              {danaOnly
-                ? "Ein individueller Webauftritt für Dana Tattoo Studio in Andernach. Atmosphärisches Design, interaktive Galerien und direkte Kontaktmöglichkeiten machen die Arbeit des Studios digital erlebbar."
-                : selected.description}
+              {selected.description}
             </p>
             <a
               className={styles.caseButton}
@@ -182,7 +197,7 @@ export default function Projects({
             <h2>{selected.name}</h2>
             {!danaOnly && <p>{fillicatSubtitle}</p>}
             <p>{selected.description}</p>
-            {danaOnly ? <p>{selected.scope}</p> : <FilliCatDetails />}
+            {danaOnly ? <DanaDetails /> : <FilliCatDetails />}
           </div>
         </div>
       </section>

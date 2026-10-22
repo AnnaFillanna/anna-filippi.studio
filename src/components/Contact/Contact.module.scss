@@ -69,11 +69,20 @@
   textarea {
     resize: vertical;
   }
-  input:focus-visible,
-  select:focus-visible,
-  textarea:focus-visible {
-    outline: 2px solid $bordeaux;
-    outline-offset: 4px;
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-bottom-color: $bordeaux;
+    box-shadow: 0 2px 0 $bordeaux;
+  }
+  @media (forced-colors: active) {
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-bottom: 3px solid Highlight;
+      padding-bottom: 10px;
+    }
   }
   ::placeholder {
     color: #6b5c5d;
