@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import styles from "./Projects.module.scss";
@@ -36,6 +37,15 @@ function DanaDetails() {
   ));
 }
 
+const mammaDetails = [
+  ["Ziel", "Eine benutzerfreundliche Anwendung gestalten, die italienisches Flair mit moderner Webtechnologie verbindet und ein individuelles Bestellerlebnis ermöglicht."],
+  ["Webentwicklung", "Umsetzung mit React und TypeScript, responsivem Layout, interaktiven Produktkarten und einer übersichtlichen Benutzeroberfläche."],
+  ["Funktionalität", "Individuelle Pizza-Zusammenstellung mit verschiedenen Teigarten, Größen und Zutaten, dynamischer Preisberechnung sowie Warenkorb und Bestellübersicht."],
+  ["Besonderheit", "Kombination aus klassischer italienischer Ästhetik, modernen Interaktionen und einem intuitiven Pizza-Konfigurator."],
+  ["Technologien", "React · TypeScript · Vite · CSS"],
+  ["Status", "Demo-Version – ein eigenständiges Portfolio- und Demonstrationsprojekt. Keine echte Pizzeria und kein kommerzieller Bestellservice."],
+];
+
 const projects = [
   {
     name: "FilliCat",
@@ -44,7 +54,11 @@ const projects = [
       "FilliCat ist eine intelligente Lernplattform, die Programmieren durch praktische Aufgaben und individuelles Training vermittelt.",
     scope: "",
     status: "",
-    image: "/images/projects/fillicat.png",
+    imagePrefix: "fillicat",
+    imageExtension: "png",
+    detailHref: "/softwareentwicklung",
+    details: fillicatDetails,
+    buttonLabel: "Projekt ansehen",
     href: "https://fillicat.com",
   },
   {
@@ -54,8 +68,25 @@ const projects = [
       "Konzeption und Entwicklung einer individuellen, responsiven Website für ein Tattoo- und Piercingstudio mit modernem Design und interaktiven Funktionen.",
     scope: "React · TypeScript · SCSS · Supabase",
     status: "",
-    image: "/images/projects/dana.png",
+    imagePrefix: "dana",
+    imageExtension: "png",
+    detailHref: "/dana-tattoo-studio",
+    details: danaDetails,
+    buttonLabel: "Projekt ansehen",
     href: "https://tattoodana.de",
+  },
+  {
+    name: "Mamma Mia – Pizza mit Amore",
+    category: "WEBENTWICKLUNG · INTERAKTIVE DEMO",
+    description: "Konzeption und Entwicklung einer modernen, responsiven Pizzeria-Webanwendung mit interaktivem Pizza-Konfigurator und digitalem Bestellsystem.",
+    scope: "",
+    status: "",
+    imagePrefix: "mamma-mia",
+    imageExtension: "jpg",
+    detailHref: "https://annafillanna.github.io/Pizzeria-Mama-Mia/",
+    details: mammaDetails,
+    buttonLabel: "Demo ansehen",
+    href: "https://annafillanna.github.io/Pizzeria-Mama-Mia/",
   },
 ];
 
@@ -67,6 +98,38 @@ export default function Projects({
   danaOnly?: boolean;
 }) {
   const reveal = useScrollReveal();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [navigation, setNavigation] = useState({ previous: false, next: true });
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const update = () => setNavigation({
+      previous: track.scrollLeft > 2,
+      next: track.scrollLeft + track.clientWidth < track.scrollWidth - 2,
+    });
+    const observer = new ResizeObserver(update);
+    observer.observe(track);
+    track.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => {
+      observer.disconnect();
+      track.removeEventListener("scroll", update);
+    };
+  }, [softwareOnly, danaOnly]);
+
+  const moveProjects = (direction: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const cards = Array.from(track.children) as HTMLElement[];
+    const step = cards.length > 1
+      ? cards[1].offsetLeft - cards[0].offsetLeft
+      : track.clientWidth;
+    track.scrollBy({
+      left: direction * step,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+  };
   const selected = projects[danaOnly ? 1 : 0];
   const imagePrefix = danaOnly ? "dana" : "fillicat";
   const renderProject = (project: (typeof projects)[number], index: number) => (
@@ -82,18 +145,20 @@ export default function Projects({
         target="_blank"
         rel="noopener noreferrer"
       >
-        Projekt ansehen
+        {project.buttonLabel}
         <span className={styles.visuallyHidden}>: {project.name} (neuer Tab)</span>
       </a>
       <a
         className={styles.devices}
-        href={index === 0 ? "/softwareentwicklung" : "/dana-tattoo-studio"}
+        href={project.detailHref}
+        target={project.detailHref.startsWith("https:") ? "_blank" : undefined}
+        rel={project.detailHref.startsWith("https:") ? "noopener noreferrer" : undefined}
         aria-label={`${project.name}: Projekt ansehen`}
       >
         <div className={styles.laptop}>
           <div className={styles.laptopScreen}>
             <img
-              src={`/images/projects/${index === 0 ? "fillicat" : "dana"}-desktop.png`}
+              src={`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`}
               alt={`Desktop-Ansicht von ${project.name}`}
               width="1440"
               height="900"
@@ -104,7 +169,7 @@ export default function Projects({
         </div>
         <div className={styles.phone}>
           <img
-            src={`/images/projects/${index === 0 ? "fillicat" : "dana"}-mobile.png`}
+            src={`/images/projects/${project.imagePrefix}-mobile.${project.imageExtension}`}
             alt={`Mobile Ansicht von ${project.name}`}
             width="390"
             height="844"
@@ -117,7 +182,11 @@ export default function Projects({
         <h2 id={`project-${index}`}>{project.name}</h2>
         {index === 0 && <p className={styles.description}>{fillicatSubtitle}</p>}
         <p className={styles.description}>{project.description}</p>
-        {index === 0 ? <FilliCatDetails /> : <DanaDetails />}
+        {project.details.map(([label, text]) => (
+          <p key={label} className={styles.description}>
+            <strong>{label}:</strong> {text}
+          </p>
+        ))}
         {project.status && (
           <p className={styles.description}>{project.status}</p>
         )}
@@ -133,7 +202,7 @@ export default function Projects({
           </a>
           <header className={styles.caseIntro}>
             <p className={styles.caseEyebrow}>
-              AUSGEWÄHLTES PROJEKT / {danaOnly ? "02" : "01"} — 02
+              AUSGEWÄHLTES PROJEKT / {danaOnly ? "02" : "01"} — 03
             </p>
             <h1 id="software-title" tabIndex={-1}>
               {danaOnly ? (
@@ -219,11 +288,22 @@ export default function Projects({
           <em>Meine Arbeiten.</em>
         </h1>
         <p className={styles.lead}>
-          Zwei Projekte. Zwei eigene Geschichten. Individuell entwickelt und mit
+          Drei Projekte. Drei eigene Geschichten. Individuell entwickelt und mit
           einem Blick für das Detail umgesetzt.
         </p>
       </motion.div>
-      <div className={styles.grid}>
+      <div className={styles.carouselControls} role="group" aria-label="Projekte durchblättern">
+        <button type="button" aria-label="Vorherige Projekte" aria-controls="project-carousel"
+          disabled={!navigation.previous} onClick={() => moveProjects(-1)}>
+          <svg viewBox="0 0 32 20" fill="none" aria-hidden="true"><path d="M30 10H2m8-8-8 8 8 8" /></svg>
+        </button>
+        <button type="button" aria-label="Nächste Projekte" aria-controls="project-carousel"
+          disabled={!navigation.next} onClick={() => moveProjects(1)}>
+          <svg viewBox="0 0 32 20" fill="none" aria-hidden="true"><path d="M2 10h28m-8-8 8 8-8 8" /></svg>
+        </button>
+      </div>
+      <div ref={trackRef} id="project-carousel" className={`${styles.grid} ${styles.carousel}`}
+        role="region" aria-label="Projektübersicht" aria-roledescription="Karussell" tabIndex={0}>
         {projects.map((project, index) => renderProject(project, index))}
       </div>
     </section>
