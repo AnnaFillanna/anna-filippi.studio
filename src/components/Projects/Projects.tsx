@@ -2,15 +2,31 @@ import { motion } from "motion/react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import styles from "./Projects.module.scss";
 
+const fillicatSubtitle = "Adaptive Lernplattform für Programmierung";
+const fillicatDetails = [
+  ["Ziel", "Logisches Denken fördern, Programmierkenntnisse nachhaltig aufbauen und Wissenslücken gezielt schließen."],
+  ["Lernsystem", "Adaptive Aufgabenauswahl, automatisierte Code-Tests, mehrstufige Hilfestellungen, Kompetenzanalyse und intelligente Wiederholungen."],
+  ["Besonderheit", "Das System passt sich dem Lernfortschritt an und trainiert nicht nur einzelne Befehle, sondern echtes Problemlösungsdenken."],
+  ["Programmiersprachen", "JavaScript und TypeScript, später Python und weitere Sprachen."],
+  ["Status", "In Entwicklung."],
+];
+
+function FilliCatDetails() {
+  return fillicatDetails.map(([label, text]) => (
+    <p key={label} className={styles.description}>
+      <strong>{label}:</strong> {text}
+    </p>
+  ));
+}
+
 const projects = [
   {
     name: "FilliCat",
     category: "EDTECH / SOFTWAREENTWICKLUNG",
     description:
-      "Eigenständig entwickelte, interaktive Lernplattform für JavaScript und TypeScript mit personalisierten Übungen, Fehleranalyse und gezielten Wiederholungen. Mehrsprachig auf Deutsch, Englisch und Russisch. FilliCat ist als App für Smartphone, Laptop und Tablet geplant; aktuell ist die Lernplattform im Browser erreichbar.",
-    scope: "React · TypeScript · Vite · KI-Integration",
-    status:
-      "Eigenprojekt · In aktiver Entwicklung · Geräteübergreifende App geplant · KI-Lernassistent in Entwicklung",
+      "FilliCat ist eine intelligente Lernplattform, die Programmieren durch praktische Aufgaben und individuelles Training vermittelt.",
+    scope: "",
+    status: "",
     image: "/images/projects/fillicat.png",
     href: "https://fillicat.com",
   },
@@ -82,8 +98,9 @@ export default function Projects({
       <div className={styles.copy}>
         <p className={styles.eyebrow}>{project.category}</p>
         <h2 id={`project-${index}`}>{project.name}</h2>
+        {index === 0 && <p className={styles.description}>{fillicatSubtitle}</p>}
         <p className={styles.description}>{project.description}</p>
-        <p className={styles.scope}>{project.scope}</p>
+        {index === 0 ? <FilliCatDetails /> : <p className={styles.scope}>{project.scope}</p>}
         {project.status && (
           <p className={styles.description}>{project.status}</p>
         )}
@@ -120,7 +137,7 @@ export default function Projects({
             <p className={styles.caseLead}>
               {danaOnly
                 ? "Ein individueller Webauftritt für Dana Tattoo Studio in Andernach. Atmosphärisches Design, interaktive Galerien und direkte Kontaktmöglichkeiten machen die Arbeit des Studios digital erlebbar."
-                : "FilliCat ist eine interaktive Lernplattform, die Programmieren einfach, motivierend und alltagsnah macht – mit personalisierten Übungen, perfekt für Einsteiger und alle, die ihr Wissen vertiefen möchten."}
+                : selected.description}
             </p>
             <a
               className={styles.caseButton}
@@ -163,16 +180,9 @@ export default function Projects({
           <div className={styles.caseDetails}>
             <p className={styles.caseEyebrow}>{selected.category}</p>
             <h2>{selected.name}</h2>
-            <p>
-              {danaOnly
-                ? selected.description
-                : "Eine moderne Lernplattform für JavaScript und TypeScript mit interaktiven Übungen, Fehleranalyse und gezielter Wiederholung. Mehrsprachig auf Deutsch, Englisch und Russisch."}
-            </p>
-            <p>
-              {danaOnly
-                ? selected.scope
-                : "Aktuell im Browser verfügbar. Eine geräteübergreifende App für Smartphone, Laptop und Tablet ist geplant."}
-            </p>
+            {!danaOnly && <p>{fillicatSubtitle}</p>}
+            <p>{selected.description}</p>
+            {danaOnly ? <p>{selected.scope}</p> : <FilliCatDetails />}
           </div>
         </div>
       </section>
