@@ -260,13 +260,12 @@ export default function Gallery() {
             <span /> ANNA FILIPPI / PRODUKTFOTOGRAFIE
           </p>
           <h1 id="gallery-title" tabIndex={-1}>
-            Kleine Details.
+            Produktfotografie.
             <br />
             <em>Große Wirkung.</em>
           </h1>
           <p className={styles.lead}>
-            Licht, das Formen zeichnet. Materialien, die Geschichten erzählen.
-            Ich mache sichtbar, was deine Produkte besonders macht.
+            Produkt- und Schmuckfotografie für Onlineshops, Websites und Marken. Von klaren Produktansichten auf hellem Hintergrund bis zur kreativen Inszenierung – ich zeige, was deine Produkte besonders macht.
           </p>
         </div>
         <div className={styles.heroVisual}>

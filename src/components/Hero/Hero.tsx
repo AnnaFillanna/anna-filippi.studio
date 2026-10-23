@@ -42,10 +42,10 @@ export default function Hero() {
           <AnimatedLetters text="ANNA FILIPPI" flock />
         </h1>
         <motion.h2 {...intro(0.25)} className={styles.headline}>
-          Websites und Onlineshops<br />für dein Unternehmen.
+          Software. Websites.<br />Produktfotografie.
         </motion.h2>
         <motion.p {...intro(0.4)} className={styles.description}>
-          Ich gestalte und entwickle deine Website – oder überarbeite deinen bestehenden Auftritt. Von der ersten Idee bis zur Veröffentlichung.
+          Ich entwickle individuelle Software und Websites und fotografiere deine Produkte. Drei Schwerpunkte – persönlich mit dir umgesetzt.
         </motion.p>
         <motion.div {...intro(0.55)} className={styles.actions}>
           <a href="#leistungen" className={styles.servicesLink}>Leistungen ansehen</a>

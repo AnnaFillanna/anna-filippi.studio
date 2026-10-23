@@ -214,15 +214,15 @@ export default function Projects({
                 </>
               ) : (
                 <>
-                  Programmieren
+                  Softwareentwicklung
                   <br />
-                  verständlich <em>lernen.</em>
+                  für deine <em>Ideen.</em>
                 </>
               )}
             </h1>
             <div className={styles.accent} aria-hidden="true" />
             <p className={styles.caseLead}>
-              {selected.description}
+              {danaOnly ? selected.description : "Ich entwickle individuelle Software und Web-Apps, die zu deinen Abläufen passen. Ein Beispiel: FilliCat, meine adaptive Lernplattform für Programmierung."}
             </p>
             <a
               className={styles.caseButton}
@@ -284,13 +284,12 @@ export default function Projects({
       </a>
       <motion.div {...reveal} className={styles.heading}>
         <h1 id="projects-title" tabIndex={-1}>
-          Ideen werden digital.
+          Webentwicklung
           <br />
           <em>Meine Arbeiten.</em>
         </h1>
         <p className={styles.lead}>
-          Drei Projekte. Drei eigene Geschichten. Individuell entwickelt und mit
-          einem Blick für das Detail umgesetzt.
+          Websites und Onlineshops für dein Unternehmen – von der Gestaltung bis zur Veröffentlichung. Hier siehst du ausgewählte Webprojekte und interaktive Anwendungen.
         </p>
       </motion.div>
       <div className={styles.carouselControls} role="group" aria-label="Projekte durchblättern">

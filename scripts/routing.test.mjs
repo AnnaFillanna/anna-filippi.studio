@@ -9,7 +9,7 @@ const examples = [
   ['/impressum', 'Impressum', 'Rechtstext wird geladen'],
   ['/datenschutz', 'Datenschutzerklärung', 'Rechtstext wird geladen'],
   ['/dana-tattoo-studio', 'Kunst auf der Haut.', 'Dana Tattoo Studio'],
-  ['/softwareentwicklung', 'Programmieren', 'FilliCat'],
+  ['/softwareentwicklung', 'Softwareentwicklung', 'FilliCat'],
   ['/', 'ANNA FILIPPI', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],
@@ -65,16 +65,19 @@ test('sitemap and Vercel rules cover all portfolio pages', async () => {
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
 });
 
-test('home shows six unnumbered services while the profile stays on its own page', async () => {
+test('home separates three core services from supporting services', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   for (const id of ['start', 'leistungen', 'kontakt']) assert.ok(html.includes(`id="${id}"`));
-  for (const title of ['Webdesign &amp; Webentwicklung', 'Software &amp; Web-Apps', 'KI-Integration &amp; Automatisierung', 'Shopify, WordPress &amp; CMS', 'SEO &amp; Website-Betreuung', 'Produkt- &amp; Schmuckfotografie']) {
+  for (const title of ['Webentwicklung', 'Softwareentwicklung', 'KI-Integration &amp; Automatisierung', 'Shopify, WordPress &amp; CMS', 'SEO &amp; Website-Betreuung', 'Produktfotografie']) {
     assert.ok(html.includes(title), `Missing service: ${title}`);
   }
   assert.ok(!html.includes('id="ueber-mich"'));
   assert.ok(!html.includes('04 / KONTAKT'));
   assert.ok(!/<span[^>]*>0[1-6] —<\/span>/.test(html));
   assert.ok(html.includes('Meine Leistungen'));
+  assert.ok(html.includes('Ergänzende Leistungen'));
+  assert.ok(html.indexOf('Software &amp; Projekt ansehen') < html.indexOf('Ergänzende Leistungen'));
+  assert.ok(html.indexOf('Fotografien ansehen') < html.indexOf('Ergänzende Leistungen'));
   assert.match(html, /<h2[^>]*id="services-title"[^>]*>Meine Leistungen<\/h2>/);
   for (const benefit of ['Maßgeschneiderte Konzepte', 'Klare Prozesse', 'Persönliche Begleitung']) assert.ok(html.includes(benefit));
   assert.ok(html.includes('mailto:annafilippi@web.de'));

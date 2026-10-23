@@ -16,13 +16,13 @@
 }
 .eyebrow,
 .scope {
-  font-size: 9px;
+  font-size: 16px;
   letter-spacing: 0.13em;
   line-height: 1.8;
 }
 .lead {
   max-width: 58ch;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.9;
   color: #645358;
 }
@@ -81,7 +81,7 @@
   }
 }
 .description {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.9;
   color: #645358;
   margin: 0 0 20px;
@@ -100,7 +100,7 @@
   color: inherit;
   text-decoration: none;
   border-bottom: 1px solid #650d2050;
-  font-size: 9px;
+  font-size: 16px;
   letter-spacing: 0.12em;
   &:focus-visible {
     outline: 2px solid currentColor;
@@ -147,7 +147,7 @@
 .back {
   display: inline-block;
   color: inherit;
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 0.12em;
   text-decoration: none;
   margin-bottom: 45px;
@@ -180,7 +180,7 @@
   bottom: 16px;
   background: $bordeaux;
   padding: 12px 16px;
-  font-size: 9px;
+  font-size: 16px;
   letter-spacing: 0.1em;
 }
 .cover:focus-visible,
@@ -231,10 +231,10 @@
 }
 .caseStudy .back {
   margin-bottom: 44px;
-  font-size: 11px;
+  font-size: 16px;
 }
 .caseEyebrow {
-  font: 400 12px/1.6 $sans;
+  font: 400 16px/1.6 $sans;
   letter-spacing: 0.16em;
 }
 .caseIntro {
@@ -257,7 +257,7 @@
 .caseLead {
   max-width: 850px;
   color: #80747b;
-  font: 400 clamp(15px, 2vw, 23px)/1.65 $sans;
+  font: 400 clamp(16px, 2vw, 23px)/1.65 $sans;
 }
 
 .caseButton {
@@ -343,7 +343,7 @@
   }
   > p:not(.caseEyebrow) {
     color: #80747b;
-    font: 400 clamp(14px, 1.8vw, 21px)/1.7 $sans;
+    font: 400 clamp(16px, 1.8vw, 21px)/1.7 $sans;
   }
 }
 .visuallyHidden {
@@ -363,11 +363,11 @@
     padding: 95px 6% 65px;
   }
   .caseStudy .back {
-    font-size: 9px;
+    font-size: 16px;
     margin-bottom: 32px;
   }
   .caseEyebrow {
-    font-size: 9px;
+    font-size: 16px;
     letter-spacing: 0.13em;
   }
   .caseIntro h1 {
@@ -379,7 +379,7 @@
     width: 42px;
   }
   .caseLead {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.7;
   }
   .caseButton {
@@ -408,7 +408,7 @@
   background: radial-gradient(ellipse at 70% 35%, #fffaf4 0, $ivory 75%);
 
   .heading { max-width: 960px; }
-  .lead { font-size: clamp(15px, 1.8vw, 21px); color: #80747b; }
+  .lead { font-size: clamp(16px, 1.8vw, 21px); color: #80747b; }
   .grid { grid-template-columns: 1fr; max-width: none; gap: clamp(64px, 9vw, 120px); }
   .sectionLabel { display: block; }
   .card > .caseButton { margin-top: 0; }
@@ -418,8 +418,8 @@
     margin: 18px 0;
   }
   .eyebrow { font-size: clamp(9px, 1.1vw, 12px); }
-  .description { font-size: clamp(14px, 1.8vw, 21px); line-height: 1.7; color: #80747b; }
-  .scope { font-size: 11px; margin: 0 0 18px; }
+  .description { font-size: clamp(16px, 1.8vw, 21px); line-height: 1.7; color: #80747b; }
+  .scope { font-size: 16px; margin: 0 0 18px; }
 
   @media (min-width: 1001px) {
     .grid {
@@ -435,7 +435,7 @@
     .laptopBase { height: 10px; }
     .phone { border-width: 4px; border-radius: 16px; }
     .copy h2 { font-size: clamp(32px, 3vw, 42px); }
-    .description { font-size: 15px; }
+    .description { font-size: 16px; }
     .caseButton { font-size: 25px; }
   }
 
@@ -496,3 +496,5 @@
   }
   svg { width: 26px; height: 20px; stroke: currentColor; stroke-width: 1.2; }
 }
+
+.caseIntro h1 { overflow-wrap: anywhere; hyphens: auto; }

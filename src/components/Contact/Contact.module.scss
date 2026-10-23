@@ -10,7 +10,7 @@
   gap: clamp(40px, 7vw, 110px);
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 0.2em;
   margin: 0 0 32px;
 }
@@ -28,7 +28,7 @@
 }
 .description {
   max-width: 38ch;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.9;
   margin-top: 28px;
   color: $black;
@@ -43,7 +43,7 @@
   }
   label {
     display: block;
-    font-size: 11px;
+    font-size: 16px;
     line-height: 1.6;
     letter-spacing: 0.025em;
     margin-bottom: 24px;
@@ -95,7 +95,7 @@
   gap: 24px;
 }
 .note {
-  font-size: 11px;
+  font-size: 16px;
   color: #534447;
   line-height: 1.8;
   margin: -8px 0 24px;
@@ -112,7 +112,7 @@
   background: $bordeaux;
   color: $white;
   font: inherit;
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 0.12em;
   cursor: pointer;
   transition: background 0.25s;
@@ -126,7 +126,7 @@
 }
 .whatsapp {
   display: inline-block;
-  font-size: 10px;
+  font-size: 16px;
   letter-spacing: 0.1em;
   line-height: 1.8;
   padding: 14px 0;
@@ -137,7 +137,7 @@
   }
 }
 .status {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.7;
   margin: 12px 0 0;
   overflow-wrap: anywhere;
@@ -157,7 +157,7 @@
   align-items: end;
   justify-content: space-between;
   gap: 24px;
-  font-size: 9px;
+  font-size: 16px;
   letter-spacing: 0.06em;
 }
 .signature {
@@ -167,7 +167,7 @@
   span {
     display: block;
     font-family: $sans;
-    font-size: 8px;
+    font-size: 16px;
     letter-spacing: 0.16em;
     margin-top: 10px;
   }

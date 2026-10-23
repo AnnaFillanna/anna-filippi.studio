@@ -31,6 +31,7 @@ export default function Header({ contactHref = '#kontakt' }: { contactHref?: str
         aria-label="Hauptnavigation"
         className={`${styles.nav} ${open ? styles.open : ""}`}
       >
+        <a href="/softwareentwicklung" onClick={() => setOpen(false)}>Softwareentwicklung</a>
         <a href="/projekte" onClick={() => setOpen(false)}>
           Webentwicklung
         </a>

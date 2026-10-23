@@ -19,11 +19,11 @@ export default function AboutPage() {
           <h1 id="about-page-title" tabIndex={-1}>Über mich</h1>
           <p className={styles.greeting}>Hallo, ich bin Anna.</p>
           <div className={styles.text}>
-            <p>Ich entwickle moderne Websites und digitale Lösungen mit Liebe zum Detail, einem klaren Blick für Ästhetik und Begeisterung für neue Technologien.</p>
+            <p>Meine drei Schwerpunkte sind Softwareentwicklung, Webentwicklung und Produktfotografie. Ich entwickle individuelle Anwendungen und Websites und setze Produkte fotografisch in Szene – mit Liebe zum Detail und einem klaren Blick für Ästhetik.</p>
             <p>Besonders faszinieren mich die Möglichkeiten der künstlichen Intelligenz und die Verbindung von Design und Funktionalität.</p>
             <p>Neben der <strong>Webentwicklung</strong> widme ich mich mit Leidenschaft der <strong>Schmuckfotografie</strong>. Was als Hobby begann, ist für mich eine kreative Möglichkeit, besondere Details, Licht und Ästhetik in Bildern festzuhalten.</p>
           </div>
-          <p className={styles.signature}>Anna Filippi — Webentwicklung, digitale Ideen <span className={styles.ampersand}>&amp;</span> Fotografie aus Leidenschaft.</p>
+          <p className={styles.signature}>Anna Filippi — Softwareentwicklung, Webentwicklung <span className={styles.ampersand}>&amp;</span> Fotografie aus Leidenschaft.</p>
         </motion.div>
         <motion.div className={styles.portrait} {...reveal(30)}>
           <img src="/images/about-anna-red.jpg" alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" width="993" height="1600" fetchPriority="high" />

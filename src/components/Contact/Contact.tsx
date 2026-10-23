@@ -63,8 +63,8 @@ export default function Contact() {
     >
       <div className={styles.layout}>
         <div className={styles.intro}>
-          <h2 id="contact-title">Lass uns etwas <em>Schönes schaffen.</em></h2>
-          <p className={styles.description}>Erzähl mir von deiner Idee. Je mehr ich über dein Projekt weiß, desto besser kann ich deine Anfrage einschätzen.</p>
+          <h2 id="contact-title">Dein Projekt. <em>Gemeinsam umgesetzt.</em></h2>
+          <p className={styles.description}>Softwareentwicklung, Webentwicklung oder Produktfotografie: Erzähl mir, was du brauchst. Gemeinsam klären wir Umfang, Möglichkeiten und die nächsten Schritte.</p>
         </div>
         <form
           className={styles.form}

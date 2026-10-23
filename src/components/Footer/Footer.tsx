@@ -38,6 +38,11 @@ export default function Footer() {
             <br />
             <em>Einfach ins Gespräch kommen.</em>
           </h2>
+          <nav className={styles.navigation} aria-label="Meine Schwerpunkte">
+            <a href="/softwareentwicklung">Softwareentwicklung</a>
+            <a href="/projekte">Webentwicklung</a>
+            <a href="/fotografie">Produktfotografie</a>
+          </nav>
           <div className={styles.channels}>
             <div className={styles.channel}>
               <p>
