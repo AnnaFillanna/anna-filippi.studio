@@ -296,3 +296,14 @@
   .actions { gap: 12px 24px; }
   .actions .servicesLink, .actions .projectLink { font-size: clamp(19px, 5vw, 24px); }
 }
+
+// Let the mobile portrait follow the copy instead of a fixed vertical offset.
+@media (max-width: 760px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr); height: auto; min-height: 0; padding-bottom: 30px; }
+  .copy { grid-column: 1; grid-row: 1; padding: 100px 6% 0; }
+  .actions { margin-top: 16px; }
+  .portrait { position: relative; inset: auto; grid-column: 1; grid-row: 2; margin-top: -28px; height: clamp(340px, 105vw, 620px); width: 100%; mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 94%, transparent); }
+  .portrait img { object-fit: cover; object-position: 53% center; }
+  .aiCredit { right: 6%; bottom: 8px; writing-mode: horizontal-tb; font-size: 10px; letter-spacing: .08em; color: #650d20; }
+  .fabricExtension { top: calc(100% - 22vw); }
+}
