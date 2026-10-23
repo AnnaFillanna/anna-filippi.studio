@@ -134,7 +134,7 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
   const home = await readFile('dist/index.html', 'utf8');
   assert.ok(!home.includes('id="region-title"'));
   assert.equal((home.match(/id="pricing-title"/g) || []).length, 1);
-  assert.ok(home.indexOf('id="pricing-title"') < home.indexOf('id="services-title"'));
+  assert.ok(home.indexOf('id="services-title"') < home.indexOf('id="pricing-title"'));
   assert.ok(home.includes('deutschlandweit'));
   const robots = await readFile('dist/robots.txt', 'utf8');
   assert.ok(robots.includes(`Sitemap: ${origin}/sitemap.xml`));

@@ -14,6 +14,31 @@ export default function Services() {
   const reduced = useReducedMotion();
   return (
     <section id="leistungen" className={styles.services} aria-labelledby="services-title">
+      <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
+      <ul className={styles.list}>
+        {services.map((service, index) => (
+          <motion.li key={service.title} className={styles.service}
+            initial={reduced ? false : { opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }}
+            transition={{ duration: reduced ? 0 : .85, delay: reduced ? 0 : index % 2 * .08 }}>
+            <h3 id={index === 0 ? 'title-web' : index === 5 ? 'title-foto' : undefined}>{service.title}</h3>
+            <p className={styles.description}>{service.text}</p>
+            {index === 0 && <>
+              <ul className={styles.webScope}>
+                <li>Passende Darstellung auf Smartphone, Tablet und Desktop</li>
+                <li>WhatsApp- und Kontaktformular-Integration</li>
+                <li>Technische Grundlagen für Suchmaschinenoptimierung (SEO)</li>
+                <li>Domain-Anbindung und Veröffentlichung (Deployment)</li>
+                <li>Erweiterungen und Anpassungen nach Absprache</li>
+              </ul>
+              <p className={styles.scopeNote}>Den konkreten Leistungsumfang vereinbaren wir individuell.</p>
+            </>}
+            {index === 0 && <a className={styles.galleryLink} href="/projekte">PROJEKTE ENTDECKEN</a>}
+            {index === 1 && <a className={styles.galleryLink} href="/softwareentwicklung">PROJEKTE ENTDECKEN</a>}
+            {index === 5 && <a className={styles.galleryLink} href="/fotografie">FOTOGRAFIEN ENTDECKEN</a>}
+          </motion.li>
+        ))}
+      </ul>
       <motion.div className={styles.intro}
         initial={reduced ? false : { opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }}
@@ -48,31 +73,6 @@ export default function Services() {
           </li>
         </ul>
       </motion.div>
-      <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
-      <ul className={styles.list}>
-        {services.map((service, index) => (
-          <motion.li key={service.title} className={styles.service}
-            initial={reduced ? false : { opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }}
-            transition={{ duration: reduced ? 0 : .85, delay: reduced ? 0 : index % 2 * .08 }}>
-            <h3 id={index === 0 ? 'title-web' : index === 5 ? 'title-foto' : undefined}>{service.title}</h3>
-            <p className={styles.description}>{service.text}</p>
-            {index === 0 && <>
-              <ul className={styles.webScope}>
-                <li>Passende Darstellung auf Smartphone, Tablet und Desktop</li>
-                <li>WhatsApp- und Kontaktformular-Integration</li>
-                <li>Technische Grundlagen für Suchmaschinenoptimierung (SEO)</li>
-                <li>Domain-Anbindung und Veröffentlichung (Deployment)</li>
-                <li>Erweiterungen und Anpassungen nach Absprache</li>
-              </ul>
-              <p className={styles.scopeNote}>Den konkreten Leistungsumfang vereinbaren wir individuell.</p>
-            </>}
-            {index === 0 && <a className={styles.galleryLink} href="/projekte">PROJEKTE ENTDECKEN</a>}
-            {index === 1 && <a className={styles.galleryLink} href="/softwareentwicklung">PROJEKTE ENTDECKEN</a>}
-            {index === 5 && <a className={styles.galleryLink} href="/fotografie">FOTOGRAFIEN ENTDECKEN</a>}
-          </motion.li>
-        ))}
-      </ul>
     </section>
   );
 }

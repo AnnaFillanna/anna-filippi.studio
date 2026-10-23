@@ -79,22 +79,20 @@ export default function ParticleText({ text }: { text: string }) {
         const elapsed = now - began;
         context.clearRect(0, 0, Math.ceil(viewportWidth), Math.ceil(viewportHeight));
         const bounds = label.getBoundingClientRect();
-        const fade = Math.min(1, Math.max(0, (elapsed - 3500) / 400));
+        const fade = Math.min(1, Math.max(0, (elapsed - 2600) / 400));
         for (const dot of dots) {
-          const outward = Math.min(1, elapsed / 950);
-          const spread = 1 - Math.pow(1 - outward, 3);
-          const progress = Math.max(0, Math.min(1, (elapsed - 1050 - dot.delay) / 1600));
+          const progress = Math.max(0, Math.min(1, (elapsed - 150 - dot.delay) / 1600));
           const ease = 1 - Math.pow(1 - progress, 3);
           const targetX = bounds.left + dot.x;
           const targetY = bounds.top + dot.y;
-          const distance = spread * (1 - ease);
+          const distance = 1 - ease;
           const x = targetX + (dot.fromX - targetX) * distance;
           const y = targetY + (dot.fromY - targetY) * distance;
           context.globalAlpha = Math.min(1, elapsed / 100) * (1 - fade);
           context.beginPath(); context.arc(x, y, 1.05, 0, Math.PI * 2); context.fill();
         }
-        if (elapsed >= 3500) setAssembling(false);
-        if (elapsed < 3900) frame = requestAnimationFrame(draw);
+        if (elapsed >= 2600) setAssembling(false);
+        if (elapsed < 3000) frame = requestAnimationFrame(draw);
         else { playing = false; context.clearRect(0, 0, Math.ceil(viewportWidth), Math.ceil(viewportHeight)); }
       };
       frame = requestAnimationFrame(draw);

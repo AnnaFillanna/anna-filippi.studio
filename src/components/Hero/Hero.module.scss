@@ -266,3 +266,21 @@
   .portrait img { object-position: 53% center; }
   .copy h1 { font-size: 12.4vw; }
 }
+
+// Keep the offer and both next steps readable across screen sizes.
+.hero { height: auto; min-height: max(100svh, 760px); }
+.copy { padding-bottom: 100px; }
+.headline { font-size: clamp(32px, 3.6vw, 58px); max-width: 720px; }
+.description { font-size: clamp(16px, 1.4vw, 20px); color: #650d20; max-width: 510px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 30px; }
+.servicesLink { padding: 15px 22px; background: #650d20; color: #fffaf3; font: 500 16px/1.5 $sans; }
+.servicesLink:hover { background: #4e0a19; }
+.actions .projectLink { margin-top: 0; font: 500 16px/1.5 $sans; }
+@media (max-width: 760px) {
+  .hero { min-height: max(100svh, 178vw); }
+  .copy { padding-bottom: 80px; }
+  .headline { font-size: clamp(30px, 7vw, 50px); }
+  .description { max-width: 100%; font-size: 16px; }
+  .portrait { top: 420px; height: calc(100% - 420px); }
+  .actions { gap: 16px 24px; }
+}
