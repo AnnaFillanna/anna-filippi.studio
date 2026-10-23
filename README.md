@@ -32,7 +32,7 @@ Jede Komponente verwendet ein eigenes SCSS Module. Cormorant Garamond und Montse
 
 ## Bilder und Inhalt
 
-`public/images/anna-original.png` ist eine byteidentische Kopie des bereitgestellten Porträts. Keine Retusche, Farbkorrektur oder Neukomprimierung. Responsive Bildausschnitte entstehen ausschließlich durch CSS `object-fit` und `object-position`; das Gesicht bleibt unverändert. Das Original hat 1280 × 445 Pixel und ca. 109 KB.
+Hero: `public/images/hero-reference.png`, neu mit ImageGen anhand der Layout-Referenz erstellt (23.10.2026).
 
 Laptop und Blume wurden mit dem integrierten ImageGen erzeugt und als optimierte JPEGs gespeichert. Details und Prompts stehen in `ASSETS.md`. Das separate Referenzbild für DIGITAL / VISUAL war nicht angehängt, deshalb wurde dieser Bereich anhand der schriftlichen Beschreibung gestaltet.
 

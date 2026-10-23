@@ -2,7 +2,7 @@
 
 ## Originalporträt
 
-Datei: `public/images/anna-original.png`.
+Hero: `public/images/hero-reference.png`, neu mit ImageGen anhand der Layout-Referenz erstellt (23.10.2026).
 Vom Nutzer bereitgestellt als Foto 1.jpg; unverändert kopiert.
 
 ## Laptop
