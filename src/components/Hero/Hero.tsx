@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import styles from "./Hero.module.scss";
-import AnimatedLetters from "../Animation/AnimatedLetters";
 export default function Hero() {
   const section = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
@@ -34,9 +33,12 @@ export default function Hero() {
           DIGITAL ATELIER
         </motion.p>
         <div className={styles.titleGroup}>
-        <h1 id="hero-title" aria-label="ANNA FILIPPI">
-          <AnimatedLetters text="ANNA FILIPPI" flock />
-        </h1>
+        <motion.h1 id="hero-title"
+          initial={reduced ? false : { opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}>
+          ANNA FILIPPI
+        </motion.h1>
         <motion.h2 {...intro(0.25)} className={styles.headline}>
           <span className={styles.service}><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="4" y="6" width="28" height="21" rx="1"/><path d="M1 31h34"/></svg><span>Software</span></span>
           <span className={styles.separator} aria-hidden="true">·</span>

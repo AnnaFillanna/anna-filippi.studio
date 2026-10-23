@@ -2,14 +2,14 @@ import { motion, useReducedMotion } from 'motion/react';
 import styles from './Services.module.scss';
 
 const services = [
-  { title: 'Softwareentwicklung', text: 'Individuelle Software und Web-Apps für deine Abläufe: von interaktiven Anwendungen bis zu digitalen Plattformen. Gemeinsam entwickeln wir die passende Lösung für deine Idee.', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
-  { title: 'Webentwicklung', text: 'Eine neue Website, ein Onlineshop oder ein frischer Auftritt für dein Unternehmen. Ich übernehme Gestaltung, technische Entwicklung und Veröffentlichung.', href: '/projekte', link: 'Webprojekte ansehen' },
-  { title: 'Produktfotografie', text: 'Produkt- und Schmuckfotografie für deinen Onlineshop, deine Website und deinen Markenauftritt. Klare Produktansichten und kreative Inszenierungen mit Liebe zum Detail.', href: '/fotografie', link: 'Fotografien ansehen' },
+  { title: 'Softwareentwicklung', text: 'Individuelle Anwendungen und Web-Apps, die deine Abläufe vereinfachen und deine Ideen nutzbar machen.', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
+  { title: 'Webentwicklung', text: 'Websites und Onlineshops für dein Unternehmen. Von der ersten Gestaltung bis zur Veröffentlichung.', href: '/projekte', link: 'Webprojekte ansehen' },
+  { title: 'Produktfotografie', text: 'Produkt- und Schmuckfotografie für deine Marke. Klare Ansichten, feine Details und besondere Inszenierungen.', href: '/fotografie', link: 'Fotografien ansehen' },
 ] as const;
 const extras = [
-  { title: 'KI-Integration & Automatisierung', text: 'Chatbots, digitale Assistenten und automatisierte Abläufe als Ergänzung zu deinem Software- oder Webprojekt.' },
-  { title: 'Shopify, WordPress & CMS', text: 'Shop-Anpassungen und einfach pflegbare Inhalte – passend zu deiner Website und deinem Arbeitsalltag.' },
-  { title: 'SEO & Website-Betreuung', text: 'Technische Suchmaschinenoptimierung, Performance, Wartung und Weiterentwicklung deiner Website – ohne Ranking-Versprechen.' },
+  { title: 'KI-Integration & Automatisierung', text: 'Chatbots und automatisierte Abläufe für dein Projekt.' },
+  { title: 'Shopify, WordPress & CMS', text: 'Shops und Inhalte, die du selbst einfach pflegen kannst.' },
+  { title: 'SEO & Website-Betreuung', text: 'Technische SEO, Wartung und Weiterentwicklung deiner Website.' },
 ];
 
 export default function Services() {
@@ -19,8 +19,9 @@ export default function Services() {
       <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
       <p className={styles.serviceLead}>Drei Schwerpunkte. Was möchtest du umsetzen?</p>
       <ul className={styles.primaryList}>
-        {services.map(service => (
+        {services.map((service, index) => (
           <li key={service.title} className={styles.primaryService}>
+            <span className={styles.serviceNumber} aria-hidden="true">0{index + 1}</span>
             <h3>{service.title}</h3>
             <p className={styles.description}>{service.text}</p>
             <a className={styles.galleryLink} href={service.href}>{service.link} →</a>
@@ -28,8 +29,7 @@ export default function Services() {
         ))}
       </ul>
       <div className={styles.additional}>
-        <h2>Ergänzende Leistungen</h2>
-        <p className={styles.serviceLead}>Je nach Projekt unterstütze ich dich auch dabei:</p>
+        <div className={styles.additionalHeading}><p className={styles.eyebrow}>Bei Bedarf</p><h2>Das passende<br /><em>Extra.</em></h2></div>
         <ul className={styles.extraList}>
           {extras.map(service => <li key={service.title}><h3>{service.title}</h3><p className={styles.description}>{service.text}</p></li>)}
         </ul>
@@ -41,11 +41,9 @@ export default function Services() {
       <div className={styles.pricing} aria-labelledby="pricing-title">
         <p className={styles.eyebrow}>Preisgestaltung</p>
         <h2 id="pricing-title">So individuell wie <em>dein Projekt.</em></h2>
-        <p>Jedes Projekt ist einzigartig – deshalb gibt es bei mir keine starren
-          Preispakete. Gemeinsam finden wir eine Lösung, die zu deinen Vorstellungen,
-          Anforderungen und deinem Budget passt.</p>
-        <p>Nicht jedes Unternehmen braucht eine große Website. Manchmal genügt eine
-          kleine, sorgfältig entwickelte Seite, die genau das zeigt, worauf es ankommt.</p>
+        <p>Der Umfang richtet sich nach deinen Zielen und deinem Budget.
+          Gemeinsam klären wir, was du wirklich brauchst – und was nicht.</p>
+        <p className={styles.pricingNote}>Manchmal ist eine kleine, sorgfältig gestaltete Website genau richtig.</p>
       </div>
         <ul className={styles.benefits} aria-label="Unsere Zusammenarbeit">
           <li>

@@ -3,11 +3,11 @@ import styles from './ProjectProcess.module.scss';
 import { googleReviewHref } from '../../config/reviews';
 
 const steps = [
-  ['Beratung', 'Wir sprechen über deine Idee, deine Wünsche und die Ziele deines Projekts.'],
-  ['Konzeption', 'Gemeinsam legen wir die Struktur, die Funktionen und die visuelle Richtung fest.'],
-  ['Entwicklung', 'Ich setze deine Website technisch um und achte auf responsives Design, Performance und eine saubere Umsetzung.'],
-  ['Prüfung', 'Gemeinsam prüfen wir Design, Funktionen und die Darstellung auf verschiedenen Geräten. Ich stimme letzte Anpassungen mit dir ab und unterstütze dich bei der Veröffentlichung.'],
-  ['Betreuung', 'Auch nach dem Launch sind Anpassungen, Erweiterungen und technische Unterstützung nach Absprache möglich.'],
+  ['Beratung', 'Wir klären deine Idee, deine Ziele und den passenden Umfang.'],
+  ['Konzeption', 'Struktur, Funktionen und Gestaltung bekommen eine klare Richtung.'],
+  ['Entwicklung', 'Ich entwickle deine Website – responsiv und sorgfältig umgesetzt.'],
+  ['Prüfung', 'Wir testen gemeinsam, stimmen Details ab und veröffentlichen deine Website.'],
+  ['Betreuung', 'Auch nach dem Start begleite ich dich nach Absprache weiter.'],
 ] as const;
 
 const lineVariants = { hidden: { pathLength: 0, opacity: 0 }, visible: { pathLength: 1, opacity: 1 } };
@@ -19,8 +19,8 @@ export default function ProjectProcess() {
   return (
     <section id="projektablauf" className={styles.process} aria-labelledby="process-title">
       <p className={styles.eyebrow}>Ablauf</p>
-      <h2 id="process-title">Von der Idee bis zur fertigen Website</h2>
-      <p className={styles.intro}>Ein klarer Ablauf, persönliche Zusammenarbeit und eine digitale Lösung, die zu dir und deinem Unternehmen passt.</p>
+      <h2 id="process-title">Von der Idee<br />bis zum <em>ersten Klick.</em></h2>
+      <p className={styles.intro}>Fünf Schritte. Ein persönlicher Weg zu deiner Website.</p>
       <motion.div className={styles.timeline}
         initial={reduced ? 'visible' : 'hidden'}
         whileInView="visible" viewport={{ once: true, amount: .15 }}>

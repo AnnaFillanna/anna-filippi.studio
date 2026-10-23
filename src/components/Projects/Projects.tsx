@@ -5,11 +5,9 @@ import styles from "./Projects.module.scss";
 
 const fillicatSubtitle = "Adaptive Lernplattform für Programmierung";
 const fillicatDetails = [
-  ["Ziel", "Logisches Denken fördern, Programmierkenntnisse nachhaltig aufbauen und Wissenslücken gezielt schließen."],
-  ["Lernsystem", "Adaptive Aufgabenauswahl, automatisierte Code-Tests, mehrstufige Hilfestellungen, Kompetenzanalyse und intelligente Wiederholungen."],
-  ["Besonderheit", "Das System passt sich dem Lernfortschritt an und trainiert nicht nur einzelne Befehle, sondern echtes Problemlösungsdenken."],
-  ["Programmiersprachen", "JavaScript und TypeScript, später Python und weitere Sprachen."],
-  ["Status", "In Entwicklung."],
+  ["Aufgabe", "Programmieren durch praktische Aufgaben und individuelles Training vermitteln."],
+  ["Umsetzung", "Adaptive Übungen, automatische Code-Tests und gezielte Hilfestellungen für JavaScript und TypeScript."],
+  ["Stand", "In Entwicklung. Weitere Programmiersprachen sind geplant."],
 ];
 
 function FilliCatDetails() {
@@ -21,12 +19,9 @@ function FilliCatDetails() {
 }
 
 const danaDetails = [
-  ["Ziel", "Eine stilvolle digitale Präsenz schaffen, die die Persönlichkeit des Studios widerspiegelt, Arbeiten hochwertig präsentiert und die Kontaktaufnahme erleichtert."],
-  ["Webentwicklung", "Umsetzung mit React und TypeScript, responsivem Layout, eleganten Animationen und interaktiven Tattoo- und Piercing-Galerien."],
-  ["Funktionalität", "Integration von Supabase zur geschützten Verwaltung von Bildern und Videos, direkte Terminanfragen über WhatsApp sowie eine interaktive Standortkarte."],
-  ["Besonderheit", "Individuelles Design mit hochwertigen visuellen Elementen, optimierter Performance und benutzerfreundlicher Navigation auf allen Endgeräten."],
-  ["Technologien", "React · TypeScript · Vite · SCSS · Supabase · Vercel"],
-  ["Status", "Abgeschlossen und veröffentlicht."],
+  ["Aufgabe", "Arbeiten des Studios zeigen und den Weg zur Terminanfrage vereinfachen."],
+  ["Umsetzung", "Responsive Website mit Tattoo- und Piercing-Galerien, geschützter Medienverwaltung und WhatsApp-Kontakt."],
+  ["Ergebnis", "Veröffentlicht auf tattoodana.de. Entwickelt mit React, TypeScript und Supabase."],
 ];
 
 function DanaDetails() {
@@ -38,13 +33,9 @@ function DanaDetails() {
 }
 
 const mammaDetails = [
-  ["Ziel", "Eine benutzerfreundliche Anwendung gestalten, die italienisches Flair mit moderner Webtechnologie verbindet und ein individuelles Bestellerlebnis ermöglicht."],
-  ["Webentwicklung", "Umsetzung mit React und TypeScript, responsivem Layout, interaktiven Produktkarten und einer übersichtlichen Benutzeroberfläche."],
-  ["Funktionalität", "Individuelle Pizza-Zusammenstellung mit verschiedenen Teigarten, Größen und Zutaten, dynamischer Preisberechnung sowie Warenkorb und Bestellübersicht."],
-  ["Besonderheit", "Kombination aus klassischer italienischer Ästhetik, modernen Interaktionen und einem intuitiven Pizza-Konfigurator."],
-  ["Technologien", "React · TypeScript · Vite · CSS"],
-  ["Demo ausprobieren", "Teste als Demo-Gast ohne Registrierung den Pizza-Konfigurator, die Zutaten-Auswahl, den Warenkorb und deine Testbestellungen. Alle Bestellungen dienen ausschließlich zu Testzwecken."],
-  ["Status", "Demo-Version – ein eigenständiges Portfolio- und Demonstrationsprojekt. Keine echte Pizzeria und kein kommerzieller Bestellservice."],
+  ["Aufgabe", "Eine individuelle Pizza-Bestellung als interaktive Anwendung erlebbar machen."],
+  ["Umsetzung", "Pizza-Konfigurator mit Zutatenwahl, Preisberechnung und Warenkorb. Entwickelt mit React und TypeScript."],
+  ["Demo", "Ohne Registrierung als Demo-Gast testen. Keine echte Pizzeria; alle Bestellungen sind ausschließlich Tests."],
 ];
 
 const projects = [
@@ -52,9 +43,9 @@ const projects = [
     name: "Dana Tattoo Studio",
     category: "FULL-STACK WEBENTWICKLUNG",
     description:
-      "Konzeption und Entwicklung einer individuellen, responsiven Website für ein Tattoo- und Piercingstudio mit modernem Design und interaktiven Funktionen.",
+      "Eine individuelle Website für ein Tattoo- und Piercingstudio – mit interaktiven Galerien und direktem Kontakt.",
     scope: "React · TypeScript · SCSS · Supabase",
-    status: "",
+    status: "Veröffentlicht · Kundenprojekt",
     imagePrefix: "dana",
     imageExtension: "png",
     detailHref: "/dana-tattoo-studio",
@@ -65,9 +56,9 @@ const projects = [
   {
     name: "Mamma Mia – Pizza mit Amore",
     category: "WEBENTWICKLUNG · INTERAKTIVE DEMO",
-    description: "Konzeption und Entwicklung einer modernen, responsiven Pizzeria-Webanwendung mit interaktivem Pizza-Konfigurator und digitalem Bestellsystem.",
+    description: "Eine interaktive Portfolio-Demo mit Pizza-Konfigurator, Warenkorb und Testbestellungen.",
     scope: "",
-    status: "",
+    status: "Portfolio-Demo · Keine echten Bestellungen",
     imagePrefix: "mamma-mia",
     imageExtension: "jpg",
     detailHref: "https://annafillanna.github.io/Pizzeria-Mama-Mia/#/login",
@@ -79,9 +70,9 @@ const projects = [
     name: "FilliCat",
     category: "EDTECH / SOFTWAREENTWICKLUNG",
     description:
-      "FilliCat ist eine intelligente Lernplattform, die Programmieren durch praktische Aufgaben und individuelles Training vermittelt.",
+      "Programmieren lernen mit praktischen Aufgaben, direktem Feedback und individuellem Training.",
     scope: "",
-    status: "",
+    status: "Eigenes Projekt · In Entwicklung",
     imagePrefix: "fillicat",
     imageExtension: "png",
     detailHref: "/softwareentwicklung",
@@ -183,13 +174,14 @@ export default function Projects({
         <h2 id={`project-${index}`}>{project.name}</h2>
         {project.imagePrefix === "fillicat" && <p className={styles.description}>{fillicatSubtitle}</p>}
         <p className={styles.description}>{project.description}</p>
-        {project.details.map(([label, text]) => (
-          <p key={label} className={styles.description}>
-            <strong>{label}:</strong> {text}
-          </p>
-        ))}
+        <details className={styles.projectDetails}>
+          <summary>Über das Projekt</summary>
+          {project.details.map(([label, text]) => (
+            <p key={label} className={styles.description}><strong>{label}:</strong> {text}</p>
+          ))}
+        </details>
         {project.status && (
-          <p className={styles.description}>{project.status}</p>
+          <p className={styles.projectStatus}>{project.status}</p>
         )}
       </div>
     </motion.article>
@@ -264,7 +256,6 @@ export default function Projects({
             <p className={styles.caseEyebrow}>{selected.category}</p>
             <h2>{selected.name}</h2>
             {!danaOnly && <p>{fillicatSubtitle}</p>}
-            <p>{selected.description}</p>
             {danaOnly ? <DanaDetails /> : <FilliCatDetails />}
           </div>
         </div>

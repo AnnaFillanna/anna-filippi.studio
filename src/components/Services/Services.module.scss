@@ -116,3 +116,28 @@
 .extraList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; list-style: none; padding: 0; }
 .extraList h3 { font: 500 16px/1.4 $sans; margin: 0 0 12px; }
 @media(max-width: 1000px) { .primaryList, .extraList { grid-template-columns: 1fr; } .primaryService h3 { font-size: 34px; } }
+
+// Alternate open service columns, compact editorial rows and a quiet statement.
+.serviceNumber { font: italic 400 clamp(38px, 4vw, 56px)/1 $serif; color: #956971; margin-bottom: 24px; }
+.primaryService { padding-top: 22px; }
+.additional { display: grid; grid-template-columns: 1fr 1.7fr; gap: 8%; margin-top: clamp(70px, 9vw, 120px); align-items: start; }
+.additionalHeading { padding-top: 20px; }
+.additionalHeading .eyebrow { margin-bottom: 16px; }
+.additionalHeading h2 { font: 400 clamp(38px, 4.5vw, 64px)/1.08 $serif; }
+.additionalHeading em { font-weight: 400; }
+.extraList { display: block; margin: 0; }
+.extraList li { padding: 22px 0; border-top: 1px solid #650d2026; }
+.extraList li:last-child { border-bottom: 1px solid #650d2026; }
+.extraList h3 { font: 500 23px/1.25 $serif; margin-bottom: 8px; }
+.extraList .description { max-width: 48ch; font-size: 15px; }
+.intro { margin-top: clamp(80px, 10vw, 140px); padding-top: clamp(50px, 6vw, 80px); gap: 10%; }
+.pricing h2 { font-size: clamp(42px, 5vw, 70px); }
+.pricing .pricingNote { margin-top: 22px; font: italic 400 24px/1.4 $serif; color: $bordeaux; max-width: 30ch; }
+@media (max-width: 760px) {
+  .additional { grid-template-columns: 1fr; gap: 26px; }
+  .additionalHeading h2 br { display: none; }
+  .additionalHeading h2 em::before { content: ' '; }
+  .primaryService { position: relative; padding-left: 48px; }
+  .serviceNumber { position: absolute; left: 0; top: 24px; font-size: 30px; }
+  .primaryService h3 { font-size: clamp(26px, 6vw, 34px); }
+}
