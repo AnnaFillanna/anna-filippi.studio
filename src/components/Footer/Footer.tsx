@@ -37,7 +37,8 @@ export default function Footer() {
             Ich liebe es, Code<br />
             <em>in etwas Schönes zu verwandeln.</em>
           </h2>
-          <p className={styles.personalNote}>Websites zu gestalten und zum Leben zu erwecken, macht mir einfach Freude. Vielleicht entsteht die nächste mit dir – ich freue mich auf unsere Zusammenarbeit.</p>
+          <p className={styles.personalNote}>Websites zu gestalten und zum Leben zu erwecken macht mir einfach Freude. Vielleicht entsteht die nächste mit dir. Ich freue mich auf unsere Zusammenarbeit.</p>
+          <p className={styles.signature}>Mit Liebe,<br /><span>Anna Filippi</span></p>
         </div>
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Anna Filippi</span>

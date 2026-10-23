@@ -48,3 +48,15 @@
 .invitation { margin: 18px 0; font-size: clamp(27px, 3vw, 39px); }
 .content .personalNote { font: 400 15px/1.8 $sans; max-width: 48ch; margin: 0; color: #534447; }
 @media(max-width: 480px) { .inner { min-height: 0; } .content { padding-block: 24px; } }
+
+.invitation, .content .personalNote, .content .signature {
+  font-family: 'Allura', 'Cormorant Garamond', cursive;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+}
+.invitation { font-size: clamp(32px, 3.5vw, 44px); line-height: 1.2; }
+.invitation em { font-style: normal; }
+.content .personalNote { font-size: clamp(25px, 2.3vw, 30px); line-height: 1.4; max-width: 42ch; color: $bordeaux; }
+.content .signature { margin: 20px 0 0; font-size: 28px; line-height: 1.15; }
+.signature span { font-size: 36px; }
