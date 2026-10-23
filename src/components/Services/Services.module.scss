@@ -3,7 +3,7 @@
 .services {
   background: $ivory;
   color: $bordeaux;
-  padding: calc(clamp(28px, 3vw, 48px) + 16vw) 8% clamp(70px, 9vw, 145px);
+  padding: clamp(70px, 8vw, 110px) 8% clamp(70px, 9vw, 145px);
   overflow-x: clip;
   scroll-margin-top: 90px;
 }
@@ -37,7 +37,7 @@
 .galleryLink:hover { border-color: currentColor; }
 .galleryLink:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
 @media (max-width: 760px) {
-  .services { padding: calc(16px + 36vw) 7% 65px; }
+  .services { padding: 65px 7%; }
   .list { grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 44px; }
   .service h3 { font-size: clamp(28px, 6.8vw, 36px); }
   .eyebrow { margin-bottom: 18px; font-size: 10px; }

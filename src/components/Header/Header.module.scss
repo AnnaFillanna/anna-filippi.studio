@@ -149,3 +149,13 @@
   .nav { gap: 2.6vw; max-width: none; flex-wrap: nowrap; padding: 0; }
   .nav a, .nav a:nth-child(n+4), .nav a:nth-child(-n+3) { font-family: $serif; font-size: clamp(16px, 1.25vw, 22px); font-weight: 500; letter-spacing: 0; color: #493e34; }
 }
+
+.inquiry { display: none; }
+@media (min-width: 1051px) {
+  .atelier { padding: 16px 5.6%; gap: 5vw; }
+  .atelier .monogram { font-size: 55px; }
+  .atelier .nav { flex: 1; gap: clamp(16px, 2.4vw, 38px); }
+  .atelier .nav a, .atelier .nav a:nth-child(n+4), .atelier .nav a:nth-child(-n+3) { font: 500 clamp(8px, .65vw, 11px)/1.5 $sans; text-transform: uppercase; letter-spacing: .12em; color: $bordeaux; }
+  .atelier .inquiry { display: flex; align-items: center; gap: 15px; padding: 13px 20px; border: 1px solid #813441; border-radius: 999px; font: 500 9px/1.5 $sans; text-transform: uppercase; letter-spacing: .12em; white-space: nowrap; }
+  .inquiry span { font-size: 18px; }
+}

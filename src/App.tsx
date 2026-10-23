@@ -91,7 +91,7 @@ function Site() {
       <a className="skip-link" href="#inhalt">
         Zum Inhalt springen
       </a>
-      <Header contactHref={isLegalPage ? '/#kontakt' : '#kontakt'} />
+      <Header atelier={pagePath === "/"} contactHref={isLegalPage ? '/#kontakt' : '#kontakt'} />
       <main id="inhalt">
         <Routes>
           <Route path="/" element={<><Hero /><Services /><ProjectProcess /></>} />
