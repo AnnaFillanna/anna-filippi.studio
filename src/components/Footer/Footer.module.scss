@@ -42,3 +42,9 @@
 .channel a, .pending { font-size: 14px; letter-spacing: .02em; }
 .bottom { font-size: 12px; }
 @media(max-width: 480px) { .wordmark { font-size: 25px; } .topline { font-size: 11px; } }
+
+.inner { min-height: 0; padding: 26px 7% 20px; }
+.content { flex: initial; max-width: 560px; padding: 28px 0 32px; }
+.invitation { margin: 18px 0; font-size: clamp(27px, 3vw, 39px); }
+.content .personalNote { font: 400 15px/1.8 $sans; max-width: 48ch; margin: 0; color: #534447; }
+@media(max-width: 480px) { .inner { min-height: 0; } .content { padding-block: 24px; } }

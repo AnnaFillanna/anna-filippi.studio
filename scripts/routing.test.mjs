@@ -80,7 +80,7 @@ test('home separates three core services from supporting services', async () => 
   assert.ok(html.indexOf('Fotografien ansehen') < html.indexOf('Ergänzende Leistungen'));
   assert.match(html, /<h2[^>]*id="services-title"[^>]*>Meine Leistungen<\/h2>/);
   for (const benefit of ['Maßgeschneiderte Konzepte', 'Klare Prozesse', 'Persönliche Begleitung']) assert.ok(html.includes(benefit));
-  assert.ok(html.includes('mailto:annafilippi@web.de'));
+  assert.ok(html.includes('in etwas Schönes zu verwandeln.'));
   for (const label of ['Impressum', 'Datenschutz', 'Cookies']) assert.ok(html.includes(label));
 });
 

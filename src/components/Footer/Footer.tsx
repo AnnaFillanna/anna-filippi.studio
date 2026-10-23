@@ -34,40 +34,10 @@ export default function Footer() {
             <AnimatedLetters text="ANNA FILIPPI" />
           </a>
           <h2 className={styles.invitation}>
-            Eine Idee. Eine Frage.
-            <br />
-            <em>Einfach ins Gespräch kommen.</em>
+            Ich liebe es, Code<br />
+            <em>in etwas Schönes zu verwandeln.</em>
           </h2>
-          <nav className={styles.navigation} aria-label="Meine Schwerpunkte">
-            <a href="/softwareentwicklung">Softwareentwicklung</a>
-            <a href="/projekte">Webentwicklung</a>
-            <a href="/fotografie">Produktfotografie</a>
-          </nav>
-          <div className={styles.channels}>
-            <div className={styles.channel}>
-              <p>
-                Du hast eine Frage oder möchtest mir von deiner Idee erzählen?
-              </p>
-              {contact.email ? (
-                <a href={`mailto:${contact.email}`}>Schreib mir per E-Mail </a>
-              ) : (
-                <span className={styles.pending} aria-disabled="true">
-                  Schreib mir per E-Mail{" "}
-                </span>
-              )}
-            </div>
-            <div className={styles.channel}>
-              <p>Du möchtest mich lieber direkt per WhatsApp erreichen?</p>
-              <a
-                href={`https://wa.me/${contact.whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Schreib mir per WhatsApp (neuer Tab)"
-              >
-                Schreib mir per WhatsApp{" "}
-              </a>
-            </div>
-          </div>
+          <p className={styles.personalNote}>Websites zu gestalten und zum Leben zu erwecken, macht mir einfach Freude. Vielleicht entsteht die nächste mit dir – ich freue mich auf unsere Zusammenarbeit.</p>
         </div>
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Anna Filippi</span>

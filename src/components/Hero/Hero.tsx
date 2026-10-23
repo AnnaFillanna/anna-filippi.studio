@@ -38,12 +38,14 @@ export default function Hero() {
         <motion.p {...intro(0.1)} className={styles.eyebrow}>
           DIGITAL ATELIER
         </motion.p>
+        <div className={styles.titleGroup}>
         <h1 id="hero-title" aria-label="ANNA FILIPPI">
           <AnimatedLetters text="ANNA FILIPPI" flock />
         </h1>
         <motion.h2 {...intro(0.25)} className={styles.headline}>
-          Software. Websites.<br />Produktfotografie.
+          <span>Software</span><span aria-hidden="true">·</span><span>Websites</span><span aria-hidden="true">·</span><span>Produktfotografie</span>
         </motion.h2>
+        </div>
         <motion.p {...intro(0.4)} className={styles.description}>
           Ich entwickle individuelle Software und Websites und fotografiere deine Produkte. Drei Schwerpunkte – persönlich mit dir umgesetzt.
         </motion.p>
