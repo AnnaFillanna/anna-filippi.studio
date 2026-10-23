@@ -7,7 +7,7 @@ import "@fontsource/montserrat/latin-400.css";
 import "@fontsource/montserrat/latin-500.css";
 import "@fontsource/montserrat/latin-600.css";
 import "@fontsource/bodoni-moda/latin-400.css";
-import "@fontsource/allura/latin-400.css";
+import "@fontsource/petit-formal-script/latin-400.css";
 import "./styles/globals.scss";
 import App from "./App";
 import { migrateLegacyLink } from "./routes";

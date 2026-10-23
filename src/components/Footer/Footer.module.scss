@@ -50,13 +50,13 @@
 @media(max-width: 480px) { .inner { min-height: 0; } .content { padding-block: 24px; } }
 
 .invitation, .content .personalNote, .content .signature {
-  font-family: 'Allura', 'Cormorant Garamond', cursive;
+  font-family: 'Petit Formal Script', 'Cormorant Garamond', cursive;
   font-weight: 400;
   font-style: normal;
   letter-spacing: 0;
 }
-.invitation { font-size: clamp(32px, 3.5vw, 44px); line-height: 1.2; }
+.invitation { font-size: clamp(23px, 2.5vw, 32px); line-height: 1.55; }
 .invitation em { font-style: normal; }
-.content .personalNote { font-size: clamp(25px, 2.3vw, 30px); line-height: 1.4; max-width: 42ch; color: $bordeaux; }
-.content .signature { margin: 20px 0 0; font-size: 28px; line-height: 1.15; }
-.signature span { font-size: 36px; }
+.content .personalNote { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.85; max-width: 42ch; color: $bordeaux; }
+.content .signature { margin: 22px 0 0; font-size: 20px; line-height: 1.6; }
+.signature span { font-size: 27px; }
