@@ -196,15 +196,13 @@ export default function Projects({
   );
   if (softwareOnly || danaOnly)
     return (
-      <section className={styles.caseStudy} aria-labelledby="software-title">
+      <section className={`${styles.caseStudy} ${softwareOnly ? styles.softwarePage : ""}`} aria-labelledby="software-title">
         <div className={styles.caseInner}>
           <a className={styles.back} href="/#leistungen">
             <span aria-hidden="true">← </span>ZURÜCK ZUM ATELIER
           </a>
           <header className={styles.caseIntro}>
-            <p className={styles.caseEyebrow}>
-              AUSGEWÄHLTES PROJEKT / {danaOnly ? "01" : "03"} — 03
-            </p>
+            {danaOnly && <p className={styles.caseEyebrow}>AUSGEWÄHLTES PROJEKT / 01 — 03</p>}
             <h1 id="software-title" tabIndex={-1}>
               {danaOnly ? (
                 <>

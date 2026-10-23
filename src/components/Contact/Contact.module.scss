@@ -105,19 +105,20 @@
   }
 }
 .submit {
-  width: 100%;
-  min-height: 54px;
-  padding: 16px 24px;
-  border: 1px solid $bordeaux;
-  background: $bordeaux;
-  color: $white;
+  width: auto;
+  min-height: 48px;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid #650d2070;
+  background: transparent;
+  color: $bordeaux;
   font: inherit;
   font-size: 16px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: background 0.25s;
   &:hover:not(:disabled) {
-    background: $black;
+    border-bottom-color: $bordeaux;
   }
   &:disabled {
     opacity: 0.55;
@@ -126,8 +127,8 @@
 }
 .whatsapp {
   display: inline-block;
-  font-size: 16px;
-  letter-spacing: 0.1em;
+  font-size: 14px;
+  letter-spacing: 0.02em;
   line-height: 1.8;
   padding: 14px 0;
   border-bottom: 1px solid #650d2055;
@@ -230,3 +231,6 @@
   height: auto;
   margin-top: 32px;
 }
+
+.submit { font: 400 22px/1.4 $serif; }
+.note { font-size: 14px; }

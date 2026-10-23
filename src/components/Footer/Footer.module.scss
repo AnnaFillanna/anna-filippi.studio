@@ -33,3 +33,12 @@
 @media (min-width: 761px) { .topline .location { display: none; } }
 
 .topline .location { display: none; }
+.topline { font-size: 11px; letter-spacing: .12em; }
+.wordmark { font-family: $serif; font-size: 28px; font-weight: 400; letter-spacing: .035em; }
+.invitation { font-size: clamp(28px, 3vw, 40px); line-height: 1.2; }
+.navigation { gap: 6px 22px; margin: 0 0 28px; }
+.navigation a { font-size: 13px; border-bottom-color: #650d2026; }
+.channel p { font-size: 15px; }
+.channel a, .pending { font-size: 14px; letter-spacing: .02em; }
+.bottom { font-size: 12px; }
+@media(max-width: 480px) { .wordmark { font-size: 25px; } .topline { font-size: 11px; } }

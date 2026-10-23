@@ -158,7 +158,7 @@ export default function Contact() {
               type="submit"
               disabled={!contact.privacyUrl || !contact.formEnabled}
             >
-              {status === "sending" ? "WIRD GESENDET …" : "ANFRAGE ABSENDEN "}
+              {status === "sending" ? "Wird gesendet …" : "Anfrage absenden"}
             </button>
           </fieldset>
           {!contact.formEnabled && <p className={styles.note}>
@@ -180,7 +180,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             aria-label="Lieber per WhatsApp kontaktieren (öffnet einen neuen Tab)"
           >
-            LIEBER PER WHATSAPP KONTAKTIEREN{" "}
+            Lieber per WhatsApp kontaktieren{" "}
           </a>
         </form>
       </div>

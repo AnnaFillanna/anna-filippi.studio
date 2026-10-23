@@ -273,9 +273,9 @@
 .headline { font-size: clamp(32px, 3.6vw, 58px); max-width: 720px; }
 .description { font-size: clamp(16px, 1.4vw, 20px); color: #650d20; max-width: 510px; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 30px; }
-.servicesLink { padding: 15px 22px; background: #650d20; color: #fffaf3; font: 500 16px/1.5 $sans; }
-.servicesLink:hover { background: #4e0a19; }
-.actions .projectLink { margin-top: 0; font: 500 16px/1.5 $sans; }
+.servicesLink { padding: 10px 0; border-bottom: 1px solid #650d2070; color: #650d20; font: 400 22px/1.4 $serif; }
+.servicesLink:hover { border-bottom-color: currentColor; }
+.actions .projectLink { margin-top: 0; font: 400 15px/1.5 $sans; border-bottom-color: #650d2040; }
 @media (max-width: 760px) {
   .hero { min-height: max(100svh, 178vw); }
   .copy { padding-bottom: 80px; }

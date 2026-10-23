@@ -49,10 +49,10 @@ export default function Footer() {
                 Du hast eine Frage oder möchtest mir von deiner Idee erzählen?
               </p>
               {contact.email ? (
-                <a href={`mailto:${contact.email}`}>SCHREIB MIR PER E-MAIL </a>
+                <a href={`mailto:${contact.email}`}>Schreib mir per E-Mail </a>
               ) : (
                 <span className={styles.pending} aria-disabled="true">
-                  SCHREIB MIR PER E-MAIL{" "}
+                  Schreib mir per E-Mail{" "}
                 </span>
               )}
             </div>
@@ -64,7 +64,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Schreib mir per WhatsApp (neuer Tab)"
               >
-                SCHREIB MIR PER WHATSAPP{" "}
+                Schreib mir per WhatsApp{" "}
               </a>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function Footer() {
             )}
           </nav>
           <a className={styles.up} href="/#start">
-            NACH OBEN{" "}
+            Nach oben{" "}
           </a>
         </div>
       </div>

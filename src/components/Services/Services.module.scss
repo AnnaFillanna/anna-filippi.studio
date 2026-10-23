@@ -106,13 +106,13 @@
 }
 
 .serviceLead { font: 18px/1.7 $sans; max-width: 60ch; margin-bottom: 32px; }
-.primaryList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 0; margin: 0; list-style: none; }
-.primaryService { display: flex; flex-direction: column; padding: 30px 24px; border: 1px solid #650d2040; border-top: 4px solid $bordeaux; background: #fffaf3; min-width: 0; }
-.primaryService h3 { font: 500 clamp(27px, 2.5vw, 38px)/1.2 $serif; overflow-wrap: anywhere; margin: 0 0 20px; }
-.primaryService .description { font-size: 17px; margin-bottom: 24px; }
-.primaryService .galleryLink { margin-top: auto; align-self: flex-start; font-weight: 600; letter-spacing: 0; font-size: 16px; }
+.primaryList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; padding: 0; margin: 0; list-style: none; }
+.primaryService { display: flex; flex-direction: column; padding: 26px 0 0; border-top: 1px solid #650d2030; min-width: 0; }
+.primaryService h3 { font: 400 clamp(27px, 2.5vw, 36px)/1.2 $serif; overflow-wrap: anywhere; margin: 0 0 20px; }
+.primaryService .description { font-size: 16px; margin-bottom: 24px; }
+.primaryService .galleryLink { margin-top: auto; align-self: flex-start; font-weight: 400; letter-spacing: .02em; font-size: 14px; }
 .additional { margin-top: 64px; }
 .additional h2 { font: 400 32px/1.2 $serif; margin-bottom: 16px; }
 .extraList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; list-style: none; padding: 0; }
-.extraList h3 { font: 600 18px/1.4 $sans; margin: 0 0 12px; }
+.extraList h3 { font: 500 16px/1.4 $sans; margin: 0 0 12px; }
 @media(max-width: 1000px) { .primaryList, .extraList { grid-template-columns: 1fr; } .primaryService h3 { font-size: 34px; } }
