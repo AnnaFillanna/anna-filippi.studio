@@ -80,10 +80,10 @@ const projects = [
     status: "Eigenes Projekt · Quellcode auf GitHub",
     imagePrefix: "kavro",
     imageExtension: "png",
-    detailHref: "https://github.com/AnnaFillanna/kavro-barber-shop",
+    detailHref: "http://localhost:5174/",
     details: kavroDetails,
     buttonLabel: "Projekt ansehen",
-    href: "https://github.com/AnnaFillanna/kavro-barber-shop",
+    href: "http://localhost:5174/",
   },
   {
     name: "FilliCat",
