@@ -351,8 +351,8 @@
   .hero { background: #faecd7; }
   .copy { padding-bottom: 24px; }
   .description { font-size: 15px; line-height: 1.6; }
-  .actions { margin-top: 20px; gap: 12px 22px; }
-  .actions .servicesLink, .actions .projectLink { font-size: clamp(18px, 4.8vw, 23px); }
+  .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; width: 100%; margin-top: 20px; gap: 16px; }
+  .actions .servicesLink, .actions .projectLink { display: flex; align-items: center; justify-content: center; min-height: 44px; text-align: center; font-size: clamp(17px, 4.8vw, 23px); }
   .portrait {
     margin-top: -8px;
     height: clamp(340px, 100vw, 600px);
