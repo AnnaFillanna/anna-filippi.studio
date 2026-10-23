@@ -345,3 +345,19 @@
   .service { gap: 7px; }
   .actions .servicesLink, .actions .projectLink { padding: 12px 18px; gap: 14px; }
 }
+
+// Frame the new portrait independently on narrow screens.
+@media (max-width: 760px) {
+  .hero { background: #faecd7; }
+  .copy { padding-bottom: 24px; }
+  .description { font-size: 15px; line-height: 1.6; }
+  .actions { margin-top: 20px; gap: 12px 22px; }
+  .actions .servicesLink, .actions .projectLink { font-size: clamp(18px, 4.8vw, 23px); }
+  .portrait {
+    margin-top: -8px;
+    height: clamp(340px, 100vw, 600px);
+    mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 88%, transparent);
+  }
+  .portrait img { object-position: 78% center; }
+  .aiCredit { bottom: -12px; right: 6%; color: #650d20; font-size: 8px; }
+}
