@@ -26,6 +26,9 @@ export default function Hero() {
           fetchPriority="high"
         />
       </div>
+      <div className={styles.fabricExtension} aria-hidden="true">
+        <img src="/images/hero-fabric-extension.png" alt="" width="2172" height="724" />
+      </div>
       <div className={styles.copy}>
         <motion.p {...intro(0.1)} className={styles.eyebrow}>
           DIGITAL ATELIER

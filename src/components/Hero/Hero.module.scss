@@ -312,7 +312,7 @@
 
 // Desktop composition follows the supplied 16:9 reference.
 @media (min-width: 761px) {
-  .hero { height: max(720px, 56.25vw); min-height: 100svh; overflow: hidden; }
+  .hero { height: max(720px, 56.25vw); min-height: 100svh; overflow: visible; }
   .portrait img { object-position: center; }
   .copy { padding: clamp(150px, 12.5vw, 240px) 4.8% 0; }
   .eyebrow { margin-bottom: 18px; font-size: clamp(10px, .86vw, 15px); letter-spacing: .36em; color: #715b4b; }
