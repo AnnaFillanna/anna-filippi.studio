@@ -18,10 +18,10 @@ export default function Hero() {
     >
       <div className={styles.portrait}>
         <img
-          src="/images/hero-atelier.png"
+          src="/images/anna-laptop-original.jpg"
           alt="Anna Filippi im schwarzen Blazer mit einem Laptop."
-          width="1672"
-          height="941"
+          width="853"
+          height="1280"
           fetchPriority="high"
         />
       </div>
@@ -53,7 +53,6 @@ export default function Hero() {
           <a href="#kontakt" className={styles.projectLink}>Projekt anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>
         </motion.div>
       </div>
-      <p className={styles.aiCredit}>Bildhintergrund mit KI gestaltet</p>
     </section>
   );
 }

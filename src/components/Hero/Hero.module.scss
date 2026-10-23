@@ -1,6 +1,6 @@
 @use '../../styles/variables' as *;
-.hero { position: relative; isolation: isolate; min-height: 720px; height: max(720px, 56.25vw); overflow: hidden; color: $bordeaux; background: #f3e8dc; }
-.portrait { position: absolute; inset: 0; z-index: -2; img { width: 100%; height: 100%; object-fit: cover; object-position: center; } }
+.hero { position: relative; isolation: isolate; min-height: 720px; height: max(720px, 56.25vw); overflow: hidden; color: $bordeaux; background: linear-gradient(110deg, #f3e8dc 35%, #e8e7e8 75%); }
+.portrait { position: absolute; inset: 0 15% 0 auto; width: min(48%, max(480px, 37.5vw)); z-index: -2; mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; } }
 .curve { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; fill: none; stroke: #963f4b; stroke-width: 1.2; path { vector-effect: non-scaling-stroke; } }
 .copy { position: relative; padding: clamp(145px, 11.7vw, 225px) 5.6% 90px; width: 52%; }
 .eyebrow { font: 500 clamp(10px, .95vw, 16px)/1.5 $sans; letter-spacing: .48em; margin-bottom: 14px; }
@@ -17,7 +17,7 @@
 .aiCredit { position: absolute; bottom: 12px; left: 5.6%; font: 400 8px/1.4 $sans; letter-spacing: .06em; color: #725b52; }
 @media (min-width: 761px) and (max-width: 1050px) {
   .copy { width: 57%; padding-inline: 5%; }
-  .portrait img { object-position: 58% center; }
+  .portrait { left: auto; right: 0; width: 48%; }
   .copy h1 { font-size: 9vw; }
   .headline { gap: 10px; font-size: 15px; }
   .service { gap: 7px; }
@@ -39,7 +39,7 @@
   .actions { width: 100%; max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .servicesLink, .projectLink { font-size: clamp(15px, 4.2vw, 22px); padding: 10px 6px; gap: 8px; }
   .arrow { display: none; }
-  .portrait { order: 1; position: relative; inset: auto; height: clamp(390px, 115vw, 650px); margin-top: -10px; z-index: -1; mask-image: linear-gradient(to bottom, transparent, #000 16%); img { object-position: 77% center; } }
+  .portrait { order: 1; position: relative; inset: auto; width: 100%; height: auto; margin-top: 0; z-index: -1; mask-image: linear-gradient(to bottom, transparent, #000 8%); img { height: auto; width: 100%; object-fit: contain; object-position: center; } }
   .curve { display: none; }
   .aiCredit { left: 6%; bottom: 10px; color: #3e3230; background: #f3e8dcd9; padding: 3px 6px; }
 }
