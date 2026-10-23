@@ -10,7 +10,7 @@ export const pages = {
   },
   '/projekte': {
     title: 'Web & Software – Projekte | Anna Filippi',
-    description: 'Webdesign und Softwareentwicklung aus Andernach bei Koblenz: Entdecke FilliCat, Dana Tattoo Studio und die interaktive Pizzeria-Demo Mamma Mia.',
+    description: 'Webdesign und Softwareentwicklung aus Andernach bei Koblenz: Entdecke FilliCat, Dana Tattoo Studio, KAVRO Barber Studio und die interaktive Pizzeria-Demo Mamma Mia.',
   },
   '/softwareentwicklung': {
     title: 'Softwareentwicklung – Anna Filippi',

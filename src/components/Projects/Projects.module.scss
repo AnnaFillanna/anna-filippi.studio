@@ -309,6 +309,11 @@
     height: auto;
   }
 }
+.kavroScreen img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center 60%;
+}
 .laptopBase {
   height: clamp(7px, 1.7vw, 20px);
   width: 110%;
@@ -334,6 +339,10 @@
     height: auto;
     display: block;
   }
+}
+.kavroPhone img {
+  aspect-ratio: 9 / 19;
+  object-fit: cover;
 }
 .caseDetails {
   max-width: 950px;

@@ -38,6 +38,12 @@ const mammaDetails = [
   ["Demo", "Ohne Registrierung als Demo-Gast testen. Keine echte Pizzeria; alle Bestellungen sind ausschließlich Tests."],
 ];
 
+const kavroDetails = [
+  ["Aufgabe", "Den digitalen Auftritt eines modernen Barber Studios mit einer unkomplizierten Terminplanung verbinden."],
+  ["Umsetzung", "Responsive Studio-Website mit Serviceübersicht und interaktiver Terminbuchung."],
+  ["Technologien", "Entwickelt mit React, TypeScript und React Router."],
+];
+
 const projects = [
   {
     name: "Dana Tattoo Studio",
@@ -65,6 +71,19 @@ const projects = [
     details: mammaDetails,
     buttonLabel: "Demo ausprobieren",
     href: "https://annafillanna.github.io/Pizzeria-Mama-Mia/#/login",
+  },
+  {
+    name: "KAVRO — Barber Studio",
+    category: "WEBENTWICKLUNG · BUCHUNGSERLEBNIS",
+    description: "Ein digitaler Auftritt für ein modernes Barber Studio – mit Serviceübersicht und interaktiver Terminbuchung.",
+    scope: "",
+    status: "Eigenes Projekt · Quellcode auf GitHub",
+    imagePrefix: "kavro",
+    imageExtension: "png",
+    detailHref: "https://github.com/AnnaFillanna/kavro-barber-shop",
+    details: kavroDetails,
+    buttonLabel: "Projekt ansehen",
+    href: "https://github.com/AnnaFillanna/kavro-barber-shop",
   },
   {
     name: "FilliCat",
@@ -148,7 +167,7 @@ export default function Projects({
         aria-label={`${project.name}: Projekt ansehen`}
       >
         <div className={styles.laptop}>
-          <div className={styles.laptopScreen}>
+          <div className={`${styles.laptopScreen} ${project.imagePrefix === "kavro" ? styles.kavroScreen : ""}`}>
             <img
               src={`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`}
               alt={`Desktop-Ansicht von ${project.name}`}
@@ -159,10 +178,10 @@ export default function Projects({
           </div>
           <div className={styles.laptopBase} aria-hidden="true" />
         </div>
-        <div className={styles.phone}>
+        <div className={`${styles.phone} ${project.imagePrefix === "kavro" ? styles.kavroPhone : ""}`}>
           <img
-            src={`/images/projects/${project.imagePrefix}-mobile.${project.imageExtension}`}
-            alt={`Mobile Ansicht von ${project.name}`}
+            src={`/images/projects/${project.imagePrefix}-mobile.${project.imagePrefix === "kavro" ? "jpg" : project.imageExtension}`}
+            alt={project.imagePrefix === "kavro" ? "Barber bei der Arbeit im KAVRO Studio" : `Mobile Ansicht von ${project.name}`}
             width="390"
             height="844"
             loading="lazy"
