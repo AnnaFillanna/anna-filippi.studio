@@ -71,7 +71,7 @@ export default function Projects({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
   };
-  const selected = projects[danaOnly ? 0 : 2];
+  const selected = projects.find(project => project.imagePrefix === (danaOnly ? "dana" : "fillicat"))!;
   const imagePrefix = danaOnly ? "dana" : "fillicat";
   const renderProject = (project: (typeof projects)[number], index: number) => (
     <motion.article

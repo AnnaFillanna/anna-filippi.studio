@@ -152,6 +152,7 @@ export default function Contact() {
                 "Die Datenschutzerklärung wird noch ergänzt. Der Formularversand ist bis dahin deaktiviert."
               )}
             </p>
+            <div className={styles.actions}>
             <button
               className={styles.submit}
               type="submit"
@@ -159,6 +160,16 @@ export default function Contact() {
             >
               {status === "sending" ? "Wird gesendet …" : "Anfrage absenden"}
             </button>
+          <a
+            className={styles.whatsapp}
+            href={`https://wa.me/${contact.whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Per WhatsApp kontaktieren (öffnet einen neuen Tab)"
+          >
+            Per WhatsApp kontaktieren
+          </a>
+            </div>
           </fieldset>
           {!contact.formEnabled && <p className={styles.note}>
             Der Formularversand ist noch nicht verfügbar. Schreib mir gerne per{' '}
@@ -172,15 +183,7 @@ export default function Contact() {
           >
             {message}
           </p>
-          <a
-            className={styles.whatsapp}
-            href={`https://wa.me/${contact.whatsappNumber}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Lieber per WhatsApp kontaktieren (öffnet einen neuen Tab)"
-          >
-            Lieber per WhatsApp kontaktieren{" "}
-          </a>
+
         </form>
       </div>
     </section>

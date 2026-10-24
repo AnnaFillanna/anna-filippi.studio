@@ -4,7 +4,7 @@
 .curve { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -3; pointer-events: none; fill: none; stroke: #963f4b; stroke-width: 1.2; path { vector-effect: non-scaling-stroke; } }
 .copy { position: relative; padding: clamp(145px, 11.7vw, 225px) 5.6% 90px; width: 52%; }
 .eyebrow { font: 500 clamp(10px, .95vw, 16px)/1.5 $sans; letter-spacing: .48em; margin-bottom: 14px; }
-.copy h1 { font: 400 clamp(76px, 8.15vw, 150px)/.88 'Bodoni Moda', Georgia, serif; letter-spacing: -.04em; margin: 0; span { display: block; } }
+.copy h1 { font: 400 clamp(76px, 8.15vw, 150px)/1 'Bodoni Moda', Georgia, serif; letter-spacing: -.015em; margin: 0; span { display: block; } span + span { margin-top: .06em; } }
 .headline { display: flex; align-items: center; gap: 1.3vw; margin-top: 30px; font: 500 clamp(15px, 1.4vw, 24px)/1.05 $serif; color: #493e34; }
 .service { display: flex; align-items: center; gap: 1vw; white-space: nowrap; svg { width: 2.5vw; min-width: 24px; height: 2.5vw; min-height: 24px; fill: none; stroke: #813441; stroke-width: 1.7; } }
 .separator { font-size: 0; width: 1px; min-width: 1px; height: 30px; background: #946b60; }
@@ -30,7 +30,7 @@
   .hero { height: auto; min-height: 0; display: flex; flex-direction: column; background: #f3e8dc url("/images/hero-sunlight.jpg") center / cover no-repeat; }
   .copy { width: 100%; padding: 105px 6% 22px; }
   .eyebrow { font-size: 9px; letter-spacing: .4em; margin-bottom: 17px; }
-  .copy h1 { font-size: clamp(66px, 18vw, 125px); line-height: .9; }
+  .copy h1 { font-size: clamp(66px, 18vw, 125px); line-height: 1; }
   .headline { margin-top: 24px; justify-content: space-between; gap: 9px; font-size: clamp(14px, 3.5vw, 18px); }
   .service { gap: 6px; svg { width: 22px; height: 22px; min-width: 22px; min-height: 22px; } }
   .separator { height: 26px; }
@@ -50,7 +50,7 @@
 
 @media (max-width: 760px) { .hero::before { top: 55%; width: 4%; } }
 
-.servicesLink, .projectLink { @include pill-control; }
+.servicesLink, .projectLink { @include pill-control; font-family: $sans; font-size: 18px; min-height: 56px; }
 @media (max-width: 760px) { .servicesLink, .projectLink { padding-inline: 8px; } }
 @media (max-width: 420px) {
   .headline { align-items: flex-start; gap: 6px; }
@@ -60,4 +60,10 @@
 @media (min-width: 761px) and (max-width: 1050px) {
   .servicesLink, .projectLink { padding-inline: 8px; }
   .arrow { display: none; }
+}
+
+@media (max-width: 1050px) { .servicesLink, .projectLink { font-size: 17px; } }
+@media (min-width: 1051px) {
+  .actions { max-width: 560px; }
+  .servicesLink, .projectLink { padding-inline: 12px; gap: 12px; }
 }

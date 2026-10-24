@@ -241,3 +241,27 @@
 .intro { text-align: center; }
 .form { max-width: none; }
 @media (max-width: 540px) { .footer { padding-top: 104px; } }
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  .submit, .whatsapp {
+    @include pill-control;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 56px;
+    padding: 14px 18px;
+    border: 1px solid $bordeaux;
+    font: 500 18px/1.5 $sans;
+    letter-spacing: 0;
+    text-decoration: none;
+    color: $bordeaux;
+    background: transparent;
+  }
+  .submit:hover:not(:disabled), .whatsapp:hover { background: #e9dfd3; }
+}
+@media (max-width: 600px) { .actions { grid-template-columns: minmax(0, 1fr); } }
