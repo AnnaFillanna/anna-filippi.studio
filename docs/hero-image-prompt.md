@@ -16,3 +16,14 @@ Prompt: Create a clean website hero background by compositing image 1 (the actua
 ## Original portrait correction
 
 The active hero now uses `public/images/anna-laptop-original.jpg`, a byte-identical copy of the supplied Foto 2.jpg (853 × 1280). No image generation, retouching, or recompression was applied. The original photographic background is retained, with CSS edge blending and a separate CSS page background. The generated atelier composite is no longer displayed.
+
+
+## Separate sunlit background (2026-10-24)
+
+The original portrait remains byte-identical in `public/images/anna-laptop-original.jpg`. A separate luminance mask (`anna-laptop-mask.png`), extracted using macOS Vision foreground segmentation, hides its gray backdrop through CSS. No generative editing or retouching is applied to the person.
+
+Background asset: `public/images/hero-sunlight.png`. Generated separately with this prompt:
+
+> Photorealistic empty background plate for an elegant personal portfolio website, 16:9 landscape. Warm neutral ivory plaster wall, soft natural sunlight falling diagonally from upper right across the wall, beautiful subtle blurred palm frond shadows ONLY in far right third, faint architectural window light, understated luxury editorial photography. Entire left half and center are clean pale ivory negative space for text and a portrait composited later. Very subtle warm stone floor sliver at bottom, no strong horizon. No people, no faces, no furniture, no office, no desk, no laptop, no objects, no arches, no frames, no text, no logos, no red fabric. Cream and pale taupe harmonious palette, restrained soft sunlight, gentle shadow contrast. Background only.
+
+A restrained cherry-burgundy strip is rendered separately in CSS at the right edge. The background covers the entire hero on mobile to avoid a visible color seam.
