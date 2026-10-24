@@ -2,38 +2,30 @@ import { motion, useReducedMotion } from 'motion/react';
 import styles from './Services.module.scss';
 
 const services = [
-  { title: 'Softwareentwicklung', text: 'Individuelle Anwendungen und Web-Apps, die deine Abläufe vereinfachen und deine Ideen nutzbar machen.', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
-  { title: 'Webentwicklung', text: 'Websites und Onlineshops für dein Unternehmen. Von der ersten Gestaltung bis zur Veröffentlichung.', href: '/projekte', link: 'Webprojekte ansehen' },
-  { title: 'Produktfotografie', text: 'Produkt- und Schmuckfotografie für deine Marke. Klare Ansichten, feine Details und besondere Inszenierungen.', href: '/fotografie', link: 'Fotografien ansehen' },
+  { title: 'Webdesign & Webentwicklung', text: 'Websites · Redesign · Responsive Design', href: '/projekte', link: 'Webprojekte ansehen' },
+  { title: 'Softwareentwicklung', text: 'Web-Apps · Individuelle Lösungen', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
+  { title: 'KI & Automatisierung', text: 'KI-Agenten · Chatbots · Workflows' },
+  { title: 'E-Commerce', text: 'Shopify · Online-Shops' },
+  { title: 'SEO & Betreuung', text: 'Suchmaschinenoptimierung · Wartung' },
+  { title: 'Produktfotografie', text: 'Schmuck · Produkte · Ästhetik', href: '/fotografie', link: 'Fotografien ansehen' },
 ] as const;
-const extras = [
-  { title: 'KI-Integration & Automatisierung', text: 'Chatbots und automatisierte Abläufe für dein Projekt.' },
-  { title: 'Shopify, WordPress & CMS', text: 'Shops und Inhalte, die du selbst einfach pflegen kannst.' },
-  { title: 'SEO & Website-Betreuung', text: 'Technische SEO, Wartung und Weiterentwicklung deiner Website.' },
-];
 
 export default function Services() {
   const reduced = useReducedMotion();
   return (
     <section id="leistungen" className={styles.services} aria-labelledby="services-title">
       <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
-      <p className={styles.serviceLead}>Drei Schwerpunkte. Was möchtest du umsetzen?</p>
+      <p className={styles.serviceLead}>Was möchtest du umsetzen?</p>
       <ul className={styles.primaryList}>
         {services.map((service, index) => (
           <li key={service.title} className={styles.primaryService}>
             <span className={styles.serviceNumber} aria-hidden="true">0{index + 1}</span>
             <h3>{service.title}</h3>
             <p className={styles.description}>{service.text}</p>
-            <a className={styles.galleryLink} href={service.href}>{service.link} →</a>
+            {'href' in service && <a className={styles.galleryLink} href={service.href}>{service.link} <span aria-hidden="true">→</span></a>}
           </li>
         ))}
       </ul>
-      <div className={styles.additional}>
-        <div className={styles.additionalHeading}><p className={styles.eyebrow}>Bei Bedarf</p><h2>Das passende<br /><em>Extra.</em></h2></div>
-        <ul className={styles.extraList}>
-          {extras.map(service => <li key={service.title}><h3>{service.title}</h3><p className={styles.description}>{service.text}</p></li>)}
-        </ul>
-      </div>
       <motion.div className={styles.intro}
         initial={reduced ? false : { opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }}
