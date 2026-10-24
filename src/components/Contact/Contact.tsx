@@ -63,8 +63,7 @@ export default function Contact() {
     >
       <div className={styles.layout}>
         <div className={styles.intro}>
-          <h2 id="contact-title">Dein Projekt. <em>Gemeinsam umgesetzt.</em></h2>
-          <p className={styles.description}>Softwareentwicklung, Webentwicklung oder Produktfotografie: Erzähl mir, was du brauchst. Gemeinsam klären wir Umfang, Möglichkeiten und die nächsten Schritte.</p>
+          <h1 id="contact-title" tabIndex={-1}>Dein Projekt. <em>Gemeinsam umgesetzt.</em></h1>
         </div>
         <form
           className={styles.form}

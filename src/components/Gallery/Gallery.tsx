@@ -250,7 +250,7 @@ export default function Gallery() {
         <a className={styles.backLink} href="/#leistungen">
           ZURÜCK ZUM ATELIER
         </a>
-        <a className={styles.backLink} href="#kontakt">
+        <a className={styles.backLink} href="/kontakt">
           KONTAKT{" "}
         </a>
       </div>

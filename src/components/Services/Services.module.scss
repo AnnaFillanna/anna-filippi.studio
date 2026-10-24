@@ -3,7 +3,7 @@
 .services {
   background: $ivory;
   color: $bordeaux;
-  padding: clamp(70px, 8vw, 110px) 8% clamp(70px, 9vw, 145px);
+  padding: $space-section $page-gutter;
   overflow-x: clip;
   scroll-margin-top: 90px;
 }
@@ -37,7 +37,7 @@
 .galleryLink:hover { border-color: currentColor; }
 .galleryLink:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
 @media (max-width: 760px) {
-  .services { padding: 65px 7%; }
+  .services { padding: $space-section $page-gutter; }
   .list { grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 44px; }
   .service h3 { font-size: clamp(28px, 6.8vw, 36px); }
   .eyebrow { margin-bottom: 18px; font-size: 10px; }
@@ -78,7 +78,7 @@
   margin: 0;
   li { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 22px; align-items: center; padding: 24px 0; }
   li + li { border-top: 1px solid #650d2026; }
-  h3 { font: 400 clamp(23px, 2.1vw, 30px)/1.2 $serif; margin: 0 0 7px; }
+  h3 { font: 400 #{$text-card}/1.2 $serif; margin: 0 0 7px; }
   p { font: 16px/1.7 $sans; color: #534447; margin: 0; }
 }
 .benefitIcon {
@@ -96,16 +96,16 @@
 }
 
 .sectionLabel {
-  font: 400 clamp(38px, 4vw, 58px)/1.12 $serif;
+  font: 400 #{$text-section}/1.12 $serif;
   letter-spacing: -.025em;
-  margin: 0 0 40px;
+  margin: 0 0 $space-sm;
 }
 .sectionLabel + .list { margin-top: 0; }
 @media (min-width: 761px) {
-  .services { padding-inline: 7%; }
+  .services { padding-inline: $page-gutter; }
 }
 
-.serviceLead { font: 18px/1.7 $sans; margin: -16px 0 32px; }
+.serviceLead { font: 18px/1.7 $sans; margin: 0 0 $space-lg; }
 .primaryList {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -119,19 +119,19 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: clamp(24px, 2.5vw, 36px);
+  padding: $space-md;
   border: 1px solid #650d2026;
   background: #e9dfd326;
-  h3 { font: 400 clamp(27px, 2.5vw, 36px)/1.15 $serif; margin: 0 0 18px; overflow-wrap: break-word; }
+  h3 { font: 400 #{$text-card}/1.15 $serif; margin: 0 0 18px; overflow-wrap: break-word; }
   .description { font: 16px/1.7 $sans; margin: 0 0 24px; overflow-wrap: break-word; }
   .galleryLink { margin-top: auto; align-self: flex-start; letter-spacing: 0; font-size: 16px; }
 }
 .serviceNumber { font: italic 400 30px/1 $serif; color: #956971; margin-bottom: 28px; }
-.intro { margin-top: clamp(80px, 10vw, 140px); padding-top: clamp(50px, 6vw, 80px); gap: 10%; }
-.pricing h2 { font-size: clamp(42px, 5vw, 70px); }
+.intro { margin-top: $space-section; padding-top: $space-xl; gap: 10%; }
+.pricing h2 { font-size: $text-section; }
 .pricing .pricingNote { margin-top: 22px; font: italic 400 24px/1.4 $serif; color: $bordeaux; max-width: 30ch; }
 @media (max-width: 1100px) { .primaryList { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) {
   .primaryList { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .primaryService h3 { font-size: 30px; }
+  .primaryService h3 { font-size: $text-card; }
 }

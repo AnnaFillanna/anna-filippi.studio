@@ -37,20 +37,14 @@ export default function Hero() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}>
           <span>ANNA</span><span>FILIPPI</span>
         </motion.h1>
-        <motion.h2 {...intro(0.25)} className={styles.headline}>
-          <span className={styles.service}><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="4" y="6" width="28" height="21" rx="1"/><path d="M1 31h34"/></svg><span>Software<br />entwicklung</span></span>
-          <span className={styles.separator} aria-hidden="true">·</span>
-          <span className={styles.service}><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="14"/><ellipse cx="18" cy="18" rx="6" ry="14"/><path d="M4 18h28"/></svg><span>Webseiten</span></span>
-          <span className={styles.separator} aria-hidden="true">·</span>
-          <span className={styles.service}><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M5 10h6l3-4h8l3 4h6v21H5z"/><circle cx="18" cy="20" r="6"/></svg><span>Produktfotografie</span></span>
-        </motion.h2>
+
         </div>
         <motion.p {...intro(0.4)} className={styles.description}>
           Ich entwickle individuelle Software und Webseiten<br className={styles.desktopBreak} /> und fotografiere Produkte für starke Markenauftritte.<br className={styles.desktopBreak} /> Persönlich. Kreativ. Mit Liebe zum Detail.
         </motion.p>
         <motion.div {...intro(0.55)} className={styles.actions}>
           <a href="#leistungen" className={styles.servicesLink}>Leistungen ansehen<span className={styles.arrow} aria-hidden="true">→</span></a>
-          <a href="#kontakt" className={styles.projectLink}>Projekt anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>
+          <a href="/kontakt" className={styles.projectLink}>Projekt anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>
         </motion.div>
       </div>
     </section>

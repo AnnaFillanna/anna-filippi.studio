@@ -24,6 +24,7 @@ export const pages = {
     title: 'Produktfotografie – Anna Filippi',
     description: 'Produktfotografie von Anna Filippi in Andernach: Schmuck, Licht, Material und Atmosphäre. Entdecke inszenierte Fotografien und klare Produktaufnahmen.',
   },
+  '/kontakt': { title: 'Kontakt — Anna Filippi Studio', description: 'Erzähl mir von deiner Idee. Gemeinsam setzen wir dein Projekt um – persönlich und mit Liebe zum Detail.' },
   '/impressum': { title: 'Impressum — Anna Filippi', description: 'Impressum von Anna Filippi.' },
   '/datenschutz': { title: 'Datenschutzerklärung — Anna Filippi', description: 'Datenschutzerklärung von Anna Filippi.' },
 } as const;
@@ -31,7 +32,7 @@ export type PagePath = keyof typeof pages;
 
 export function pageForPath(pathname: string): PagePath {
   const path = pathname.replace(/\/+$/, '') || '/';
-  return path === '/dana-tattoo-studio' || path === '/impressum' || path === '/datenschutz' || path === '/softwareentwicklung' || path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
+  return path === '/kontakt' || path === '/dana-tattoo-studio' || path === '/impressum' || path === '/datenschutz' || path === '/softwareentwicklung' || path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
 }
 
 export function migrateLegacyLink() {

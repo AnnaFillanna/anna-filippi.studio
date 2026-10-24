@@ -77,7 +77,7 @@
 .menuToggle {
   display: none;
 }
-@media (max-width: 1050px) {
+@media (max-width: 1300px) {
   .header {
     height: 64px;
     padding: 0 6%;
@@ -91,7 +91,7 @@
     background: none;
     border: 0;
     padding: 12px 0;
-    font-size: 14px;
+    font-size: $text-control;
     letter-spacing: 0.08em;
     margin-left: auto;
   }
@@ -114,7 +114,7 @@
     button,
     a {
       text-align: left;
-      font-size: 14px;
+      font-size: $text-control;
       padding: 12px 0;
     }
   }
@@ -130,7 +130,7 @@
 
 @media (min-width: 761px) and (max-width: 1100px) { .startProject { display: none; } }
 
-@media (max-width:1050px) {
+@media (max-width:1300px) {
  .nav { left: 6%; right: 6%; top: 70px; padding: 14px 24px; gap: 0; background: rgba(250,247,242,.97); border: 1px solid #650d2020; border-radius: 3px; box-shadow: 0 12px 32px #1915160d; max-height: calc(100dvh - 100px); overflow-y: auto; }
  .nav a { font-family: $serif; font-size: clamp(24px,6vw,31px); line-height: 1.2; letter-spacing: 0; padding: 17px 0; min-height: 48px; }
  .nav a + a { border-top: 1px solid #650d2018; }
@@ -139,11 +139,11 @@
 }
 @keyframes menuAppear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 @media(prefers-reduced-motion:reduce) { .nav.open { animation: none; } }
-@media (min-width: 1051px) { .header { gap: 24px; height: auto; min-height: 80px; padding: 12px 3%; } .nav { flex-wrap: wrap; max-width: 780px; gap: 8px 24px; padding: 6px 0; background: transparent; } .nav a:nth-child(-n+3) { font-weight: 600; } }
+@media (min-width: 1301px) { .header { gap: 24px; height: auto; min-height: 80px; padding: 12px 3%; } .nav { flex-wrap: wrap; max-width: 780px; gap: 8px 24px; padding: 6px 0; background: transparent; } .nav a:nth-child(-n+3) { font-weight: 600; } }
 
-@media (min-width: 1051px) { .header { gap: 38px; } .nav a { font-size: 14px; } .nav a:nth-child(n+4) { font-size: 13px; } }
+@media (min-width: 1301px) { .header { gap: 38px; } .nav a { font-size: $text-control; } .nav a:nth-child(n+4) { font-size: 13px; } }
 
-@media (min-width: 1051px) {
+@media (min-width: 1301px) {
   .header { padding: 18px 4.3%; min-height: 88px; gap: 6.6vw; }
   .monogram { font-size: 48px; font-weight: 400; }
   .nav { gap: 2.6vw; max-width: none; flex-wrap: nowrap; padding: 0; }
@@ -151,11 +151,11 @@
 }
 
 .inquiry { display: none; }
-@media (min-width: 1051px) {
-  .atelier { padding: 16px 5.6%; gap: 5vw; }
+@media (min-width: 1301px) {
+  .atelier { padding: 16px 5.6%; gap: 24px; }
   .atelier .monogram { font-size: 55px; }
-  .atelier .nav { flex: 1; gap: clamp(16px, 2.4vw, 38px); }
-  .atelier .nav a, .atelier .nav a:nth-child(n+4), .atelier .nav a:nth-child(-n+3) { font: 500 clamp(8px, .65vw, 11px)/1.5 $sans; text-transform: uppercase; letter-spacing: .12em; color: $bordeaux; }
-  .atelier .inquiry { display: flex; align-items: center; gap: 15px; padding: 13px 20px; border: 1px solid #813441; border-radius: 999px; font: 500 9px/1.5 $sans; text-transform: uppercase; letter-spacing: .12em; white-space: nowrap; }
+  .atelier .nav { flex: 1; gap: 20px; }
+  .atelier .nav a, .atelier .nav a:nth-child(n+4), .atelier .nav a:nth-child(-n+3) { font: 500 15px/1.5 $sans; text-transform: uppercase; letter-spacing: .02em; color: $bordeaux; }
+  .atelier .inquiry { display: flex; align-items: center; gap: 15px; padding: 13px 20px; border: 1px solid #813441; border-radius: 999px; font: 500 15px/1.5 $sans; text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
   .inquiry span { font-size: 18px; }
 }

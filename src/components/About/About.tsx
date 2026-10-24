@@ -31,7 +31,7 @@ export default function About() {
           <div className={styles.intro}>
             <p>Ich bin Anna Filippi, auch bekannt als Fillanna. Ich entwickle individuelle Websites und Webanwendungen – vom ersten sichtbaren Detail bis zur Logik im Hintergrund.</p>
             <p>Mein Anspruch: aus Code etwas machen, das nicht nur gut aussieht, sondern für dich arbeitet. Mit klarem Design, durchdachter Funktion und der Ausdauer, auch für knifflige Fragen eine Lösung zu finden.</p>
-            <a className={styles.projectLink} href="#kontakt">Erzähl mir von deiner Idee</a>
+            <a className={styles.projectLink} href="/kontakt">Erzähl mir von deiner Idee</a>
           </div>
           <div className={styles.signature}>
             <span>Anna Filippi</span>

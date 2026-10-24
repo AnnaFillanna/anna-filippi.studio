@@ -9,7 +9,7 @@
   max-width: 720px;
   margin-bottom: 52px;
   h1 {
-    font: 400 clamp(40px, 5vw, 72px)/1.05 $serif;
+    font: 400 #{$text-page}/1.05 $serif;
     letter-spacing: -0.025em;
     margin: 20px 0;
   }
@@ -242,7 +242,7 @@
 }
 .caseIntro h1 {
   margin: 26px 0 30px;
-  font: 500 clamp(44px, 6.5vw, 88px)/1.02 $serif;
+  font: 500 #{$text-page}/1.02 $serif;
   letter-spacing: -0.035em;
   em {
     font-weight: 400;
@@ -256,8 +256,8 @@
 }
 .caseLead {
   max-width: 850px;
-  color: #80747b;
-  font: 400 clamp(16px, 2vw, 23px)/1.65 $sans;
+  color: $text-muted;
+  font: 400 #{$text-body}/1.65 $sans;
 }
 
 .caseButton {
@@ -347,12 +347,12 @@
 .caseDetails {
   max-width: 950px;
   h2 {
-    font: 500 clamp(38px, 5vw, 64px)/1.1 $serif;
+    font: 500 #{$text-section}/1.1 $serif;
     margin: 18px 0;
   }
   > p:not(.caseEyebrow) {
-    color: #80747b;
-    font: 400 clamp(16px, 1.8vw, 21px)/1.7 $sans;
+    color: $text-muted;
+    font: 400 #{$text-body}/1.7 $sans;
   }
 }
 .visuallyHidden {
@@ -417,17 +417,17 @@
   background: radial-gradient(ellipse at 70% 35%, #fffaf4 0, $ivory 75%);
 
   .heading { max-width: 960px; }
-  .lead { font-size: clamp(16px, 1.8vw, 21px); color: #80747b; }
+  .lead { font-size: $text-body; color: $text-muted; }
   .grid { grid-template-columns: 1fr; max-width: none; gap: clamp(64px, 9vw, 120px); }
   .sectionLabel { display: block; }
   .card > .caseButton { margin-top: 0; }
   .copy { padding-top: 0; max-width: 950px; }
   .copy h2 {
-    font: 500 clamp(38px, 5vw, 64px)/1.1 $serif;
+    font: 500 #{$text-section}/1.1 $serif;
     margin: 18px 0;
   }
-  .eyebrow { font-size: clamp(9px, 1.1vw, 12px); }
-  .description { font-size: clamp(16px, 1.8vw, 21px); line-height: 1.7; color: #80747b; }
+  .eyebrow { font-size: $text-small; }
+  .description { font-size: $text-body; line-height: 1.7; color: $text-muted; }
   .scope { font-size: 16px; margin: 0 0 18px; }
 
   @media (min-width: 1001px) {
@@ -443,9 +443,9 @@
     }
     .laptopBase { height: 10px; }
     .phone { border-width: 4px; border-radius: 16px; }
-    .copy h2 { font-size: clamp(32px, 3vw, 42px); }
+    .copy h2 { font-size: $text-card; }
     .description { font-size: 16px; }
-    .caseButton { font-size: 25px; }
+    .caseButton { font-size: $text-control; }
   }
 
   @media (max-width: 760px) {
@@ -514,7 +514,7 @@
 .projectDetails summary { cursor: pointer; padding: 16px 0; font: 500 22px/1.3 $serif; color: $bordeaux; }
 .projectDetails summary:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
 .projectDetails[open] summary { margin-bottom: 4px; }
-.projectStatus { font: 400 12px/1.6 $sans; letter-spacing: .03em; color: #645358; }
+.projectStatus { font: 400 #{$text-small}/1.6 $sans; letter-spacing: .03em; color: #645358; }
 .projects .back { margin-bottom: 18px; }
 .projects .heading { margin-bottom: 32px; }
 .projects .lead { max-width: 52ch; font-size: 17px; line-height: 1.7; }

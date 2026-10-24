@@ -5,11 +5,13 @@ import { pages, origin, pageForPath, type PagePath } from "./routes";
 import AboutPage from "./components/AboutPage/AboutPage";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import FeaturedProjects from "./components/FeaturedProjects/FeaturedProjects";
 import Services from "./components/Services/Services";
 import ProjectProcess from "./components/ProjectProcess/ProjectProcess";
 import Gallery from "./components/Gallery/Gallery";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
+import HomeContact from "./components/HomeContact/HomeContact";
 import Contact from "./components/Contact/Contact";
 import Impressum from "./components/LegalPages/Impressum";
 import Datenschutz from "./components/LegalPages/Datenschutz";
@@ -42,10 +44,14 @@ function Site() {
   const location = useLocation();
   const navigate = useNavigate();
   const pagePath = pageForPath(location.pathname);
-  const isLegalPage = pagePath === '/impressum' || pagePath === '/datenschutz';
   useEffect(() => {
     if (location.pathname === '/' && (location.hash === '#projekte' || location.hash === '#fotografie' || location.hash === '#ueber-mich')) {
       void navigate(`/${location.hash.slice(1)}${location.search}`, { replace: true });
+    }
+  }, [location.pathname, location.hash, location.search, navigate]);
+  useEffect(() => {
+    if (location.hash === '#kontakt' && location.pathname !== '/' && location.pathname !== '/kontakt') {
+      void navigate('/kontakt' + location.search, { replace: true });
     }
   }, [location.pathname, location.hash, location.search, navigate]);
   useEffect(() => {
@@ -78,7 +84,7 @@ function Site() {
       if (target) target.scrollIntoView();
       else {
         window.scrollTo({ top: 0, behavior: 'instant' });
-        const heading = pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : (pagePath === '/softwareentwicklung' || pagePath === '/dana-tattoo-studio') ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
+        const heading = pagePath === '/kontakt' ? 'contact-title' : pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : (pagePath === '/softwareentwicklung' || pagePath === '/dana-tattoo-studio') ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
         if (heading) document.getElementById(heading)?.focus({ preventScroll: true });
       }
     });
@@ -91,19 +97,20 @@ function Site() {
       <a className="skip-link" href="#inhalt">
         Zum Inhalt springen
       </a>
-      <Header atelier={pagePath === "/"} contactHref={isLegalPage ? '/#kontakt' : '#kontakt'} />
+      <Header />
       <main id="inhalt">
         <Routes>
-          <Route path="/" element={<><Hero /><Services /><ProjectProcess /></>} />
+          <Route path="/" element={<><Hero /><Services /><FeaturedProjects /><ProjectProcess /></>} />
           <Route path="/softwareentwicklung" element={<Projects softwareOnly />} />
           <Route path="/dana-tattoo-studio" element={<Projects danaOnly />} />
           <Route path="/projekte" element={<Projects />} />
           <Route path="/fotografie" element={<Gallery />} />
           <Route path="/ueber-mich" element={<AboutPage />} />
+          <Route path="/kontakt" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
         </Routes>
-        {!isLegalPage && <Contact />}
+        {pagePath === "/" && <HomeContact />}
       </main>
       <Footer />
       <dialog

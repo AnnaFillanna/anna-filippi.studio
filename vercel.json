@@ -29,6 +29,10 @@
     {
       "source": "/dana-tattoo-studio",
       "destination": "/dana-tattoo-studio/index.html"
+    },
+    {
+      "source": "/kontakt",
+      "destination": "/kontakt/index.html"
     }
   ]
 }

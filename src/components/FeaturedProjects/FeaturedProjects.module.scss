@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+
+.section { padding: $space-section $page-gutter; background: #ece4da; color: $bordeaux; }
+.heading {
+  margin-bottom: $space-lg;
+  h2 { font: 400 #{$text-section}/1.12 $serif; letter-spacing: -.025em; margin: 0 0 18px; }
+  p { font: 400 18px/1.7 $sans; margin: 0; }
+}
+.grid { position: relative; display: flex; gap: 28px; padding: 8px 0; margin: 0; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.grid::-webkit-scrollbar { display: none; }
+.grid:focus-visible { outline: 2px solid $bordeaux; outline-offset: 6px; }
+.grid > li { min-width: 0; flex: 0 0 34%; scroll-snap-align: start; }
+.link { display: block; color: inherit; text-decoration: none; }
+.link:focus-visible, .allProjects:focus-visible { outline: 2px solid $bordeaux; outline-offset: 7px; }
+.image {
+  position: relative; aspect-ratio: 8 / 5; overflow: hidden; background: $ivory;
+  img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .3s ease; }
+}
+.badge { position: absolute; left: 14px; bottom: 14px; padding: 7px 12px; background: $ivory; color: $bordeaux; font: 500 #{$text-small}/1.4 $sans; }
+.copy {
+  padding-top: 22px;
+  p { font: 400 14px/1.7 $sans; margin: 0 0 10px; }
+  h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font: 400 #{$text-card}/1.15 $serif; margin: 0; }
+  h3 span { flex-shrink: 0; font: 400 22px/1 $sans; }
+}
+.allProjects { display: table; margin: 48px auto 0; padding: 14px 26px; border: 1px solid $bordeaux; border-radius: 999px; color: inherit; text-decoration: none; font: 500 #{$text-control}/1.5 $sans; }
+.allProjects span { margin-left: 12px; }
+@media (hover: hover) { .link:hover img { transform: scale(1.025); } .allProjects:hover { background: $ivory; } }
+@media (prefers-reduced-motion: reduce) { .image img { transition: none; } }
+@media (max-width: 1100px) { .grid > li { flex-basis: 48%; } }
+@media (max-width: 600px) { .grid { gap: 18px; } .grid > li { flex-basis: 86%; } .allProjects { padding-inline: 20px; font-size: 16px; } }
+
+.pagination { display: flex; justify-content: center; gap: 4px; margin-top: 24px;
+  button { width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: transparent; cursor: pointer; color: $bordeaux; }
+  span { width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; }
+  button[aria-current='true'] span { background: currentColor; }
+  button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+}
+
+.pagination .arrow { border: 1px solid #650d2055; border-radius: 50%; font: 24px/1 $sans; margin-inline: 12px; }
+.pagination .arrow:disabled { opacity: .3; cursor: default; }
+@media (hover: hover) { .pagination .arrow:hover:not(:disabled) { background: $ivory; } }
+
+.allProjects { @include pill-control; }

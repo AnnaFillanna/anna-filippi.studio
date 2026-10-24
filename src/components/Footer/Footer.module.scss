@@ -37,13 +37,13 @@
 .wordmark { font-family: $serif; font-size: 28px; font-weight: 400; letter-spacing: .035em; }
 .invitation { font-size: clamp(28px, 3vw, 40px); line-height: 1.2; }
 .navigation { gap: 6px 22px; margin: 0 0 28px; }
-.navigation a { font-size: 13px; border-bottom-color: #650d2026; }
+.navigation a { font-size: $text-control; border-bottom-color: #650d2026; }
 .channel p { font-size: 15px; }
 .channel a, .pending { font-size: 14px; letter-spacing: .02em; }
-.bottom { font-size: 12px; }
+.bottom { font-size: $text-small; }
 @media(max-width: 480px) { .wordmark { font-size: 25px; } .topline { font-size: 11px; } }
 
-.inner { min-height: 0; padding: 26px 7% 20px; }
+.inner { min-height: 0; padding: $space-lg $page-gutter $space-md; }
 .content { flex: initial; max-width: 560px; padding: 28px 0 32px; }
 .invitation { margin: 18px 0; font-size: clamp(27px, 3vw, 39px); }
 .content .personalNote { font: 400 15px/1.8 $sans; max-width: 48ch; margin: 0; color: #534447; }
@@ -57,6 +57,6 @@
 }
 .invitation { font-size: clamp(23px, 2.5vw, 32px); line-height: 1.55; }
 .invitation em { font-style: normal; }
-.content .personalNote { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.85; max-width: 42ch; color: $bordeaux; }
+.content .personalNote { font-size: $text-body; line-height: 1.85; max-width: 42ch; color: $bordeaux; }
 .content .signature { margin: 22px 0 0; font-size: 20px; line-height: 1.6; }
 .signature span { font-size: 27px; }

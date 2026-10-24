@@ -6,6 +6,7 @@ import { transformWithEsbuild } from 'vite';
 
 const origin = 'https://annafilippi.studio';
 const examples = [
+  ['/kontakt', 'Dein Projekt.', 'Projektanfrage'],
   ['/impressum', 'Impressum', 'Rechtstext wird geladen'],
   ['/datenschutz', 'Datenschutzerklärung', 'Rechtstext wird geladen'],
   ['/dana-tattoo-studio', 'Kunst auf der Haut.', 'Dana Tattoo Studio'],
@@ -56,11 +57,11 @@ test('sitemap and Vercel rules cover all portfolio pages', async () => {
   const sitemap = await readFile('dist/sitemap.xml', 'utf8');
   const sourceSitemap = await readFile('public/sitemap.xml', 'utf8');
   assert.equal(sitemap, sourceSitemap);
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 8);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, examples.length);
   for (const [path] of examples) assert.ok(sitemap.includes(`<loc>${origin}${path}</loc>`));
   const config = JSON.parse(await readFile('vercel.json', 'utf8'));
   assert.equal(config.trailingSlash, false);
-  assert.equal(config.rewrites.length, 7);
+  assert.equal(config.rewrites.length, examples.length - 1);
   for (const rule of config.rewrites) await access(`dist${rule.destination}`);
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
 });
@@ -142,4 +143,19 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
   const robots = await readFile('dist/robots.txt', 'utf8');
   assert.ok(robots.includes(`Sitemap: ${origin}/sitemap.xml`));
   assert.ok(!/Disallow:\s*\//i.test(robots));
+});
+
+
+test('contact form is exclusive to the contact route and navigation stays consistent', async () => {
+  for (const [path] of examples) {
+    const html = await readFile(`dist${path === '/' ? '' : path}/index.html`, 'utf8');
+    assert.equal((html.match(/<form\b/g) || []).length, path === '/kontakt' ? 1 : 0, path);
+    assert.ok(html.includes('href="/kontakt"'), path);
+    assert.ok(!html.includes('Jetzt anfragen'), path);
+  }
+  const contact = await readFile('dist/kontakt/index.html', 'utf8');
+  assert.ok(contact.includes('name="website"')); // Existing honeypot remains present.
+  assert.ok(contact.includes('name="message"'));
+  const home = await readFile('dist/index.html', 'utf8');
+  assert.ok(!home.includes('Software<br/>entwicklung'));
 });

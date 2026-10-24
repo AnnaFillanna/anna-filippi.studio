@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+
+.contact {
+  padding: $space-section $page-gutter;
+  background: $ivory;
+  color: $bordeaux;
+  text-align: center;
+  border-top: 1px solid #650d2026;
+  scroll-margin-top: 90px;
+  h2 { margin: 0 0 20px; font: 400 #{$text-section}/1.1 $serif; letter-spacing: -.025em; }
+  p { margin: 0 auto; max-width: 48ch; font: 400 18px/1.7 $sans; }
+}
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 650px;
+  margin: 32px auto 0;
+  a { display: flex; align-items: center; justify-content: center; gap: 14px; min-height: 54px; padding: 14px 20px; border: 1px solid $bordeaux; border-radius: 999px; font: 500 16px/1.5 $sans; color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid $bordeaux; outline-offset: 5px; }
+  a:hover { background: #e9dfd3; }
+}
+@media (max-width: 600px) {
+  .actions { grid-template-columns: minmax(0, 1fr); max-width: 360px; }
+  .contact p { font-size: 17px; }
+}
+
+.actions a { @include pill-control; }

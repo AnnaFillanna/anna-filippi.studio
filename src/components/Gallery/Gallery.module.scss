@@ -16,7 +16,7 @@
   h1 {
     font-family: $serif;
     font-weight: 400;
-    font-size: clamp(52px, 6.4vw, 88px);
+    font-size: $text-page;
     line-height: 1.02;
     letter-spacing: -0.04em;
     margin: 30px 0 24px;
@@ -184,7 +184,7 @@
   padding: 10px 14px;
   background: $ivory;
   color: $bordeaux;
-  font: 9px $sans;
+  font: 500 $text-small $sans;
   letter-spacing: 0.14em;
   opacity: 0;
   transition: opacity 0.3s;
@@ -464,7 +464,7 @@
   .gallery { padding: max(88px, calc(env(safe-area-inset-top) + 60px)) 7% 56px; }
   .pageNavigation { flex-wrap: nowrap; gap: 16px; align-items: baseline; }
   .backLink { font-size: 16px; letter-spacing: .08em; margin-bottom: 24px; }
-  .heading h1 { font-size: clamp(39px, 10vw, 70px); }
+  .heading h1 { font-size: $text-page; }
   .eyebrow { font-size: 16px; gap: 10px; }
   .hero { gap: 28px; padding-bottom: 32px; }
   .filters { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: 30px; }
@@ -574,7 +574,7 @@
 
 // Desktop: an open corner around the introduction and balanced collection columns.
 @media (min-width: 761px) {
-  .pageNavigation a[href="#kontakt"] { display: none; }
+  .pageNavigation a[href="/kontakt"] { display: none; }
   .hero {
     position: relative;
     // Keep the line inside the layout, with breathing room around the portrait.
@@ -624,7 +624,7 @@
       &[aria-pressed="false"]:hover { border-bottom-color: rgba(101, 13, 32, .5); }
     }
   }
-  .filterTitle { font-size: clamp(22px, 2.25vw, 29px); }
+  .filterTitle { font-size: $text-card; }
 }
 @keyframes galleryCornerUp { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes galleryCornerLeft { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -650,5 +650,5 @@
 }
 .heading h1 { overflow-wrap: anywhere; hyphens: auto; }
 
-.eyebrow { font-size: 12px; letter-spacing: .1em; }
-.item figcaption { font-size: 13px; }
+.eyebrow { font-size: $text-small; letter-spacing: .1em; }
+.item figcaption { font-size: $text-small; }

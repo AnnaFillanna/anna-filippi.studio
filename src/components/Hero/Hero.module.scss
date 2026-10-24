@@ -1,5 +1,5 @@
 @use '../../styles/variables' as *;
-.hero { position: relative; isolation: isolate; min-height: 720px; height: max(720px, 56.25vw); overflow: hidden; color: $bordeaux; background: #f3e8dc url("/images/hero-sunlight.png") center / cover no-repeat; }
+.hero { position: relative; isolation: isolate; min-height: 720px; height: max(720px, 56.25vw); overflow: hidden; color: $bordeaux; background: #f3e8dc url("/images/hero-sunlight.jpg") center / cover no-repeat; }
 .portrait { position: absolute; inset: 0 15% 0 auto; width: min(48%, max(480px, 37.5vw)); z-index: -2;  img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; mask: url("/images/anna-laptop-mask.png") center bottom / contain no-repeat; mask-mode: luminance; } }
 .curve { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -3; pointer-events: none; fill: none; stroke: #963f4b; stroke-width: 1.2; path { vector-effect: non-scaling-stroke; } }
 .copy { position: relative; padding: clamp(145px, 11.7vw, 225px) 5.6% 90px; width: 52%; }
@@ -8,9 +8,9 @@
 .headline { display: flex; align-items: center; gap: 1.3vw; margin-top: 30px; font: 500 clamp(15px, 1.4vw, 24px)/1.05 $serif; color: #493e34; }
 .service { display: flex; align-items: center; gap: 1vw; white-space: nowrap; svg { width: 2.5vw; min-width: 24px; height: 2.5vw; min-height: 24px; fill: none; stroke: #813441; stroke-width: 1.7; } }
 .separator { font-size: 0; width: 1px; min-width: 1px; height: 30px; background: #946b60; }
-.description { margin-top: 27px; font: 400 clamp(14px, 1.22vw, 21px)/1.55 $sans; color: #62564d; }
+.description { margin-top: 27px; font: 400 #{$text-body}/1.55 $sans; color: #62564d; }
 .actions { display: grid; grid-template-columns: 1.18fr 1fr; gap: 15px; margin-top: 22px; max-width: 490px; }
-.servicesLink, .projectLink { display: flex; align-items: center; justify-content: center; gap: 20px; min-height: 48px; padding: 10px 16px; border: 1px solid #813441; border-radius: 999px; white-space: nowrap; font: 500 clamp(17px, 1.5vw, 25px)/1.3 $serif; transition: background .2s; }
+.servicesLink, .projectLink { display: flex; align-items: center; justify-content: center; gap: 20px; min-height: 48px; padding: 10px 16px; border: 1px solid #813441; border-radius: 999px; white-space: normal; font: 500 #{$text-control}/1.3 $serif; transition: background .2s; }
 .servicesLink { background: #79091c; color: #fff4e4; &:hover { background: #580618; } }
 .projectLink { color: #78312f; &:hover { background: #ffffff50; } }
 .arrow { font-family: Arial, sans-serif; font-size: .9em; }
@@ -21,23 +21,23 @@
   .copy h1 { font-size: 9vw; }
   .headline { gap: 10px; font-size: 15px; }
   .service { gap: 7px; }
-  .description { font-size: 14px; }
+  .description { font-size: 16px; }
   .desktopBreak { display: none; }
   .actions { gap: 10px; }
-  .servicesLink, .projectLink { padding-inline: 10px; gap: 8px; font-size: 17px; }
+  .servicesLink, .projectLink { padding-inline: 10px; gap: 8px; font-size: $text-control; }
 }
 @media (max-width: 760px) {
-  .hero { height: auto; min-height: 0; display: flex; flex-direction: column; background: #f3e8dc url("/images/hero-sunlight.png") center / cover no-repeat; }
+  .hero { height: auto; min-height: 0; display: flex; flex-direction: column; background: #f3e8dc url("/images/hero-sunlight.jpg") center / cover no-repeat; }
   .copy { width: 100%; padding: 105px 6% 22px; }
   .eyebrow { font-size: 9px; letter-spacing: .4em; margin-bottom: 17px; }
   .copy h1 { font-size: clamp(66px, 18vw, 125px); line-height: .9; }
-  .headline { margin-top: 24px; justify-content: space-between; gap: 9px; font-size: clamp(13px, 3.5vw, 22px); }
+  .headline { margin-top: 24px; justify-content: space-between; gap: 9px; font-size: clamp(14px, 3.5vw, 18px); }
   .service { gap: 6px; svg { width: 22px; height: 22px; min-width: 22px; min-height: 22px; } }
   .separator { height: 26px; }
-  .description { margin-top: 22px; font-size: 14px; line-height: 1.6; max-width: 48ch; }
+  .description { margin-top: 22px; font-size: 16px; line-height: 1.6; max-width: 48ch; }
   .desktopBreak { display: none; }
   .actions { width: 100%; max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .servicesLink, .projectLink { font-size: clamp(15px, 4.2vw, 22px); padding: 10px 6px; gap: 8px; }
+  .servicesLink, .projectLink { font-size: $text-control; padding: 10px 6px; gap: 8px; }
   .arrow { display: none; }
   .portrait { order: 1; position: relative; inset: auto; width: 100%; height: auto; margin-top: 0; z-index: -1;  img { height: auto; width: 100%; object-fit: contain; object-position: center; } }
   .curve { display: none; }
@@ -49,3 +49,15 @@
 .hero::before { content: ''; position: absolute; inset: 0 0 0 auto; width: 5%; z-index: -3; background: linear-gradient(135deg, #9c4656, #650d20 45%, #400c18); box-shadow: -12px 0 32px #44251b18; }
 
 @media (max-width: 760px) { .hero::before { top: 55%; width: 4%; } }
+
+.servicesLink, .projectLink { @include pill-control; }
+@media (max-width: 760px) { .servicesLink, .projectLink { padding-inline: 8px; } }
+@media (max-width: 420px) {
+  .headline { align-items: flex-start; gap: 6px; }
+  .service { flex-direction: column; text-align: center; white-space: normal; line-height: 1.25; }
+  .separator { align-self: center; }
+}
+@media (min-width: 761px) and (max-width: 1050px) {
+  .servicesLink, .projectLink { padding-inline: 8px; }
+  .arrow { display: none; }
+}

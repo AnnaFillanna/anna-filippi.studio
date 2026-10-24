@@ -4,3 +4,29 @@ $black: #191516;
 $white: #FAF7F2;
 $serif: 'Cormorant Garamond', Georgia, serif;
 $sans: 'Montserrat', Arial, sans-serif;
+
+// Shared typography and rhythm; display wordmarks retain their own scale.
+$text-body: clamp(16px, 1.2vw, 18px);
+$text-small: 14px;
+$text-control: 16px;
+$text-card: clamp(20px, 1.7vw, 22px);
+$text-section: clamp(30px, 3.2vw, 44px);
+$text-page: clamp(38px, 4.6vw, 64px);
+$space-xs: 8px;
+$space-sm: 16px;
+$space-md: 24px;
+$space-lg: 32px;
+$space-xl: 48px;
+$space-section: clamp(64px, 7vw, 96px);
+$page-gutter: clamp(24px, 6vw, 96px);
+$text-muted: #534447;
+@mixin pill-control {
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: $text-control;
+  line-height: 1.5;
+  font-weight: 500;
+  text-align: center;
+  &:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+}

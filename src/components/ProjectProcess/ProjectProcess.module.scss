@@ -1,5 +1,5 @@
 @use '../../styles/variables' as *;
-.process { padding: 0 8% clamp(70px, 9vw, 145px); color: $bordeaux; scroll-margin-top: 100px; }
+.process { padding: $space-section $page-gutter; color: $bordeaux; scroll-margin-top: 100px; }
 .process h2 { max-width: 850px; font: 400 clamp(36px, 4.3vw, 62px)/1.12 $serif; letter-spacing: -.02em; }
 .intro { max-width: 65ch; margin-top: 24px; font: 16px/1.8 $sans; color: #534447; }
 .timeline { position: relative; margin-top: 40px; padding-top: 100px; }
@@ -10,7 +10,7 @@
 .step { min-width: 0; padding: 22px 20px 0 0; }
 .step:last-child { padding-right: 0; }
 .number { display: block; font: 16px/1.5 $sans; letter-spacing: .12em; margin-bottom: 20px; }
-.step h3 { font: 400 clamp(24px, 2.1vw, 30px)/1.2 $serif; margin-bottom: 14px; overflow-wrap: anywhere; hyphens: auto; }
+.step h3 { font: 400 #{$text-card}/1.2 $serif; margin-bottom: 14px; overflow-wrap: anywhere; hyphens: auto; }
 .step p { font: 16px/1.85 $sans; color: #534447; }
 @media (max-width: 1000px) {
   .timeline { margin-top: 36px; padding-top: 0; }
@@ -20,10 +20,10 @@
   .step { position: relative; padding: 0 0 32px 64px; }
   .step:last-child { padding-bottom: 0; }
   .number { position: absolute; left: 39px; top: 5px; margin: 0; }
-  .step h3 { font-size: 29px; }
+  .step h3 { font-size: $text-card; }
   .step p { max-width: 60ch; }
 }
-@media (max-width: 760px) { .process { padding: 0 7% 65px; } }
+@media (max-width: 760px) { .process { padding: $space-section $page-gutter; } }
 @media (prefers-reduced-motion: reduce) {
   .horizontalPath path, .verticalPath path {
     opacity: 1 !important;
@@ -51,16 +51,16 @@
   margin: 0 0 24px;
 }
 @media (min-width: 761px) {
-  .process { padding-inline: 7%; }
+  .process { padding-inline: $page-gutter; }
 }
 
-.process { padding-top: 36px; }
-.process h2 { font-size: clamp(42px, 5.4vw, 76px); max-width: 720px; }
+.process { padding-top: $space-section; }
+.process h2 { font-size: $text-section; max-width: 720px; }
 .process h2 em { font-weight: 400; }
 .process .eyebrow { font-size: 11px; }
 .process .intro { margin-top: 22px; }
 .number { font: italic 400 38px/1 $serif; letter-spacing: 0; color: #956971; }
-.step p { font-size: 15px; line-height: 1.75; }
+.step p { font-size: 16px; line-height: 1.75; }
 @media (max-width: 1000px) {
   .number { font-size: 24px; left: 38px; }
   .step { padding-left: 78px; }

@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import styles from "./Header.module.scss";
 
-export default function Header({ contactHref = '#kontakt', atelier = false }: { contactHref?: string; atelier?: boolean }) {
+export default function Header() {
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
 
   return (
-    <header className={`${styles.header} ${atelier ? styles.atelier : ""}`} onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); toggle.current?.focus(); } }}>
+    <header className={`${styles.header} ${styles.atelier}`} onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); toggle.current?.focus(); } }}>
       <a
         href="/#start"
         className={styles.monogram}
@@ -41,9 +41,8 @@ export default function Header({ contactHref = '#kontakt', atelier = false }: { 
         </a>
 
         <a href="/ueber-mich" onClick={() => setOpen(false)}>Über mich</a>
-        <a href={contactHref} onClick={() => setOpen(false)}>Kontakt</a>
+        <a href="/kontakt" onClick={() => setOpen(false)}>Kontakt</a>
       </nav>
-      {atelier && <a className={styles.inquiry} href={contactHref}>Jetzt anfragen <span aria-hidden="true">→</span></a>}
     </header>
   );
 }

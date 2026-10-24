@@ -82,14 +82,14 @@ p {
     margin-left: auto;
     background: none;
     border: 0;
-    font-size: 12px;
+    font-size: $text-control;
     padding: 10px;
   }
   a {
     display: inline-block;
     margin-top: 25px;
     border-bottom: 1px solid;
-    font-size: 12px;
+    font-size: $text-control;
     padding-bottom: 8px;
   }
 }
@@ -108,3 +108,6 @@ p {
 
 // Route headings receive programmatic focus, but are not interactive controls.
 h1[tabindex="-1"]:focus { outline: none; }
+
+body { font-size: $text-body; line-height: 1.7; }
+h1, h2, h3 { text-wrap: balance; }
