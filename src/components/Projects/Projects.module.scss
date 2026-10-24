@@ -510,6 +510,21 @@
 
 .softwarePage .caseIntro h1 { font-size: clamp(32px, 4.5vw, 60px); font-weight: 400; line-height: 1.12; }
 
+@media (min-width: 1001px) {
+  .softwarePage {
+    padding-block: 100px 64px;
+    .caseInner { max-width: 900px; }
+    .back { margin-bottom: 20px; }
+    .caseIntro h1 { font-size: clamp(40px, 3.5vw, 48px); margin: 18px 0; }
+    .accent { margin: 18px 0; }
+    .caseButton { margin-top: 14px; font-size: 24px; }
+    .devices { max-width: 680px; margin: 24px auto 32px; }
+    .laptopScreen { border-width: 8px; border-radius: 12px 12px 4px 4px; }
+    .laptopBase { height: 12px; }
+    .phone { border-width: 5px; border-radius: 20px; }
+  }
+}
+
 .projectDetails { width: 100%; margin: 0 0 20px; border-top: 1px solid #650d2026; }
 .projectDetails summary { cursor: pointer; padding: 16px 0; font: 500 22px/1.3 $serif; color: $bordeaux; }
 .projectDetails summary:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }

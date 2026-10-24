@@ -67,3 +67,39 @@
   .actions { max-width: 560px; }
   .servicesLink, .projectLink { padding-inline: 12px; gap: 12px; }
 }
+
+// Mobile-only navigation and composition. Original portrait and mask remain intact.
+.mobileServices { display: none; }
+@media (max-width: 760px) {
+  .copy { padding: 86px 6% 0; }
+  .eyebrow { margin-bottom: 12px; font-size: 10px; }
+  .copy h1 { font-size: clamp(60px, 18vw, 110px); line-height: .98; }
+  .mobileServices {
+    display: grid;
+    margin-top: 20px;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 48px;
+      padding: 12px 0;
+      border-bottom: 1px solid #650d2040;
+      color: $bordeaux;
+      font: 500 14px/1.5 $sans;
+      letter-spacing: .045em;
+      span { flex-shrink: 0; font-size: 20px; line-height: 1; }
+      &:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+    }
+  }
+  .description { margin-top: 20px; line-height: 1.55; }
+  .actions { grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 20px; max-width: 340px; }
+  .servicesLink, .projectLink { min-height: 50px; padding: 12px 18px; font-size: 16px; gap: 16px; }
+  .arrow { display: inline; }
+  .portrait {
+    width: 88%;
+    margin: -16px 0 0 auto;
+    img { height: auto; aspect-ratio: 853 / 1280; mask-size: 100% 100%; mask-position: center; }
+  }
+  .hero::before { display: none; }
+}

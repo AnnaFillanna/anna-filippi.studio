@@ -39,6 +39,11 @@ export default function Hero() {
         </motion.h1>
 
         </div>
+        <nav className={styles.mobileServices} aria-label="Leistungen im Überblick">
+          <a href="/softwareentwicklung">SOFTWAREENTWICKLUNG<span aria-hidden="true">→</span></a>
+          <a href="/projekte">WEBENTWICKLUNG<span aria-hidden="true">→</span></a>
+          <a href="/fotografie">PRODUKTFOTOGRAFIE<span aria-hidden="true">→</span></a>
+        </nav>
         <motion.p {...intro(0.4)} className={styles.description}>
           Ich entwickle individuelle Software und Webseiten<br className={styles.desktopBreak} /> und fotografiere Produkte für starke Markenauftritte.<br className={styles.desktopBreak} /> Persönlich. Kreativ. Mit Liebe zum Detail.
         </motion.p>

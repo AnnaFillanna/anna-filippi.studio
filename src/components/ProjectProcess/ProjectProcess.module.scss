@@ -10,7 +10,7 @@
 .step { min-width: 0; padding: 22px 20px 0 0; }
 .step:last-child { padding-right: 0; }
 .number { display: block; font: 16px/1.5 $sans; letter-spacing: .12em; margin-bottom: 20px; }
-.step h3 { font: 400 #{$text-card}/1.2 $serif; margin-bottom: 14px; overflow-wrap: anywhere; hyphens: auto; }
+.step h3 { font: 500 clamp(24px, 2vw, 28px)/1.2 $serif; margin-bottom: 14px; overflow-wrap: anywhere; hyphens: auto; }
 .step p { font: 16px/1.85 $sans; color: #534447; }
 @media (max-width: 1000px) {
   .timeline { margin-top: 36px; padding-top: 0; }
@@ -20,7 +20,6 @@
   .step { position: relative; padding: 0 0 32px 64px; }
   .step:last-child { padding-bottom: 0; }
   .number { position: absolute; left: 39px; top: 5px; margin: 0; }
-  .step h3 { font-size: $text-card; }
   .step p { max-width: 60ch; }
 }
 @media (max-width: 760px) { .process { padding: $space-section $page-gutter; } }
