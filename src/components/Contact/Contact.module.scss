@@ -43,7 +43,8 @@
   }
   label {
     display: block;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 600;
     line-height: 1.6;
     letter-spacing: 0.025em;
     margin-bottom: 24px;
@@ -62,6 +63,7 @@
     background: transparent;
     color: $black;
     font: inherit;
+    font-weight: 400;
     font-size: 16px;
     letter-spacing: normal;
     padding: 12px 0;
