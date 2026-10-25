@@ -472,15 +472,17 @@
   padding: 28px 24px 56px;
   margin-inline: -24px;
   overscroll-behavior-x: contain;
+  perspective: 1600px;
+  perspective-origin: var(--ring-center, 50%) 45%;
 
   &::-webkit-scrollbar { display: none; }
   > .card {
     flex: 0 0 calc((100% - 48px) / 2);
     scroll-snap-align: start;
     // Individual transforms compose with the existing reveal animation.
-    translate: 0 var(--arc-drop, 0px);
-    rotate: var(--arc-angle, 0deg);
-    transform-origin: center top;
+    translate: 0 0 var(--ring-depth, 0px);
+    rotate: y var(--ring-angle, 0deg);
+    transform-origin: center;
   }
   &:focus-visible {
     outline: 1px solid $bordeaux;

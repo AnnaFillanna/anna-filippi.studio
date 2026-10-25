@@ -26,14 +26,17 @@ export default function Projects({
         next: track.scrollLeft + track.clientWidth < track.scrollWidth - 2,
       });
       const center = track.scrollLeft + track.clientWidth / 2;
+      track.style.setProperty("--ring-center", `${center}px`);
+      const radius = track.clientWidth / (2 * Math.sin(22 * Math.PI / 180));
       for (const card of Array.from(track.children) as HTMLElement[]) {
-        // A shallow circular arc follows each card's position in the viewport.
+        // View the inside of a large vertical ring: its sides turn toward us.
         const distance = Math.max(-1, Math.min(1,
           (card.offsetLeft + card.offsetWidth / 2 - center) / (track.clientWidth / 2)));
-        const angle = reducedMotion.matches ? 0 : distance * 3;
-        const drop = reducedMotion.matches ? 0 : 28 * distance * distance;
-        card.style.setProperty("--arc-angle", `${angle}deg`);
-        card.style.setProperty("--arc-drop", `${drop}px`);
+        const angle = reducedMotion.matches ? 0 : -distance * 22;
+        const depth = reducedMotion.matches ? 0
+          : radius * (1 - Math.cos(angle * Math.PI / 180)) - 60;
+        card.style.setProperty("--ring-angle", `${angle}deg`);
+        card.style.setProperty("--ring-depth", `${depth}px`);
       }
     };
     const scheduleUpdate = () => {
