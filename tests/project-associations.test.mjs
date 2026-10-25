@@ -12,7 +12,7 @@ const expected = [
 for (const project of expected) {
   test(`${project.name}: card keeps its own text, previews, links and demo status`, async () => {
     const html = await readFile('dist/projekte/index.html', 'utf8');
-    const cards = html.match(/<article\b[\s\S]*?<\/article>/g) || [];
+    const cards = (html.match(/<article\b[\s\S]*?<\/article>/g) || []).filter(card => !/^<article[^>]*aria-hidden="true"/.test(card));
     assert.equal(cards.length, expected.length);
     const card = cards.find(card => card.includes(`>${project.name}</h2>`));
     assert.ok(card, `Missing card for ${project.name}`);
@@ -36,7 +36,7 @@ test('homepage carousel keeps all three featured projects with their own images 
   const html = await readFile('dist/index.html', 'utf8');
   const track = html.match(/<ul[^>]*id="featured-project-track"[\s\S]*?<\/ul>/)?.[0];
   assert.ok(track);
-  const cards = track.match(/<li\b[\s\S]*?<\/li>/g) || [];
+  const cards = (track.match(/<li\b[\s\S]*?<\/li>/g) || []).filter(card => !/^<li[^>]*aria-hidden="true"/.test(card));
   assert.equal(cards.length, expected.filter(project => project.feature).length);
   for (const project of expected.filter(project => project.feature)) {
     const card = cards.find(card => card.includes(`>${project.name}</h3>`));
