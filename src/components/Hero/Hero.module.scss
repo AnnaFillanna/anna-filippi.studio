@@ -103,3 +103,17 @@
   }
   .hero::before { display: none; }
 }
+
+@media (max-width: 600px) {
+  .copy { padding-top: 80px; }
+  .eyebrow { margin-bottom: $space-xs; }
+  .copy h1 { font-size: clamp(58px, 17vw, 94px); }
+  .mobileServices {
+    margin-top: $space-sm;
+    a { min-height: 44px; padding-block: 10px; font-size: 13px; letter-spacing: .035em; }
+  }
+  .description { margin-top: $space-sm; font-size: 15px; line-height: 1.55; }
+  .actions { margin-top: $space-sm; gap: $space-xs; max-width: none; }
+  .servicesLink, .projectLink { min-height: 48px; padding-block: 10px; }
+  .portrait { width: 72%; max-width: 310px; margin-top: 0; }
+}

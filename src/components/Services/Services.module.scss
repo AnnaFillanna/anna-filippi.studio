@@ -151,3 +151,31 @@
   .primaryService { transition: none; }
   .primaryService:hover { translate: none; }
 }
+
+// Compact mobile rhythm; desktop and tablet grids retain their existing sizing.
+@media (max-width: 600px) {
+  .services { padding-block: $space-xl; overflow-x: visible; }
+  .sectionLabel { margin-bottom: $space-xs; }
+  .serviceLead { font-size: 16px; margin-bottom: $space-md; }
+  .primaryList { grid-auto-rows: auto; gap: $space-sm; }
+  .primaryService {
+    padding: 20px;
+    h3 { margin-bottom: $space-xs; }
+    .description { margin: 0; line-height: 1.6; hyphens: auto; }
+    .galleryLink { display: inline-flex; align-items: center; gap: $space-xs; max-width: 100%; margin-top: $space-xs; min-height: 44px; line-height: 1.5; span { flex-shrink: 0; } }
+  }
+  .serviceNumber { margin-bottom: 12px; font-size: 26px; }
+  .intro { margin-top: $space-xl; padding-top: $space-lg; gap: $space-sm; }
+  .eyebrow { margin-bottom: 12px; }
+  .pricing {
+    h2 { margin-bottom: $space-sm; }
+    > p:not(.eyebrow) { line-height: 1.6; }
+    .pricingNote { margin-top: $space-sm; font-size: 22px; line-height: 1.4; }
+  }
+  .benefits {
+    li { grid-template-columns: 44px minmax(0, 1fr); gap: 12px; padding: $space-sm 0; }
+    h3 { font-size: 24px; margin-bottom: 6px; }
+    p { font-size: 15px; line-height: 1.6; }
+  }
+  .benefitIcon { width: 44px; height: 44px; }
+}

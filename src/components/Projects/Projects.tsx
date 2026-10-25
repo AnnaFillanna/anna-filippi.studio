@@ -1,35 +1,8 @@
-import { projects, fillicatDetails, danaDetails } from "../../data/projects";
+import { projects } from "../../data/projects";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import styles from "./Projects.module.scss";
-
-const fillicatSubtitle = "Adaptive Lernplattform für Programmierung";
-
-
-function FilliCatDetails() {
-  return fillicatDetails.map(([label, text]) => (
-    <p key={label} className={styles.description}>
-      <strong>{label}:</strong> {text}
-    </p>
-  ));
-}
-
-
-
-function DanaDetails() {
-  return danaDetails.map(([label, text]) => (
-    <p key={label} className={styles.description}>
-      <strong>{label}:</strong> {text}
-    </p>
-  ));
-}
-
-
-
-
-
-
 
 export default function Projects({
   softwareOnly = false,
@@ -72,7 +45,6 @@ export default function Projects({
     });
   };
   const selected = projects.find(project => project.imagePrefix === (danaOnly ? "dana" : "fillicat"))!;
-  const imagePrefix = danaOnly ? "dana" : "fillicat";
   const renderProject = (project: (typeof projects)[number], index: number) => (
     <motion.article
       {...reveal}
@@ -110,8 +82,8 @@ export default function Projects({
         </div>
         <div className={`${styles.phone} ${project.imagePrefix === "kavro" ? styles.kavroPhone : ""}`}>
           <img
-            src={`/images/projects/${project.imagePrefix}-mobile.${project.imagePrefix === "kavro" ? "jpg" : project.imageExtension}`}
-            alt={project.imagePrefix === "kavro" ? "Barber bei der Arbeit im KAVRO Studio" : `Mobile Ansicht von ${project.name}`}
+            src={`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
+            alt={project.mobileImageAlt ?? `Mobile Ansicht von ${project.name}`}
             width="390"
             height="844"
             loading="lazy"
@@ -121,7 +93,7 @@ export default function Projects({
       <div className={styles.copy}>
         <p className={styles.eyebrow}>{project.category}</p>
         <h2 id={`project-${index}`}>{project.name}</h2>
-        {project.imagePrefix === "fillicat" && <p className={styles.description}>{fillicatSubtitle}</p>}
+        {project.subtitle && <p className={styles.description}>{project.subtitle}</p>}
         <p className={styles.description}>{project.description}</p>
         <details className={styles.projectDetails}>
           <summary>Über das Projekt</summary>
@@ -183,7 +155,7 @@ export default function Projects({
             <div className={styles.laptop}>
               <div className={styles.laptopScreen}>
                 <img
-                  src={`/images/projects/${imagePrefix}-desktop.png`}
+                  src={`/images/projects/${selected.imagePrefix}-desktop.${selected.imageExtension}`}
                   alt={`Startseite von ${selected.name}`}
                   width="1440"
                   height="900"
@@ -194,8 +166,8 @@ export default function Projects({
             </div>
             <div className={styles.phone}>
               <img
-                src={`/images/projects/${imagePrefix}-mobile.png`}
-                alt={`Mobile Ansicht von ${selected.name}`}
+                src={`/images/projects/${selected.imagePrefix}-mobile.${selected.mobileImageExtension ?? selected.imageExtension}`}
+                alt={selected.mobileImageAlt ?? `Mobile Ansicht von ${selected.name}`}
                 width="390"
                 height="844"
               />
@@ -204,8 +176,10 @@ export default function Projects({
           <div className={styles.caseDetails}>
             <p className={styles.caseEyebrow}>{selected.category}</p>
             <h2>{selected.name}</h2>
-            {!danaOnly && <p>{fillicatSubtitle}</p>}
-            {danaOnly ? <DanaDetails /> : <FilliCatDetails />}
+            {selected.subtitle && <p>{selected.subtitle}</p>}
+            {selected.details.map(([label, text]) => (
+              <p key={label} className={styles.description}><strong>{label}:</strong> {text}</p>
+            ))}
           </div>
         </div>
       </section>

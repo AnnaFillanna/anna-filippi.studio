@@ -64,3 +64,16 @@
   .number { font-size: 24px; left: 38px; }
   .step { padding-left: 78px; }
 }
+
+@media (max-width: 600px) {
+  .process { padding-block: $space-xl; }
+  .eyebrow { margin-bottom: $space-sm; }
+  .process .intro { margin-top: $space-sm; line-height: 1.6; }
+  .timeline { margin-top: $space-md; }
+  .verticalPath { width: 28px; }
+  .step { padding-left: 64px; padding-bottom: 22px; }
+  .number { left: 32px; font-size: 22px; top: 3px; }
+  .step h3 { margin: 0 0 $space-xs; }
+  .step p { line-height: 1.6; }
+  .pricing { margin-top: $space-lg; padding-top: $space-md; h2 { margin: 0 0 $space-sm; } p { line-height: 1.6; } }
+}

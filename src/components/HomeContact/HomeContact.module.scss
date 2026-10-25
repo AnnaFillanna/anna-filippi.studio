@@ -26,3 +26,8 @@
 }
 
 .actions a { @include pill-control; }
+
+@media (max-width: 600px) {
+  .contact { padding-block: $space-xl; h2 { margin-bottom: $space-sm; } p { font-size: 16px; line-height: 1.6; } }
+  .actions { gap: $space-xs; margin-top: $space-md; a { min-height: 48px; padding: 12px; gap: 8px; } }
+}

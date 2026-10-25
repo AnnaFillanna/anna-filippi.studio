@@ -261,6 +261,8 @@
 }
 
 .caseButton {
+  // Keep screen-reader labels inside their own carousel card.
+  position: relative;
   display: inline-flex;
   align-items: center;
   width: fit-content;

@@ -63,3 +63,14 @@
 .content .personalNote { font-size: $text-body; line-height: 1.85; max-width: 42ch; color: $bordeaux; }
 .content .signature { margin: 22px 0 0; font-size: 20px; line-height: 1.6; }
 .signature span { font-size: 27px; }
+
+@media (max-width: 600px) {
+  .inner { padding-block: $space-lg $space-md; }
+  .content { padding-block: $space-md; }
+  .invitation { font-size: 25px; line-height: 1.45; margin-block: $space-sm; }
+  .content .personalNote { font: 400 15px/1.65 $sans; }
+  .content .signature { margin-top: $space-sm; }
+  .bottom { gap: $space-xs $space-sm; padding-top: $space-sm; }
+  .legal { gap: 12px; a { display: inline-flex; align-items: center; min-height: 44px; } }
+  .up { min-height: 44px; display: inline-flex; align-items: center; }
+}
