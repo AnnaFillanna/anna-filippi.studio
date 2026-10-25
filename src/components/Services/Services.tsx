@@ -18,12 +18,16 @@ export default function Services() {
       <p className={styles.serviceLead}>Was möchtest du umsetzen?</p>
       <ul className={styles.primaryList}>
         {services.map((service, index) => (
-          <li key={service.title} className={styles.primaryService}>
+          <motion.li key={service.title} className={styles.primaryService}
+            initial={reduced ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: .12 }}
+            transition={{ duration: reduced ? 0 : .65, delay: reduced ? 0 : (index % 3) * .06, ease: [.22, 1, .36, 1] }}>
             <span className={styles.serviceNumber} aria-hidden="true">0{index + 1}</span>
             <h3>{service.title}</h3>
             <p className={styles.description}>{service.text}</p>
             {'href' in service && <a className={styles.galleryLink} href={service.href}>{service.link} <span aria-hidden="true">→</span></a>}
-          </li>
+          </motion.li>
         ))}
       </ul>
       <motion.div className={styles.intro}

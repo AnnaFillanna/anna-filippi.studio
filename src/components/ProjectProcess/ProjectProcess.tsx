@@ -38,11 +38,14 @@ export default function ProjectProcess() {
         </svg>
       <ol className={styles.steps}>
         {steps.map(([title, text], index) => (
-          <li key={title} className={styles.step}>
+          <motion.li key={title} className={styles.step}
+            initial={reduced ? false : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }}
+            transition={{ duration: reduced ? 0 : .6, ease: [.22, 1, .36, 1] }}>
             <span className={styles.number} aria-hidden="true">0{index + 1}</span>
             <h3>{title}</h3>
             <p>{text}</p>
-          </li>
+          </motion.li>
         ))}
       </ol>
       </motion.div>

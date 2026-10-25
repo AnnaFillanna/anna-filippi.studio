@@ -135,3 +135,19 @@
   .primaryList { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .primaryService h3 { font-size: clamp(24px, 6.4vw, 28px); }
 }
+
+// Separate hover translation from Motion's scroll transform.
+.primaryService {
+  transition: translate .3s ease, border-color .3s ease, background-color .3s ease;
+  &:focus-within { border-color: #650d2070; background-color: #e9dfd350; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .primaryService:hover { translate: 0 -6px; border-color: #650d2070; background-color: #e9dfd350; }
+}
+@media (hover: none) {
+  .primaryService:active { background-color: #e9dfd370; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primaryService { transition: none; }
+  .primaryService:hover { translate: none; }
+}

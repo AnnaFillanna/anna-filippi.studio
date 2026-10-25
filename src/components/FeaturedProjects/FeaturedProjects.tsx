@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { projects } from '../../data/projects';
 import styles from './FeaturedProjects.module.scss';
@@ -5,6 +6,7 @@ import styles from './FeaturedProjects.module.scss';
 const featuredProjects = projects.filter(project => project.featuredCategory);
 
 export default function FeaturedProjects() {
+  const reduced = useReducedMotion();
   const track = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
   useEffect(() => {
@@ -34,7 +36,11 @@ export default function FeaturedProjects() {
     if (element && first && second) element.scrollBy({ left: direction * (second.offsetLeft - first.offsetLeft), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   };
   return (
-    <section id="ausgewaehlte-projekte" className={styles.section} aria-labelledby="featured-projects-title">
+    <motion.section
+      initial={reduced ? false : { opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .1 }}
+      transition={{ duration: reduced ? 0 : .7, ease: [.22, 1, .36, 1] }}
+      id="ausgewaehlte-projekte" className={styles.section} aria-labelledby="featured-projects-title">
       <header className={styles.heading}>
         <h2 id="featured-projects-title">Ausgewählte Projekte</h2>
         <p>Ein Einblick in meine Arbeit.</p>
@@ -74,6 +80,6 @@ export default function FeaturedProjects() {
         <button className={styles.arrow} type="button" aria-label="Nächstes Projekt" aria-controls="featured-project-track" disabled={active === featuredProjects.length - 1} onClick={() => move(1)}>→</button>
       </div>
       <a className={styles.allProjects} href="/projekte">Alle Projekte ansehen</a>
-    </section>
+    </motion.section>
   );
 }
