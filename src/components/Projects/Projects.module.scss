@@ -462,19 +462,25 @@
 
 // Native scrolling preserves touch gestures and keyboard navigation.
 .projects .carousel {
+  position: relative;
   display: flex;
   gap: 48px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding: 8px 6px 24px;
-  margin-inline: -6px;
+  scroll-padding-inline: 24px;
+  padding: 28px 24px 56px;
+  margin-inline: -24px;
   overscroll-behavior-x: contain;
 
   &::-webkit-scrollbar { display: none; }
   > .card {
     flex: 0 0 calc((100% - 48px) / 2);
     scroll-snap-align: start;
+    // Individual transforms compose with the existing reveal animation.
+    translate: 0 var(--arc-drop, 0px);
+    rotate: var(--arc-angle, 0deg);
+    transform-origin: center top;
   }
   &:focus-visible {
     outline: 1px solid $bordeaux;
@@ -535,3 +541,7 @@
 .projects .back { margin-bottom: 18px; }
 .projects .heading { margin-bottom: 32px; }
 .projects .lead { max-width: 52ch; font-size: 17px; line-height: 1.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .projects .carousel > .card { translate: none; rotate: none; }
+}

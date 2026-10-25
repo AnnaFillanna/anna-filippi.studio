@@ -18,17 +18,38 @@ export default function Projects({
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    const update = () => setNavigation({
-      previous: track.scrollLeft > 2,
-      next: track.scrollLeft + track.clientWidth < track.scrollWidth - 2,
-    });
-    const observer = new ResizeObserver(update);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    const update = () => {
+      setNavigation({
+        previous: track.scrollLeft > 2,
+        next: track.scrollLeft + track.clientWidth < track.scrollWidth - 2,
+      });
+      const center = track.scrollLeft + track.clientWidth / 2;
+      for (const card of Array.from(track.children) as HTMLElement[]) {
+        // A shallow circular arc follows each card's position in the viewport.
+        const distance = Math.max(-1, Math.min(1,
+          (card.offsetLeft + card.offsetWidth / 2 - center) / (track.clientWidth / 2)));
+        const angle = reducedMotion.matches ? 0 : distance * 3;
+        const drop = reducedMotion.matches ? 0 : 28 * distance * distance;
+        card.style.setProperty("--arc-angle", `${angle}deg`);
+        card.style.setProperty("--arc-drop", `${drop}px`);
+      }
+    };
+    const scheduleUpdate = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(update);
+    };
+    const observer = new ResizeObserver(scheduleUpdate);
     observer.observe(track);
-    track.addEventListener("scroll", update, { passive: true });
+    track.addEventListener("scroll", scheduleUpdate, { passive: true });
+    reducedMotion.addEventListener("change", scheduleUpdate);
     update();
     return () => {
       observer.disconnect();
-      track.removeEventListener("scroll", update);
+      track.removeEventListener("scroll", scheduleUpdate);
+      reducedMotion.removeEventListener("change", scheduleUpdate);
+      cancelAnimationFrame(frame);
     };
   }, [softwareOnly, danaOnly]);
 
