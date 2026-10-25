@@ -13,18 +13,40 @@ export default function Projects({
 }) {
   const reveal = useScrollReveal();
   const trackRef = useRef<HTMLDivElement>(null);
-  const [navigation, setNavigation] = useState({ previous: false, next: true });
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const cards = Array.from(track.children) as HTMLElement[];
+    const count = projects.length;
     let frame = 0;
+    let settleTimer = 0;
+    let touching = false;
+    let active = 0;
+    const centerOn = (index: number) => cards[index].offsetLeft + cards[index].offsetWidth / 2 - track.clientWidth / 2;
+    const nearestIndex = () => cards.reduce((best, _, index) =>
+      Math.abs(centerOn(index) - track.scrollLeft) < Math.abs(centerOn(best) - track.scrollLeft) ? index : best, 0);
+    const settle = () => {
+      if (touching) return;
+      const index = nearestIndex();
+      active = index % count;
+      if (index < count || index >= count * 2) {
+        // The adjacent copy has identical neighbours, so this reset is invisible.
+        track.scrollTo({ left: centerOn(count + active), behavior: "instant" });
+        update();
+      }
+    };
+    const pointerDown = () => { touching = true; };
+    const pointerUp = () => {
+      touching = false;
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(settle, 180);
+    };
     const update = () => {
-      setNavigation({
-        previous: track.scrollLeft > 2,
-        next: track.scrollLeft + track.clientWidth < track.scrollWidth - 2,
-      });
+      active = nearestIndex() % count;
       const center = track.scrollLeft + track.clientWidth / 2;
       track.style.setProperty("--ring-center", `${center}px`);
       const radius = track.clientWidth / (2 * Math.sin(16 * Math.PI / 180));
@@ -42,17 +64,36 @@ export default function Projects({
     const scheduleUpdate = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(update);
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(settle, 180);
     };
-    const observer = new ResizeObserver(scheduleUpdate);
+    let width = track.clientWidth;
+    const observer = new ResizeObserver(() => {
+      if (track.clientWidth !== width) {
+        width = track.clientWidth;
+        track.scrollTo({ left: centerOn(count + active), behavior: "instant" });
+      }
+      update();
+    });
     observer.observe(track);
     track.addEventListener("scroll", scheduleUpdate, { passive: true });
     reducedMotion.addEventListener("change", scheduleUpdate);
+    track.addEventListener("scrollend", settle);
+    track.addEventListener("pointerdown", pointerDown);
+    window.addEventListener("pointerup", pointerUp);
+    window.addEventListener("pointercancel", pointerUp);
+    track.scrollTo({ left: centerOn(count), behavior: "instant" });
     update();
     return () => {
       observer.disconnect();
       track.removeEventListener("scroll", scheduleUpdate);
       reducedMotion.removeEventListener("change", scheduleUpdate);
       cancelAnimationFrame(frame);
+      window.clearTimeout(settleTimer);
+      track.removeEventListener("scrollend", settle);
+      track.removeEventListener("pointerdown", pointerDown);
+      window.removeEventListener("pointerup", pointerUp);
+      window.removeEventListener("pointercancel", pointerUp);
     };
   }, [softwareOnly, danaOnly]);
 
@@ -74,8 +115,10 @@ export default function Projects({
   const selected = projects.find(project => project.imagePrefix === (danaOnly ? "dana" : "fillicat"))!;
   const renderProject = (project: (typeof projects)[number], index: number) => (
     <motion.article
-      {...reveal}
-      key={project.name}
+      initial={false}
+      key={`${project.name}-${index}`}
+      aria-hidden={index < projects.length || index >= projects.length * 2 ? true : undefined}
+      inert={index < projects.length || index >= projects.length * 2 ? true : undefined}
       className={styles.card}
       aria-labelledby={`project-${index}`}
     >
@@ -102,7 +145,7 @@ export default function Projects({
               alt={`Desktop-Ansicht von ${project.name}`}
               width="1440"
               height="900"
-              loading={index === 0 ? "eager" : "lazy"}
+              loading={index % projects.length === 0 ? "eager" : "lazy"}
             />
           </div>
           <div className={styles.laptopBase} aria-hidden="true" />
@@ -122,7 +165,12 @@ export default function Projects({
         <h2 id={`project-${index}`}>{project.name}</h2>
         {project.subtitle && <p className={styles.description}>{project.subtitle}</p>}
         <p className={styles.description}>{project.description}</p>
-        <details className={styles.projectDetails}>
+        <details className={styles.projectDetails} open={expanded[project.imagePrefix] ?? false}
+          onToggle={event => {
+            const open = event.currentTarget.open;
+            setExpanded(previous => previous[project.imagePrefix] === open ? previous
+              : { ...previous, [project.imagePrefix]: open });
+          }}>
           <summary>Über das Projekt</summary>
           {project.details.map(([label, text]) => (
             <p key={label} className={styles.description}><strong>{label}:</strong> {text}</p>
@@ -233,17 +281,17 @@ export default function Projects({
       </motion.div>
       <div className={styles.carouselControls} role="group" aria-label="Projekte durchblättern">
         <button type="button" aria-label="Vorherige Projekte" aria-controls="project-carousel"
-          disabled={!navigation.previous} onClick={() => moveProjects(-1)}>
+          onClick={() => moveProjects(-1)}>
           <svg viewBox="0 0 32 20" fill="none" aria-hidden="true"><path d="M30 10H2m8-8-8 8 8 8" /></svg>
         </button>
         <button type="button" aria-label="Nächste Projekte" aria-controls="project-carousel"
-          disabled={!navigation.next} onClick={() => moveProjects(1)}>
+          onClick={() => moveProjects(1)}>
           <svg viewBox="0 0 32 20" fill="none" aria-hidden="true"><path d="M2 10h28m-8-8 8 8-8 8" /></svg>
         </button>
       </div>
       <div ref={trackRef} id="project-carousel" className={`${styles.grid} ${styles.carousel}`}
         role="region" aria-label="Projektübersicht" aria-roledescription="Karussell" tabIndex={0}>
-        {projects.map((project, index) => renderProject(project, index))}
+        {[...projects, ...projects, ...projects].map((project, index) => renderProject(project, index))}
       </div>
     </section>
   );
