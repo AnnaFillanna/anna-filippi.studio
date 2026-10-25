@@ -29,12 +29,12 @@ export default function Projects({
       track.style.setProperty("--ring-center", `${center}px`);
       const radius = track.clientWidth / (2 * Math.sin(22 * Math.PI / 180));
       for (const card of Array.from(track.children) as HTMLElement[]) {
-        // View the inside of a large vertical ring: its sides turn toward us.
+        // View the outside of a large vertical ring: its sides recede from us.
         const distance = Math.max(-1, Math.min(1,
           (card.offsetLeft + card.offsetWidth / 2 - center) / (track.clientWidth / 2)));
-        const angle = reducedMotion.matches ? 0 : -distance * 22;
+        const angle = reducedMotion.matches ? 0 : distance * 22;
         const depth = reducedMotion.matches ? 0
-          : radius * (1 - Math.cos(angle * Math.PI / 180)) - 60;
+          : 60 - radius * (1 - Math.cos(angle * Math.PI / 180));
         card.style.setProperty("--ring-angle", `${angle}deg`);
         card.style.setProperty("--ring-depth", `${depth}px`);
       }
