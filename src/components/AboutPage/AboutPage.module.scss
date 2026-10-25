@@ -32,3 +32,18 @@
   font-weight: 600;
   color: #100d0e;
 }
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $space-sm;
+  list-style: none;
+  margin: $space-lg 0 0;
+  padding: 0;
+  text-align: center;
+  li { min-width: 0; }
+  svg { display: block; width: 28px; height: 28px; margin: 0 auto 12px; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  h2 { font: 500 20px/1.3 $serif; margin: 0 0 $space-xs; }
+  p { font: 400 14px/1.6 $sans; color: $text-muted; }
+}
+@media (max-width: 360px) { .values { gap: $space-xs; h2 { font-size: 18px; } p { font-size: 13px; } } }

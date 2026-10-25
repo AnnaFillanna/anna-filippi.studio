@@ -23,6 +23,20 @@ export default function AboutPage() {
             <p>Besonders faszinieren mich die Möglichkeiten der künstlichen Intelligenz und die Verbindung von Design und Funktionalität.</p>
             <p>Neben der <strong>Webentwicklung</strong> widme ich mich mit Leidenschaft der <strong>Schmuckfotografie</strong>. Was als Hobby begann, ist für mich eine kreative Möglichkeit, besondere Details, Licht und Ästhetik in Bildern festzuhalten.</p>
           </div>
+          <ul className={styles.values} aria-label="Was meine Arbeit ausmacht">
+            <li>
+              <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="9" r="5" /><path d="M6 28c0-7 4-11 10-11s10 4 10 11" /></svg>
+              <h2>Persönlich</h2><p>Direkter Kontakt</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m10 9-6 7 6 7m12-14 6 7-6 7m-4-17-4 20" /></svg>
+              <h2>Individuell</h2><p>Passende Lösungen</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 28 5 17C-2 8 10 2 16 11 22 2 34 8 27 17Z" /></svg>
+              <h2>Mit Liebe</h2><p>Zum Detail</p>
+            </li>
+          </ul>
           <p className={styles.signature}>Anna Filippi — Softwareentwicklung, Webentwicklung <span className={styles.ampersand}>&amp;</span> Fotografie aus Leidenschaft.</p>
         </motion.div>
         <motion.div className={styles.portrait} {...reveal(30)}>

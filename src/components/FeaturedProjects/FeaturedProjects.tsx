@@ -67,6 +67,7 @@ export default function FeaturedProjects() {
                   <p>{project.featuredCategory}</p>
                   <h3>{project.name}</h3>
                   <p className={styles.projectDescription}>{project.description}</p>
+                  <span className={styles.projectAction}>{project.buttonLabel} <span aria-hidden="true">→</span></span>
                 </div>
               </a>
             </article>

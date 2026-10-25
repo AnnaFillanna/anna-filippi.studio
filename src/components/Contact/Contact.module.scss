@@ -267,3 +267,6 @@
   .submit:hover:not(:disabled), .whatsapp:hover { background: #e9dfd3; }
 }
 @media (max-width: 600px) { .actions { grid-template-columns: minmax(0, 1fr); } }
+
+.footer { padding-bottom: $space-section; }
+.actions .submit { background: $bordeaux; color: $ivory; &:hover:not(:disabled) { background: #580618; } }

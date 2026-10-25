@@ -56,3 +56,5 @@
 }
 
 .copy .projectDescription { margin: 12px 0 0; font: 400 15px/1.6 $sans; color: $text-muted; }
+
+.projectAction { display: inline-flex; align-items: center; gap: $space-xs; min-height: 44px; margin-top: $space-xs; border-bottom: 1px solid #650d2070; font: 500 #{$text-control}/1.5 $sans; }
