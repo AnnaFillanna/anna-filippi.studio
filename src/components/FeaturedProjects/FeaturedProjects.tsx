@@ -61,11 +61,12 @@ export default function FeaturedProjects() {
                   <img src={`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`}
                     alt={`Website-Vorschau: ${project.name}`} width={1440} height={900}
                     loading="lazy" decoding="async" />
-                  {project.isDemo && <span className={styles.badge}>Demo-Projekt</span>}
+                  <span className={styles.badge}>{project.projectType}</span>
                 </div>
                 <div className={styles.copy}>
                   <p>{project.featuredCategory}</p>
                   <h3>{project.name}</h3>
+                  <p className={styles.projectDescription}>{project.description}</p>
                 </div>
               </a>
             </article>

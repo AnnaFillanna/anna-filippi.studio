@@ -179,3 +179,5 @@
   }
   .benefitIcon { width: 44px; height: 44px; }
 }
+
+.trust { min-width: 0; h2 { font: 400 #{$text-section}/1.15 $serif; letter-spacing: -.025em; } .benefits { padding-top: $space-xs; } }

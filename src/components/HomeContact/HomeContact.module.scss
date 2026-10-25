@@ -31,3 +31,6 @@
   .contact { padding-block: $space-xl; h2 { margin-bottom: $space-sm; } p { font-size: 16px; line-height: 1.6; } }
   .actions { gap: $space-xs; margin-top: $space-md; a { min-height: 48px; padding: 12px; gap: 8px; } }
 }
+
+.contact h2 { max-width: 26ch; margin-inline: auto; }
+.actions .primaryAction { grid-column: 1 / -1; justify-self: center; background: $bordeaux; color: $ivory; max-width: 100%; &:hover { background: #580618; } }

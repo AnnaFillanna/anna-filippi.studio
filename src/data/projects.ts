@@ -1,33 +1,34 @@
 export const fillicatDetails = [
   ["Aufgabe", "Programmieren durch praktische Aufgaben und individuelles Training vermitteln."],
-  ["Umsetzung", "Adaptive Übungen, automatische Code-Tests und gezielte Hilfestellungen für JavaScript und TypeScript."],
+  ["Funktionen", "Adaptive Übungen, automatische Code-Tests und gezielte Hilfestellungen für JavaScript und TypeScript. So können Lernende ihren Code direkt überprüfen und gezielt weiterüben."],
   ["Stand", "In Entwicklung. Weitere Programmiersprachen sind geplant."],
 ];
 
 export const danaDetails = [
   ["Aufgabe", "Arbeiten des Studios zeigen und den Weg zur Terminanfrage vereinfachen."],
-  ["Umsetzung", "Responsive Website mit Tattoo- und Piercing-Galerien, geschützter Medienverwaltung und WhatsApp-Kontakt."],
-  ["Ergebnis", "Veröffentlicht auf tattoodana.de. Entwickelt mit React, TypeScript und Supabase."],
+  ["Funktionen", "Responsive Website mit Tattoo- und Piercing-Galerien, geschützter Medienverwaltung und WhatsApp-Kontakt. Interessierte können Arbeiten ansehen und ihre Idee direkt mit dem Studio besprechen."],
+  ["Stand", "Veröffentlicht auf tattoodana.de. Entwickelt mit React, TypeScript und Supabase."],
 ];
 
 export const mammaDetails = [
   ["Aufgabe", "Eine individuelle Pizza-Bestellung als interaktive Anwendung erlebbar machen."],
-  ["Umsetzung", "Pizza-Konfigurator mit Zutatenwahl, Preisberechnung und Warenkorb. Entwickelt mit React und TypeScript."],
+  ["Funktionen", "Pizza-Konfigurator mit Zutatenwahl, Preisberechnung und Warenkorb. Die Demo macht den Weg von der eigenen Zusammenstellung bis zur Testbestellung nachvollziehbar. Entwickelt mit React und TypeScript."],
   ["Demo", "Ohne Registrierung als Demo-Gast testen. Keine echte Pizzeria; alle Bestellungen sind ausschließlich Tests."],
 ];
 
 export const kavroDetails = [
   ["Aufgabe", "Den digitalen Auftritt eines modernen Barber Studios mit einer unkomplizierten Terminplanung verbinden."],
-  ["Umsetzung", "Responsive Studio-Website mit Serviceübersicht und interaktiver Terminbuchung."],
+  ["Funktionen", "Responsive Studio-Website mit Serviceübersicht und interaktiver Terminbuchung. Besucher können Leistungen vergleichen und die Terminauswahl ausprobieren."],
   ["Technologien", "Entwickelt mit React, TypeScript und React Router."],
 ];
 
 export const projects = [
   {
     name: "Dana Tattoo Studio",
+    projectType: "Kundenprojekt",
     category: "FULL-STACK WEBENTWICKLUNG",
     description:
-      "Eine individuelle Website für ein Tattoo- und Piercingstudio – mit interaktiven Galerien und direktem Kontakt.",
+      "Website für ein Tattoo- und Piercingstudio: Arbeiten entdecken und die eigene Tattoo-Idee direkt per WhatsApp besprechen.",
     scope: "React · TypeScript · SCSS · Supabase",
     status: "Veröffentlicht · Kundenprojekt",
     imagePrefix: "dana",
@@ -41,8 +42,9 @@ export const projects = [
   },
   {
     name: "Mamma Mia – Pizza mit Amore",
+    projectType: "Demoprojekt",
     category: "WEBENTWICKLUNG · INTERAKTIVE DEMO",
-    description: "Eine interaktive Portfolio-Demo mit Pizza-Konfigurator, Warenkorb und Testbestellungen.",
+    description: "Interaktive Demo mit Pizza-Konfigurator: Zutaten auswählen, den Preis nachvollziehen und eine Testbestellung durchspielen.",
     scope: "",
     status: "Portfolio-Demo · Keine echten Bestellungen",
     imagePrefix: "mamma-mia",
@@ -56,8 +58,9 @@ export const projects = [
   },
   {
     name: "KAVRO — Barber Studio",
+    projectType: "Demoprojekt",
     category: "WEBENTWICKLUNG · BUCHUNGSERLEBNIS",
-    description: "Ein digitaler Auftritt für ein modernes Barber Studio – mit Serviceübersicht und interaktiver Terminbuchung.",
+    description: "Demo für ein Barber Studio mit Serviceübersicht und interaktiver Terminbuchung – vom Vergleichen der Leistungen bis zur Terminauswahl.",
     scope: "",
     status: "Eigenes Projekt · Demo · Quellcode auf GitHub",
     imagePrefix: "kavro",
@@ -73,10 +76,11 @@ export const projects = [
   },
   {
     name: "FilliCat",
+    projectType: "Eigenes Projekt",
     subtitle: "Adaptive Lernplattform für Programmierung",
     category: "EDTECH / SOFTWAREENTWICKLUNG",
     description:
-      "Programmieren lernen mit praktischen Aufgaben, direktem Feedback und individuellem Training.",
+      "Programmieren lernen mit praktischen Aufgaben: Code ausprobieren, direktes Feedback erhalten und gezielt weiterüben.",
     scope: "",
     status: "Eigenes Projekt · In Entwicklung",
     imagePrefix: "fillicat",

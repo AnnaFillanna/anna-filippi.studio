@@ -28,14 +28,14 @@ export default function Hero() {
       <svg className={styles.curve} viewBox="0 0 1280 720" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 515 C70 700 290 665 455 730 M1000 460 C1080 365 1160 325 1300 290" /></svg>
       <div className={styles.copy}>
         <motion.p {...intro(0.1)} className={styles.eyebrow}>
-          DIGITAL ATELIER
+          ANNA FILIPPI STUDIO
         </motion.p>
         <div className={styles.titleGroup}>
         <motion.h1 id="hero-title"
           initial={reduced ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}>
-          <span>ANNA</span><span>FILIPPI</span>
+          Digitale Lösungen, die dein Business voranbringen.
         </motion.h1>
 
         </div>
@@ -45,11 +45,11 @@ export default function Hero() {
           <a href="/fotografie">PRODUKTFOTOGRAFIE<span aria-hidden="true">→</span></a>
         </nav>
         <motion.p {...intro(0.4)} className={styles.description}>
-          Ich entwickle individuelle Software und Webseiten<br className={styles.desktopBreak} /> und fotografiere Produkte für starke Markenauftritte.<br className={styles.desktopBreak} /> Persönlich. Kreativ. Mit Liebe zum Detail.
+          Individuelle Webseiten, intelligente Software und hochwertige Produktfotografie – durchdacht, modern und auf deine Ziele abgestimmt.
         </motion.p>
         <motion.div {...intro(0.55)} className={styles.actions}>
-          <a href="#leistungen" className={styles.servicesLink}>Leistungen ansehen<span className={styles.arrow} aria-hidden="true">→</span></a>
-          <a href="/kontakt" className={styles.projectLink}>Projekt anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>
+          <a href="/kontakt" className={styles.servicesLink}>Projekt anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>
+          <a href="/projekte" className={styles.projectLink}>Arbeiten ansehen<span className={styles.arrow} aria-hidden="true">→</span></a>
         </motion.div>
       </div>
     </section>

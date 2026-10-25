@@ -43,7 +43,7 @@ test('homepage carousel keeps all three featured projects with their own images 
     assert.ok(card);
     assert.ok(card.includes(`href="${project.detail || project.href}"`));
     assert.ok(card.includes(`/images/projects/${project.prefix}-desktop.${project.extension}`));
-    assert.equal(card.includes('Demo-Projekt'), project.demo);
+    assert.equal(card.includes('Demoprojekt'), project.demo);
   }
 });
 

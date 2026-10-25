@@ -11,7 +11,7 @@ const examples = [
   ['/datenschutz', 'Datenschutzerklärung', 'Rechtstext wird geladen'],
   ['/dana-tattoo-studio', 'Kunst auf der Haut.', 'Dana Tattoo Studio'],
   ['/softwareentwicklung', 'Softwareentwicklung', 'FilliCat'],
-  ['/', 'ANNA FILIPPI', 'Meine Leistungen'],
+  ['/', 'Digitale Lösungen, die dein Business voranbringen.', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],
   ['/fotografie', 'Große Wirkung.', 'Perlen &amp; Seide'],
@@ -66,21 +66,21 @@ test('sitemap and Vercel rules cover all portfolio pages', async () => {
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
 });
 
-test('home separates three core services from supporting services', async () => {
+test('home retains six services and introduces the personal collaboration approach', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   for (const id of ['start', 'leistungen', 'kontakt']) assert.ok(html.includes(`id="${id}"`));
-  for (const title of ['Webentwicklung', 'Softwareentwicklung', 'KI-Integration &amp; Automatisierung', 'Shopify, WordPress &amp; CMS', 'SEO &amp; Website-Betreuung', 'Produktfotografie']) {
+  for (const title of ['Webentwicklung', 'Softwareentwicklung', 'KI &amp; Automatisierung', 'E-Commerce', 'SEO &amp; Betreuung', 'Produktfotografie']) {
     assert.ok(html.includes(title), `Missing service: ${title}`);
   }
   assert.ok(!html.includes('id="ueber-mich"'));
   assert.ok(!html.includes('04 / KONTAKT'));
   assert.ok(!/<span[^>]*>0[1-6] —<\/span>/.test(html));
   assert.ok(html.includes('Meine Leistungen'));
-  assert.ok(html.includes('Ergänzende Leistungen'));
-  assert.ok(html.indexOf('Software &amp; Projekt ansehen') < html.indexOf('Ergänzende Leistungen'));
-  assert.ok(html.indexOf('Fotografien ansehen') < html.indexOf('Ergänzende Leistungen'));
+  assert.ok(html.includes('Software &amp; Projekt ansehen'));
+  assert.ok(html.includes('Fotografien ansehen'));
+  assert.ok(html.includes('Warum mit mir arbeiten?'));
   assert.match(html, /<h2[^>]*id="services-title"[^>]*>Meine Leistungen<\/h2>/);
-  for (const benefit of ['Maßgeschneiderte Konzepte', 'Klare Prozesse', 'Persönliche Begleitung']) assert.ok(html.includes(benefit));
+  for (const benefit of ['Individuelle Lösungen', 'Transparente Zusammenarbeit', 'Direkter Kontakt']) assert.ok(html.includes(benefit));
   assert.ok(html.includes('in etwas Schönes zu verwandeln.'));
   for (const label of ['Impressum', 'Datenschutz', 'Cookies']) assert.ok(html.includes(label));
 });

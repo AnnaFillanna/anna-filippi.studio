@@ -91,7 +91,7 @@ export default function Projects({
         </div>
       </a>
       <div className={styles.copy}>
-        <p className={styles.eyebrow}>{project.category}</p>
+        <p className={styles.eyebrow}>{project.category} · {project.projectType}</p>
         <h2 id={`project-${index}`}>{project.name}</h2>
         {project.subtitle && <p className={styles.description}>{project.subtitle}</p>}
         <p className={styles.description}>{project.description}</p>
@@ -174,7 +174,7 @@ export default function Projects({
             </div>
           </a>
           <div className={styles.caseDetails}>
-            <p className={styles.caseEyebrow}>{selected.category}</p>
+            <p className={styles.caseEyebrow}>{selected.category} · {selected.projectType}</p>
             <h2>{selected.name}</h2>
             {selected.subtitle && <p>{selected.subtitle}</p>}
             {selected.details.map(([label, text]) => (
