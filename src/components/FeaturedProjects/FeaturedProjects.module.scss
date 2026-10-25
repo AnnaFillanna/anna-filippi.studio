@@ -33,11 +33,11 @@
 .pagination { display: flex; justify-content: center; gap: 4px; margin-top: 24px;
   button { width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: transparent; cursor: pointer; color: $bordeaux; }
   span { width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; }
-  button[aria-current='true'] span { background: currentColor; }
+  button[aria-current='true'] span { width: 11px; height: 11px; background: currentColor; }
   button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 }
 
-.pagination .arrow { border: 1px solid #650d2055; border-radius: 50%; font: 24px/1 $sans; margin-inline: 12px; }
+.pagination .arrow { border: 1.5px solid $bordeaux; border-radius: 50%; font: 500 26px/1 $sans; margin-inline: 12px; }
 .pagination .arrow:disabled { opacity: .3; cursor: default; }
 @media (hover: hover) { .pagination .arrow:hover:not(:disabled) { background: $ivory; } }
 
@@ -55,6 +55,6 @@
   .allProjects { margin-top: $space-md; }
 }
 
-.copy .projectDescription { margin: 12px 0 0; font: 400 15px/1.6 $sans; color: $text-muted; }
+.copy .projectDescription { margin: 12px 0 0; font: 400 16px/1.65 $sans; color: #403437; }
 
 .projectAction { display: inline-flex; align-items: center; gap: $space-xs; min-height: 44px; margin-top: $space-xs; border-bottom: 1px solid #650d2070; font: 500 #{$text-control}/1.5 $sans; }

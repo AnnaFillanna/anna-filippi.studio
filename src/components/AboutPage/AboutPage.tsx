@@ -37,7 +37,6 @@ export default function AboutPage() {
               <h2>Mit Liebe</h2><p>Zum Detail</p>
             </li>
           </ul>
-          <p className={styles.signature}>Anna Filippi — Softwareentwicklung, Webentwicklung <span className={styles.ampersand}>&amp;</span> Fotografie aus Leidenschaft.</p>
         </motion.div>
         <motion.div className={styles.portrait} {...reveal(30)}>
           <img src="/images/about-anna-red.jpg" alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" width="993" height="1600" fetchPriority="high" />
