@@ -462,23 +462,28 @@
 
 // Native scrolling preserves touch gestures and keyboard navigation.
 .projects .carousel {
+  --card-width: 60%;
+  --card-gap: 32px;
   position: relative;
   display: flex;
-  gap: 48px;
+  gap: var(--card-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  scroll-padding-inline: 24px;
-  padding: 28px 24px 56px;
-  margin-inline: -24px;
+  padding: 24px 0 40px;
+  margin-inline: 0;
   overscroll-behavior-x: contain;
-  perspective: 1600px;
+  perspective: 2200px;
   perspective-origin: var(--ring-center, 50%) 45%;
 
   &::-webkit-scrollbar { display: none; }
+  &::before, &::after {
+    content: "";
+    flex: 0 0 calc((100% - var(--card-width)) / 2 - var(--card-gap));
+  }
   > .card {
-    flex: 0 0 calc((100% - 48px) / 2);
-    scroll-snap-align: start;
+    flex: 0 0 var(--card-width);
+    scroll-snap-align: center;
     // Individual transforms compose with the existing reveal animation.
     translate: 0 0 var(--ring-depth, 0px);
     rotate: y var(--ring-angle, 0deg);
@@ -489,8 +494,8 @@
     outline-offset: 5px;
   }
   @media (max-width: 1000px) {
-    gap: 28px;
-    > .card { flex-basis: 100%; }
+    --card-width: 86%;
+    --card-gap: 16px;
   }
 }
 .carouselControls {

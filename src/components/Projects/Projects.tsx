@@ -27,14 +27,14 @@ export default function Projects({
       });
       const center = track.scrollLeft + track.clientWidth / 2;
       track.style.setProperty("--ring-center", `${center}px`);
-      const radius = track.clientWidth / (2 * Math.sin(22 * Math.PI / 180));
+      const radius = track.clientWidth / (2 * Math.sin(16 * Math.PI / 180));
       for (const card of Array.from(track.children) as HTMLElement[]) {
         // View the outside of a large vertical ring: its sides recede from us.
         const distance = Math.max(-1, Math.min(1,
           (card.offsetLeft + card.offsetWidth / 2 - center) / (track.clientWidth / 2)));
-        const angle = reducedMotion.matches ? 0 : distance * 22;
+        const angle = reducedMotion.matches ? 0 : distance * 16;
         const depth = reducedMotion.matches ? 0
-          : 60 - radius * (1 - Math.cos(angle * Math.PI / 180));
+          : 24 - radius * (1 - Math.cos(angle * Math.PI / 180));
         card.style.setProperty("--ring-angle", `${angle}deg`);
         card.style.setProperty("--ring-depth", `${depth}px`);
       }
@@ -60,11 +60,14 @@ export default function Projects({
     const track = trackRef.current;
     if (!track) return;
     const cards = Array.from(track.children) as HTMLElement[];
-    const step = cards.length > 1
-      ? cards[1].offsetLeft - cards[0].offsetLeft
-      : track.clientWidth;
-    track.scrollBy({
-      left: direction * step,
+    const center = track.scrollLeft + track.clientWidth / 2;
+    const nearest = cards.reduce((best, card, index) =>
+      Math.abs(card.offsetLeft + card.offsetWidth / 2 - center)
+        < Math.abs(cards[best].offsetLeft + cards[best].offsetWidth / 2 - center) ? index : best, 0);
+    const target = cards[Math.max(0, Math.min(cards.length - 1, nearest + direction))];
+    if (!target) return;
+    track.scrollTo({
+      left: target.offsetLeft + target.offsetWidth / 2 - track.clientWidth / 2,
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
   };
