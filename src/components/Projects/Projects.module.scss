@@ -494,8 +494,13 @@
     outline-offset: 5px;
   }
   @media (max-width: 1000px) {
-    --card-width: 86%;
-    --card-gap: 16px;
+    --card-width: 100%;
+    --card-gap: 28px;
+    padding: 8px 6px 24px;
+    margin-inline: -6px;
+    perspective: none;
+    &::before, &::after { display: none; }
+    > .card { translate: none; rotate: none; }
   }
 }
 .carouselControls {
