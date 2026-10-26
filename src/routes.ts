@@ -10,7 +10,7 @@ export const pages = {
   },
   '/projekte': {
     title: 'Web & Software – Projekte | Anna Filippi',
-    description: 'Webprojekte aus Andernach: Dana Tattoo Studio als Kundenprojekt, FilliCat als eigene Lernplattform sowie die Demos Mamma Mia und KAVRO.',
+    description: 'Webprojekte von Anna Filippi: Dana Tattoo Studio als Kundenprojekt, die Demos Mamma Mia, KAVRO und VELORA sowie die eigene Lernplattform FilliCat.',
   },
   '/softwareentwicklung': {
     title: 'Softwareentwicklung – Anna Filippi',
