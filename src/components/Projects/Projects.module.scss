@@ -557,3 +557,7 @@
 @media (prefers-reduced-motion: reduce) {
   .projects .carousel > .card { translate: none; rotate: none; }
 }
+
+.formsLink { display: inline-flex; align-items: center; gap: 12px; margin: 16px 0 0 24px; min-height: 48px; padding-block: 8px; color: $bordeaux; border-bottom: 1px solid #650d2055; text-decoration: none; font: 500 15px/1.6 $sans; }
+.formsLink:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
+@media (max-width: 600px) { .formsLink { display: flex; width: fit-content; margin-left: 0; } }

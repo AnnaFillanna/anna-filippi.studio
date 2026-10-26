@@ -14,7 +14,7 @@ export const pages = {
   },
   '/softwareentwicklung': {
     title: 'Softwareentwicklung – Anna Filippi',
-    description: 'FilliCat: Adaptive Lernplattform für JavaScript und TypeScript mit praktischen Aufgaben und individuellem Training. In Entwicklung bei Anna Filippi Studio.',
+    description: 'Individuelle Web-Apps, Kontaktformulare und Terminbuchung für deine Website. Entdecke FilliCat und teste die interaktive Buchungsdemo von Anna Filippi.',
   },
   '/dana-tattoo-studio': {
     title: 'Dana Tattoo Studio – Webdesign | Anna Filippi',

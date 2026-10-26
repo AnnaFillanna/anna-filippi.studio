@@ -13,6 +13,7 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
 import HomeContact from "./components/HomeContact/HomeContact";
 import BookingDemo from './components/BookingDemo/BookingDemo';
+import FormSolutions from './components/BookingDemo/FormSolutions';
 import Contact from "./components/Contact/Contact";
 import Impressum from "./components/LegalPages/Impressum";
 import Datenschutz from "./components/LegalPages/Datenschutz";
@@ -102,7 +103,7 @@ function Site() {
       <main id="inhalt">
         <Routes>
           <Route path="/" element={<><Hero /><Services /><FeaturedProjects /><ProjectProcess /></>} />
-          <Route path="/softwareentwicklung" element={<Projects softwareOnly />} />
+          <Route path="/softwareentwicklung" element={<><Projects softwareOnly /><FormSolutions /><BookingDemo /></>} />
           <Route path="/dana-tattoo-studio" element={<Projects danaOnly />} />
           <Route path="/projekte" element={<Projects />} />
           <Route path="/fotografie" element={<Gallery />} />

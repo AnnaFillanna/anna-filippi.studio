@@ -1,0 +1,21 @@
+@use '../../styles/variables' as *;
+.section { padding: $space-section max(6%, calc((100% - 1160px) / 2)); background: #eee5da; color: $bordeaux; scroll-margin-top: 90px; }
+.header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 40px; }
+.eyebrow { font: 500 12px/1.7 $sans; letter-spacing: .16em; margin: 0 0 18px; }
+.header h2 { font: 400 clamp(36px, 4vw, 54px)/1.1 $serif; margin: 0; }
+.section p:not(.eyebrow) { font: 400 16px/1.8 $sans; }
+.header > p { margin: 0; color: $text-muted; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.cards article { display: flex; flex-direction: column; min-width: 0; padding: 28px; border: 1px solid #650d202a; border-radius: 16px; background: #faf7f2; }
+.number { font: italic 28px/1 $serif; color: #895964; }
+.section h3 { font: 500 29px/1.2 $serif; margin: 24px 0 8px; }
+.cards p { color: $text-muted; }
+.cards .detail { margin: auto 0 0; padding-top: 24px; border-top: 1px solid #650d2026; font-size: 12px; color: $bordeaux; }
+.integration { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: center; padding: 40px 0; }
+.integration h3 { margin-top: 0; }
+.integration p { color: $text-muted; margin-bottom: 0; }
+.integration a { justify-self: end; display: inline-flex; align-items: center; gap: 16px; padding: 16px 22px; border-radius: 999px; background: $bordeaux; color: $ivory; font: 500 15px/1.6 $sans; text-decoration: none; }
+.demoLink { display: inline-flex; align-items: center; gap: 16px; min-height: 48px; padding-block: 8px; border-bottom: 1px solid #650d2055; color: $bordeaux; font: 500 15px/1.6 $sans; text-decoration: none; }
+.section a:focus-visible { outline: 2px solid $bordeaux; outline-offset: 5px; }
+@media (max-width: 900px) { .header { grid-template-columns: 1fr; gap: 24px; } .cards { grid-template-columns: 1fr; } .cards article { padding: 24px; } .integration { grid-template-columns: 1fr; gap: 24px; } .integration a { justify-self: start; } }
+@media (max-width: 600px) { .section { padding: 48px 20px; } .header h2 { font-size: 38px; } .integration a { border-radius: 24px; } }

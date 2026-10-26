@@ -208,7 +208,7 @@ export default function Projects({
             </h1>
             <div className={styles.accent} aria-hidden="true" />
             <p className={styles.caseLead}>
-              {danaOnly ? selected.description : "Ich entwickle individuelle Software und Web-Apps, die zu deinen Abläufen passen. Ein Beispiel: FilliCat, meine adaptive Lernplattform für Programmierung."}
+              {danaOnly ? selected.description : "Ich entwickle individuelle Software und Web-Apps, die zu deinen Abläufen passen – von Lernplattformen bis zu Kontaktformularen und Online-Terminbuchungen für deine Website."}
             </p>
             <a
               className={styles.caseButton}
@@ -219,6 +219,7 @@ export default function Projects({
               Projekt ansehen
               <span className={styles.visuallyHidden}> (neuer Tab)</span>
             </a>
+            {softwareOnly && <a className={styles.formsLink} href="#formularloesungen">Formulare & Terminbuchung entdecken <span aria-hidden="true">↓</span></a>}
           </header>
           <a
             className={styles.devices}

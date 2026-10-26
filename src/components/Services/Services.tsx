@@ -3,7 +3,7 @@ import styles from './Services.module.scss';
 
 const services = [
   { title: 'Webdesign & Webentwicklung', text: 'Webseiten, die professionell wirken, auf jedem Gerät überzeugen und Interessenten die Kontaktaufnahme erleichtern.', href: '/projekte', link: 'Webprojekte ansehen' },
-  { title: 'Softwareentwicklung', text: 'Individuelle Anwendungen und smarte Automatisierungen, die Abläufe vereinfachen und Zeit sparen.', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
+  { title: 'Softwareentwicklung', text: 'Individuelle Web-Apps, Kontaktformulare und Terminbuchungen – passend zu deiner Website und deinen Abläufen.', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
   { title: 'KI & Automatisierung', text: 'KI-Agenten · Chatbots · Workflows' },
   { title: 'E-Commerce', text: 'Shopify · Online-Shops' },
   { title: 'SEO & Betreuung', text: 'Suchmaschinenoptimierung · Wartung' },
