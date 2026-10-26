@@ -1,4 +1,5 @@
 import { projects } from "../../data/projects";
+import BookingDemo from '../BookingDemo/BookingDemo';
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
@@ -293,6 +294,7 @@ export default function Projects({
         role="region" aria-label="Projektübersicht" aria-roledescription="Karussell" tabIndex={0}>
         {[...projects, ...projects, ...projects].map((project, index) => renderProject(project, index))}
       </div>
+      <BookingDemo />
     </section>
   );
 }
