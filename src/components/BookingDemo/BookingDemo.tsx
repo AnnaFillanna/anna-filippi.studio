@@ -34,13 +34,14 @@ export default function BookingDemo() {
   return (
     <section id="buchungsdemo" className={styles.demo} aria-labelledby="booking-title">
       <div className={styles.intro}>
-        <p className={styles.eyebrow}>INTERAKTIVE DEMO · EIGENE ENTWICKLUNG</p>
+        <p className={styles.eyebrow}>AUSPROBIEREN STATT NUR ANSEHEN</p>
         <h2 id="booking-title">Ein Termin.<br /><em>In wenigen Klicks.</em></h2>
         <p>So einfach kann Online-Terminbuchung sein. Probiere den Ablauf für ein fiktives Beratungsstudio aus – von der Auswahl bis zur Bestätigung.</p>
+        <a className={styles.tryLink} href="#booking-panel">Demo ausprobieren <span aria-hidden="true">↗</span></a>
         <ul><li>Klare Auswahl von Leistung und Termin</li><li>Formular mit Eingabeprüfung</li><li>Zusammenfassung vor dem Abschluss</li></ul>
         <p className={styles.note}>Portfolio-Demo: keine echte Buchung, keine E-Mail. Deine Eingaben werden weder versendet noch gespeichert.</p>
       </div>
-      <div className={styles.panel}>
+      <div id="booking-panel" className={styles.panel}>
         <div className={styles.top}><span>STUDIO / TERMINE</span><span className={styles.badge}>DEMO</span></div>
         <ol className={styles.steps} aria-label="Buchungsschritte">
           {['Termin', 'Angaben', 'Prüfen'].map((label, index) => <li key={label} aria-current={step === index ? 'step' : undefined}><span>{index + 1}</span>{label}</li>)}

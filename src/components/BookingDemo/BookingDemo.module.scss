@@ -34,3 +34,52 @@
 .success { padding: 16px; background: #eaf0e5; color: #29442b; border-radius: 8px; }
 @media (max-width: 850px) { .demo { grid-template-columns: 1fr; gap: 24px; } }
 @media (max-width: 420px) { .steps { gap: 10px; } .steps li { font-size: 11px; } .actions button { width: 100%; } }
+
+// A dedicated homepage section: generous desktop columns and touch-friendly mobile controls.
+.demo {
+  margin: 0;
+  padding: clamp(56px, 7vw, 100px) max(6%, calc((100% - 1160px) / 2));
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  background: radial-gradient(ellipse at 10% 10%, #853247, #650d20 65%);
+  color: $ivory;
+  scroll-margin-top: 90px;
+}
+.intro { min-width: 0; }
+.intro h2 { font-size: clamp(42px, 4.5vw, 64px); }
+.intro p { max-width: 44ch; }
+.intro .eyebrow { color: #e5c8ba; line-height: 1.7; }
+.intro .note { border-color: #d9b9a7; color: #f0dfd5; }
+.tryLink {
+  display: inline-flex; align-items: center; gap: 24px;
+  margin: 12px 0 20px; padding: 14px 22px; min-height: 48px;
+  border: 1px solid #e5c8ba; border-radius: 999px;
+  font: 500 16px/1.5 $sans; color: $ivory; text-decoration: none;
+  &:hover { background: #ffffff14; }
+  &:focus-visible { outline: 2px solid $ivory; outline-offset: 5px; }
+}
+.panel { color: $bordeaux; box-shadow: 0 24px 64px #29061030; scroll-margin-top: 100px; }
+.field input, .field select { font-size: 16px; }
+.options span { min-height: 48px; box-sizing: border-box; text-align: center; }
+.steps { justify-content: space-between; }
+.panel h3:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
+@media (max-width: 900px) {
+  .demo { grid-template-columns: minmax(0, 1fr); padding-inline: $page-gutter; }
+  .intro, .panel { width: 100%; max-width: 620px; margin-inline: auto; box-sizing: border-box; }
+}
+@media (max-width: 600px) {
+  .demo { padding: 48px 20px; gap: 28px; }
+  .intro h2 { font-size: 42px; }
+  .intro p, .intro li { font-size: 15px; line-height: 1.7; }
+  .intro .note { margin-top: 20px; font-size: 13px; }
+  .panel { padding: 24px 18px; border-radius: 16px; }
+  .panel h3 { font-size: 30px; }
+  .options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .options label { min-width: 0; }
+  .options span { padding: 12px 6px; }
+  .panel > .primary, .actions button { width: 100%; }
+  .steps { gap: 6px; }
+  .steps li { font-size: 12px; }
+  .actions { flex-direction: column-reverse; }
+}

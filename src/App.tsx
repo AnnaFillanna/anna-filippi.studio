@@ -12,6 +12,7 @@ import Gallery from "./components/Gallery/Gallery";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
 import HomeContact from "./components/HomeContact/HomeContact";
+import BookingDemo from './components/BookingDemo/BookingDemo';
 import Contact from "./components/Contact/Contact";
 import Impressum from "./components/LegalPages/Impressum";
 import Datenschutz from "./components/LegalPages/Datenschutz";
@@ -110,7 +111,7 @@ function Site() {
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
         </Routes>
-        {pagePath === "/" && <HomeContact />}
+        {pagePath === "/" && <><HomeContact /><BookingDemo /></>}
       </main>
       <Footer />
       <dialog
