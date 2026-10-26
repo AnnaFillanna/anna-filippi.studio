@@ -20,7 +20,7 @@ export default function Footer() {
         height="816"
         loading="lazy"
       />
-      <div className={styles.inner}>
+      <div className={styles.inner} data-nosnippet="">
         <div className={styles.topline}>
           <span>DIGITAL ATELIER</span>
           <span className={styles.location}>ANDERNACH · DE</span>

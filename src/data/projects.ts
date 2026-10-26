@@ -62,7 +62,7 @@ export const projects = [
     category: "WEBENTWICKLUNG · BUCHUNGSERLEBNIS",
     description: "Demo für ein Barber Studio mit Serviceübersicht und interaktiver Terminbuchung – vom Vergleichen der Leistungen bis zur Terminauswahl.",
     scope: "",
-    status: "Eigenes Projekt · Demo · Quellcode auf GitHub",
+    status: "Portfolio-Demo · Keine echten Terminbuchungen",
     imagePrefix: "kavro",
     mobileImageExtension: "jpg",
     mobileImageAlt: "Barber bei der Arbeit im KAVRO Studio",
@@ -71,7 +71,7 @@ export const projects = [
     imageExtension: "png",
     detailHref: "https://annafillanna.github.io/kavro-barber-shop/",
     details: kavroDetails,
-    buttonLabel: "Projekt ansehen",
+    buttonLabel: "Demo ausprobieren",
     href: "https://annafillanna.github.io/kavro-barber-shop/",
   },
   {

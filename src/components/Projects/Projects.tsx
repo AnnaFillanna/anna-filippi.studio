@@ -136,7 +136,7 @@ export default function Projects({
         href={project.detailHref}
         target={project.detailHref.startsWith("https:") ? "_blank" : undefined}
         rel={project.detailHref.startsWith("https:") ? "noopener noreferrer" : undefined}
-        aria-label={`${project.name}: Projekt ansehen`}
+        aria-label={`${project.name}: ${project.buttonLabel}`}
       >
         <div className={styles.laptop}>
           <div className={`${styles.laptopScreen} ${project.imagePrefix === "kavro" ? styles.kavroScreen : ""}`}>

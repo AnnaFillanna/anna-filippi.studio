@@ -53,7 +53,7 @@ export default function KanzleiDocument({ type }: { type: DocumentType }) {
     <section className="legal-page" aria-labelledby="legal-title">
       <div className="legal-page__container">
         <h1 id="legal-title" tabIndex={-1}>{title}</h1>
-        <div ref={host} className="legal-page__embed"><p role="status">Rechtstext wird geladen …</p></div>
+        <div ref={host} className="legal-page__embed"><p role="status"><span data-nosnippet="">Rechtstext wird geladen …</span></p></div>
         <p className="legal-page__direct"><a href={legalUrl} target="_blank" rel="noopener noreferrer">{title} direkt bei der IT-Recht Kanzlei öffnen (neuer Tab)</a></p>
         <noscript><p>Bitte nutze den Direktlink, um den Rechtstext ohne JavaScript zu lesen.</p></noscript>
       </div>
