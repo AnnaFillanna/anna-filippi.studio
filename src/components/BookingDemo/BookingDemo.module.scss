@@ -42,7 +42,7 @@
   grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
   align-items: center;
   gap: clamp(32px, 5vw, 72px);
-  background: linear-gradient(180deg, #f5f0e8 0%, #eee0dc 45%, #f5f0e8 100%);
+  background: linear-gradient(180deg, #f5f0e8 0%, #e4bb9d 18%, #e4bb9d 82%, #f5f0e8 100%);
   color: $bordeaux;
   scroll-margin-top: 90px;
 }
@@ -59,7 +59,7 @@
   &:hover { background: #ffffff60; }
   &:focus-visible { outline: 2px solid $bordeaux; outline-offset: 5px; }
 }
-.panel { color: $bordeaux; box-shadow: 0 16px 44px #650d200a; scroll-margin-top: 100px; }
+.panel { color: $bordeaux; border: 1px solid #aa704e66; border-top: 4px solid #b97f59; box-shadow: 0 22px 56px #80533326; scroll-margin-top: 100px; }
 .field input, .field select { font-size: 16px; }
 .options span { min-height: 48px; box-sizing: border-box; text-align: center; }
 .steps { justify-content: space-between; }
