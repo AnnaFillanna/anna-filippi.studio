@@ -16,7 +16,6 @@ export default function Hero() {
       className={styles.hero}
       aria-labelledby="hero-title"
     >
-      <span className="sunlight" aria-hidden="true" />
       <div className={styles.portrait}>
         <img
           src="/images/anna-laptop-original.jpg"

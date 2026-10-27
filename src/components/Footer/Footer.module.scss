@@ -98,7 +98,7 @@
 }
 
 /* Soft sunlight enters from the upper right without darkening the copy. */
-@media (min-width: 0px) {
+@media (max-width: 760px) {
   .footer::after {
     content: '';
     position: absolute;

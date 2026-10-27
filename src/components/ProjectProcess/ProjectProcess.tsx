@@ -18,7 +18,6 @@ export default function ProjectProcess() {
   const reviewHref = googleReviewHref();
   return (
     <section id="projektablauf" className={styles.process} aria-labelledby="process-title">
-      <span className="sunlight" aria-hidden="true" />
       <p className={styles.eyebrow}>Ablauf</p>
       <h2 id="process-title">Von der Idee<br />bis zum <em>ersten Klick.</em></h2>
       <p className={styles.intro}>Fünf Schritte. Ein persönlicher Weg zu deiner Website.</p>

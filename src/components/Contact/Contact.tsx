@@ -61,7 +61,6 @@ export default function Contact() {
       className={styles.footer}
       aria-labelledby="contact-title"
     >
-      <span className="sunlight" aria-hidden="true" />
       <div className={styles.layout}>
         <div className={styles.intro}>
           <h1 id="contact-title" tabIndex={-1}>Dein Projekt. <em>Gemeinsam umgesetzt.</em></h1>
