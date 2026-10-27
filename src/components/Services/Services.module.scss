@@ -181,3 +181,13 @@
 }
 
 .trust { min-width: 0; h2 { font: 400 #{$text-section}/1.15 $serif; letter-spacing: -.025em; } .benefits { padding-top: $space-xs; } }
+
+// Keep introductory copy clear of the cards at every breakpoint.
+.services > .description { margin: 0 0 clamp(36px, 4vw, 56px); max-width: 58ch; }
+@media (max-width: 600px) {
+  .primaryList { gap: 24px; }
+  .primaryService { padding: 28px 24px; }
+  .primaryService .description { margin-bottom: 16px; line-height: 1.75; }
+  .primaryService .galleryLink { margin-top: 12px; }
+  .serviceNumber { margin-bottom: 22px; }
+}

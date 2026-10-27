@@ -42,24 +42,24 @@
   grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
   align-items: center;
   gap: clamp(32px, 5vw, 72px);
-  background: radial-gradient(ellipse at 10% 10%, #853247, #650d20 65%);
-  color: $ivory;
+  background: linear-gradient(180deg, #f5f0e8 0%, #eee0dc 45%, #f5f0e8 100%);
+  color: $bordeaux;
   scroll-margin-top: 90px;
 }
 .intro { min-width: 0; }
 .intro h2 { font-size: clamp(42px, 4.5vw, 64px); }
 .intro p { max-width: 44ch; }
-.intro .eyebrow { color: #e5c8ba; line-height: 1.7; }
-.intro .note { border-color: #d9b9a7; color: #f0dfd5; }
+.intro .eyebrow { color: #825b64; line-height: 1.7; }
+.intro .note { border-color: #b68e95; color: #625057; }
 .tryLink {
   display: inline-flex; align-items: center; gap: 24px;
   margin: 12px 0 20px; padding: 14px 22px; min-height: 48px;
-  border: 1px solid #e5c8ba; border-radius: 999px;
-  font: 500 16px/1.5 $sans; color: $ivory; text-decoration: none;
-  &:hover { background: #ffffff14; }
-  &:focus-visible { outline: 2px solid $ivory; outline-offset: 5px; }
+  border: 1px solid #650d2055; border-radius: 999px;
+  font: 500 16px/1.5 $sans; color: $bordeaux; text-decoration: none;
+  &:hover { background: #ffffff60; }
+  &:focus-visible { outline: 2px solid $bordeaux; outline-offset: 5px; }
 }
-.panel { color: $bordeaux; box-shadow: 0 24px 64px #29061030; scroll-margin-top: 100px; }
+.panel { color: $bordeaux; box-shadow: 0 16px 44px #650d200a; scroll-margin-top: 100px; }
 .field input, .field select { font-size: 16px; }
 .options span { min-height: 48px; box-sizing: border-box; text-align: center; }
 .steps { justify-content: space-between; }
@@ -69,7 +69,7 @@
   .intro, .panel { width: 100%; max-width: 620px; margin-inline: auto; box-sizing: border-box; }
 }
 @media (max-width: 600px) {
-  .demo { padding: 48px 20px; gap: 28px; }
+  .demo { padding: 48px 20px; gap: 40px; }
   .intro h2 { font-size: 42px; }
   .intro p, .intro li { font-size: 15px; line-height: 1.7; }
   .intro .note { margin-top: 20px; font-size: 13px; }
