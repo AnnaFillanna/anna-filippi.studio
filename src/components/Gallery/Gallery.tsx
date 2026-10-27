@@ -246,6 +246,7 @@ export default function Gallery() {
       className={styles.gallery}
       aria-labelledby="gallery-title"
     >
+      <span className="sunlight" aria-hidden="true" />
       <div className={styles.pageNavigation}>
         <a className={styles.backLink} href="/#leistungen">
           ZURÜCK ZUM ATELIER

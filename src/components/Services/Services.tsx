@@ -14,6 +14,7 @@ export default function Services() {
   const reduced = useReducedMotion();
   return (
     <section id="leistungen" className={styles.services} aria-labelledby="services-title">
+      <span className="sunlight" aria-hidden="true" />
       <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
       <p className={styles.serviceLead}>Was möchtest du umsetzen?</p>
       <p className={styles.description}>Von Andernach aus gestalte und entwickle ich individuelle Websites für Unternehmen aus Koblenz, Neuwied und der Region. Auch deutschlandweit begleite ich dein Projekt persönlich – von der ersten Idee bis zur fertigen Website.</p>

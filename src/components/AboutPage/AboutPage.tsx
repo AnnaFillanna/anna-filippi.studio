@@ -12,6 +12,7 @@ export default function AboutPage() {
   });
   return (
     <section className={styles.aboutPage} aria-labelledby="about-page-title">
+      <span className="sunlight" aria-hidden="true" />
       <Link to="/#start" className={styles.back}>ZURÜCK ZUM ATELIER</Link>
       <div className={styles.layout}>
         <motion.div className={styles.copy} {...reveal(-30)}>

@@ -97,6 +97,7 @@ export default function FeaturedProjects() {
       whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .1 }}
       transition={{ duration: reduced ? 0 : .7, ease: [.22, 1, .36, 1] }}
       id="ausgewaehlte-projekte" className={styles.section} aria-labelledby="featured-projects-title">
+      <span className="sunlight" aria-hidden="true" />
       <header className={styles.heading}>
         <h2 id="featured-projects-title">Ausgewählte Projekte</h2>
         <p>Ein Einblick in meine Arbeit.</p>

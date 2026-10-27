@@ -185,6 +185,7 @@ export default function Projects({
   if (softwareOnly || danaOnly)
     return (
       <section className={`${styles.caseStudy} ${softwareOnly ? styles.softwarePage : ""}`} aria-labelledby="software-title">
+      <span className="sunlight" aria-hidden="true" />
         <div className={styles.caseInner}>
           <a className={styles.back} href="/#leistungen">
             <span aria-hidden="true">← </span>ZURÜCK ZUM ATELIER
@@ -266,6 +267,7 @@ export default function Projects({
       className={styles.projects}
       aria-labelledby="projects-title"
     >
+      <span className="sunlight" aria-hidden="true" />
       <a className={styles.back} href="/#leistungen">
         {" "}
         ZURÜCK ZUM ATELIER

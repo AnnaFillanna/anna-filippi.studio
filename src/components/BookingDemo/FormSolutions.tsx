@@ -8,6 +8,7 @@ const solutions = [
 
 export default function FormSolutions() {
   return <section id="formularloesungen" className={styles.section} aria-labelledby="forms-title">
+      <span className="sunlight" aria-hidden="true" />
     <header className={styles.header}>
       <div><p className={styles.eyebrow}>FORMULARE & ONLINE-TERMINE</p><h2 id="forms-title">Deine Website kann<br /><em>mehr als informieren.</em></h2></div>
       <p>Ich entwickle Formulare, die zu deinem Angebot passen, und integriere sie in neue oder bestehende Websites. Klar gestaltet, auf dem Smartphone bequem bedienbar und auf die Informationen abgestimmt, die du wirklich brauchst.</p>

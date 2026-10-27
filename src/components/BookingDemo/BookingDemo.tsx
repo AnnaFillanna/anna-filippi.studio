@@ -33,6 +33,7 @@ export default function BookingDemo() {
   }
   return (
     <section id="buchungsdemo" className={styles.demo} aria-labelledby="booking-title">
+      <span className="sunlight" aria-hidden="true" />
       <div className={styles.intro}>
         <p className={styles.eyebrow}>AUSPROBIEREN STATT NUR ANSEHEN</p>
         <h2 id="booking-title">Ein Termin.<br /><em>In wenigen Klicks.</em></h2>

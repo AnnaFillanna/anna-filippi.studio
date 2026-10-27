@@ -40,6 +40,7 @@ export default function Footer() {
           <p className={styles.personalNote}>Websites zu gestalten und zum Leben zu erwecken macht mir einfach Freude. Vielleicht entsteht die nächste mit dir. Ich freue mich auf unsere Zusammenarbeit.</p>
           <p className={styles.signature}>Mit Liebe,<br /><span>Anna Filippi</span></p>
         </div>
+        <img className={styles.mobileFlower} src="/images/footer-flower-transparent.png" alt="" width="1672" height="936" loading="lazy" />
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Anna Filippi</span>
           <nav className={styles.legal} aria-label="Rechtliche Informationen">

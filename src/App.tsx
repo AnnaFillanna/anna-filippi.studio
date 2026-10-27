@@ -103,7 +103,7 @@ function Site() {
       <main id="inhalt">
         <Routes>
           <Route path="/" element={<><Hero /><Services /><FeaturedProjects /><ProjectProcess /></>} />
-          <Route path="/softwareentwicklung" element={<><Projects softwareOnly /><FormSolutions /><BookingDemo /></>} />
+          <Route path="/softwareentwicklung" element={<><Projects softwareOnly /><FormSolutions /></>} />
           <Route path="/dana-tattoo-studio" element={<Projects danaOnly />} />
           <Route path="/projekte" element={<Projects />} />
           <Route path="/fotografie" element={<Gallery />} />
@@ -112,9 +112,15 @@ function Site() {
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
         </Routes>
-        {pagePath === "/" && <><HomeContact /><BookingDemo /></>}
+        {pagePath === "/" && <HomeContact />}
       </main>
-      <Footer />
+      {pagePath === '/' || pagePath === '/softwareentwicklung' ? (
+        <div className="floral-closing">
+          <img className="floral-closing-image" src="/images/footer.png" alt="" width="1456" height="816" loading="lazy" />
+          <BookingDemo />
+          <Footer />
+        </div>
+      ) : <Footer />}
       <dialog
         ref={dialog}
         className="dialog"

@@ -76,3 +76,39 @@
 }
 
 .content .personalNote { font: 400 16px/1.75 $sans; }
+
+/* On phones, give the flower its own space below the text. */
+.mobileFlower { display: none; }
+@media (max-width: 760px) {
+  .background { display: none; }
+  .footer { background: #f1e4d3; }
+  .footer::before { display: none; }
+  .mobileFlower {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 0 24px;
+    background: none;
+    box-shadow: none;
+    opacity: .88;
+    filter: blur(.45px) saturate(.85);
+    mask-image: linear-gradient(to bottom, #000 76%, transparent 100%);
+  }
+  .content { max-width: 100%; }
+}
+
+/* Soft sunlight enters from the upper right without darkening the copy. */
+@media (min-width: 0px) {
+  .footer::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0 -12% 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 100% 3%, #fffdf2e6 0%, #fff4d76b 24%, transparent 61%),
+      repeating-conic-gradient(from 190deg at 108% -6%, transparent 0deg 9deg, #fffdf000 12deg, #fffdf080 16deg, #fffdf026 20deg, transparent 24deg 35deg);
+    filter: blur(13px);
+    mask-image: linear-gradient(to bottom, transparent, #000 9%, #000 45%, transparent 94%);
+  }
+}
