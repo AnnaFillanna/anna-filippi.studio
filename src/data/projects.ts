@@ -107,6 +107,7 @@ export const projects = [
     scope: "",
     status: "Eigenes Projekt · In Entwicklung",
     imagePrefix: "fillicat",
+    featuredCategory: "Software · Adaptive Lernplattform",
     isDemo: false,
     imageExtension: "png",
     detailHref: "/softwareentwicklung",
