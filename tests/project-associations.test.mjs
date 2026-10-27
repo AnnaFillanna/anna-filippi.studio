@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 
 const expected = [
-  { name: 'Dana Tattoo Studio', prefix: 'dana', extension: 'png', href: 'https://tattoodana.de', detail: '/dana-tattoo-studio', text: 'Tattoo- und Piercingstudio', feature: true, demo: false },
+  { name: 'Dana Tattoo Studio', prefix: 'dana', extension: 'png', href: 'https://tattoodana.de', detail: '/dana-tattoo-studio', text: 'Individuelle Website für das Dana Tattoo Studio in Andernach. Mit Einblicken in Tattoo- und Piercingarbeiten und direkter Kontaktmöglichkeit über WhatsApp.', feature: true, demo: false },
   { name: 'Mamma Mia – Pizza mit Amore', prefix: 'mamma-mia', extension: 'jpg', href: 'https://annafillanna.github.io/Pizzeria-Mama-Mia/#/login', text: 'Pizza-Konfigurator', feature: true, demo: true },
   { name: 'KAVRO — Barber Studio', prefix: 'kavro', extension: 'png', mobile: 'jpg', href: 'https://annafillanna.github.io/kavro-barber-shop/', text: 'interaktiver Terminbuchung', feature: true, demo: true },
+  { name: 'VELORA — Beauty House Köln', prefix: 'velora', extension: 'jpg', href: 'https://annafillanna.github.io/velora-beauty/', text: 'Website-Konzept für ein Beauty-Studio', feature: true, demo: true },
   { name: 'FilliCat', prefix: 'fillicat', extension: 'png', href: 'https://fillicat.com', detail: '/softwareentwicklung', text: 'Programmieren lernen', feature: false, demo: false },
 ];
 
@@ -32,7 +33,7 @@ for (const project of expected) {
   });
 }
 
-test('homepage carousel keeps all three featured projects with their own images and destinations', async () => {
+test('homepage carousel keeps all four featured projects with their own images and destinations', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   const track = html.match(/<ul[^>]*id="featured-project-track"[\s\S]*?<\/ul>/)?.[0];
   assert.ok(track);

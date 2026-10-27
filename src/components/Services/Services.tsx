@@ -16,6 +16,7 @@ export default function Services() {
     <section id="leistungen" className={styles.services} aria-labelledby="services-title">
       <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
       <p className={styles.serviceLead}>Was möchtest du umsetzen?</p>
+      <p className={styles.description}>Von Andernach aus gestalte und entwickle ich individuelle Websites für Unternehmen aus Koblenz, Neuwied und der Region. Auch deutschlandweit begleite ich dein Projekt persönlich – von der ersten Idee bis zur fertigen Website.</p>
       <ul className={styles.primaryList}>
         {services.map((service, index) => (
           <motion.li key={service.title} className={styles.primaryService}

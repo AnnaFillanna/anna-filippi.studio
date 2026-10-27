@@ -28,7 +28,7 @@ export const projects = [
     projectType: "Kundenprojekt",
     category: "FULL-STACK WEBENTWICKLUNG",
     description:
-      "Website für ein Tattoo- und Piercingstudio: Arbeiten entdecken und die eigene Tattoo-Idee direkt per WhatsApp besprechen.",
+      "Individuelle Website für das Dana Tattoo Studio in Andernach. Mit Einblicken in Tattoo- und Piercingarbeiten und direkter Kontaktmöglichkeit über WhatsApp.",
     scope: "React · TypeScript · SCSS · Supabase",
     status: "Veröffentlicht · Kundenprojekt",
     imagePrefix: "dana",

@@ -11,7 +11,7 @@ const examples = [
   ['/datenschutz', 'Datenschutzerklärung', 'Rechtstext wird geladen'],
   ['/dana-tattoo-studio', 'Kunst auf der Haut.', 'Dana Tattoo Studio'],
   ['/softwareentwicklung', 'Softwareentwicklung', 'FilliCat'],
-  ['/', 'Digitale Lösungen, die dein Business voranbringen.', 'Meine Leistungen'],
+  ['/', 'Websites, die dein Business voranbringen.', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],
   ['/fotografie', 'Große Wirkung.', 'Perlen &amp; Seide'],

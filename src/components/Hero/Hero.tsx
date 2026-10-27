@@ -35,7 +35,7 @@ export default function Hero() {
           initial={reduced ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}>
-          Digitale Lösungen, die dein Business voranbringen.
+          Websites, die dein Business voranbringen.
         </motion.h1>
 
         </div>
@@ -45,11 +45,11 @@ export default function Hero() {
           <a href="/fotografie">PRODUKTFOTOGRAFIE<span aria-hidden="true">→</span></a>
         </nav>
         <motion.p {...intro(0.4)} className={styles.description}>
-          Individuelle Webseiten, intelligente Software und hochwertige Produktfotografie – durchdacht, modern und auf deine Ziele abgestimmt.
+          Individuelles Webdesign &amp; Webentwicklung aus Andernach bei Koblenz. Für Selbstständige und Unternehmen, die online professionell überzeugen möchten.
         </motion.p>
         <motion.div {...intro(0.55)} className={styles.actions}>
-          <a href="/kontakt" className={styles.servicesLink}>Projekt anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>
-          <a href="/projekte" className={styles.projectLink}>Arbeiten ansehen<span className={styles.arrow} aria-hidden="true">→</span></a>
+          <a href="/kontakt" className={styles.servicesLink}>Website anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>
+          <a href="/projekte" className={styles.projectLink}>Projekte ansehen<span className={styles.arrow} aria-hidden="true">→</span></a>
         </motion.div>
       </div>
     </section>
