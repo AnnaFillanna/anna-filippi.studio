@@ -1,1 +1,116 @@
 
+
+name: Anna SEO Monitor
+
+on:
+  schedule:
+    - cron: '17 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo-monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check Anna Filippi Studio SEO
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import urllib.request
+          from html.parser import HTMLParser
+          from datetime import datetime, timezone
+
+          class SEOParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.title = ""
+                  self.in_title = False
+                  self.description = ""
+                  self.canonical = ""
+                  self.h1 = 0
+                  self.noindex = False
+
+              def handle_starttag(self, tag, attrs):
+                  a = dict(attrs)
+                  if tag == "title":
+                      self.in_title = True
+                  if tag == "h1":
+                      self.h1 += 1
+                  if tag == "meta":
+                      name = a.get("name", "").lower()
+                      content = a.get("content", "")
+                      if name == "description":
+                          self.description = content
+                      if name == "robots" and "noindex" in content.lower():
+                          self.noindex = True
+                  if tag == "link" and "canonical" in a.get("rel", "").lower().split():
+                      self.canonical = a.get("href", "")
+
+              def handle_endtag(self, tag):
+                  if tag == "title":
+                      self.in_title = False
+
+              def handle_data(self, data):
+                  if self.in_title:
+                      self.title += data
+
+          base = "https://annafilippi.studio"
+          report = [
+              "# Anna Filippi SEO Report",
+              "",
+              "Date: " + datetime.now(timezone.utc).isoformat(),
+              ""
+          ]
+
+          def fetch(path):
+              req = urllib.request.Request(
+                  base + path,
+                  headers={"User-Agent": "Anna-SEO-Monitor/1.0"}
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as response:
+                      return response.status, response.read(2000000), None
+              except Exception as error:
+                  return None, b"", str(error)
+
+          status, html, error = fetch("/")
+          report.append("## Homepage")
+          report.append("HTTP: " + str(status or error))
+
+          if status == 200:
+              parser = SEOParser()
+              parser.feed(html.decode("utf-8", errors="replace"))
+              report.extend([
+                  "Title: " + (parser.title.strip() or "MISSING"),
+                  "Description: " + (parser.description or "MISSING"),
+                  "Canonical: " + (parser.canonical or "MISSING"),
+                  "H1 count: " + str(parser.h1),
+                  "Noindex: " + str(parser.noindex)
+              ])
+              if not parser.title.strip() or not parser.description or parser.noindex:
+                  report.append("WARNING: Check SEO metadata")
+
+          for path in ["/robots.txt", "/sitemap.xml"]:
+              code, body, issue = fetch(path)
+              report.extend([
+                  "",
+                  "## " + path,
+                  "HTTP: " + str(code or issue)
+              ])
+
+          with open("seo-report.md", "w", encoding="utf-8") as file:
+              file.write("\n".join(report) + "\n")
+
+          print("\n".join(report))
+          PY
+
+      - name: Save SEO report
+        uses: actions/upload-artifact@v4
+        with:
+          name: anna-seo-report
+          path: seo-report.md
+          retention-days: 30
