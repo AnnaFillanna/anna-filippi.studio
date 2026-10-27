@@ -1,0 +1,149 @@
+
+name: Anna Google Analytics
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 8 * * 1'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  search-analytics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate with Google
+        id: auth
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/webmasters.readonly
+          create_credentials_file: false
+
+      - name: Generate SEO report
+        env:
+          GSC_TOKEN: ${{ steps.auth.outputs.access_token }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import json
+          import csv
+          import urllib.request
+          import urllib.parse
+          from datetime import date, timedelta
+          from pathlib import Path
+
+          token = os.environ["GSC_TOKEN"]
+          base = "https://www.googleapis.com/webmasters/v3"
+          headers = {
+              "Authorization": f"Bearer {token}",
+              "Content-Type": "application/json"
+          }
+
+          def api(url, data=None):
+              body = json.dumps(data).encode() if data else None
+              req = urllib.request.Request(
+                  url, data=body, headers=headers
+              )
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.load(r)
+
+          sites = api(base + "/sites").get("siteEntry", [])
+          allowed = [
+              "sc-domain:annafilippi.studio",
+              "https://annafilippi.studio/"
+          ]
+
+          site = next(
+              (
+                  s["siteUrl"] for name in allowed for s in sites
+                  if s.get("siteUrl") == name
+                  and s.get("permissionLevel") != "siteUnverifiedUser"
+              ),
+              None
+          )
+
+          if not site:
+              raise RuntimeError("Search Console property unavailable")
+
+          endpoint = (
+              base + "/sites/" +
+              urllib.parse.quote(site, safe="") +
+              "/searchAnalytics/query"
+          )
+
+          end = date.today() - timedelta(days=3)
+          start = end - timedelta(days=6)
+          prev_end = start - timedelta(days=1)
+          prev_start = prev_end - timedelta(days=6)
+
+          def query(first, last, dimensions=None):
+              payload = {
+                  "startDate": str(first),
+                  "endDate": str(last),
+                  "type": "web",
+                  "rowLimit": 100
+              }
+              if dimensions:
+                  payload["dimensions"] = dimensions
+              return api(endpoint, payload).get("rows", [])
+
+          def summary(first, last):
+              rows = query(first, last)
+              return rows[0] if rows else {}
+
+          current = summary(start, end)
+          previous = summary(prev_start, prev_end)
+
+          Path("report").mkdir(exist_ok=True)
+
+          with open("report/summary.md", "w") as f:
+              f.write("# Anna Filippi SEO Report\n\n")
+              f.write(f"Property: {site}\n\n")
+              f.write(f"Period: {start} to {end}\n\n")
+              f.write(f"Previous: {prev_start} to {prev_end}\n\n")
+              f.write("| Metric | Current | Previous |\n")
+              f.write("|---|---:|---:|\n")
+              for key in ("clicks", "impressions"):
+                  f.write(
+                      f"| {key} | {current.get(key, 0)} "
+                      f"| {previous.get(key, 0)} |\n"
+                  )
+
+          for dimension in ("query", "page"):
+              rows = query(start, end, [dimension])
+              with open(
+                  f"report/{dimension}.csv", "w", newline=""
+              ) as f:
+                  writer = csv.writer(f)
+                  writer.writerow([
+                      dimension, "clicks",
+                      "impressions", "ctr", "position"
+                  ])
+                  for row in rows:
+                      writer.writerow([
+                          row.get("keys", [""])[0],
+                          row.get("clicks", 0),
+                          row.get("impressions", 0),
+                          row.get("ctr", 0),
+                          row.get("position", 0)
+                      ])
+
+          print("SEO report generated successfully")
+          PY
+
+      - name: Upload SEO report
+        uses: actions/upload-artifact@v4
+        with:
+          name: anna-seo-report
+          path: report/
+          retention-days: 30
