@@ -28,7 +28,7 @@
 @media (hover: hover) { .link:hover img { transform: scale(1.025); } .allProjects:hover { background: $ivory; } }
 @media (prefers-reduced-motion: reduce) { .image img { transition: none; } }
 @media (max-width: 1100px) { .grid > li { flex-basis: 48%; } }
-@media (max-width: 600px) { .grid { gap: 18px; } .grid > li { flex-basis: 86%; } .allProjects { padding-inline: 20px; font-size: 16px; } }
+@media (max-width: 600px) { .grid { gap: 18px; } .grid > li { flex-basis: 100%; } .allProjects { padding-inline: 20px; font-size: 16px; } }
 
 .pagination { display: flex; justify-content: center; gap: 4px; margin-top: 24px;
   button { width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: transparent; cursor: pointer; color: $bordeaux; }
@@ -47,7 +47,7 @@
   .section { padding-block: $space-xl; }
   .heading { margin-bottom: $space-md; h2 { margin-bottom: 12px; } p { font-size: 16px; } }
   .grid { gap: $space-sm; }
-  .grid > li { flex-basis: 94%; }
+  .grid > li { flex-basis: 100%; }
   .copy { padding-top: $space-sm; p { margin-bottom: 6px; } h3 { overflow-wrap: anywhere; } }
   .badge { left: 8px; bottom: 8px; padding: 4px 8px; font-size: 12px; }
   .pagination { flex-wrap: wrap; gap: 0; margin-top: $space-sm; button { flex: 0 0 44px; } }
