@@ -17,7 +17,7 @@ export default function FormSolutions() {
     </article>)}</div>
     <div className={styles.integration}>
       <div><h3>Dein Design. Dein Ablauf.</h3><p>Farben, Texte, Formularfelder und Schritte werden individuell angepasst. Je nach Bedarf und technischer Grundlage können E-Mail-Versand, Kalender oder bestehende Systeme angebunden werden. Den Umfang stimmen wir gemeinsam ab.</p></div>
-      <a href="/kontakt">Formular für meine Website anfragen <span aria-hidden="true">↗</span></a>
+      <a href="/kontakt">Formular für meine Website anfragen</a>
     </div>
     <a className={styles.demoLink} href="#buchungsdemo">So könnte es aussehen: Buchungsdemo ausprobieren <span aria-hidden="true">↓</span></a>
   </section>;

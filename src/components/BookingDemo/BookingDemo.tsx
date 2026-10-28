@@ -37,7 +37,7 @@ export default function BookingDemo() {
         <p className={styles.eyebrow}>AUSPROBIEREN STATT NUR ANSEHEN</p>
         <h2 id="booking-title">Ein Termin.<br /><em>In wenigen Klicks.</em></h2>
         <p>So einfach kann Online-Terminbuchung sein. Probiere den Ablauf für ein fiktives Beratungsstudio aus – von der Auswahl bis zur Bestätigung.</p>
-        <a className={styles.tryLink} href="#booking-panel">Demo ausprobieren <span aria-hidden="true">↗</span></a>
+        <a className={styles.tryLink} href="#booking-panel">Demo ausprobieren</a>
         <ul><li>Klare Auswahl von Leistung und Termin</li><li>Formular mit Eingabeprüfung</li><li>Zusammenfassung vor dem Abschluss</li></ul>
         <p className={styles.note}>Portfolio-Demo: keine echte Buchung, keine E-Mail. Deine Eingaben werden weder versendet noch gespeichert.</p>
       </div>
@@ -66,7 +66,7 @@ export default function BookingDemo() {
         {step >= 2 && <>
           {step === 3 && <p role="status" className={styles.success}>Danke, {name}! Du hast die Demo erfolgreich durchgespielt. Es wurde kein Termin gebucht und keine E-Mail versendet.</p>}
           <dl className={styles.summary}><div><dt>Leistung</dt><dd>{service}</dd></div><div><dt>Termin</dt><dd>{dateLabel(date)} · {time} Uhr · 30 Min.</dd></div><div><dt>Name</dt><dd>{name}</dd></div><div><dt>E-Mail</dt><dd>{email}</dd></div></dl>
-          {step === 2 ? <div className={styles.actions}><button onClick={() => go(1)}>Bearbeiten</button><button className={styles.primary} onClick={() => go(3)}>Demo-Buchung abschließen</button></div> : <button className={styles.primary} onClick={reset}>Demo erneut ausprobieren ↗</button>}
+          {step === 2 ? <div className={styles.actions}><button onClick={() => go(1)}>Bearbeiten</button><button className={styles.primary} onClick={() => go(3)}>Demo-Buchung abschließen</button></div> : <button className={styles.primary} onClick={reset}>Demo erneut ausprobieren</button>}
         </>}
       </div>
     </section>
