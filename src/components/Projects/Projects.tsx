@@ -150,6 +150,9 @@ export default function Projects({
           </div>
           <div className={styles.laptopBase} aria-hidden="true" />
         </div>
+        <div className={styles.tablet} aria-hidden="true">
+          <img src={project.tabletImage ?? `/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`} alt="" loading="lazy" />
+        </div>
         <div className={`${styles.phone} ${project.imagePrefix === "kavro" ? styles.kavroPhone : ""}`}>
           <img
             src={`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
@@ -239,6 +242,9 @@ export default function Projects({
                 />
               </div>
               <div className={styles.laptopBase} aria-hidden="true" />
+            </div>
+            <div className={styles.tablet} aria-hidden="true">
+              <img src={selected.tabletImage ?? `/images/projects/${selected.imagePrefix}-mobile.${selected.mobileImageExtension ?? selected.imageExtension}`} alt="" loading="lazy" />
             </div>
             <div className={styles.phone}>
               <img
