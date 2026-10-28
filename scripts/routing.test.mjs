@@ -149,7 +149,8 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
 test('contact form is exclusive to the contact route and navigation stays consistent', async () => {
   for (const [path] of examples) {
     const html = await readFile(`dist${path === '/' ? '' : path}/index.html`, 'utf8');
-    assert.equal((html.match(/<form\b/g) || []).length, path === '/kontakt' ? 1 : 0, path);
+    const contactForms = (html.match(/<form\b[\s\S]*?<\/form>/g) || []).filter(form => form.includes('name="message"'));
+    assert.equal(contactForms.length, path === '/kontakt' ? 1 : 0, path);
     assert.ok(html.includes('href="/kontakt"'), path);
     assert.ok(!html.includes('Jetzt anfragen'), path);
   }

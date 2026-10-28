@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import styles from "./Projects.module.scss";
+import ProjectRating from '../ProjectRating/ProjectRating';
 
 export default function Projects({
   softwareOnly = false,
@@ -166,6 +167,7 @@ export default function Projects({
       <div className={styles.copy}>
         <p className={styles.eyebrow}>{project.category} · {project.projectType}</p>
         <h2 id={`project-${index}`}>{project.name}</h2>
+        {project.status.includes('In Entwicklung') && <span className={styles.developmentBadge}>In Entwicklung</span>}
         {project.subtitle && <p className={styles.description}>{project.subtitle}</p>}
         <p className={styles.description}>{project.description}</p>
         <details className={styles.projectDetails} open={expanded[project.imagePrefix] ?? false}
@@ -182,6 +184,7 @@ export default function Projects({
         {project.status && (
           <p className={styles.projectStatus}>{project.status}</p>
         )}
+        <ProjectRating project={project.imagePrefix} name={project.name} inDevelopment={project.status.includes('In Entwicklung')} />
       </div>
     </motion.article>
   );
@@ -258,10 +261,12 @@ export default function Projects({
           <div className={styles.caseDetails}>
             <p className={styles.caseEyebrow}>{selected.category} · {selected.projectType}</p>
             <h2>{selected.name}</h2>
+            {selected.status.includes('In Entwicklung') && <span className={styles.developmentBadge}>In Entwicklung</span>}
             {selected.subtitle && <p>{selected.subtitle}</p>}
             {selected.details.map(([label, text]) => (
               <p key={label} className={styles.description}><strong>{label}:</strong> {text}</p>
             ))}
+            <ProjectRating project={selected.imagePrefix} name={selected.name} inDevelopment={selected.status.includes('In Entwicklung')} />
           </div>
         </div>
       </section>

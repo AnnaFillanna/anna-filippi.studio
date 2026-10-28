@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { projects } from '../../data/projects';
 import styles from './FeaturedProjects.module.scss';
+import ProjectRating from '../ProjectRating/ProjectRating';
 
 const featuredProjects = projects.filter(project => project.featuredCategory);
 
@@ -134,12 +135,14 @@ export default function FeaturedProjects() {
                   <span className={styles.badge}>{project.projectType}</span>
                 </div>
                 <div className={styles.copy}>
-                  <p>{project.featuredCategory}</p>
+                  <p>{project.featuredCategory ?? project.category}</p>
                   <h3>{project.name}</h3>
+                  {project.status.includes('In Entwicklung') && <span className={styles.developmentBadge}>In Entwicklung</span>}
                   <p className={styles.projectDescription}>{project.description}</p>
                   <span className={styles.projectAction}>{project.buttonLabel} <span aria-hidden="true">→</span></span>
                 </div>
               </a>
+              <ProjectRating project={project.imagePrefix} name={project.name} inDevelopment={project.status.includes('In Entwicklung')} />
             </article>
           </li>
         ))}

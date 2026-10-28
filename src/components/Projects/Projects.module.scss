@@ -1,4 +1,6 @@
 @use "../../styles/variables" as *;
+
+.developmentBadge { display: inline-block; max-width: 100%; margin-block: 12px; padding: 6px 12px; border: 1px solid #650d2040; border-radius: 999px; background: $ivory; color: $bordeaux; font: 500 #{$text-small}/1.5 $sans; }
 .projects {
   padding: 150px 7% 110px;
   background: $ivory;

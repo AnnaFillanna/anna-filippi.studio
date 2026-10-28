@@ -6,8 +6,8 @@ const expected = [
   { name: 'Dana Tattoo Studio', prefix: 'dana', extension: 'png', href: 'https://tattoodana.de', detail: '/dana-tattoo-studio', text: 'Individuelle Website für das Dana Tattoo Studio in Andernach. Mit Einblicken in Tattoo- und Piercingarbeiten und direkter Kontaktmöglichkeit über WhatsApp.', feature: true, demo: false },
   { name: 'Mamma Mia – Pizza mit Amore', prefix: 'mamma-mia', extension: 'jpg', href: 'https://annafillanna.github.io/Pizzeria-Mama-Mia/#/login', text: 'Pizza-Konfigurator', feature: true, demo: true },
   { name: 'KAVRO — Barber Studio', prefix: 'kavro', extension: 'png', mobile: 'jpg', href: 'https://annafillanna.github.io/kavro-barber-shop/', text: 'interaktiver Terminbuchung', feature: true, demo: true },
-  { name: 'VELORA — Beauty House Köln', prefix: 'velora', extension: 'jpg', href: 'https://annafillanna.github.io/velora-beauty/', text: 'Website-Konzept für ein Beauty-Studio', feature: true, demo: true },
-  { name: 'FilliCat', prefix: 'fillicat', extension: 'png', href: 'https://fillicat.com', detail: '/softwareentwicklung', text: 'Programmieren lernen', feature: false, demo: false },
+  { name: 'VELORA — Beauty House Köln', prefix: 'velora', extension: 'jpg', mobile: 'png', href: 'https://annafillanna.github.io/velora-beauty/', text: 'Website-Konzept für ein Beauty-Studio', feature: true, demo: true },
+  { name: 'FilliCat', prefix: 'fillicat', extension: 'png', href: 'https://fillicat.com', detail: '/softwareentwicklung', text: 'Programmieren lernen', feature: true, demo: false },
 ];
 
 for (const project of expected) {
@@ -26,6 +26,11 @@ for (const project of expected) {
       await access(`public${path}`);
     }
     assert.equal(/Demo/i.test(card), project.demo);
+    assert.equal(/<span[^>]*>In Entwicklung<\/span>/.test(card), project.prefix === 'fillicat');
+    if (project.prefix === 'fillicat') {
+      assert.ok(!/Veröffentlicht|Fertiggestellt|Abgeschlossen/i.test(card));
+      assert.ok(!/aggregateRating|ratingValue|role="(?:radio|slider)"|[★☆]/i.test(card));
+    }
     for (const other of expected.filter(other => other !== project)) {
       assert.ok(!card.includes(other.name), `Mixed name: ${other.name}`);
       assert.ok(!card.includes(`/images/projects/${other.prefix}-`), `Mixed images: ${other.prefix}`);
@@ -33,7 +38,7 @@ for (const project of expected) {
   });
 }
 
-test('homepage carousel keeps all four featured projects with their own images and destinations', async () => {
+test('homepage carousel keeps all five featured projects with their own images, destinations and development status', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   const track = html.match(/<ul[^>]*id="featured-project-track"[\s\S]*?<\/ul>/)?.[0];
   assert.ok(track);
@@ -45,6 +50,11 @@ test('homepage carousel keeps all four featured projects with their own images a
     assert.ok(card.includes(`href="${project.detail || project.href}"`));
     assert.ok(card.includes(`/images/projects/${project.prefix}-desktop.${project.extension}`));
     assert.equal(card.includes('Demoprojekt'), project.demo);
+    assert.equal(/<span[^>]*>In Entwicklung<\/span>/.test(card), project.prefix === 'fillicat');
+    if (project.prefix === 'fillicat') {
+      assert.ok(!/Veröffentlicht|Fertiggestellt|Abgeschlossen/i.test(card));
+      assert.ok(!/aggregateRating|ratingValue|role="(?:radio|slider)"|[★☆]/i.test(card));
+    }
   }
 });
 
@@ -57,6 +67,10 @@ for (const project of expected.filter(project => project.detail)) {
     assert.ok(main.includes(`/images/projects/${project.prefix}-desktop.${project.extension}`));
     assert.ok(main.includes(`/images/projects/${project.prefix}-mobile.${project.extension}`));
     assert.ok(main.includes(project.prefix === 'fillicat' ? 'automatische Code-Tests' : 'geschützter Medienverwaltung'));
+    assert.equal(/<span[^>]*>In Entwicklung<\/span>/.test(main), project.prefix === 'fillicat');
+    if (project.prefix === 'fillicat') {
+      assert.ok(!/aggregateRating|ratingValue|role="(?:radio|slider)"|[★☆]/i.test(main));
+    }
     for (const other of expected.filter(other => other !== project)) {
       assert.ok(!main.includes(other.name));
       assert.ok(!main.includes(`/images/projects/${other.prefix}-`));
