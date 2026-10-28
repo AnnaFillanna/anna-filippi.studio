@@ -58,3 +58,21 @@
 .copy .projectDescription { margin: 12px 0 0; font: 400 16px/1.65 $sans; color: #403437; }
 
 .projectAction { display: inline-flex; align-items: center; gap: $space-xs; min-height: 44px; margin-top: $space-xs; border-bottom: 1px solid #650d2070; font: 500 #{$text-control}/1.5 $sans; }
+
+/* Responsive previews, arranged as a quiet editorial still life. */
+.image { aspect-ratio: 8 / 6; background: radial-gradient(ellipse at 70% 25%, #fffdf8, #e6d9cc); }
+.deviceScene { position: absolute; inset: 9% 5% 18%; }
+.desktopDevice, .tabletDevice, .phoneDevice {
+  position: absolute;
+  overflow: hidden;
+  background: #292628;
+  border: 3px solid #292628;
+  box-shadow: 0 10px 18px #34252726, inset 0 0 0 1px #ffffff26;
+  img { object-fit: cover; object-position: top center; }
+}
+.desktopDevice { left: 0; top: 4%; width: 83%; aspect-ratio: 16 / 10; border-radius: 7px; border-bottom-width: 7px; }
+.tabletDevice { right: 12%; bottom: 0; width: 31%; aspect-ratio: 3 / 4; border-radius: 8px; border-width: 4px; }
+.phoneDevice { right: 0; bottom: -3%; width: 17%; aspect-ratio: 9 / 19; border-radius: 9px; }
+.phoneDevice::after { content: ''; position: absolute; top: 0; left: 31%; width: 38%; height: 4px; border-radius: 0 0 4px 4px; background: #292628; }
+.badge { bottom: 10px; left: 12px; font-size: 11px; padding: 4px 8px; background: #fffaf3e8; }
+@media (max-width: 600px) { .image { aspect-ratio: 8 / 6; } }

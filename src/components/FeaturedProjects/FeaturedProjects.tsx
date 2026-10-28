@@ -116,9 +116,21 @@ export default function FeaturedProjects() {
             <article>
               <a href={project.detailHref} className={styles.link}>
                 <div className={styles.image}>
-                  <img src={`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`}
-                    alt={`Website-Vorschau: ${project.name}`} width={1440} height={900}
-                    loading="lazy" decoding="async" />
+                  <div className={styles.deviceScene}>
+                    <div className={styles.desktopDevice}>
+                      <img src={`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`}
+                        alt={`Desktop-Vorschau: ${project.name}`} width={1440} height={900}
+                        loading="lazy" decoding="async" />
+                    </div>
+                    <div className={styles.tabletDevice} aria-hidden="true">
+                      <img src={`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
+                        alt="" loading="lazy" decoding="async" />
+                    </div>
+                    <div className={styles.phoneDevice} aria-hidden="true">
+                      <img src={`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
+                        alt="" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
                   <span className={styles.badge}>{project.projectType}</span>
                 </div>
                 <div className={styles.copy}>
