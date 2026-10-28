@@ -123,7 +123,7 @@ export default function FeaturedProjects() {
                         loading="lazy" decoding="async" />
                     </div>
                     <div className={styles.tabletDevice} aria-hidden="true">
-                      <img src={`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
+                      <img src={project.tabletImage ?? `/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
                         alt="" loading="lazy" decoding="async" />
                     </div>
                     <div className={styles.phoneDevice} aria-hidden="true">

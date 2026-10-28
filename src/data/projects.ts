@@ -82,6 +82,8 @@ export const projects = [
     scope: "React · TypeScript · Vite · React Router · Motion",
     status: "Portfolio-Demo · Kein realer Salon · Keine echten Buchungen oder Bestellungen",
     imagePrefix: "velora",
+    mobileImageExtension: "png",
+    tabletImage: "/images/projects/velora-tablet-current.png",
     featuredCategory: "Webdesign · Buchung · Produktkatalog",
     isDemo: true,
     imageExtension: "jpg",
