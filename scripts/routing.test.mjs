@@ -66,16 +66,18 @@ test('sitemap and Vercel rules cover all portfolio pages', async () => {
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
 });
 
-test('home retains six services and introduces the personal collaboration approach', async () => {
+test('home presents five services and introduces the personal collaboration approach', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   for (const id of ['start', 'leistungen', 'kontakt']) assert.ok(html.includes(`id="${id}"`));
-  for (const title of ['Webentwicklung', 'Softwareentwicklung', 'KI &amp; Automatisierung', 'E-Commerce', 'SEO &amp; Betreuung', 'Produktfotografie']) {
+  for (const title of ['Websites &amp; Webdesign', 'Webentwicklung &amp; E-Commerce', 'KI &amp; Automatisierung', 'SEO &amp; Website-Betreuung', 'Produktfotografie']) {
     assert.ok(html.includes(title), `Missing service: ${title}`);
   }
   assert.ok(!html.includes('id="ueber-mich"'));
   assert.ok(!html.includes('04 / KONTAKT'));
   assert.ok(!/<span[^>]*>0[1-6] —<\/span>/.test(html));
   assert.ok(html.includes('Meine Leistungen'));
+  assert.ok(html.includes('Komplexe KI-Lösungen: Auf Anfrage.'));
+  assert.equal((html.match(/class="[^"]*serviceArea[^"]*"/g) ?? []).length, 5);
   assert.ok(html.includes('Software &amp; Projekt ansehen'));
   assert.ok(html.includes('Fotografien ansehen'));
   assert.ok(html.includes('Warum mit mir arbeiten?'));

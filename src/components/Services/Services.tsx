@@ -2,12 +2,11 @@ import { motion, useReducedMotion } from 'motion/react';
 import styles from './Services.module.scss';
 
 const services = [
-  { title: 'Webdesign & Webentwicklung', text: 'Webseiten, die professionell wirken, auf jedem Gerät überzeugen und Interessenten die Kontaktaufnahme erleichtern.', href: '/projekte', link: 'Webprojekte ansehen' },
-  { title: 'Softwareentwicklung', text: 'Individuelle Web-Apps, Kontaktformulare und Terminbuchungen – passend zu deiner Website und deinen Abläufen.', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
-  { title: 'KI & Automatisierung', text: 'KI-Agenten · Chatbots · Workflows' },
-  { title: 'E-Commerce', text: 'Shopify · Online-Shops' },
-  { title: 'SEO & Betreuung', text: 'Suchmaschinenoptimierung · Wartung' },
-  { title: 'Produktfotografie', text: 'Hochwertige Produktbilder, die Details sichtbar machen und deine Marke stilvoll präsentieren.', href: '/fotografie', link: 'Fotografien ansehen' },
+  { title: 'Websites & Webdesign', area: 'DIGITAL', text: 'Unternehmenswebsites und Landingpages, die dein Angebot verständlich zeigen und Kontakt leicht machen. Auch für den Relaunch deiner bestehenden Website – passend für Smartphone, Tablet und Desktop.', href: '/kontakt', link: 'Website anfragen' },
+  { title: 'Webentwicklung & E-Commerce', area: 'DIGITAL', text: 'Individuelle Web-Anwendungen, interaktive Funktionen und Online-Buchungssysteme, die deine Abläufe erleichtern. Dazu Shopify-Shops, in denen Kunden deine Produkte einfach entdecken und kaufen können.', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
+  { title: 'KI & Automatisierung', area: 'DIGITAL', text: 'KI-Chatbots für häufige Fragen, automatisierte Kundenanfragen und intelligente Workflows: Wiederkehrende Aufgaben sinnvoll verbinden und digitale Abläufe vereinfachen.', note: 'Komplexe KI-Lösungen: Auf Anfrage. Umfang und Machbarkeit klären wir gemeinsam.', href: '/kontakt', link: 'Möglichkeiten besprechen' },
+  { title: 'SEO & Website-Betreuung', area: 'DIGITAL', text: 'Technische Suchmaschinenoptimierung, Wartung und Performance-Optimierung: damit deine Website gut zugänglich ist, schnell lädt und zuverlässig funktioniert. Mit kontinuierlicher Weiterentwicklung nach Bedarf.', href: '/kontakt', link: 'Betreuung anfragen' },
+  { title: 'Produktfotografie', area: 'VISUAL', text: 'Ästhetische Produkt- und Schmuckfotografie, die Materialien und feine Details sichtbar macht. Visuelles Storytelling verbindet deine Bilder zu einer stimmigen Geschichte für Website und Shop.', href: '/fotografie', link: 'Fotografien ansehen' },
 ] as const;
 
 export default function Services() {
@@ -16,17 +15,19 @@ export default function Services() {
     <section id="leistungen" className={styles.services} aria-labelledby="services-title">
       <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
       <p className={styles.serviceLead}>Was möchtest du umsetzen?</p>
-      <p className={styles.description}>Von Andernach aus gestalte und entwickle ich individuelle Websites für Unternehmen aus Koblenz, Neuwied und der Region. Auch deutschlandweit begleite ich dein Projekt persönlich – von der ersten Idee bis zur fertigen Website.</p>
+      <p className={styles.description}>Professionelle Websites für kleine und mittelständische Unternehmen – ergänzt durch Online-Shops und individuelle digitale Lösungen. Von Andernach bei Koblenz aus begleite ich dein Projekt persönlich, in der Region und deutschlandweit.</p>
       <ul className={styles.primaryList}>
         {services.map((service, index) => (
-          <motion.li key={service.title} className={styles.primaryService}
+          <motion.li key={service.title} className={`${styles.primaryService} ${service.area === 'VISUAL' ? styles.visualService : ''}`}
             initial={reduced ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: .12 }}
             transition={{ duration: reduced ? 0 : .65, delay: reduced ? 0 : (index % 3) * .06, ease: [.22, 1, .36, 1] }}>
-            <span className={styles.serviceNumber} aria-hidden="true">0{index + 1}</span>
+            <div className={styles.serviceMeta}><span className={styles.serviceNumber} aria-hidden="true">0{index + 1}</span><span className={styles.serviceArea}>{service.area}</span></div>
+            {service.area === 'VISUAL' && <img className={styles.serviceFlower} src="/images/services-peony.png" alt="" aria-hidden="true" width="1200" height="1280" loading="lazy" />}
             <h3>{service.title}</h3>
             <p className={styles.description}>{service.text}</p>
+            {'note' in service && <p className={styles.serviceNote}>{service.note}</p>}
             {'href' in service && <a className={styles.galleryLink} href={service.href}>{service.link} <span aria-hidden="true">→</span></a>}
           </motion.li>
         ))}
