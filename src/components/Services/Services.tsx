@@ -7,6 +7,7 @@ const services = [
   { title: 'KI & Automatisierung', area: 'DIGITAL', text: 'KI-Chatbots für häufige Fragen, automatisierte Kundenanfragen und intelligente Workflows: Wiederkehrende Aufgaben sinnvoll verbinden und digitale Abläufe vereinfachen.', note: 'Komplexe KI-Lösungen: Auf Anfrage. Umfang und Machbarkeit klären wir gemeinsam.', href: '/kontakt', link: 'Möglichkeiten besprechen' },
   { title: 'SEO & Website-Betreuung', area: 'DIGITAL', text: 'Technische Suchmaschinenoptimierung, Wartung und Performance-Optimierung: damit deine Website gut zugänglich ist, schnell lädt und zuverlässig funktioniert. Mit kontinuierlicher Weiterentwicklung nach Bedarf.', href: '/kontakt', link: 'Betreuung anfragen' },
   { title: 'Produktfotografie', area: 'VISUAL', text: 'Ästhetische Produkt- und Schmuckfotografie, die Materialien und feine Details sichtbar macht. Visuelles Storytelling verbindet deine Bilder zu einer stimmigen Geschichte für Website und Shop.', href: '/fotografie', link: 'Fotografien ansehen' },
+  { title: 'Beratung & Website-Check', area: 'DIGITAL', text: 'Du hast bereits eine Website oder eine erste Idee? Gemeinsam schauen wir auf Gestaltung, Inhalte und Nutzerführung. Du erhältst konkrete Empfehlungen und einen klaren nächsten Schritt.', href: '/kontakt', link: 'Beratung anfragen' },
 ] as const;
 
 export default function Services() {
@@ -18,13 +19,12 @@ export default function Services() {
       <p className={styles.description}>Professionelle Websites für kleine und mittelständische Unternehmen – ergänzt durch Online-Shops und individuelle digitale Lösungen. Von Andernach bei Koblenz aus begleite ich dein Projekt persönlich, in der Region und deutschlandweit.</p>
       <ul className={styles.primaryList}>
         {services.map((service, index) => (
-          <motion.li key={service.title} className={`${styles.primaryService} ${service.area === 'VISUAL' ? styles.visualService : ''}`}
+          <motion.li key={service.title} className={styles.primaryService}
             initial={reduced ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: .12 }}
             transition={{ duration: reduced ? 0 : .65, delay: reduced ? 0 : (index % 3) * .06, ease: [.22, 1, .36, 1] }}>
             <div className={styles.serviceMeta}><span className={styles.serviceNumber} aria-hidden="true">0{index + 1}</span><span className={styles.serviceArea}>{service.area}</span></div>
-            {service.area === 'VISUAL' && <img className={styles.serviceFlower} src="/images/services-peony.png" alt="" aria-hidden="true" width="1200" height="1280" loading="lazy" />}
             <h3>{service.title}</h3>
             <p className={styles.description}>{service.text}</p>
             {'note' in service && <p className={styles.serviceNote}>{service.note}</p>}

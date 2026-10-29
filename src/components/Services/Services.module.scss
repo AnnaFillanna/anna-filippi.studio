@@ -192,32 +192,10 @@
   .serviceNumber { margin-bottom: 22px; }
 }
 
-/* Five services: four digital disciplines and one visual discipline. */
+/* Six services in a balanced two-column desktop grid. */
 .primaryList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.primaryService:last-child { grid-column: 1 / -1; }
 .serviceMeta { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
 .serviceMeta .serviceNumber { margin-bottom: 0; }
 .serviceArea { font: 500 11px/1.5 $sans; letter-spacing: .14em; color: $text-muted; }
 .primaryService .serviceNote { margin: -4px 0 24px; font: 500 14px/1.7 $sans; color: $bordeaux; }
 @media (max-width: 600px) { .primaryList { grid-template-columns: minmax(0, 1fr); } }
-
-// Decorative botanical photography stays beside the copy on desktop.
-.serviceFlower { display: none; }
-@media (min-width: 1024px) {
-  .visualService {
-    position: relative;
-    > h3, > .description, > .galleryLink { max-width: 52%; }
-  }
-  .serviceFlower {
-    display: block;
-    position: absolute;
-    right: clamp(48px, 7vw, 112px);
-    top: 50%;
-    transform: translateY(-45%);
-    width: clamp(210px, 24vw, 300px);
-    height: auto;
-    max-height: 80%;
-    object-fit: contain;
-    pointer-events: none;
-  }
-}
