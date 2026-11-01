@@ -8,7 +8,6 @@ export default function Footer() {
   const links = [
     { label: "Impressum", href: legal.impressumUrl },
     { label: "Datenschutz", href: legal.privacyUrl || contact.privacyUrl },
-    { label: "Cookies", href: legal.cookiesUrl },
   ];
   return (
     <footer className={styles.footer} aria-label="Seitenabschluss">
@@ -44,6 +43,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Anna Filippi</span>
           <nav className={styles.legal} aria-label="Rechtliche Informationen">
+            <button type="button" className={styles.privacyButton} onClick={() => window.dispatchEvent(new Event("afs:privacy"))}>Datenschutzeinstellungen</button>
             {links.map((link) =>
               link.href ? (
                 <a key={link.label} href={link.href}>

@@ -84,7 +84,7 @@ test('home presents six services and introduces the personal collaboration appro
   assert.match(html, /<h2[^>]*id="services-title"[^>]*>Meine Leistungen<\/h2>/);
   for (const benefit of ['Individuelle Lösungen', 'Transparente Zusammenarbeit', 'Direkter Kontakt']) assert.ok(html.includes(benefit));
   assert.ok(html.includes('in etwas Schönes zu verwandeln.'));
-  for (const label of ['Impressum', 'Datenschutz', 'Cookies']) assert.ok(html.includes(label));
+  for (const label of ['Impressum', 'Datenschutz', 'Datenschutzeinstellungen']) assert.ok(html.includes(label));
 });
 
 test('about page includes the requested personal text and original portrait', async () => {

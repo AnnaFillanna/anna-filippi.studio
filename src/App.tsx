@@ -16,6 +16,7 @@ import BookingDemo from './components/BookingDemo/BookingDemo';
 import FormSolutions from './components/BookingDemo/FormSolutions';
 import Contact from "./components/Contact/Contact";
 import Impressum from "./components/LegalPages/Impressum";
+import Consent from "./components/Consent/Consent";
 import Datenschutz from "./components/LegalPages/Datenschutz";
 
 export type InfoTopic =
@@ -100,6 +101,7 @@ function Site() {
         Zum Inhalt springen
       </a>
       <Header />
+      <Consent />
       <main id="inhalt">
         <Routes>
           <Route path="/" element={<><Hero /><Services /><FeaturedProjects /><ProjectProcess /></>} />
