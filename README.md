@@ -1,49 +1,53 @@
-# ANNA FILIPPI — Digital Atelier
+# Anna Filippi — Digital Atelier
 
-Direkt im bestehenden Ordner `/Users/annafilippi/ANNA FILIPPI` umgesetzt. Enthalten sind ausschließlich Header, Hero und DIGITAL / VISUAL.
+Meine Website für Webentwicklung und Produktfotografie. Sie verbindet Kundenprojekte, interaktive Demos und fotografische Arbeiten mit einem Kontaktformular für Projektanfragen.
 
-## Start
+**[Website ansehen](https://annafilippi.studio/)**
 
-Node.js 22.12 oder neuer empfohlen. Abhängigkeiten sind bereits installiert.
+<p align="center">
+  <img src="docs/screenshots/desktop.png" alt="Anna Filippi Studio – Desktop-Ansicht" width="72%" />
+  &nbsp;
+  <img src="docs/screenshots/mobile.png" alt="Anna Filippi Studio – mobile Ansicht" width="23%" />
+</p>
 
-```sh
-cd "/Users/annafilippi/ANNA FILIPPI"
+## Funktionen
+
+- Eigene Seiten für Webentwicklung, Software, Fotografie, Über mich und Kontakt
+- Projektpräsentationen, Fotogalerie und interaktive Buchungsdemo
+- Kontaktformular mit serverseitiger Prüfung und Schutz vor mehrfacher Übermittlung
+- Projektbewertungen mit gemeinsamem Zustand für wiederholte Projektkarten
+- Responsive Navigation, Tastaturbedienung und Reduced-Motion-Unterstützung
+
+## Technische Entscheidungen
+
+- **Vorgerenderte Seiten:** Der Build rendert die React-Komponenten für jede Route als HTML, ergänzt Metadaten und erstellt die Sitemap. Inhalte stehen dadurch schon vor dem Start von JavaScript bereit. → [Build-Skript](scripts/build.mjs)
+- **Kontaktanfragen:** Eine wiederholte Anfrage verwendet denselben Idempotenzschlüssel. Die serverseitige Verarbeitung koordiniert Speicherung und E-Mail-Versand, damit ein erneuter Versuch keine doppelte Anfrage erzeugt. → [Kontaktverarbeitung](server/contact-delivery.js)
+- **Projektbewertungen:** Ein gemeinsamer Store bündelt Leseanfragen und aktualisiert mehrere Ansichten desselben Projekts. Fehlgeschlagene Antworten werden als Fehler angezeigt. → [ratingsStore.ts](src/components/ProjectRating/ratingsStore.ts)
+
+## Tech Stack
+
+React · TypeScript · React Router · SCSS Modules · Vite · Motion · Supabase · Redis · Resend
+
+Schriftarten werden lokal ausgeliefert. Bildquellen und Generierungsbriefings stehen in [ASSETS.md](ASSETS.md).
+
+## Lokal starten
+
+Node.js 22.12 oder neuer. Im Projektverzeichnis:
+
+```bash
+npm ci
 npm run dev
 ```
 
-Vorschau: http://127.0.0.1:5173/
+Die Oberfläche läuft lokal ohne Produktionszugänge. Kontaktversand, Bewertungen und Rechtstext-Schnittstelle benötigen eigene Serverkonfiguration; Vite allein stellt diese APIs nicht bereit. Zugangsdaten gehören ausschließlich in Umgebungsvariablen.
 
-```sh
-npm ci           # Abhängigkeiten auf einem anderen Rechner installieren
-npm run build    # TypeScript prüfen und Produktionsversion bauen
-npm run preview  # Produktionsversion lokal ansehen
+## Prüfungen
+
+```bash
+npm run lint
+npm test
 ```
 
-## Aufbau
+`npm test` erstellt zuerst den TypeScript- und Produktionsbuild und führt anschließend alle 90 Tests aus. Geprüft werden unter anderem gerenderte Routen, Kontaktverarbeitung, Fehlerfälle und Bewertungen. API-Tests verwenden simulierte Dienste. GitHub Actions führt die Prüfungen bei Änderungen an `main` und Pull Requests aus.
 
-- `src/components/Header/`: AF-Monogramm, Navigation, mobiles Menü.
-- `src/components/Hero/`: Originalporträt, Titel, dezente Motion-Animation und Parallax.
-- `src/components/Services/`: zwei gleich breite, direkt angrenzende Leistungsbereiche.
-- `src/styles/variables.scss`: Farben und Schriftfamilien.
-- `src/styles/globals.scss`: Grundgestaltung und Fokuszustände.
-- `src/App.tsx`: Komposition und vorläufige Hinweisdialoge.
-
-Jede Komponente verwendet ein eigenes SCSS Module. Cormorant Garamond und Montserrat werden mit den npm-Paketen lokal ausgeliefert; keine externen Schriftanfragen.
-
-## Bilder und Inhalt
-
-Hero: `public/images/hero-reference.png`, neu mit ImageGen anhand der Layout-Referenz erstellt (23.10.2026).
-
-Laptop und Blume wurden mit dem integrierten ImageGen erzeugt und als optimierte JPEGs gespeichert. Details und Prompts stehen in `ASSETS.md`. Das separate Referenzbild für DIGITAL / VISUAL war nicht angehängt, deshalb wurde dieser Bereich anhand der schriftlichen Beschreibung gestaltet.
-
-Die drei Hero-Leistungszeilen sind gemäß der Vorgabe einer deutschen Website übersetzt. DIGITAL, VISUAL und Digital Atelier bleiben erhalten.
-
-Über mich, Projekte und Kontakt sind noch keine eigenen Abschnitte. Ihre Bedienelemente öffnen zugängliche Hinweise zum aktuellen Stand; es werden keine Kontaktadressen erfunden und keine Nachrichten versendet. Die Hinweise können später durch echte Ziele ersetzt werden.
-
-## Zugänglichkeit
-
-Semantische Bereiche, Skip-Link, sichtbarer Tastaturfokus, Bildbeschreibungen, Menüstatus mit `aria-expanded`, Escape-Unterstützung und native modale Dialoge. Motion respektiert `prefers-reduced-motion`; Parallax und CSS-Bewegungen werden bei dieser Einstellung deaktiviert.
-
-## Prüfung
-
-TypeScript und Vite-Produktionsbuild; Desktop- und 390-Pixel-Mobilansicht; Bildladezustände, keine horizontale Überbreite auf Mobilgeräten; Menü und Kontakt-Hinweis einschließlich Escape.
+Weitere Details: [Kontakt-Setup](docs/KONTAKT-PRODUKTIONSSTART.md) · [Supabase](docs/SUPABASE.md) · [Projektbewertungen](docs/PROJECT-RATINGS.md)
