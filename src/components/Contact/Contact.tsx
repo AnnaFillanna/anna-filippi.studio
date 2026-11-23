@@ -1,5 +1,6 @@
 import { useRef, useState, type FormEvent } from "react";
 import { contact, projectTypes, budgets } from "../../config/contact";
+import { buildContactMailto } from "../../lib/contact-mail";
 import styles from "./Contact.module.scss";
 
 export default function Contact() {
@@ -9,6 +10,7 @@ export default function Contact() {
     "idle" | "sending" | "success" | "error"
   >("idle");
   const [message, setMessage] = useState("");
+  const [mailDraft, setMailDraft] = useState("");
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (busy.current || !contact.privacyUrl || !contact.formEnabled) return;
@@ -21,6 +23,7 @@ export default function Contact() {
     busy.current = true;
     setStatus("sending");
     setMessage("Deine Anfrage wird gesendet …");
+    setMailDraft("");
     try {
       const response = await fetch(contact.endpoint, {
         method: "POST",
@@ -32,11 +35,15 @@ export default function Contact() {
         signal: AbortSignal.timeout(25000),
       });
       const result = await response.json();
-      if (!response.ok || result.ok !== true)
+      if (!response.ok || result.ok !== true) {
+        if (response.status === 503 || response.status === 502) {
+          setMailDraft(buildContactMailto(data));
+        }
         throw new Error(
           (typeof result.message === "string" ? personalMessage(result.message) : "") ||
             "Die Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.",
         );
+      }
       setStatus("success");
       setMessage(
         "Vielen Dank! Deine Anfrage wurde erfolgreich gesendet. Ich melde mich so bald wie möglich bei dir.",
@@ -45,12 +52,19 @@ export default function Contact() {
       attempt.current = { body: "", id: "" };
     } catch (error) {
       setStatus("error");
-      setMessage(
-        error instanceof Error &&
-          !["SyntaxError", "TimeoutError", "TypeError"].includes(error.name)
-          ? error.message
-          : "Die Übermittlung konnte nicht bestätigt werden. Deine Eingaben bleiben erhalten. Bitte versuche es erneut oder kontaktiere mich per WhatsApp.",
-      );
+      if (error instanceof Error && ["TimeoutError", "TypeError", "NetworkError"].includes(error.name)) {
+        setMailDraft(buildContactMailto(data));
+        setMessage(
+          "Die Übermittlung konnte nicht bestätigt werden. Deine Eingaben bleiben erhalten.",
+        );
+      } else {
+        setMessage(
+          error instanceof Error &&
+            !["SyntaxError"].includes(error.name)
+            ? error.message
+            : "Die Übermittlung konnte nicht bestätigt werden. Deine Eingaben bleiben erhalten. Bitte versuche es erneut oder kontaktiere mich per WhatsApp.",
+        );
+      }
     } finally {
       busy.current = false;
     }
@@ -182,6 +196,11 @@ export default function Contact() {
             data-error={status === "error"}
           >
             {message}
+            {mailDraft && (
+              <> Die Anfrage könnte bereits eingegangen sein. Falls du stattdessen eine E-Mail senden möchtest, prüfe bitte vorher den Eingang, um Duplikate zu vermeiden.{" "}
+                <a href={mailDraft}>E-Mail-Entwurf öffnen</a>
+              </>
+            )}
           </p>
 
         </form>

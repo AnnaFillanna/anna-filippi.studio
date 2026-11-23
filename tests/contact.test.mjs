@@ -16,6 +16,8 @@ const env = {
   SUPABASE_SECRET_KEY: "sb_secret_testOnly",
   CONTACT_FROM: "test@example.org",
   CONTACT_TO: "owner@example.org",
+  CONTACT_EMAIL_FROM: "",
+  CONTACT_EMAIL_TO: "",
   RESEND_API_KEY: "test",
   CONTACT_ALLOWED_ORIGINS: "https://annafilippi.studio",
   UPSTASH_REDIS_REST_URL: "https://redis.example.org",
@@ -33,6 +35,7 @@ async function request(
   let calls = 0;
   const records = new Map();
   const inserts = [];
+  const mails = [];
   const res = {
     headers: {},
     setHeader(k, v) {
@@ -69,6 +72,7 @@ async function request(
         return { ok: true, json: async () => ({ result: matches ? 1 : 0 }) };
       }
     }
+    if (url === 'https://api.resend.com/emails') mails.push(JSON.parse(options.body));
     const body = responses[calls++];
     if (body instanceof Error) throw body;
     return { ok: !body?.error, json: async () => body };
@@ -91,7 +95,7 @@ async function request(
       },
       res,
     );
-    return { ...res, calls, inserts };
+    return { ...res, calls, inserts, mails };
   } finally {
     globalThis.fetch = originalFetch;
     for (const k of Object.keys(process.env))
@@ -153,6 +157,50 @@ test("disabled sending never contacts external services", async () => {
   const r = await request({}, undefined, { CONTACT_ENABLED: 'false' });
   assert.equal(r.code, 503);
   assert.equal(r.calls, 0);
+});
+
+test('bisherige Absender- und Empfänger-Konfiguration bleibt gültig', async () => {
+  const r = await request({}, undefined, { CONTACT_EMAIL_FROM: '', CONTACT_EMAIL_TO: '' });
+  assert.equal(r.code, 200);
+  assert.equal(r.mails[0].from, env.CONTACT_FROM);
+  assert.deepEqual(r.mails[0].to, [env.CONTACT_TO]);
+  assert.equal(r.mails[0].reply_to, data.email);
+});
+
+test('neue Konfigurationsnamen haben Vorrang vor den bisherigen', async () => {
+  const r = await request({}, undefined, {
+    CONTACT_EMAIL_FROM: 'studio@example.org',
+    CONTACT_EMAIL_TO: 'new-owner@example.org',
+  });
+  assert.equal(r.code, 200);
+  assert.equal(r.mails[0].from, 'studio@example.org');
+  assert.deepEqual(r.mails[0].to, ['new-owner@example.org']);
+});
+
+test('neue Konfigurationsnamen funktionieren auch ohne bisherige Namen', async () => {
+  const r = await request({}, undefined, {
+    CONTACT_EMAIL_FROM: 'studio@example.org',
+    CONTACT_EMAIL_TO: 'new-owner@example.org',
+    CONTACT_FROM: '',
+    CONTACT_TO: '',
+  });
+  assert.equal(r.code, 200);
+  assert.equal(r.mails[0].from, 'studio@example.org');
+  assert.deepEqual(r.mails[0].to, ['new-owner@example.org']);
+});
+
+test('fehlender Absender oder Empfänger verhindert sämtliche externen Aufrufe', async () => {
+  for (const overrides of [
+    { CONTACT_EMAIL_FROM: '', CONTACT_FROM: '' },
+    { CONTACT_EMAIL_TO: '', CONTACT_TO: '' },
+    { RESEND_API_KEY: '' },
+  ]) {
+    const r = await request({}, undefined, overrides);
+    assert.equal(r.code, 503);
+    assert.equal(r.calls, 0);
+    assert.equal(r.inserts.length, 0);
+    assert.equal(r.mails.length, 0);
+  }
 });
 
 test('API stores only the five normalized fields, never request metadata', async () => {

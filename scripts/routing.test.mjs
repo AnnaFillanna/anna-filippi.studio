@@ -132,8 +132,20 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
     assert.ok(!html.includes('.vercel.app'));
     assert.ok(!titles.has(meta.title));
     titles.add(meta.title);
-    const data = JSON.parse(html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)[1]);
+    const structuredData = [...html.matchAll(/<script type="application\/ld\+json">([^<]+)<\/script>/g)];
+    assert.equal(structuredData.length, 1, `${path}: one JSON-LD block`);
+    assert.equal((html.match(/<meta name="description"/g) || []).length, 1);
+    const data = JSON.parse(structuredData[0][1]);
+    assert.equal(data['@context'], 'https://schema.org');
+    const websites = data['@graph'].filter(item => item['@type'] === 'WebSite');
+    assert.equal(websites.length, 1);
+    assert.equal(websites[0].name, 'ANNA FILIPPI Studio');
+    assert.equal(websites[0].alternateName, 'Fillanna');
+    assert.equal(websites[0].url, `${origin}/`);
     const person = data['@graph'].find(item => item['@type'] === 'Person');
+    assert.equal(person.name, 'Anna Filippi');
+    assert.equal(person.alternateName, 'Fillanna');
+    assert.equal(websites[0].publisher['@id'], person['@id']);
     assert.equal(person.homeLocation.name, 'Andernach, Deutschland');
   }
   await access('dist/favicon.svg');

@@ -14,8 +14,10 @@ export default async function handler(req, res) {
   if (!/^application\/json(?:;|$)/i.test(req.headers['content-type'] || '')) return send(415, 'Ungültiges Anfrageformat.');
   const env = process.env;
   const redisToken = env.UPSTASH_REDIS_REST_TOKEN || env.UPSPLASH_REDIS_REST_TOKEN;
-  const required = ['RESEND_API_KEY', 'CONTACT_FROM', 'CONTACT_TO', 'CONTACT_ALLOWED_ORIGINS', 'UPSTASH_REDIS_REST_URL', 'RATE_LIMIT_SECRET'];
-  if (required.some(key => !env[key]) || !redisToken || env.CONTACT_ENABLED !== 'true' || env.RATE_LIMIT_SECRET.length < 32) return send(503, unavailable);
+  const from = env.CONTACT_EMAIL_FROM || env.CONTACT_FROM;
+  const to = env.CONTACT_EMAIL_TO || env.CONTACT_TO;
+  const required = ['RESEND_API_KEY', 'CONTACT_ALLOWED_ORIGINS', 'UPSTASH_REDIS_REST_URL', 'RATE_LIMIT_SECRET'];
+  if (required.some(key => !env[key]) || !from || !to || !redisToken || env.CONTACT_ENABLED !== 'true' || env.RATE_LIMIT_SECRET.length < 32) return send(503, unavailable);
   let config;
   try { config = storageConfig(env); } catch { return send(503, unavailable); }
   const redis = async command => {
@@ -56,7 +58,7 @@ export default async function handler(req, res) {
     if (!Number.isInteger(counter) || counter < 1) return send(503, unavailable);
     if (counter > 5) { res.setHeader('Retry-After', '600'); return send(429, 'Zu viele Anfragen. Bitte warten Sie 10 Minuten und versuchen Sie es erneut.'); }
     const payload = {
-      from: env.CONTACT_FROM, to: [env.CONTACT_TO], reply_to: data.email,
+      from, to: [to], reply_to: data.email,
       subject: `Neue Projektanfrage · ${data.project}`,
       text: `Name: ${data.name}\nE-Mail: ${data.email}\nProjekt: ${data.project}\nBudget (unverbindlich): ${data.budget || 'Keine Angabe'}\n\n${data.message}`,
     };

@@ -1,5 +1,7 @@
 # Kontaktformular – Einrichtung
 
+**Aktuelle Einrichtung:** [CONTACT_SETUP.md](CONTACT_SETUP.md). Die nachfolgende ältere Beschreibung dokumentiert den historischen Stand; bei abweichenden Angaben zu Variablennamen oder Formularfreigabe gilt die aktuelle Anleitung und der aktuelle Code.
+
 Aktuelle Ergänzung für Supabase-Speicherung, Wiederholungen und Testfreigabe: [Kontakt-Supabase-Anbindung](docs/KONTAKT-SUPABASE.md). Die folgende ursprüngliche Versanddokumentation beschreibt die bisherige Basis.
 
 ## Stand
@@ -42,7 +44,7 @@ Doppelklicks werden verhindert. Wiederholte Versuche mit unveränderten Eingaben
 ## Prüfung
 - `npx tsc --noEmit` bzw. `npm run build`
 - `node --test tests/contact.test.mjs` (gemockte APIs, kein echter Versand)
-- `npm run lint`: im bestehenden Projekt nicht konfiguriert; keine neue Lint-Abhängigkeit installiert.
+- `npm run lint`: prüft den Frontend-Code mit der vorhandenen ESLint-Konfiguration.
 - Lokaler End-to-End-Test mit Vercel CLI (`vercel dev`) und lokalen serverseitigen Environment Variables, falls CLI bereits eingerichtet. Origins inklusive lokaler Adresse explizit konfigurieren. Geheimnisse niemals committen.
 - Nach Konfiguration: leere Felder, falsche E-Mail, erfolgreiche Zustellung, Providerfehler, sechste Anfrage, Tastaturbedienung und mobile Darstellung überprüfen.
 
