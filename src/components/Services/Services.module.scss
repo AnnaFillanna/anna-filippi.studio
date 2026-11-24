@@ -127,7 +127,7 @@
   .galleryLink { margin-top: auto; align-self: flex-start; letter-spacing: 0; font-size: 16px; }
 }
 .serviceNumber { font: italic 400 30px/1 $serif; color: #956971; margin-bottom: 28px; }
-.intro { margin-top: $space-section; padding-top: $space-xl; gap: 10%; }
+.intro { margin-top: $space-section; padding-top: $space-xl; column-gap: 10%; row-gap: 64px; }
 .pricing h2 { font-size: $text-section; }
 .pricing .pricingNote { margin-top: 22px; font: italic 400 24px/1.4 $serif; color: $bordeaux; max-width: 30ch; }
 @media (max-width: 1100px) { .primaryList { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -165,7 +165,7 @@
     .galleryLink { display: inline-flex; align-items: center; gap: $space-xs; max-width: 100%; margin-top: $space-xs; min-height: 44px; line-height: 1.5; span { flex-shrink: 0; } }
   }
   .serviceNumber { margin-bottom: 12px; font-size: 26px; }
-  .intro { margin-top: $space-xl; padding-top: $space-lg; gap: $space-sm; }
+  .intro { margin-top: 64px; padding-top: 48px; row-gap: 56px; }
   .eyebrow { margin-bottom: 12px; }
   .pricing {
     h2 { margin-bottom: $space-sm; }
@@ -215,3 +215,25 @@
 .services > .description { max-width: 60ch; margin-bottom: 28px; }
 .description, .primaryService .description, .serviceItems, .benefits p, .pricing > p:not(.eyebrow) { @include reading-text; }
 .eyebrow, .serviceArea, .serviceNote { font-size: .875rem; line-height: 1.6; }
+
+// Separate pricing from collaboration and give headings a clear hierarchy.
+.pricing, .trust {
+  > .eyebrow { margin-bottom: 20px; font-weight: 600; letter-spacing: .1em; }
+  h2 { font-weight: 500; line-height: 1.18; margin: 0 0 28px; }
+}
+.pricing h2 em { font-weight: 500; }
+.pricing .pricingNote { margin-top: 28px; }
+.trust .benefits { padding-top: 8px; }
+.benefits {
+  li { align-items: start; padding-block: 28px; }
+  h3 { font: 600 1.125rem/1.45 $sans; margin: 0 0 14px; color: $bordeaux; }
+}
+.benefitIcon { margin-top: 2px; }
+@media (max-width: 900px) {
+  .trust { border-top: 1px solid #650d2033; padding-top: 40px; }
+}
+@media (max-width: 600px) {
+  .pricing h2, .trust h2 { font-size: clamp(2rem, 8vw, 2.5rem); }
+  .benefits li { column-gap: 18px; padding-block: 28px; }
+  .trust .benefits { padding-top: 0; }
+}
