@@ -462,72 +462,6 @@
   color: #534447;
 }
 
-// Native scrolling preserves touch gestures and keyboard navigation.
-.projects .carousel {
-  --card-width: 60%;
-  --card-gap: 32px;
-  position: relative;
-  display: flex;
-  gap: var(--card-gap);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  padding: 24px 0 40px;
-  margin-inline: 0;
-  overscroll-behavior-x: contain;
-  perspective: 2200px;
-  perspective-origin: var(--ring-center, 50%) 45%;
-
-  &::-webkit-scrollbar { display: none; }
-  &::before, &::after {
-    content: "";
-    flex: 0 0 calc((100% - var(--card-width)) / 2 - var(--card-gap));
-  }
-  > .card {
-    flex: 0 0 var(--card-width);
-    scroll-snap-align: center;
-    // Individual transforms compose with the existing reveal animation.
-    translate: 0 0 var(--ring-depth, 0px);
-    rotate: y var(--ring-angle, 0deg);
-    transform-origin: center;
-  }
-  &:focus-visible {
-    outline: 1px solid $bordeaux;
-    outline-offset: 5px;
-  }
-  @media (max-width: 1000px) {
-    --card-width: 100%;
-    --card-gap: 28px;
-    padding: 8px 6px 24px;
-    margin-inline: -6px;
-    perspective: none;
-    &::before, &::after { display: none; }
-    > .card { translate: none; rotate: none; }
-  }
-}
-.carouselControls {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin: -16px 0 28px;
-  button {
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    padding: 10px;
-    border: 1px solid #650d2038;
-    border-radius: 50%;
-    color: $bordeaux;
-    background: transparent;
-    cursor: pointer;
-    &:hover:not(:disabled) { background: #650d2008; border-color: $bordeaux; }
-    &:disabled { opacity: 0.3; cursor: default; }
-    &:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
-  }
-  svg { width: 26px; height: 20px; stroke: currentColor; stroke-width: 1.2; }
-}
-
 .caseIntro h1 { overflow-wrap: anywhere; hyphens: auto; }
 
 .softwarePage .caseIntro h1 { font-size: clamp(32px, 4.5vw, 60px); font-weight: 400; line-height: 1.12; }
@@ -556,9 +490,6 @@
 .projects .heading { margin-bottom: 32px; }
 .projects .lead { max-width: 52ch; font-size: 17px; line-height: 1.7; }
 
-@media (prefers-reduced-motion: reduce) {
-  .projects .carousel > .card { translate: none; rotate: none; }
-}
 
 .formsLink { display: inline-flex; align-items: center; gap: 12px; margin: 16px 0 0 24px; min-height: 48px; padding-block: 8px; color: $bordeaux; border-bottom: 1px solid #650d2055; text-decoration: none; font: 500 15px/1.6 $sans; }
 .formsLink:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
@@ -584,3 +515,16 @@
 .description, .caseLead, .caseDetails > p:not(.caseEyebrow), .projects .lead { @include reading-text; max-width: 60ch; }
 .projectDetails .description { margin-bottom: 20px; strong { display: block; margin-bottom: 6px; } }
 @media (max-width: 600px) { .caseIntro h1 { hyphens: none; overflow-wrap: break-word; } }
+
+// Fully visible cards keep previews and text readable at every width.
+.projects .grid { align-items: start; gap: 56px 40px; }
+.projects .card { padding-bottom: 32px; border-bottom: 1px solid #650d2026; }
+.projects .copy h2 { font-size: clamp(1.75rem, 2.4vw, 2rem); line-height: 1.2; }
+.projects .eyebrow { letter-spacing: .04em; }
+.ratingDisclosure {
+  width: 100%;
+  margin-top: 24px;
+  summary { padding: 12px 0; cursor: pointer; font: 400 .875rem/1.6 $sans; color: $text-muted; }
+  summary:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
+}
+@media (max-width: 1000px) { .projects .grid { grid-template-columns: minmax(0, 1fr); } }

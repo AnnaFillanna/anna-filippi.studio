@@ -20,7 +20,7 @@ function RatingControls({ project, name }: { project: string; name: string }) {
         {state.state === 'loading' ? 'Bewertungen werden geladen …' : state.state === 'unavailable' ? 'Bewertungen sind derzeit nicht verfügbar.'
           : state.rating?.count ? `${state.rating.average?.toLocaleString('de-DE', { maximumFractionDigits: 1, minimumFractionDigits: 1 })} von 5 · ${state.rating.count} ${state.rating.count === 1 ? 'Bewertung' : 'Bewertungen'}` : 'Noch keine Bewertungen'}
       </p>
-      <form onSubmit={event => { event.preventDefault(); if (stars) void submitRating(project, stars); }}>
+      {state.state === 'ready' && <form onSubmit={event => { event.preventDefault(); if (stars) void submitRating(project, stars); }}>
         <fieldset disabled={state.state !== 'ready' || state.busy || Boolean(state.rating?.myVote)} className={styles.controls}>
           <legend>Wie gefällt dir dieses Projekt?</legend>
           <div className={styles.stars}>
@@ -31,7 +31,7 @@ function RatingControls({ project, name }: { project: string; name: string }) {
           </div>
           {!state.rating?.myVote && <button type="submit" disabled={!stars}>{state.busy ? 'Wird gespeichert …' : 'Bewertung senden'}</button>}
         </fieldset>
-      </form>
+      </form>}
       {state.rating?.myVote && !state.message && <p className={styles.note}>Aus deinem Netzwerk bereits bewertet: {state.rating.myVote} von 5.</p>}
       {state.state === 'unavailable' && <button type="button" className={styles.retry} onClick={() => { void loadRating(project, true); }}>Erneut laden</button>}
       <p className={styles.note}>Bewertung des Projekts durch Websitebesucher, keine Kundenrezension. Einmal pro Projekt und Netzwerk. <a href="/datenschutz">Datenschutz</a></p>
