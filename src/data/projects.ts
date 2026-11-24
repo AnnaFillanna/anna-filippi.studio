@@ -25,6 +25,7 @@ export const kavroDetails = [
 export const projects = [
   {
     name: "Dana Tattoo Studio",
+    featuredDescription: "Website für ein Tattoo-Studio in Andernach – mit Galerien und direktem WhatsApp-Kontakt.",
     projectType: "Kundenprojekt",
     category: "FULL-STACK WEBENTWICKLUNG",
     description:
@@ -42,6 +43,7 @@ export const projects = [
   },
   {
     name: "Mamma Mia – Pizza mit Amore",
+    featuredDescription: "Pizza zusammenstellen und eine Testbestellung durchspielen.",
     projectType: "Demoprojekt",
     category: "WEBENTWICKLUNG · INTERAKTIVE DEMO",
     description: "Interaktive Demo mit Pizza-Konfigurator: Zutaten auswählen, den Preis nachvollziehen und eine Testbestellung durchspielen.",
@@ -58,6 +60,7 @@ export const projects = [
   },
   {
     name: "KAVRO — Barber Studio",
+    featuredDescription: "Studio-Website mit Serviceübersicht und interaktiver Terminbuchung.",
     projectType: "Demoprojekt",
     category: "WEBENTWICKLUNG · BUCHUNGSERLEBNIS",
     description: "Demo für ein Barber Studio mit Serviceübersicht und interaktiver Terminbuchung – vom Vergleichen der Leistungen bis zur Terminauswahl.",
@@ -76,6 +79,7 @@ export const projects = [
   },
   {
     name: "VELORA — Beauty House Köln",
+    featuredDescription: "Beauty-Website mit Treatment-Auswahl, Terminbuchung und Produktkatalog.",
     projectType: "Demoprojekt",
     category: "WEBENTWICKLUNG · BEAUTY & BUCHUNG",
     description: "Website-Konzept für ein Beauty-Studio: Treatments entdecken und eine Terminbuchung in fünf Schritten ausprobieren – ergänzt durch einen Produktkatalog mit Demo-Warenkorb.",
@@ -101,6 +105,7 @@ export const projects = [
   },
   {
     name: "FilliCat",
+    featuredDescription: "Programmieren lernen mit praktischen Übungen und direktem Feedback.",
     projectType: "Eigenes Projekt",
     subtitle: "Adaptive Lernplattform für Programmierung",
     category: "EDTECH / SOFTWAREENTWICKLUNG",

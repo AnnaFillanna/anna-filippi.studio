@@ -78,27 +78,27 @@
 .badge { bottom: 10px; left: 12px; font-size: 11px; padding: 4px 8px; background: #fffaf3e8; }
 @media (max-width: 600px) { .image { aspect-ratio: 8 / 6; } }
 
-.projectFeatures {
-  margin: 12px 0 0;
-  padding-left: 1.2em;
-  font: 400 16px/1.65 $sans;
-  color: #403437;
-  li + li { margin-top: 6px; }
-}
-.liveLink {
-  display: table;
-  max-width: 100%;
-  margin-top: 12px;
-  padding-block: 10px;
-  border-bottom: 1px solid #650d2070;
-  color: inherit;
-  font: 500 16px/1.5 $sans;
-  text-decoration: none;
-  overflow-wrap: anywhere;
-  &:hover { border-color: currentColor; }
-  &:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
-}
-
 // Consistent reading rhythm, including narrow screens.
-.copy .projectDescription, .projectFeatures { @include reading-text; }
+.copy .projectDescription { @include reading-text; }
 .copy > p { line-height: 1.6; }
+
+// One reading path: preview, title, short description, then actions.
+.copy {
+  padding-top: 28px;
+  h3 { display: block; font: 500 clamp(1.75rem, 2.3vw, 2rem)/1.2 $serif; }
+  .projectDescription { margin-top: 16px; max-width: 42ch; }
+}
+.projectActions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 24px; }
+.projectAction { margin: 0; padding-block: 8px; font-size: 1rem; font-weight: 600; }
+.detailsLink { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; text-decoration: underline; text-underline-offset: 5px; }
+.ratingDisclosure {
+  margin-top: 28px;
+  border-top: 1px solid #650d2026;
+  summary { padding: 16px 0; min-height: 48px; cursor: pointer; font: 400 .875rem/1.6 $sans; color: $text-muted; }
+  summary:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
+}
+@media (max-width: 600px) {
+  .copy { padding-top: 24px; }
+  .copy h3 { overflow-wrap: break-word; }
+  .projectActions { align-items: flex-start; flex-direction: column; gap: 8px; }
+}

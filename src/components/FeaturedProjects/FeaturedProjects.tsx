@@ -134,30 +134,26 @@ export default function FeaturedProjects() {
                   </div>
                   <span className={styles.badge}>{project.projectType}</span>
                 </div>
-                <div className={styles.copy}>
-                  <p>{project.featuredCategory ?? project.category}</p>
-                  <h3>{project.name}</h3>
-                  {project.status.includes('In Entwicklung') && <span className={styles.developmentBadge}>In Entwicklung</span>}
-                  {project.imagePrefix === 'dana' ? (
-                    <>
-                      <p className={styles.projectDescription}>Individuelle Website für das Dana Tattoo Studio in Andernach.</p>
-                      <ul className={styles.projectFeatures}>
-                        <li>Galerien für Tattoo- und Piercingarbeiten</li>
-                        <li>Direkter Kontakt über WhatsApp</li>
-                        <li>Optimiert für Smartphone, Tablet und Desktop</li>
-                      </ul>
-                    </>
-                  ) : <p className={styles.projectDescription}>{project.description}</p>}
-                  <span className={styles.projectAction}>{project.buttonLabel} <span aria-hidden="true">→</span></span>
-                </div>
               </a>
-              {project.imagePrefix === 'dana' && (
-                <a className={styles.liveLink} href={project.href} target="_blank" rel="noopener noreferrer"
-                  aria-label="Dana Tattoo Studio: tattoodana.de öffnen (neuer Tab)">
-                  Website besuchen · tattoodana.de
-                </a>
+              <div className={styles.copy}>
+                <h3>{project.name}</h3>
+                {project.status.includes('In Entwicklung') && <span className={styles.developmentBadge}>In Entwicklung</span>}
+                <p className={styles.projectDescription}>{project.featuredDescription}</p>
+                <div className={styles.projectActions}>
+                  <a className={styles.projectAction} href={project.imagePrefix === 'dana' ? project.href : project.detailHref}
+                    target={(project.imagePrefix === 'dana' || project.detailHref.startsWith('https:')) ? '_blank' : undefined}
+                    rel={(project.imagePrefix === 'dana' || project.detailHref.startsWith('https:')) ? 'noopener noreferrer' : undefined}>
+                    {project.imagePrefix === 'dana' ? 'Website besuchen' : project.buttonLabel}
+                  </a>
+                  {project.imagePrefix === 'dana' && <a className={styles.detailsLink} href={project.detailHref}>Über das Projekt</a>}
+                </div>
+              </div>
+              {!project.status.includes('In Entwicklung') && (
+                <details className={styles.ratingDisclosure}>
+                  <summary>Projekt bewerten</summary>
+                  <ProjectRating project={project.imagePrefix} name={project.name} />
+                </details>
               )}
-              <ProjectRating project={project.imagePrefix} name={project.name} inDevelopment={project.status.includes('In Entwicklung')} />
             </article>
           </li>
         ))}
