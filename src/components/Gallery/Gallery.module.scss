@@ -679,3 +679,59 @@
 @media (max-width: 760px) {
   .heroVisual { max-width: 320px; justify-self: center; }
 }
+
+// Shared outer edges connect the introduction, collection controls and photos.
+@media (min-width: 761px) {
+  .grid,
+  .filters {
+    width: 100%;
+    max-width: none;
+    column-gap: clamp(48px, 8vw, 112px);
+    margin-inline: 0;
+  }
+  .grid { row-gap: 64px; }
+}
+
+@media (max-width: 760px) {
+  .heroVisual,
+  .filters,
+  .grid {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+  .grid,
+  .clean { grid-template-columns: minmax(0, 1fr); }
+  .filters { gap: 32px; }
+  .filters button {
+    align-items: center;
+    text-align: center;
+  }
+  .filterTitle {
+    width: 100%;
+    font-size: clamp(21px, 5.5vw, 26px);
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+  .filterMeta { align-items: center; }
+  .filterMeta > span:first-child {
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.6;
+    letter-spacing: .06em;
+    overflow-wrap: anywhere;
+  }
+  .filters button .filterAction {
+    justify-content: center;
+    gap: 14px;
+    font-size: clamp(20px, 5.2vw, 24px);
+    line-height: 1.35;
+  }
+  .filters button .filterAction::after { content: none; }
+  .arrowCircle {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+}
