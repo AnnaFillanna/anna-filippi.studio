@@ -657,15 +657,15 @@
 .heading > p { @include reading-text; max-width: 60ch; }
 @media (max-width: 600px) { .backLink, .filterMeta { letter-spacing: .03em; } }
 
-// Preserve the complete landscape composition on every screen.
+// Preserve the complete product composition on every screen.
 .heroVisual {
-  max-width: 520px;
+  max-width: 380px;
   margin: 0;
 }
 .heroVisual img {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1867 / 2333;
   object-fit: contain;
   object-position: center;
 }
@@ -677,5 +677,5 @@
   .hero::before, .hero::after { content: none; }
 }
 @media (max-width: 760px) {
-  .heroVisual { max-width: 520px; justify-self: center; }
+  .heroVisual { max-width: 320px; justify-self: center; }
 }

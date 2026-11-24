@@ -269,10 +269,10 @@ export default function Gallery() {
         </div>
         <div className={styles.heroVisual}>
           <img
-            src="/images/gallery-heart-necklace.png"
-            alt="Goldfarbene Herzkette vor Pampasgras über einer hellen strukturierten Schale"
-            width="1536"
-            height="1024"
+            src="/images/gallery-fillianna.jpg"
+            alt="FILLIANNA-Schmuckschachtel mit goldfarbener Halskette auf Leopardenmuster und hellem Stoff"
+            width="1867"
+            height="2333"
             fetchPriority="high"
           />
         </div>
