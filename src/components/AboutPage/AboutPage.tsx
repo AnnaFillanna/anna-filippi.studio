@@ -19,10 +19,10 @@ export default function AboutPage() {
           <h1 id="about-page-title" tabIndex={-1}>Über mich</h1>
           <p className={styles.greeting}>Hallo, ich bin Anna.</p>
           <div className={styles.text}>
-            <p>Meine drei Schwerpunkte sind Softwareentwicklung, Webentwicklung und Produktfotografie.</p>
-            <p>Ich entwickle individuelle Anwendungen und Websites und setze Produkte fotografisch in Szene – mit Liebe zum Detail und einem klaren Blick für Ästhetik.</p>
-            <p>Besonders faszinieren mich die Möglichkeiten der künstlichen Intelligenz und die Verbindung von Design und Funktionalität.</p>
-            <p>Neben der <strong>Webentwicklung</strong> widme ich mich mit Leidenschaft der <strong>Schmuckfotografie</strong>. Was als Hobby begann, ist für mich eine kreative Möglichkeit, besondere Details, Licht und Ästhetik in Bildern festzuhalten.</p>
+            <p>Ich liebe es, kreative Ideen mit Technologie zu verbinden. Für mich ist eine Website mehr als Design und Code: Sie erzählt deine Geschichte, zeigt, was dich besonders macht, und verbindet dich mit den richtigen Menschen.</p>
+            <p>Mir ist wichtig, dass du dich während unserer Zusammenarbeit wohlfühlst, deine Wünsche einbringen kannst und verstehst, was wir gemeinsam entwickeln. Von der ersten Idee bis zur fertigen Umsetzung hast du in mir eine direkte Ansprechpartnerin.</p>
+            <p>Meine Schwerpunkte liegen in der Webentwicklung, Softwareentwicklung und Produktfotografie. Besonders faszinieren mich die Möglichkeiten künstlicher Intelligenz und die Verbindung von Ästhetik und Technologie.</p>
+            <p>Auch die Fotografie gehört zu meiner kreativen Arbeit. Ich liebe es, mit Licht, Materialien und kleinen Details die Besonderheiten eines Produkts sichtbar zu machen.</p>
           </div>
           <ul className={styles.values} aria-label="Was meine Arbeit ausmacht">
             <li>
@@ -43,6 +43,7 @@ export default function AboutPage() {
           <img src="/images/about-anna-red.jpg" alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" width="993" height="1600" fetchPriority="high" />
         </motion.div>
       </div>
+      <a className={styles.back} href="/kontakt">Erzähl mir von deiner Idee</a>
       <motion.div className={styles.portraitDivider} aria-hidden="true"
         initial={reduced ? false : { scaleX: 0 }} whileInView={{ scaleX: 1 }}
         viewport={{ once: true, amount: 1 }} transition={{ duration: reduced ? 0 : 1.4, ease: [.22, 1, .36, 1] }} />

@@ -84,7 +84,7 @@ const collections = {
     label: "Inszenierte Produktfotografie",
     title: "Licht. Material.",
     accent: "Atmosphäre.",
-    text: "Schmuck im Dialog mit Stoff, Spiegelungen und natürlichen Texturen.",
+    text: "Ich kombiniere Schmuck mit Stoffen, Spiegelungen und natürlichen Texturen.",
     photos: [
       {"id": 19, "title": "Warme Akzente", "alt": "Ohrringe mit rotbraunen Steinen neben einer cremefarbenen Vase und einem Spiegel im Sonnenlicht"},
       {"id": 32, "title": "Glieder im Dialog", "alt": "Silber- und goldfarbene Gliederketten auf einer hellen Stoffrolle vor dunklem Hintergrund"},
@@ -168,7 +168,7 @@ const collections = {
     label: "Produkt im Fokus",
     title: "Klare Formen.",
     accent: "Feine Details.",
-    text: "Reduzierte Hintergründe. Raum für Farbe, Form und die kleinen Besonderheiten.",
+    text: "Vor einem hellen Hintergrund setze ich Farbe, Form und feine Details in Szene.",
     photos: [
       {"id": 20, "title": "Zwei Lichtpunkte", "alt": "Goldfarbener Ring mit geriffelter Schiene und zwei rechteckigen hellen Steinen auf weißem Hintergrund"},
       {"id": 21, "title": "Glanzvolle Creolen", "alt": "Breite goldfarbene Creolen mit kleinen hellen Steinen auf weißem Hintergrund"},
@@ -256,18 +256,18 @@ export default function Gallery() {
       <div className={`${styles.hero} ${lineReady ? styles.lineReady : ""}`}>
         <div className={styles.heading}>
           <p className={styles.eyebrow}>
-            ANNA FILIPPI · FOTOGRAFIE
+            ANNA FILIPPI · MEINE FOTOGRAFIE
           </p>
           <h1 id="gallery-title" tabIndex={-1}>
             Produktfotografie
             <br />
-            <em>Große Wirkung.</em>
+            <em>Details, die bleiben.</em>
           </h1>
           <p className={styles.lead}>
-            Produkt- und Schmuckfotografie für Onlineshops und Websites. Aus Andernach bei Koblenz.
+            Ich fotografiere Produkte für Onlineshops und Websites. Aus Andernach bei Koblenz – für dein Business, deutschlandweit.
           </p>
           <p className={styles.lead}>
-            Klare Bilder und kreative Inszenierungen machen Materialien, Formen und feine Details sichtbar.
+            Mit Licht und sorgfältig gewählten Hintergründen mache ich Materialien, Formen und besondere Details sichtbar.
           </p>
         </div>
         <div className={styles.heroVisual}>

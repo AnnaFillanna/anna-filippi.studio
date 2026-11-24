@@ -2,12 +2,12 @@ import { motion, useReducedMotion } from 'motion/react';
 import styles from './Services.module.scss';
 
 const services = [
-  { title: 'Websites & Webdesign', area: 'DIGITAL', text: 'Eine professionelle Website erstellen lassen, die dein Angebot klar zeigt.', items: ['Unternehmenswebsites & Landingpages', 'Website-Relaunch für dein Unternehmen', 'Optimiert für Smartphone, Tablet & Desktop'], href: '/kontakt', link: 'Website anfragen' },
-  { title: 'Webentwicklung & E-Commerce', area: 'DIGITAL', text: 'Digitale Lösungen, die deine Abläufe erleichtern.', items: ['Individuelle Web-Anwendungen', 'Interaktive Funktionen & Online-Buchung', 'Shopify-Shop erstellen lassen'], href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
-  { title: 'KI & Automatisierung', area: 'DIGITAL', text: 'Wiederkehrende Aufgaben verbinden und Abläufe vereinfachen.', items: ['KI-Chatbots für häufige Fragen', 'Automatisierte Kundenanfragen', 'Intelligente Workflows'], note: 'Komplexe KI-Lösungen: Auf Anfrage. Umfang und Machbarkeit klären wir gemeinsam.', href: '/kontakt', link: 'Möglichkeiten besprechen' },
-  { title: 'SEO & Website-Betreuung', area: 'DIGITAL', text: 'Damit deine Website schnell lädt und zuverlässig funktioniert.', items: ['Technische Suchmaschinenoptimierung', 'Wartung & Performance-Optimierung', 'Weiterentwicklung nach Bedarf'], href: '/kontakt', link: 'Betreuung anfragen' },
-  { title: 'Produktfotografie', area: 'VISUAL', text: 'Bilder, die Materialien und feine Details sichtbar machen.', items: ['Schmuckfotografie für Onlineshops', 'Stimmige Bildwelten für Website & Shop', 'Visuelles Storytelling'], href: '/fotografie', link: 'Fotografien ansehen' },
-  { title: 'Beratung & Website-Check', area: 'DIGITAL', text: 'Von deiner bestehenden Website oder ersten Idee zum nächsten Schritt.', items: ['Gestaltung & Inhalte prüfen', 'Nutzerführung gemeinsam verbessern', 'Konkrete Empfehlungen erhalten'], href: '/kontakt', link: 'Beratung anfragen' },
+  { title: 'Websites & Webdesign', area: 'DIGITAL', text: 'Ich gestalte deine Website so, dass sie nicht nur schön aussieht, sondern auch deine Persönlichkeit und dein Angebot widerspiegelt.', items: ['Unternehmenswebsites & Landingpages', 'Website-Relaunch für dein Unternehmen', 'Für Smartphone, Tablet & Desktop gestaltet'], href: '/kontakt', link: 'Deine Website planen' },
+  { title: 'Webentwicklung & E-Commerce', area: 'DIGITAL', text: 'Du möchtest Produkte verkaufen, Buchungen ermöglichen oder deinen Arbeitsalltag vereinfachen? Ich entwickle eine passende digitale Lösung für dich.', items: ['Individuelle Web-Anwendungen', 'Interaktive Funktionen & Online-Buchung', 'Shopify-Shops'], href: '/softwareentwicklung', link: 'Möglichkeiten entdecken' },
+  { title: 'KI & Automatisierung', area: 'DIGITAL', text: 'Weniger Routine, mehr Zeit für dein Business. Gemeinsam finden wir heraus, welche Aufgaben sich sinnvoll automatisieren lassen.', items: ['KI-Chatbots für häufige Fragen', 'Automatisierte Kundenanfragen', 'Intelligente Workflows'], note: 'Bei komplexen KI-Lösungen klären wir Umfang und technische Machbarkeit gemeinsam.', href: '/kontakt', link: 'Lass uns darüber sprechen' },
+  { title: 'SEO & Website-Betreuung', area: 'DIGITAL', text: 'Ich unterstütze dich dabei, deine Website technisch zu optimieren, besser gefunden zu werden und sie langfristig weiterzuentwickeln.', items: ['Technische Suchmaschinenoptimierung', 'Wartung & Performance-Optimierung', 'Weiterentwicklung nach Bedarf'], href: '/kontakt', link: 'Website optimieren' },
+  { title: 'Produktfotografie', area: 'VISUAL', text: 'Deine Produkte verdienen Bilder, die ihre Besonderheiten zeigen. Ich fange Details, Materialien und Atmosphäre ein.', items: ['Schmuckfotografie für Onlineshops', 'Stimmige Bildwelten für Website & Shop', 'Visuelles Storytelling'], href: '/fotografie', link: 'Meine Fotografien entdecken' },
+  { title: 'Beratung & Website-Check', area: 'DIGITAL', text: 'Du hast schon eine Website, bist aber noch nicht ganz zufrieden? Gemeinsam schauen wir, was sich verbessern lässt.', items: ['Gestaltung & Inhalte prüfen', 'Nutzerführung gemeinsam verbessern', 'Konkrete Empfehlungen erhalten'], href: '/kontakt', link: 'Gemeinsam genauer hinschauen' },
 ] as const;
 
 export default function Services() {
@@ -15,8 +15,8 @@ export default function Services() {
   return (
     <section id="leistungen" className={styles.services} aria-labelledby="services-title">
       <h2 id="services-title" className={styles.sectionLabel}>Meine Leistungen</h2>
-      <p className={styles.serviceLead}>Was möchtest du umsetzen?</p>
-      <p className={styles.description}>Professionelle Websites für kleine und mittelständische Unternehmen – ergänzt durch Online-Shops und individuelle digitale Lösungen. Von Andernach bei Koblenz aus begleite ich dein Projekt persönlich, in der Region und deutschlandweit.</p>
+      <p className={styles.serviceLead}>Was kann ich für dich tun?</p>
+      <p className={styles.description}>Jedes Business ist anders. Deshalb möchte ich zuerst verstehen, was du brauchst, bevor ich etwas für dich entwickle.</p>
       <ul className={styles.primaryList}>
         {services.map((service, index) => (
           <motion.li key={service.title} className={styles.primaryService}
@@ -42,31 +42,31 @@ export default function Services() {
       <div className={styles.pricing} aria-labelledby="pricing-title">
         <p className={styles.eyebrow}>Preisgestaltung</p>
         <h2 id="pricing-title">So individuell wie <em>dein Projekt.</em></h2>
-        <p>Der Umfang richtet sich nach deinen Zielen und deinem Budget.
-          Gemeinsam klären wir, was du wirklich brauchst – und was nicht.</p>
-        <p className={styles.pricingNote}>Manchmal ist eine kleine, sorgfältig gestaltete Website genau richtig.</p>
+        <p>Nicht jedes Projekt braucht dieselben Funktionen oder dasselbe Budget. Deshalb schauen wir gemeinsam, welche Lösung für dich sinnvoll ist.</p>
+        <p>Du bekommst eine transparente Einschätzung des Aufwands und weißt, welche Leistungen du erwarten kannst.</p>
+        <p className={styles.pricingNote}>Manchmal ist eine kleine, sorgfältig gestaltete Website genau das Richtige.</p>
       </div>
         <section className={styles.trust} aria-labelledby="trust-title">
           <p className={styles.eyebrow}>Warum mit mir arbeiten?</p>
           <h2 id="trust-title">Persönlich. Durchdacht. Individuell.</h2>
-        <ul className={styles.benefits} aria-label="Unsere Zusammenarbeit">
+        <ul className={styles.benefits} aria-label="Deine Zusammenarbeit mit mir">
           <li>
             <span className={styles.benefitIcon} aria-hidden="true">
               <svg viewBox="0 0 32 32" fill="none"><path d="M8 23C7 14 16 9 26 5c-2 10-6 20-16 19M6 28 22 10M11 22l1-7" /></svg>
             </span>
-            <div><h3>Individuelle Lösungen</h3><p>Gestaltung und Funktionen richten sich nach deinem Vorhaben.</p></div>
+            <div><h3>Deine Idee steht im Mittelpunkt</h3><p>Ich nehme mir Zeit, deine Wünsche zu verstehen und eine Lösung zu entwickeln, die zu dir und deinem Business passt.</p></div>
           </li>
           <li>
             <span className={styles.benefitIcon} aria-hidden="true">
               <svg viewBox="0 0 32 32" fill="none"><path d="m13 4 6 0 1 4 3 2 4-1 3 5-3 3v3l1 3-5 3-3-2-3 1-2 3-5-2v-4l-2-2-4-1v-6l4-1 2-3 0-3Z"/><circle cx="16" cy="16" r="4"/></svg>
             </span>
-            <div><h3>Transparente Zusammenarbeit</h3><p>Du weißt, was wir umsetzen und welcher Schritt als Nächstes folgt.</p></div>
+            <div><h3>Transparente Zusammenarbeit</h3><p>Du weißt jederzeit, woran ich arbeite und welcher Schritt als Nächstes folgt.</p></div>
           </li>
           <li>
             <span className={styles.benefitIcon} aria-hidden="true">
               <svg viewBox="0 0 32 32" fill="none"><path d="M16 27 5 16C-2 7 10 1 16 10 22 1 34 7 27 16Z"/></svg>
             </span>
-            <div><h3>Direkter Kontakt</h3><p>Du sprichst direkt mit mir – von der ersten Frage bis zur Umsetzung.</p></div>
+            <div><h3>Direkter Kontakt</h3><p>Bei mir hast du eine persönliche Ansprechpartnerin – von deiner ersten Frage bis zur fertigen Umsetzung.</p></div>
           </li>
         </ul>
         </section>

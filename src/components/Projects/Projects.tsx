@@ -104,7 +104,7 @@ export default function Projects({
             <span aria-hidden="true">← </span>ZURÜCK ZUM ATELIER
           </a>
           <header className={styles.caseIntro}>
-            {danaOnly && <p className={styles.caseEyebrow}>AUSGEWÄHLTES PROJEKT / 01 — 03</p>}
+            {danaOnly && <p className={styles.caseEyebrow}>AUSGEWÄHLTES KUNDENPROJEKT</p>}
             <h1 id="software-title" tabIndex={-1}>
               {danaOnly ? (
                 <>
@@ -191,12 +191,12 @@ export default function Projects({
       </a>
       <motion.div {...reveal} className={styles.heading}>
         <h1 id="projects-title" tabIndex={-1}>
-          Webentwicklung
+          Ideen, die
           <br />
-          <em>Meine Arbeiten.</em>
+          <em>Wirklichkeit werden.</em>
         </h1>
         <p className={styles.lead}>
-          Websites und Onlineshops für dein Unternehmen – von der Gestaltung bis zur Veröffentlichung. Hier siehst du ausgewählte Webprojekte und interaktive Anwendungen.
+          Jedes Projekt erzählt eine eigene Geschichte. Entdecke, wie ich Design, Technologie und kreative Ideen miteinander verbinde.
         </p>
       </motion.div>
       <div className={styles.grid} role="region" aria-label="Projektübersicht">

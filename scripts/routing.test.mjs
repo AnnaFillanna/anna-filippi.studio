@@ -6,15 +6,15 @@ import { transformWithEsbuild } from 'vite';
 
 const origin = 'https://annafilippi.studio';
 const examples = [
-  ['/kontakt', 'Dein Projekt.', 'Projektanfrage'],
+  ['/kontakt', 'Erzähl mir von deiner Idee.', 'Projektanfrage'],
   ['/impressum', 'Impressum', 'Rechtstext wird geladen'],
   ['/datenschutz', 'Datenschutzerklärung', 'Rechtstext wird geladen'],
   ['/dana-tattoo-studio', 'Kunst auf der Haut.', 'Dana Tattoo Studio'],
   ['/softwareentwicklung', 'Softwareentwicklung', 'FilliCat'],
-  ['/', 'Websites, die dein Business voranbringen.', 'Meine Leistungen'],
+  ['/', 'Deine Vision. Meine Kreativität.', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
-  ['/projekte', 'Meine Arbeiten.', 'Dana Tattoo Studio'],
-  ['/fotografie', 'Große Wirkung.', 'Perlen &amp; Seide'],
+  ['/projekte', 'Ideen, die', 'Dana Tattoo Studio'],
+  ['/fotografie', 'Details, die bleiben.', 'Perlen &amp; Seide'],
 ];
 for (const [path, heading, content] of examples) {
   test(`${path}: prerendered content, metadata and internal links`, async () => {
@@ -76,14 +76,14 @@ test('home presents six services and introduces the personal collaboration appro
   assert.ok(!html.includes('04 / KONTAKT'));
   assert.ok(!/<span[^>]*>0[1-6] —<\/span>/.test(html));
   assert.ok(html.includes('Meine Leistungen'));
-  assert.ok(html.includes('Komplexe KI-Lösungen: Auf Anfrage.'));
+  assert.ok(html.includes('Bei komplexen KI-Lösungen klären wir Umfang und technische Machbarkeit gemeinsam.'));
   assert.equal((html.match(/class="[^"]*serviceArea[^"]*"/g) ?? []).length, 6);
-  assert.ok(html.includes('Software &amp; Projekt ansehen'));
-  assert.ok(html.includes('Fotografien ansehen'));
+  assert.ok(html.includes('Möglichkeiten entdecken'));
+  assert.ok(html.includes('Meine Fotografien entdecken'));
   assert.ok(html.includes('Warum mit mir arbeiten?'));
   assert.match(html, /<h2[^>]*id="services-title"[^>]*>Meine Leistungen<\/h2>/);
-  for (const benefit of ['Individuelle Lösungen', 'Transparente Zusammenarbeit', 'Direkter Kontakt']) assert.ok(html.includes(benefit));
-  assert.ok(html.includes('Webdesign aus Andernach.'));
+  for (const benefit of ['Deine Idee steht im Mittelpunkt', 'Transparente Zusammenarbeit', 'Direkter Kontakt']) assert.ok(html.includes(benefit));
+  assert.ok(html.includes('Mit Kreativität, Technologie und einem Blick fürs Detail entwickle ich digitale Lösungen für dein Business.'));
   const footer = html.match(/<footer\b[\s\S]*?<\/footer>/)?.[0];
   assert.ok(footer);
   assert.ok(!footer.includes('Cookies'));
@@ -93,13 +93,13 @@ test('home presents six services and introduces the personal collaboration appro
 
 test('about page includes the requested personal text and original portrait', async () => {
   const html = await readFile('dist/ueber-mich/index.html', 'utf8');
-  assert.ok(html.includes('Was als Hobby begann'));
-  assert.ok(html.includes('künstlichen Intelligenz'));
+  assert.ok(html.includes('mit Licht, Materialien und kleinen Details'));
+  assert.ok(html.includes('künstlicher Intelligenz'));
   assert.ok(html.includes('/images/about-anna-red.jpg'));
   assert.ok(html.includes('width="993" height="1600"'));
   assert.ok(html.includes('href="/#start"'));
   assert.ok(!html.includes('ausgebildete Berufsfotografin'));
-  assert.ok(!html.includes('MEHR ALS')); // Keep the old profile on home, without duplicating it here.
+  assert.ok(html.includes('href="/kontakt">Erzähl mir von deiner Idee</a>'));
 });
 
 test('software page contains only the software project, without the general portfolio introduction', async () => {

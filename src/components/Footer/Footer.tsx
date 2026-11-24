@@ -33,10 +33,10 @@ export default function Footer() {
             <AnimatedLetters text="ANNA FILIPPI" />
           </a>
           <h2 className={styles.invitation}>
-            Webdesign aus Andernach.<br />
-            <em>Persönlich für dich.</em>
+            Deine Idee.<br />
+            <em>Meine Kreativität.</em>
           </h2>
-          <p className={styles.personalNote}>Ich gestalte Websites für Selbstständige und kleine Unternehmen. Lass uns deine Idee gemeinsam umsetzen.</p>
+          <p className={styles.personalNote}>Mit Kreativität, Technologie und einem Blick fürs Detail entwickle ich digitale Lösungen für dein Business.</p>
           <p className={styles.signature}>Mit Liebe,<br /><span>Anna Filippi</span></p>
         </div>
         <img className={styles.mobileFlower} src="/images/footer-orchid-mobile.png" alt="" aria-hidden="true" width="1536" height="1024" loading="lazy" decoding="async" />

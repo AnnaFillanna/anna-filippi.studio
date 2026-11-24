@@ -1,35 +1,35 @@
 export const fillicatDetails = [
-  ["Aufgabe", "Programmieren durch praktische Aufgaben und individuelles Training vermitteln."],
-  ["Funktionen", "Adaptive Übungen, automatische Code-Tests und gezielte Hilfestellungen für JavaScript und TypeScript. So können Lernende ihren Code direkt überprüfen und gezielt weiterüben."],
-  ["Stand", "In Entwicklung. Weitere Programmiersprachen sind geplant."],
+  ["Idee", "Mit FilliCat entwickle ich eine Lernplattform, auf der du Programmieren mit praktischen Aufgaben und individuellem Training üben kannst."],
+  ["Funktionen", "Adaptive Übungen, automatische Code-Tests und Hilfestellungen für JavaScript und TypeScript geben dir direktes Feedback zu deinem Code."],
+  ["Stand", "FilliCat ist in Entwicklung. Weitere Programmiersprachen sind geplant."],
 ];
 
 export const danaDetails = [
-  ["Aufgabe", "Arbeiten des Studios zeigen und den Weg zur Terminanfrage vereinfachen."],
-  ["Funktionen", "Responsive Website mit Tattoo- und Piercing-Galerien, geschützter Medienverwaltung und WhatsApp-Kontakt. Interessierte können Arbeiten ansehen und ihre Idee direkt mit dem Studio besprechen."],
-  ["Stand", "Veröffentlicht auf tattoodana.de. Entwickelt mit React, TypeScript und Supabase."],
+  ["Idee", "Die Website zeigt die Arbeiten des Studios und bietet Interessierten einen direkten Weg zur Anfrage."],
+  ["Funktionen", "Die responsive Website umfasst Tattoo- und Piercing-Galerien, eine geschützte Medienverwaltung und den Kontakt über WhatsApp. So können Interessierte Arbeiten ansehen und ihre Idee direkt mit dem Studio besprechen."],
+  ["Stand", "Das Kundenprojekt ist auf tattoodana.de veröffentlicht. Entwickelt mit React, TypeScript und Supabase."],
 ];
 
 export const mammaDetails = [
-  ["Aufgabe", "Eine individuelle Pizza-Bestellung als interaktive Anwendung erlebbar machen."],
-  ["Funktionen", "Pizza-Konfigurator mit Zutatenwahl, Preisberechnung und Warenkorb. Die Demo macht den Weg von der eigenen Zusammenstellung bis zur Testbestellung nachvollziehbar. Entwickelt mit React und TypeScript."],
-  ["Demo", "Ohne Registrierung als Demo-Gast testen. Keine echte Pizzeria; alle Bestellungen sind ausschließlich Tests."],
+  ["Idee", "In dieser Demo kannst du eine Pizza zusammenstellen und den Ablauf einer Bestellung ausprobieren."],
+  ["Funktionen", "Der Pizza-Konfigurator bietet Zutatenwahl, Preisberechnung und einen Warenkorb. So lässt sich der Weg von der eigenen Zusammenstellung bis zur Testbestellung nachvollziehen. Entwickelt mit React und TypeScript."],
+  ["Demo", "Du kannst die Demo ohne Registrierung ausprobieren. Es gibt keine echte Pizzeria; Bestellungen sind ausschließlich Tests."],
 ];
 
 export const kavroDetails = [
-  ["Aufgabe", "Den digitalen Auftritt eines modernen Barber Studios mit einer unkomplizierten Terminplanung verbinden."],
-  ["Funktionen", "Responsive Studio-Website mit Serviceübersicht und interaktiver Terminbuchung. Besucher können Leistungen vergleichen und die Terminauswahl ausprobieren."],
-  ["Technologien", "Entwickelt mit React, TypeScript und React Router."],
+  ["Idee", "Diese Demo verbindet den digitalen Auftritt eines Barber Studios mit einer interaktiven Terminplanung."],
+  ["Funktionen", "Die responsive Website zeigt eine Serviceübersicht. Du kannst Leistungen vergleichen und die Terminauswahl ausprobieren."],
+  ["Technologien", "Die Demo wurde mit React, TypeScript und React Router entwickelt."],
 ];
 
 export const projects = [
   {
     name: "Dana Tattoo Studio",
-    featuredDescription: "Website für ein Tattoo-Studio in Andernach – mit Galerien und direktem WhatsApp-Kontakt.",
+    featuredDescription: "Eine Website für das Dana Tattoo Studio in Andernach – mit Galerien und direktem WhatsApp-Kontakt.",
     projectType: "Kundenprojekt",
-    category: "FULL-STACK WEBENTWICKLUNG",
+    category: "WEBENTWICKLUNG · KUNDENPROJEKT",
     description:
-      "Individuelle Website für das Dana Tattoo Studio in Andernach. Mit Einblicken in Tattoo- und Piercingarbeiten und direkter Kontaktmöglichkeit über WhatsApp.",
+      "Für das Dana Tattoo Studio in Andernach habe ich eine Website mit Einblicken in Tattoo- und Piercingarbeiten sowie direktem WhatsApp-Kontakt umgesetzt.",
     scope: "React · TypeScript · SCSS · Supabase",
     status: "Veröffentlicht · Kundenprojekt",
     imagePrefix: "dana",
@@ -43,10 +43,10 @@ export const projects = [
   },
   {
     name: "Mamma Mia – Pizza mit Amore",
-    featuredDescription: "Pizza zusammenstellen und eine Testbestellung durchspielen.",
+    featuredDescription: "Stelle deine Pizza zusammen und probiere den Bestellablauf in einer Demo aus.",
     projectType: "Demoprojekt",
-    category: "WEBENTWICKLUNG · INTERAKTIVE DEMO",
-    description: "Interaktive Demo mit Pizza-Konfigurator: Zutaten auswählen, den Preis nachvollziehen und eine Testbestellung durchspielen.",
+    category: "WEBENTWICKLUNG · DEMO",
+    description: "In dieser interaktiven Demo stellst du eine Pizza zusammen, siehst die Preisberechnung und probierst eine Testbestellung aus.",
     scope: "",
     status: "Portfolio-Demo · Keine echten Bestellungen",
     imagePrefix: "mamma-mia",
@@ -60,10 +60,10 @@ export const projects = [
   },
   {
     name: "KAVRO — Barber Studio",
-    featuredDescription: "Studio-Website mit Serviceübersicht und interaktiver Terminbuchung.",
+    featuredDescription: "Entdecke Leistungen und probiere die Terminbuchung in dieser Barber-Studio-Demo aus.",
     projectType: "Demoprojekt",
-    category: "WEBENTWICKLUNG · BUCHUNGSERLEBNIS",
-    description: "Demo für ein Barber Studio mit Serviceübersicht und interaktiver Terminbuchung – vom Vergleichen der Leistungen bis zur Terminauswahl.",
+    category: "WEBENTWICKLUNG · DEMO",
+    description: "In dieser Demo für ein Barber Studio kannst du Leistungen vergleichen und die interaktive Terminauswahl ausprobieren.",
     scope: "",
     status: "Portfolio-Demo · Keine echten Terminbuchungen",
     imagePrefix: "kavro",
@@ -79,10 +79,10 @@ export const projects = [
   },
   {
     name: "VELORA — Beauty House Köln",
-    featuredDescription: "Beauty-Website mit Treatment-Auswahl, Terminbuchung und Produktkatalog.",
+    featuredDescription: "Entdecke Behandlungen, probiere die Terminbuchung und stöbere im Demo-Produktkatalog.",
     projectType: "Demoprojekt",
-    category: "WEBENTWICKLUNG · BEAUTY & BUCHUNG",
-    description: "Website-Konzept für ein Beauty-Studio: Treatments entdecken und eine Terminbuchung in fünf Schritten ausprobieren – ergänzt durch einen Produktkatalog mit Demo-Warenkorb.",
+    category: "WEBENTWICKLUNG · DEMO-KONZEPT",
+    description: "Das Konzept für ein fiktives Beauty-Studio lässt dich Behandlungen entdecken, eine Terminbuchung in fünf Schritten ausprobieren und den Demo-Produktkatalog erkunden.",
     scope: "React · TypeScript · Vite · React Router · Motion",
     status: "Portfolio-Demo · Kein realer Salon · Keine echten Buchungen oder Bestellungen",
     imagePrefix: "velora",
@@ -94,23 +94,23 @@ export const projects = [
     mobileImageAlt: "Mobile Startseite der VELORA Beauty-House-Demo",
     detailHref: "https://annafillanna.github.io/velora-beauty/",
     details: [
-      ["Aufgabe", "Ein fiktives Beauty-Studio mit einer ruhigen, hochwertigen Gestaltung präsentieren und den Weg von der Behandlungsauswahl zur Terminanfrage demonstrieren."],
-      ["Funktionen", "Treatment-Seiten mit Preisen und Dauer, fünfstufige Demo-Buchung mit Behandlungs- und Expertenwahl, Kalender, simulierten Verfügbarkeiten und lokaler Bestätigung. Dazu kommen ein Produktkatalog mit Detailseiten und lokalem Warenkorb sowie ein Kontaktformular mit Eingabeprüfung."],
+      ["Idee", "Mit VELORA zeige ich, wie ein fiktives Beauty-Studio online auftreten und Interessierte durch die Auswahl eines Angebots führen könnte."],
+      ["Funktionen", "Die Demo umfasst Behandlungsseiten mit Preisen und Dauer, eine fünfstufige Buchung mit Auswahl, Kalender und simulierten Verfügbarkeiten. Dazu kommen ein Produktkatalog mit Detailseiten, ein lokaler Demo-Warenkorb und ein Kontaktformular mit Eingabeprüfung."],
       ["Gestaltung", "Responsive Layouts, warme Naturtöne, große Serifentypografie und dezente Animationen. Die abstrakten Bildwelten und illustrativen Porträts gehören zum Konzept."],
       ["Technologien", "React, TypeScript, Vite, React Router und Motion. Formulare und Warenkorb werden ausschließlich im Browser verarbeitet."],
-      ["Demo", "Kein realer Salon. Behandlungen, Team und Produkte sind fiktiv. Es werden keine echten Termine gebucht, Zahlungen ausgelöst oder Nachrichten versendet."],
+      ["Demo", "VELORA ist kein realer Salon. Behandlungen, Team und Produkte sind fiktiv. Es werden keine echten Termine gebucht, Zahlungen ausgelöst oder Nachrichten versendet."],
     ],
     buttonLabel: "Demo ausprobieren",
     href: "https://annafillanna.github.io/velora-beauty/",
   },
   {
     name: "FilliCat",
-    featuredDescription: "Programmieren lernen mit praktischen Übungen und direktem Feedback.",
+    featuredDescription: "Übe Programmieren mit praktischen Aufgaben und erhalte direktes Feedback zu deinem Code.",
     projectType: "Eigenes Projekt",
     subtitle: "Adaptive Lernplattform für Programmierung",
-    category: "EDTECH / SOFTWAREENTWICKLUNG",
+    category: "SOFTWAREENTWICKLUNG · LERNPLATTFORM",
     description:
-      "Programmieren lernen mit praktischen Aufgaben: Code ausprobieren, direktes Feedback erhalten und gezielt weiterüben.",
+      "Mit FilliCat kannst du Programmieren anhand praktischer Aufgaben üben, deinen Code testen und gezielt weiterlernen.",
     scope: "",
     status: "Eigenes Projekt · In Entwicklung",
     imagePrefix: "fillicat",

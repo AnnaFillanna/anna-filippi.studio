@@ -77,7 +77,8 @@ export default function Contact() {
     >
       <div className={styles.layout}>
         <div className={styles.intro}>
-          <h1 id="contact-title" tabIndex={-1}>Dein Projekt. <em>Gemeinsam umgesetzt.</em></h1>
+          <h1 id="contact-title" tabIndex={-1}>Erzähl mir von deiner Idee.</h1>
+          <p className={styles.description}>Vielleicht weißt du schon genau, was du möchtest. Vielleicht stehst du noch ganz am Anfang. Beides ist völlig in Ordnung. Schreib mir einfach. Gemeinsam finden wir heraus, was zu dir und deinem Business passt.</p>
         </div>
         <form
           className={styles.form}

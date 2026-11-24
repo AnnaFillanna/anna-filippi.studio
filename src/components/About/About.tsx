@@ -26,11 +26,11 @@ export default function About() {
         transition={{ duration: reduced ? 0 : 1.1, ease: [.22, 1, .36, 1] }}>
         <div>
           <p className={styles.label}>ÜBER MICH</p>
-          <h2 id="about-title">MEHR ALS<br />NUR CODE</h2>
-          <p className={styles.subtitle}>Full-Stack-Webentwicklerin</p>
+          <h2 id="about-title">Hallo, ich bin Anna.</h2>
+          <p className={styles.subtitle}>Webentwicklung · Softwareentwicklung · Produktfotografie</p>
           <div className={styles.intro}>
-            <p>Ich bin Anna Filippi, auch bekannt als Fillanna. Ich entwickle individuelle Websites und Webanwendungen – vom ersten sichtbaren Detail bis zur Logik im Hintergrund.</p>
-            <p>Mein Anspruch: aus Code etwas machen, das nicht nur gut aussieht, sondern für dich arbeitet. Mit klarem Design, durchdachter Funktion und der Ausdauer, auch für knifflige Fragen eine Lösung zu finden.</p>
+            <p>Ich liebe es, kreative Ideen mit Technologie zu verbinden. Für mich erzählt eine Website deine Geschichte, zeigt, was dich besonders macht, und verbindet dich mit den richtigen Menschen.</p>
+            <p>Mir ist wichtig, deine Wünsche zu verstehen und dir von der ersten Idee bis zur fertigen Umsetzung als direkte Ansprechpartnerin zur Seite zu stehen.</p>
             <a className={styles.projectLink} href="/kontakt">Erzähl mir von deiner Idee</a>
           </div>
           <div className={styles.signature}>

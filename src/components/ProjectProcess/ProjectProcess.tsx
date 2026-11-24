@@ -3,11 +3,11 @@ import styles from './ProjectProcess.module.scss';
 import { googleReviewHref } from '../../config/reviews';
 
 const steps = [
-  ['Beratung', 'Wir klären deine Idee, deine Ziele und den passenden Umfang.'],
-  ['Konzeption', 'Struktur, Funktionen und Gestaltung bekommen eine klare Richtung.'],
-  ['Entwicklung', 'Ich entwickle deine Website – responsiv und sorgfältig umgesetzt.'],
-  ['Prüfung', 'Wir testen gemeinsam, stimmen Details ab und veröffentlichen deine Website.'],
-  ['Betreuung', 'Auch nach dem Start begleite ich dich nach Absprache weiter.'],
+  ['Kennenlernen', 'Du erzählst mir von deinem Business, deinen Ideen und deinen Zielen. Gemeinsam finden wir heraus, was du wirklich brauchst.'],
+  ['Konzeption', 'Ich entwickle eine passende Struktur und Gestaltung für dein Projekt. Deine Wünsche fließen von Anfang an mit ein.'],
+  ['Entwicklung', 'Jetzt wird deine Idee Wirklichkeit. Ich entwickle deine Website mit Blick auf Design, Funktionalität und Benutzerfreundlichkeit.'],
+  ['Feinschliff & Veröffentlichung', 'Wir schauen uns das Ergebnis gemeinsam an, stimmen die letzten Details ab und bringen deine Website online.'],
+  ['Persönliche Betreuung', 'Auch nach dem Start bin ich nach Absprache für dich da, wenn du Unterstützung oder neue Funktionen benötigst.'],
 ] as const;
 
 const lineVariants = { hidden: { pathLength: 0, opacity: 0 }, visible: { pathLength: 1, opacity: 1 } };
@@ -19,8 +19,8 @@ export default function ProjectProcess() {
   return (
     <section id="projektablauf" className={styles.process} aria-labelledby="process-title">
       <p className={styles.eyebrow}>Ablauf</p>
-      <h2 id="process-title">Von der Idee<br />bis zum <em>ersten Klick.</em></h2>
-      <p className={styles.intro}>Fünf Schritte. Ein persönlicher Weg zu deiner Website.</p>
+      <h2 id="process-title">Von deiner Idee<br />bis zum <em>ersten Klick.</em></h2>
+      <p className={styles.intro}>Schritt für Schritt entwickeln wir eine Website, die zu dir passt.</p>
       <motion.div className={styles.timeline}
         initial={reduced ? 'visible' : 'hidden'}
         whileInView="visible" viewport={{ once: true, amount: .15 }}>

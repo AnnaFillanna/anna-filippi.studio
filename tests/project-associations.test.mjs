@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 
 const expected = [
-  { name: 'Dana Tattoo Studio', prefix: 'dana', extension: 'png', href: 'https://tattoodana.de', detail: '/dana-tattoo-studio', text: 'Individuelle Website für das Dana Tattoo Studio in Andernach. Mit Einblicken in Tattoo- und Piercingarbeiten und direkter Kontaktmöglichkeit über WhatsApp.', feature: true, demo: false },
+  { name: 'Dana Tattoo Studio', prefix: 'dana', extension: 'png', href: 'https://tattoodana.de', detail: '/dana-tattoo-studio', text: 'Für das Dana Tattoo Studio in Andernach habe ich eine Website mit Einblicken in Tattoo- und Piercingarbeiten sowie direktem WhatsApp-Kontakt umgesetzt.', feature: true, demo: false },
   { name: 'Mamma Mia – Pizza mit Amore', prefix: 'mamma-mia', extension: 'jpg', href: 'https://annafillanna.github.io/Pizzeria-Mama-Mia/#/login', text: 'Pizza-Konfigurator', feature: true, demo: true },
-  { name: 'KAVRO — Barber Studio', prefix: 'kavro', extension: 'png', mobile: 'jpg', href: 'https://annafillanna.github.io/kavro-barber-shop/', text: 'interaktiver Terminbuchung', feature: true, demo: true },
-  { name: 'VELORA — Beauty House Köln', prefix: 'velora', extension: 'jpg', mobile: 'png', href: 'https://annafillanna.github.io/velora-beauty/', text: 'Website-Konzept für ein Beauty-Studio', feature: true, demo: true },
-  { name: 'FilliCat', prefix: 'fillicat', extension: 'png', href: 'https://fillicat.com', detail: '/softwareentwicklung', text: 'Programmieren lernen', feature: true, demo: false },
+  { name: 'KAVRO — Barber Studio', prefix: 'kavro', extension: 'png', mobile: 'jpg', href: 'https://annafillanna.github.io/kavro-barber-shop/', text: 'interaktive Terminauswahl', feature: true, demo: true },
+  { name: 'VELORA — Beauty House Köln', prefix: 'velora', extension: 'jpg', mobile: 'png', href: 'https://annafillanna.github.io/velora-beauty/', text: 'Das Konzept für ein fiktives Beauty-Studio', feature: true, demo: true },
+  { name: 'FilliCat', prefix: 'fillicat', extension: 'png', href: 'https://fillicat.com', detail: '/softwareentwicklung', text: 'Mit FilliCat kannst du Programmieren', feature: true, demo: false },
 ];
 
 for (const project of expected) {
@@ -66,7 +66,7 @@ for (const project of expected.filter(project => project.detail)) {
     assert.ok(main.includes(`href="${project.href}"`));
     assert.ok(main.includes(`/images/projects/${project.prefix}-desktop.${project.extension}`));
     assert.ok(main.includes(`/images/projects/${project.prefix}-mobile.${project.extension}`));
-    assert.ok(main.includes(project.prefix === 'fillicat' ? 'automatische Code-Tests' : 'geschützter Medienverwaltung'));
+    assert.ok(main.includes(project.prefix === 'fillicat' ? 'automatische Code-Tests' : 'geschützte Medienverwaltung'));
     assert.equal(/<span[^>]*>In Entwicklung<\/span>/.test(main), project.prefix === 'fillicat');
     if (project.prefix === 'fillicat') {
       assert.ok(!/aggregateRating|ratingValue|role="(?:radio|slider)"|[★☆]/i.test(main));

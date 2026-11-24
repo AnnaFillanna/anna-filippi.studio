@@ -35,21 +35,21 @@ export default function Hero() {
           initial={reduced ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}>
-          Websites, die dein Business voranbringen.
+          Deine Vision. Meine Kreativität.
         </motion.h1>
 
         </div>
         <nav className={styles.mobileServices} aria-label="Leistungen im Überblick">
-          <a href="/softwareentwicklung">SOFTWAREENTWICKLUNG<span aria-hidden="true">→</span></a>
-          <a href="/projekte">WEBENTWICKLUNG<span aria-hidden="true">→</span></a>
+          <a href="/softwareentwicklung">SOFTWARE & DIGITALE LÖSUNGEN<span aria-hidden="true">→</span></a>
+          <a href="/projekte">MEINE PROJEKTE<span aria-hidden="true">→</span></a>
           <a href="/fotografie">PRODUKTFOTOGRAFIE<span aria-hidden="true">→</span></a>
         </nav>
         <motion.p {...intro(0.4)} className={styles.description}>
-          Webdesign für Selbstständige und kleine Unternehmen in Andernach und Koblenz. Ich entwickle deine Website oder deinen Online-Shop – persönlich betreut und für Smartphone, Tablet und Desktop gestaltet.
+          Du hast eine Idee, möchtest dein Business online sichtbar machen oder deinen Kundinnen und Kunden etwas Besonderes bieten? Ich helfe dir dabei. Mit individuellem Webdesign, durchdachter Webentwicklung und kreativen Lösungen, die zu dir passen. Aus Andernach bei Koblenz – für dein Business, deutschlandweit.
         </motion.p>
         <motion.div {...intro(0.55)} className={styles.actions}>
-          <a href="/kontakt" className={styles.servicesLink}>Website anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>
-          <a href="/projekte" className={styles.projectLink}>Projekte ansehen<span className={styles.arrow} aria-hidden="true">→</span></a>
+          <a href="/kontakt" className={styles.servicesLink}>Lass uns über deine Idee sprechen<span className={styles.arrow} aria-hidden="true">→</span></a>
+          <a href="/projekte" className={styles.projectLink}>Meine Projekte entdecken<span className={styles.arrow} aria-hidden="true">→</span></a>
         </motion.div>
       </div>
     </section>
