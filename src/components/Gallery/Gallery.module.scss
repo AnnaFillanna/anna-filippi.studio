@@ -656,3 +656,25 @@
 // Consistent reading rhythm, including narrow screens.
 .heading > p { @include reading-text; max-width: 60ch; }
 @media (max-width: 600px) { .backLink, .filterMeta { letter-spacing: .03em; } }
+
+// A contemporary product still life replaces the decorative flower.
+.heroVisual {
+  max-width: 420px;
+  margin: 0;
+}
+.heroVisual img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+}
+@media (min-width: 761px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+    padding: 12px 0 48px;
+  }
+  .hero::before, .hero::after { content: none; }
+}
+@media (max-width: 760px) {
+  .heroVisual { max-width: 360px; }
+  .heroVisual img { aspect-ratio: 1; object-position: center 60%; }
+}

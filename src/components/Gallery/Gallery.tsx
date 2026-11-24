@@ -174,7 +174,6 @@ const collections = {
       {"id": 21, "title": "Glanzvolle Creolen", "alt": "Breite goldfarbene Creolen mit kleinen hellen Steinen auf weißem Hintergrund"},
       {"id": 22, "title": "Goldene Schleifen", "alt": "Goldfarbene Ohrstecker aus geschwungenen, parallel verlaufenden Linien auf weißem Hintergrund"},
       {"id": 23, "title": "Feine Kaskaden", "alt": "Lange goldfarbene Ohrringe mit unterschiedlich langen feinen Ketten auf weißem Hintergrund"},
-      {"id": 27, "title": "Sanfter Schimmer", "alt": "Goldfarbener Ring mit ovalem weiß schimmerndem Einsatz auf hellem Hintergrund"},
       {"id": 28, "title": "Glück im Detail", "alt": "Silberfarbener Armreif mit goldfarbenem Hufeisen und kleinen hellen Steinen auf weißem Hintergrund"},
       {"id": 29, "title": "Blau & Gold", "alt": "Goldfarbenes Armband mit verschiedenen Kettenstrukturen, blauen und weißen Perlen auf weißem Hintergrund"},
       {"id": 30, "title": "Verschlungener Glanz", "alt": "Goldfarbene Ohrstecker mit verschlungenen geriffelten Formen und hellen Steinen auf weißem Hintergrund"},
@@ -270,10 +269,10 @@ export default function Gallery() {
         </div>
         <div className={styles.heroVisual}>
           <img
-            src="/images/gallery-calla.jpg"
-            alt="Rote Calla vor einer sonnenbeschienenen hellen Wand"
-            width="816"
-            height="1456"
+            src={photoSource(33)}
+            alt="Skulpturale goldfarbene Ohrringe auf einem hellen Sockel im weichen Licht"
+            width="3303"
+            height="4128"
             fetchPriority="high"
           />
         </div>

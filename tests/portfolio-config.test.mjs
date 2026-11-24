@@ -11,7 +11,7 @@ async function load(source) {
   return context.module.exports;
 }
 
-test('gallery includes each selected upload once and excludes the five removed motifs', async () => {
+test('gallery includes each selected upload once and excludes removed motifs', async () => {
   const source = await readFile('src/components/Gallery/Gallery.tsx', 'utf8');
   const config = source.slice(source.indexOf('const additionalPhotoSources'), source.indexOf('type Category'));
   const { collections, dimensions, photoSource } = await load(config + '\nexport { collections, dimensions, photoSource };');
@@ -33,14 +33,15 @@ test('gallery includes each selected upload once and excludes the five removed m
   const unused = files.filter(file => !paths.has(`/images/portfolio/${file}`));
   assert.deepEqual(unused.sort(), [
     'anna-filippi-8.jpg',
+    'oeplo.png',
     'A6705381_11b96729-6ce3-4849-bb21-ecea410df535.png',
     'hzgthg (1).png',
     '237_7377b7bf-af9f-4896-a897-13ca93a6ef8b.png',
     'white (1).png',
     'fgrtd (1).png',
   ].sort());
-  for (const id of [24, 25, 26, 34, 42]) assert.ok(!ids.has(id));
-  assert.equal(ids.size, 37);
+  for (const id of [24, 25, 26, 27, 34, 42]) assert.ok(!ids.has(id));
+  assert.equal(ids.size, 36);
   assert.ok(paths.has('/images/portfolio/anna-filippi-8-chain.webp'));
 });
 
