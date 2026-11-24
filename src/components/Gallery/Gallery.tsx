@@ -269,10 +269,10 @@ export default function Gallery() {
         </div>
         <div className={styles.heroVisual}>
           <img
-            src={photoSource(33)}
-            alt="Skulpturale goldfarbene Ohrringe auf einem hellen Sockel im weichen Licht"
-            width="3303"
-            height="4128"
+            src="/images/gallery-heart-necklace.png"
+            alt="Goldfarbene Herzkette vor Pampasgras über einer hellen strukturierten Schale"
+            width="1536"
+            height="1024"
             fetchPriority="high"
           />
         </div>

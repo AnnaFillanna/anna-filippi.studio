@@ -657,24 +657,25 @@
 .heading > p { @include reading-text; max-width: 60ch; }
 @media (max-width: 600px) { .backLink, .filterMeta { letter-spacing: .03em; } }
 
-// A contemporary product still life replaces the decorative flower.
+// Preserve the complete landscape composition on every screen.
 .heroVisual {
-  max-width: 420px;
+  max-width: 520px;
   margin: 0;
 }
 .heroVisual img {
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
   object-position: center;
 }
 @media (min-width: 761px) {
   .hero {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     padding: 12px 0 48px;
   }
   .hero::before, .hero::after { content: none; }
 }
 @media (max-width: 760px) {
-  .heroVisual { max-width: 360px; }
-  .heroVisual img { aspect-ratio: 1; object-position: center 60%; }
+  .heroVisual { max-width: 520px; justify-self: center; }
 }
