@@ -256,15 +256,18 @@ export default function Gallery() {
       <div className={`${styles.hero} ${lineReady ? styles.lineReady : ""}`}>
         <div className={styles.heading}>
           <p className={styles.eyebrow}>
-            <span /> ANNA FILIPPI / PRODUKTFOTOGRAFIE
+            ANNA FILIPPI · FOTOGRAFIE
           </p>
           <h1 id="gallery-title" tabIndex={-1}>
-            Produktfotografie.
+            Produktfotografie
             <br />
             <em>Große Wirkung.</em>
           </h1>
           <p className={styles.lead}>
-            Produkt- und Schmuckfotografie für Onlineshops und Websites – aus Andernach bei Koblenz. Klare Produktansichten und kreative Inszenierungen zeigen Materialien, Licht und feine Details.
+            Produkt- und Schmuckfotografie für Onlineshops und Websites. Aus Andernach bei Koblenz.
+          </p>
+          <p className={styles.lead}>
+            Klare Bilder und kreative Inszenierungen machen Materialien, Formen und feine Details sichtbar.
           </p>
         </div>
         <div className={styles.heroVisual}>

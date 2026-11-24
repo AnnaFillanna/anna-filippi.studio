@@ -735,3 +735,48 @@
     flex-basis: 44px;
   }
 }
+
+// Clear hierarchy and a shared reading edge for the introduction.
+.heading .eyebrow {
+  display: block;
+  margin: 0;
+  font: 400 12px/1.6 $sans;
+  letter-spacing: .08em;
+  color: $bordeaux;
+}
+.heading h1 {
+  line-height: 1.12;
+  margin: 20px 0 28px;
+  letter-spacing: -.035em;
+}
+.heading .lead {
+  margin: 0;
+  color: #534447;
+  line-height: 1.75;
+}
+.heading .lead + .lead { margin-top: 16px; }
+@media (max-width: 760px) {
+  .pageNavigation,
+  .heading {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+  .pageNavigation {
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .pageNavigation .backLink {
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: .02em;
+  }
+  .heading h1 {
+    font-size: clamp(30px, 8.3vw, 38px);
+    hyphens: none;
+    margin: 16px 0 24px;
+  }
+  .heading .lead { font-size: 16px; text-align: left; }
+  .hero { gap: 32px; }
+}
