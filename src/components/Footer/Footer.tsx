@@ -39,7 +39,7 @@ export default function Footer() {
           <p className={styles.personalNote}>Ich gestalte Websites für Selbstständige und kleine Unternehmen. Lass uns deine Idee gemeinsam umsetzen.</p>
           <p className={styles.signature}>Mit Liebe,<br /><span>Anna Filippi</span></p>
         </div>
-        <img className={styles.mobileFlower} src="/images/footer-flower-transparent.png" alt="" width="1672" height="936" loading="lazy" />
+        <img className={styles.mobileFlower} src="/images/footer-orchid-mobile.png" alt="" aria-hidden="true" width="1536" height="1024" loading="lazy" decoding="async" />
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Anna Filippi</span>
           <nav className={styles.legal} aria-label="Rechtliche Informationen">

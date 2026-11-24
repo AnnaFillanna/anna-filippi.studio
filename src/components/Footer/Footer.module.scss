@@ -91,8 +91,8 @@
     background: none;
     box-shadow: none;
     opacity: .88;
-    filter: blur(.45px) saturate(.85);
-    mask-image: linear-gradient(to bottom, #000 76%, transparent 100%);
+    filter: saturate(.82);
+    mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
   }
   .content { max-width: 100%; }
 }
@@ -126,7 +126,13 @@
 .content .signature { margin-top: 28px; }
 .bottom { gap: 16px 28px; }
 @media (max-width: 760px) {
-  .mobileFlower { max-width: 320px; width: 75%; margin: 0 auto 32px; }
+  .mobileFlower {
+    max-width: 360px;
+    width: 88%;
+    margin: 8px auto 32px;
+    pointer-events: none;
+    user-select: none;
+  }
   .bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
   .legal { flex-basis: 100%; order: 1; gap: 24px; }
 }
