@@ -8,7 +8,7 @@
 .headline { display: flex; align-items: center; gap: 1.3vw; margin-top: 30px; font: 500 clamp(15px, 1.4vw, 24px)/1.05 $serif; color: #493e34; }
 .service { display: flex; align-items: center; gap: 1vw; white-space: nowrap; svg { width: 2.5vw; min-width: 24px; height: 2.5vw; min-height: 24px; fill: none; stroke: #813441; stroke-width: 1.7; } }
 .separator { font-size: 0; width: 1px; min-width: 1px; height: 30px; background: #946b60; }
-.description { margin-top: 27px; font: 400 #{$text-body}/1.55 $sans; color: #62564d; }
+.description { margin-top: 27px; font: 400 #{$text-body}/1.55 $sans; color: #51463f; strong { font-weight: 600; } }
 .actions { display: grid; grid-template-columns: 1.18fr 1fr; gap: 15px; margin-top: 22px; max-width: 490px; }
 .servicesLink, .projectLink { display: flex; align-items: center; justify-content: center; gap: 20px; min-height: 48px; padding: 10px 16px; border: 1px solid #813441; border-radius: 999px; white-space: normal; font: 500 #{$text-control}/1.3 $serif; transition: background .2s; }
 .servicesLink { background: #79091c; color: #fff4e4; &:hover { background: #580618; } }

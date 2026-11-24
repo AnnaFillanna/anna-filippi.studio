@@ -45,7 +45,7 @@ export default function Hero() {
           <a href="/fotografie">PRODUKTFOTOGRAFIE<span aria-hidden="true">→</span></a>
         </nav>
         <motion.p {...intro(0.4)} className={styles.description}>
-          Du hast eine Idee, möchtest dein Business online sichtbar machen oder deinen Kundinnen und Kunden etwas Besonderes bieten? Ich helfe dir dabei. Mit individuellem Webdesign, durchdachter Webentwicklung und kreativen Lösungen, die zu dir passen. Aus Andernach bei Koblenz – für dein Business, deutschlandweit.
+          Du hast eine Idee, möchtest dein <strong>Business online sichtbar</strong> machen oder deinen Kundinnen und Kunden etwas Besonderes bieten? Ich helfe dir dabei. Mit <strong>individuellem Webdesign</strong>, <strong>durchdachter Webentwicklung</strong> und kreativen Lösungen, die zu dir passen. Aus Andernach bei Koblenz – für dein Business, deutschlandweit.
         </motion.p>
         <motion.div {...intro(0.55)} className={styles.actions}>
           <a href="/kontakt" className={styles.servicesLink}>Lass uns über deine Idee sprechen<span className={styles.arrow} aria-hidden="true">→</span></a>
