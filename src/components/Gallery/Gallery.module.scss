@@ -780,3 +780,15 @@
   .heading .lead { font-size: 16px; text-align: left; }
   .hero { gap: 32px; }
 }
+
+// Mobile: a quiet title, the photograph and left-aligned collection choices.
+@media (max-width: 760px) {
+  .heading .eyebrow,
+  .heading .lead { display: none; }
+  .heading h1 { margin: 0; }
+  .heading h1 em { font-style: normal; }
+  .hero { gap: 24px; }
+  .filters button { align-items: flex-start; text-align: left; }
+  .filterMeta { align-items: flex-start; }
+  .filters button .filterAction { justify-content: flex-start; }
+}
