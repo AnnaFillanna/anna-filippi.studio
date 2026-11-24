@@ -121,3 +121,7 @@
 // The benefit-led headline uses the existing display typeface and composition.
 .copy h1 { font-size: clamp(36px, 3.8vw, 58px); line-height: 1.12; overflow-wrap: break-word; }
 @media (max-width: 760px) { .copy h1 { font-size: clamp(34px, 8.5vw, 52px); } }
+
+// Consistent reading rhythm, including narrow screens.
+.description { @include reading-text; max-width: 48ch; }
+.eyebrow { font-size: .875rem; letter-spacing: .16em; }

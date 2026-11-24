@@ -270,3 +270,8 @@
 
 .footer { padding-bottom: $space-section; }
 .actions .submit { background: $bordeaux; color: $ivory; &:hover:not(:disabled) { background: #580618; } }
+
+// Consistent reading rhythm, including narrow screens.
+.description { @include reading-text; margin-inline: auto; max-width: 54ch; }
+.note { font-size: .875rem; line-height: 1.7; }
+@media (max-width: 600px) { .intro { text-align: left; } .form label { font-size: 1rem; letter-spacing: normal; } }

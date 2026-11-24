@@ -10,8 +10,8 @@ export default function HomeContact() {
       whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .1 }}
       transition={{ duration: reduced ? 0 : .7, ease: [.22, 1, .36, 1] }}
       id="kontakt" className={styles.contact} aria-labelledby="home-contact-title">
-      <h2 id="home-contact-title">Du hast eine Idee? Lass uns darüber sprechen.</h2>
-      <p>Ob neue Website, individuelle Anwendung oder Produktfotografie – erzähl mir von deinem Vorhaben. Gemeinsam finden wir heraus, welche Lösung zu dir passt.</p>
+      <h2 id="home-contact-title">Deine Website erstellen lassen in Andernach?</h2>
+      <p>Ob neue Website, Relaunch oder individuelle Webanwendung: Erzähl mir von deinem Vorhaben. Ich begleite dich aus Andernach bei Koblenz – auch deutschlandweit.</p>
       <div className={styles.actions}>
         <a className={styles.primaryAction} href="/kontakt">Projekt unverbindlich anfragen <span aria-hidden="true">→</span></a>
         <a href={`mailto:${contact.email}`}>Per E-Mail anfragen <span aria-hidden="true">→</span></a>

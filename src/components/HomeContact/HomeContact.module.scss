@@ -34,3 +34,6 @@
 
 .contact h2 { max-width: 26ch; margin-inline: auto; }
 .actions .primaryAction { grid-column: 1 / -1; justify-self: center; background: $bordeaux; color: $ivory; max-width: 100%; &:hover { background: #580618; } }
+
+// Consistent reading rhythm, including narrow screens.
+.contact p { @include reading-text; text-align: center; }

@@ -161,7 +161,7 @@
   .primaryService {
     padding: 20px;
     h3 { margin-bottom: $space-xs; }
-    .description { margin: 0; line-height: 1.6; hyphens: auto; }
+    .description { margin: 0; line-height: 1.6; hyphens: none; }
     .galleryLink { display: inline-flex; align-items: center; gap: $space-xs; max-width: 100%; margin-top: $space-xs; min-height: 44px; line-height: 1.5; span { flex-shrink: 0; } }
   }
   .serviceNumber { margin-bottom: 12px; font-size: 26px; }
@@ -199,3 +199,19 @@
 .serviceArea { font: 500 11px/1.5 $sans; letter-spacing: .14em; color: $text-muted; }
 .primaryService .serviceNote { margin: -4px 0 24px; font: 500 14px/1.7 $sans; color: $bordeaux; }
 @media (max-width: 600px) { .primaryList { grid-template-columns: minmax(0, 1fr); } }
+
+.serviceItems {
+  margin: 12px 0 24px;
+  padding-left: 1.2em;
+  color: #534447;
+  font: 16px/1.6 $sans;
+  overflow-wrap: break-word;
+  li + li { margin-top: 8px; }
+  li::marker { color: $bordeaux; }
+}
+.primaryService .description { margin-bottom: 0; }
+
+// Consistent reading rhythm, including narrow screens.
+.services > .description { max-width: 60ch; margin-bottom: 28px; }
+.description, .primaryService .description, .serviceItems, .benefits p, .pricing > p:not(.eyebrow) { @include reading-text; }
+.eyebrow, .serviceArea, .serviceNote { font-size: .875rem; line-height: 1.6; }

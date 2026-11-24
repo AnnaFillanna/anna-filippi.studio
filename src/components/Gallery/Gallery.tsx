@@ -265,7 +265,7 @@ export default function Gallery() {
             <em>Große Wirkung.</em>
           </h1>
           <p className={styles.lead}>
-            Produkt- und Schmuckfotografie für Onlineshops, Websites und Marken. Von klaren Produktansichten auf hellem Hintergrund bis zur kreativen Inszenierung – ich zeige, was deine Produkte besonders macht.
+            Produkt- und Schmuckfotografie für Onlineshops und Websites – aus Andernach bei Koblenz. Klare Produktansichten und kreative Inszenierungen zeigen Materialien, Licht und feine Details.
           </p>
         </div>
         <div className={styles.heroVisual}>

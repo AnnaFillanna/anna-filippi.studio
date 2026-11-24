@@ -148,3 +148,8 @@ h1, h2, h3 { text-wrap: balance; }
     background: linear-gradient(180deg, #f5f0e8, #f1e4d3 38%);
   }
 }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+p, li, dd { overflow-wrap: break-word; }
+input, select, textarea { font-family: inherit; }
+.dialog p { @include reading-text; }

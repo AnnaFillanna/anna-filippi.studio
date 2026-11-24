@@ -579,3 +579,8 @@
   img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 }
 .devices .phone { width: 18%; z-index: 1; }
+
+// Consistent reading rhythm, including narrow screens.
+.description, .caseLead, .caseDetails > p:not(.caseEyebrow), .projects .lead { @include reading-text; max-width: 60ch; }
+.projectDetails .description { margin-bottom: 20px; strong { display: block; margin-bottom: 6px; } }
+@media (max-width: 600px) { .caseIntro h1 { hyphens: none; overflow-wrap: break-word; } }

@@ -138,10 +138,25 @@ export default function FeaturedProjects() {
                   <p>{project.featuredCategory ?? project.category}</p>
                   <h3>{project.name}</h3>
                   {project.status.includes('In Entwicklung') && <span className={styles.developmentBadge}>In Entwicklung</span>}
-                  <p className={styles.projectDescription}>{project.description}</p>
+                  {project.imagePrefix === 'dana' ? (
+                    <>
+                      <p className={styles.projectDescription}>Individuelle Website für das Dana Tattoo Studio in Andernach.</p>
+                      <ul className={styles.projectFeatures}>
+                        <li>Galerien für Tattoo- und Piercingarbeiten</li>
+                        <li>Direkter Kontakt über WhatsApp</li>
+                        <li>Optimiert für Smartphone, Tablet und Desktop</li>
+                      </ul>
+                    </>
+                  ) : <p className={styles.projectDescription}>{project.description}</p>}
                   <span className={styles.projectAction}>{project.buttonLabel} <span aria-hidden="true">→</span></span>
                 </div>
               </a>
+              {project.imagePrefix === 'dana' && (
+                <a className={styles.liveLink} href={project.href} target="_blank" rel="noopener noreferrer"
+                  aria-label="Dana Tattoo Studio: tattoodana.de öffnen (neuer Tab)">
+                  Website besuchen · tattoodana.de
+                </a>
+              )}
               <ProjectRating project={project.imagePrefix} name={project.name} inDevelopment={project.status.includes('In Entwicklung')} />
             </article>
           </li>

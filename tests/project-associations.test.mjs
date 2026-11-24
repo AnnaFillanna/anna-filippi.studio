@@ -40,9 +40,9 @@ for (const project of expected) {
 
 test('homepage carousel keeps all five featured projects with their own images, destinations and development status', async () => {
   const html = await readFile('dist/index.html', 'utf8');
-  const track = html.match(/<ul[^>]*id="featured-project-track"[\s\S]*?<\/ul>/)?.[0];
+  const track = html.match(/<ul[^>]*id="featured-project-track"[\s\S]*?<\/section>/)?.[0];
   assert.ok(track);
-  const cards = (track.match(/<li\b[\s\S]*?<\/li>/g) || []).filter(card => !/^<li[^>]*aria-hidden="true"/.test(card));
+  const cards = (track.match(/<li\b[^>]*>\s*<article\b[\s\S]*?<\/article>\s*<\/li>/g) || []).filter(card => !/^<li[^>]*aria-hidden="true"/.test(card));
   assert.equal(cards.length, expected.filter(project => project.feature).length);
   for (const project of expected.filter(project => project.feature)) {
     const card = cards.find(card => card.includes(`>${project.name}</h3>`));

@@ -2,12 +2,12 @@ import { motion, useReducedMotion } from 'motion/react';
 import styles from './Services.module.scss';
 
 const services = [
-  { title: 'Websites & Webdesign', area: 'DIGITAL', text: 'Unternehmenswebsites und Landingpages, die dein Angebot verständlich zeigen und Kontakt leicht machen. Auch für den Relaunch deiner bestehenden Website – passend für Smartphone, Tablet und Desktop.', href: '/kontakt', link: 'Website anfragen' },
-  { title: 'Webentwicklung & E-Commerce', area: 'DIGITAL', text: 'Individuelle Web-Anwendungen, interaktive Funktionen und Online-Buchungssysteme, die deine Abläufe erleichtern. Dazu Shopify-Shops, in denen Kunden deine Produkte einfach entdecken und kaufen können.', href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
-  { title: 'KI & Automatisierung', area: 'DIGITAL', text: 'KI-Chatbots für häufige Fragen, automatisierte Kundenanfragen und intelligente Workflows: Wiederkehrende Aufgaben sinnvoll verbinden und digitale Abläufe vereinfachen.', note: 'Komplexe KI-Lösungen: Auf Anfrage. Umfang und Machbarkeit klären wir gemeinsam.', href: '/kontakt', link: 'Möglichkeiten besprechen' },
-  { title: 'SEO & Website-Betreuung', area: 'DIGITAL', text: 'Technische Suchmaschinenoptimierung, Wartung und Performance-Optimierung: damit deine Website gut zugänglich ist, schnell lädt und zuverlässig funktioniert. Mit kontinuierlicher Weiterentwicklung nach Bedarf.', href: '/kontakt', link: 'Betreuung anfragen' },
-  { title: 'Produktfotografie', area: 'VISUAL', text: 'Ästhetische Produkt- und Schmuckfotografie, die Materialien und feine Details sichtbar macht. Visuelles Storytelling verbindet deine Bilder zu einer stimmigen Geschichte für Website und Shop.', href: '/fotografie', link: 'Fotografien ansehen' },
-  { title: 'Beratung & Website-Check', area: 'DIGITAL', text: 'Du hast bereits eine Website oder eine erste Idee? Gemeinsam schauen wir auf Gestaltung, Inhalte und Nutzerführung. Du erhältst konkrete Empfehlungen und einen klaren nächsten Schritt.', href: '/kontakt', link: 'Beratung anfragen' },
+  { title: 'Websites & Webdesign', area: 'DIGITAL', text: 'Eine professionelle Website erstellen lassen, die dein Angebot klar zeigt.', items: ['Unternehmenswebsites & Landingpages', 'Website-Relaunch für dein Unternehmen', 'Optimiert für Smartphone, Tablet & Desktop'], href: '/kontakt', link: 'Website anfragen' },
+  { title: 'Webentwicklung & E-Commerce', area: 'DIGITAL', text: 'Digitale Lösungen, die deine Abläufe erleichtern.', items: ['Individuelle Web-Anwendungen', 'Interaktive Funktionen & Online-Buchung', 'Shopify-Shop erstellen lassen'], href: '/softwareentwicklung', link: 'Software & Projekt ansehen' },
+  { title: 'KI & Automatisierung', area: 'DIGITAL', text: 'Wiederkehrende Aufgaben verbinden und Abläufe vereinfachen.', items: ['KI-Chatbots für häufige Fragen', 'Automatisierte Kundenanfragen', 'Intelligente Workflows'], note: 'Komplexe KI-Lösungen: Auf Anfrage. Umfang und Machbarkeit klären wir gemeinsam.', href: '/kontakt', link: 'Möglichkeiten besprechen' },
+  { title: 'SEO & Website-Betreuung', area: 'DIGITAL', text: 'Damit deine Website schnell lädt und zuverlässig funktioniert.', items: ['Technische Suchmaschinenoptimierung', 'Wartung & Performance-Optimierung', 'Weiterentwicklung nach Bedarf'], href: '/kontakt', link: 'Betreuung anfragen' },
+  { title: 'Produktfotografie', area: 'VISUAL', text: 'Bilder, die Materialien und feine Details sichtbar machen.', items: ['Schmuckfotografie für Onlineshops', 'Stimmige Bildwelten für Website & Shop', 'Visuelles Storytelling'], href: '/fotografie', link: 'Fotografien ansehen' },
+  { title: 'Beratung & Website-Check', area: 'DIGITAL', text: 'Von deiner bestehenden Website oder ersten Idee zum nächsten Schritt.', items: ['Gestaltung & Inhalte prüfen', 'Nutzerführung gemeinsam verbessern', 'Konkrete Empfehlungen erhalten'], href: '/kontakt', link: 'Beratung anfragen' },
 ] as const;
 
 export default function Services() {
@@ -27,6 +27,9 @@ export default function Services() {
             <div className={styles.serviceMeta}><span className={styles.serviceNumber} aria-hidden="true">0{index + 1}</span><span className={styles.serviceArea}>{service.area}</span></div>
             <h3>{service.title}</h3>
             <p className={styles.description}>{service.text}</p>
+            <ul className={styles.serviceItems}>
+              {service.items.map(item => <li key={item}>{item}</li>)}
+            </ul>
             {'note' in service && <p className={styles.serviceNote}>{service.note}</p>}
             {'href' in service && <a className={styles.galleryLink} href={service.href}>{service.link} <span aria-hidden="true">→</span></a>}
           </motion.li>

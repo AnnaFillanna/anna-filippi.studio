@@ -83,3 +83,11 @@
   .steps li { font-size: 12px; }
   .actions { flex-direction: column-reverse; }
 }
+
+// Consistent reading rhythm, including narrow screens.
+.intro p, .intro li { @include reading-text; }
+.intro .note, .intro .eyebrow, .small, .summary dt { font-size: .875rem; }
+.panel, .panel button { font-size: 1rem; }
+.steps { flex-wrap: wrap; }
+.steps li { font-size: .875rem; }
+.steps span { flex-shrink: 0; }

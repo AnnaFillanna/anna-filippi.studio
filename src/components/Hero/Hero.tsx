@@ -45,7 +45,7 @@ export default function Hero() {
           <a href="/fotografie">PRODUKTFOTOGRAFIE<span aria-hidden="true">→</span></a>
         </nav>
         <motion.p {...intro(0.4)} className={styles.description}>
-          Webdesign, Webentwicklung und Online-Shops aus Andernach bei Koblenz. Für Selbstständige und Unternehmen, die online professionell überzeugen möchten – mit digitalen Lösungen, die zu ihren Abläufen passen.
+          Webdesign für Selbstständige und kleine Unternehmen in Andernach und Koblenz. Ich entwickle deine Website oder deinen Online-Shop – persönlich betreut und für Smartphone, Tablet und Desktop gestaltet.
         </motion.p>
         <motion.div {...intro(0.55)} className={styles.actions}>
           <a href="/kontakt" className={styles.servicesLink}>Website anfragen<span className={styles.arrow} aria-hidden="true">→</span></a>

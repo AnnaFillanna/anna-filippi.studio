@@ -214,7 +214,7 @@ export default function Projects({
             </h1>
             <div className={styles.accent} aria-hidden="true" />
             <p className={styles.caseLead}>
-              {danaOnly ? selected.description : "Ich entwickle individuelle Software und Web-Apps, die zu deinen Abläufen passen – von Lernplattformen bis zu Kontaktformularen und Online-Terminbuchungen für deine Website."}
+              {danaOnly ? selected.description : "Du möchtest eine individuelle Webanwendung entwickeln lassen? Ich entwickle Software für deine Abläufe – von Lernplattformen bis zu Kontaktformularen und Online-Terminbuchungen für deine Website."}
             </p>
             <a
               className={styles.caseButton}

@@ -24,3 +24,7 @@
 .legal-page__embed h2 { margin: 32px 0 16px; color: $bordeaux; font-family: $serif; font-size: 28px; font-weight: 400; line-height: 1.25; }
 .legal-page__embed p + p { margin-top: 16px; }
 .legal-page__embed ul, .legal-page__embed ol { padding-left: 1.5em; margin: 16px 0; }
+
+.legal-page__container { max-width: 70ch; }
+.legal-page p, .legal-page__text, .legal-page__embed { font-size: 1rem; line-height: 1.75; }
+@media (max-width: 600px) { .legal-page { padding-inline: 24px; } }

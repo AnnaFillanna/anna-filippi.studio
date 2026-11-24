@@ -112,3 +112,8 @@
     mask-image: linear-gradient(to bottom, transparent, #000 9%, #000 45%, transparent 94%);
   }
 }
+
+// Consistent reading rhythm, including narrow screens.
+.content .personalNote, .channel p { @include reading-text; }
+.channel a, .pending { font-size: 1rem; overflow-wrap: anywhere; }
+.topline { font-size: .875rem; letter-spacing: .06em; flex-wrap: wrap; }

@@ -652,3 +652,7 @@
 
 .eyebrow { font-size: $text-small; letter-spacing: .1em; }
 .item figcaption { font-size: $text-small; }
+
+// Consistent reading rhythm, including narrow screens.
+.heading > p { @include reading-text; max-width: 60ch; }
+@media (max-width: 600px) { .backLink, .filterMeta { letter-spacing: .03em; } }

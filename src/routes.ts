@@ -1,8 +1,8 @@
 export const origin = 'https://annafilippi.studio';
 export const pages = {
   '/': {
-    title: 'Webdesign & Webentwicklung Koblenz | Anna Filippi Studio',
-    description: 'Individuelles Webdesign, moderne Websites und Webentwicklung für Unternehmen. Persönlich aus Andernach bei Koblenz – deutschlandweit.',
+    title: 'Webdesign für kleine Unternehmen in Andernach | Anna Filippi',
+    description: 'Website erstellen lassen in Andernach bei Koblenz: Webdesign für Selbstständige und kleine Unternehmen, Website-Relaunch und Online-Shops. Persönlich betreut.',
   },
   '/ueber-mich': {
     title: 'Über mich — Anna Filippi | Webentwicklung & Fotografie',
@@ -13,16 +13,16 @@ export const pages = {
     description: 'Webprojekte von Anna Filippi: Dana Tattoo Studio als Kundenprojekt, die Demos Mamma Mia, KAVRO und VELORA sowie die eigene Lernplattform FilliCat.',
   },
   '/softwareentwicklung': {
-    title: 'Softwareentwicklung – Anna Filippi',
-    description: 'Individuelle Web-Apps, Kontaktformulare und Terminbuchung für deine Website. Entdecke FilliCat und teste die interaktive Buchungsdemo von Anna Filippi.',
+    title: 'Individuelle Webanwendungen entwickeln lassen | Anna Filippi',
+    description: 'Individuelle Webanwendungen, Kontaktformulare und Online-Terminbuchung für deine Website. Entwicklung aus Andernach bei Koblenz. Entdecke Projekte und Demos.',
   },
   '/dana-tattoo-studio': {
-    title: 'Dana Tattoo Studio – Webdesign | Anna Filippi',
-    description: 'Individueller Webauftritt für Dana Tattoo Studio in Andernach: responsives Design, interaktive Galerien und direkte Kontaktmöglichkeiten.',
+    title: 'Website für ein Tattoo-Studio in Andernach | Anna Filippi',
+    description: 'Webdesign für Dana Tattoo Studio in Andernach: responsive Website mit Tattoo- und Piercing-Galerien und WhatsApp-Kontakt. Kundenprojekt von Anna Filippi.',
   },
   '/fotografie': {
-    title: 'Produktfotografie – Anna Filippi',
-    description: 'Produktfotografie von Anna Filippi in Andernach: Schmuck, Licht, Material und Atmosphäre. Entdecke inszenierte Fotografien und klare Produktaufnahmen.',
+    title: 'Schmuckfotografie für Onlineshops | Anna Filippi Andernach',
+    description: 'Produkt- und Schmuckfotografie für Onlineshops und Websites: klare Produktaufnahmen und kreative Inszenierungen von Anna Filippi aus Andernach bei Koblenz.',
   },
   '/kontakt': { title: 'Kontakt — Anna Filippi Studio', description: 'Erzähl mir von deiner Idee. Gemeinsam setzen wir dein Projekt um – persönlich und mit Liebe zum Detail.' },
   '/impressum': { title: 'Impressum — Anna Filippi', description: 'Impressum von Anna Filippi Studio in Andernach: Anbieterkennzeichnung und Kontaktdaten.' },

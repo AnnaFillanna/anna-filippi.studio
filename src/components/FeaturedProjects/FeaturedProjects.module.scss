@@ -77,3 +77,28 @@
 .phoneDevice::after { content: ''; position: absolute; top: 0; left: 31%; width: 38%; height: 4px; border-radius: 0 0 4px 4px; background: #292628; }
 .badge { bottom: 10px; left: 12px; font-size: 11px; padding: 4px 8px; background: #fffaf3e8; }
 @media (max-width: 600px) { .image { aspect-ratio: 8 / 6; } }
+
+.projectFeatures {
+  margin: 12px 0 0;
+  padding-left: 1.2em;
+  font: 400 16px/1.65 $sans;
+  color: #403437;
+  li + li { margin-top: 6px; }
+}
+.liveLink {
+  display: table;
+  max-width: 100%;
+  margin-top: 12px;
+  padding-block: 10px;
+  border-bottom: 1px solid #650d2070;
+  color: inherit;
+  font: 500 16px/1.5 $sans;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  &:hover { border-color: currentColor; }
+  &:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+}
+
+// Consistent reading rhythm, including narrow screens.
+.copy .projectDescription, .projectFeatures { @include reading-text; }
+.copy > p { line-height: 1.6; }

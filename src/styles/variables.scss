@@ -6,9 +6,9 @@ $serif: 'Cormorant Garamond', Georgia, serif;
 $sans: 'Montserrat', Arial, sans-serif;
 
 // Shared typography and rhythm; display wordmarks retain their own scale.
-$text-body: clamp(16px, 1.2vw, 18px);
-$text-small: 14px;
-$text-control: 16px;
+$text-body: clamp(1rem, .95rem + .2vw, 1.125rem);
+$text-small: .875rem;
+$text-control: 1rem;
 $text-card: clamp(20px, 1.7vw, 22px);
 $text-section: clamp(30px, 3.2vw, 44px);
 $text-page: clamp(38px, 4.6vw, 64px);
@@ -29,4 +29,16 @@ $text-muted: #534447;
   font-weight: 500;
   text-align: center;
   &:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+}
+
+// Shared reading styles respect the reader’s browser font size.
+@mixin reading-text {
+  font-family: $sans;
+  font-size: $text-body;
+  line-height: 1.7;
+  letter-spacing: normal;
+  text-align: start;
+  hyphens: none;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
