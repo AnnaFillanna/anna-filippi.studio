@@ -528,3 +528,27 @@
   summary:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
 }
 @media (max-width: 1000px) { .projects .grid { grid-template-columns: minmax(0, 1fr); } }
+
+// Share content rows across each desktop pair, including expanded details.
+.cardIntro { min-width: 0; width: 100%; }
+@media (min-width: 1001px) {
+  .projects .grid { align-items: stretch; }
+  .projects .card {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    align-items: start;
+  }
+  .projects .copy {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    align-items: start;
+    width: 100%;
+  }
+  .projects .projectDetails { grid-row: 2; }
+  .projects .projectStatus { grid-row: 3; }
+  .projects .ratingDisclosure { grid-row: 4; }
+}

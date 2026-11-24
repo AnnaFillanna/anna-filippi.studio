@@ -66,11 +66,13 @@ export default function Projects({
         </div>
       </a>
       <div className={styles.copy}>
+        <div className={styles.cardIntro}>
         <p className={styles.eyebrow}>{project.category} · {project.projectType}</p>
         <h2 id={`project-${index}`}>{project.name}</h2>
         {project.status.includes('In Entwicklung') && <span className={styles.developmentBadge}>In Entwicklung</span>}
         {project.subtitle && <p className={styles.description}>{project.subtitle}</p>}
         <p className={styles.description}>{project.description}</p>
+        </div>
         <details className={styles.projectDetails} open={expanded[project.imagePrefix] ?? false}
           onToggle={event => {
             const open = event.currentTarget.open;
