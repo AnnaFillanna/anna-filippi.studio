@@ -34,12 +34,11 @@ export default function BookingDemo() {
   return (
     <section id="buchungsdemo" className={styles.demo} aria-labelledby="booking-title">
       <div className={styles.intro}>
-        <p className={styles.eyebrow}>AUSPROBIEREN STATT NUR ANSEHEN</p>
-        <h2 id="booking-title">Ein Termin.<br /><em>In wenigen Klicks.</em></h2>
-        <p>So einfach kann Online-Terminbuchung sein. Probiere den Ablauf für ein fiktives Beratungsstudio aus – von der Auswahl bis zur Bestätigung.</p>
+        <p className={styles.eyebrow}>INTERAKTIVE DEMO</p>
+        <h2 id="booking-title">Online-Terminbuchung<br /><em>für deine Website.</em></h2>
+        <p>Teste eine Terminbuchung für ein fiktives Beratungsstudio: Leistung wählen, Termin auswählen und Angaben prüfen.</p>
         <a className={styles.tryLink} href="#booking-panel">Demo ausprobieren</a>
-        <ul><li>Klare Auswahl von Leistung und Termin</li><li>Formular mit Eingabeprüfung</li><li>Zusammenfassung vor dem Abschluss</li></ul>
-        <p className={styles.note}>Portfolio-Demo: keine echte Buchung, keine E-Mail. Deine Eingaben werden weder versendet noch gespeichert.</p>
+        <p className={styles.note}>Nur eine Demo. Es wird kein Termin gebucht. Deine Eingaben werden weder versendet noch gespeichert.</p>
       </div>
       <div id="booking-panel" className={styles.panel}>
         <div className={styles.top}><span>STUDIO / TERMINE</span><span className={styles.badge}>DEMO</span></div>

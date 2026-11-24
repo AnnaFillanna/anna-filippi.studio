@@ -8,7 +8,6 @@ export default function Footer() {
   const links = [
     { label: "Impressum", href: legal.impressumUrl },
     { label: "Datenschutz", href: legal.privacyUrl || contact.privacyUrl },
-    { label: "Cookies", href: legal.cookiesUrl },
   ];
   return (
     <footer className={styles.footer} aria-label="Seitenabschluss">
@@ -34,10 +33,10 @@ export default function Footer() {
             <AnimatedLetters text="ANNA FILIPPI" />
           </a>
           <h2 className={styles.invitation}>
-            Ich liebe es, Code<br />
-            <em>in etwas Schönes zu verwandeln.</em>
+            Webdesign aus Andernach.<br />
+            <em>Persönlich für dich.</em>
           </h2>
-          <p className={styles.personalNote}>Websites zu gestalten und zum Leben zu erwecken macht mir einfach Freude. Vielleicht entsteht die nächste mit dir. Ich freue mich auf unsere Zusammenarbeit.</p>
+          <p className={styles.personalNote}>Ich gestalte Websites für Selbstständige und kleine Unternehmen. Lass uns deine Idee gemeinsam umsetzen.</p>
           <p className={styles.signature}>Mit Liebe,<br /><span>Anna Filippi</span></p>
         </div>
         <img className={styles.mobileFlower} src="/images/footer-flower-transparent.png" alt="" width="1672" height="936" loading="lazy" />

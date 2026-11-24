@@ -117,3 +117,16 @@
 .content .personalNote, .channel p { @include reading-text; }
 .channel a, .pending { font-size: 1rem; overflow-wrap: anywhere; }
 .topline { font-size: .875rem; letter-spacing: .06em; flex-wrap: wrap; }
+
+// A short, readable closing; handwriting remains only in the signature.
+.content { max-width: 560px; padding-block: 32px 40px; }
+.invitation { font: 500 clamp(1.75rem, 2.8vw, 2.5rem)/1.25 $serif; margin: 24px 0; }
+.invitation em { font-style: normal; }
+.content .personalNote { max-width: 44ch; color: $text-muted; }
+.content .signature { margin-top: 28px; }
+.bottom { gap: 16px 28px; }
+@media (max-width: 760px) {
+  .mobileFlower { max-width: 320px; width: 75%; margin: 0 auto 32px; }
+  .bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .legal { flex-basis: 100%; order: 1; gap: 24px; }
+}

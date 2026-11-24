@@ -83,8 +83,12 @@ test('home presents six services and introduces the personal collaboration appro
   assert.ok(html.includes('Warum mit mir arbeiten?'));
   assert.match(html, /<h2[^>]*id="services-title"[^>]*>Meine Leistungen<\/h2>/);
   for (const benefit of ['Individuelle Lösungen', 'Transparente Zusammenarbeit', 'Direkter Kontakt']) assert.ok(html.includes(benefit));
-  assert.ok(html.includes('in etwas Schönes zu verwandeln.'));
-  for (const label of ['Impressum', 'Datenschutz', 'Cookies']) assert.ok(html.includes(label));
+  assert.ok(html.includes('Webdesign aus Andernach.'));
+  const footer = html.match(/<footer\b[\s\S]*?<\/footer>/)?.[0];
+  assert.ok(footer);
+  assert.ok(!footer.includes('Cookies'));
+  assert.ok(html.includes('Online-Terminbuchung'));
+  for (const label of ['Impressum', 'Datenschutz']) assert.ok(html.includes(label));
 });
 
 test('about page includes the requested personal text and original portrait', async () => {

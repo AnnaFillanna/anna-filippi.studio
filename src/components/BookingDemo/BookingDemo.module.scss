@@ -91,3 +91,21 @@
 .steps { flex-wrap: wrap; }
 .steps li { font-size: .875rem; }
 .steps span { flex-shrink: 0; }
+
+// Keep the introduction short and the booking controls clearly separated.
+.demo { align-items: start; }
+.intro h2 { font-size: clamp(2rem, 3.3vw, 3rem); font-weight: 500; line-height: 1.2; margin: 20px 0 28px; overflow-wrap: break-word; }
+.intro h2 em { font-weight: 500; }
+.intro .eyebrow { font-weight: 600; letter-spacing: .1em; color: $text-muted; }
+.intro > p:not(.eyebrow) { color: $text-muted; }
+.tryLink { margin: 24px 0 0; }
+.intro .note { margin-top: 28px; padding: 0; border: 0; max-width: 46ch; line-height: 1.65; }
+.panel { box-shadow: 0 8px 24px #80533310; border-top-width: 1px; }
+.panel h3 { font-weight: 500; }
+.steps { margin: 24px 0; padding: 0 0 24px; }
+@media (max-width: 600px) {
+  .demo { padding-block: 56px; gap: 40px; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .steps li { flex-direction: column; align-items: center; gap: 8px; font-size: .875rem; }
+  .top { font-size: .875rem; letter-spacing: .04em; flex-wrap: wrap; }
+}
