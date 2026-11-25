@@ -111,6 +111,8 @@ h1[tabindex="-1"]:focus { outline: none; }
 
 body { font-size: $text-body; line-height: 1.7; }
 h1, h2, h3 { text-wrap: balance; }
+h1, h2, h3, h4, h5, h6,
+:is(h1, h2, h3, h4, h5, h6) :is(em, i) { font-style: normal; }
 
 /* One continuous floral composition behind the demo and page closing. */
 .floral-closing {

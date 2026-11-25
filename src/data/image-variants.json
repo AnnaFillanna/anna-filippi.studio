@@ -1,0 +1,1724 @@
+{
+  "/images/about-anna-red.jpg": {
+    "width": 993,
+    "height": 1600,
+    "originalBytes": 344366,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/fd55927d823d-320.webp",
+        "width": 320,
+        "height": 516,
+        "bytes": 35160
+      },
+      {
+        "src": "/images/optimized/fd55927d823d-640.webp",
+        "width": 640,
+        "height": 1031,
+        "bytes": 94634
+      },
+      {
+        "src": "/images/optimized/fd55927d823d-960.webp",
+        "width": 960,
+        "height": 1547,
+        "bytes": 158124
+      },
+      {
+        "src": "/images/optimized/fd55927d823d-993.webp",
+        "width": 993,
+        "height": 1600,
+        "bytes": 165736
+      }
+    ]
+  },
+  "/images/anna-laptop-mask-alpha.png": {
+    "width": 853,
+    "height": 1280,
+    "originalBytes": 36872,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/anna-laptop-mask-alpha.png",
+        "width": 853,
+        "height": 1280,
+        "bytes": 36872
+      }
+    ]
+  },
+  "/images/anna-laptop-original.jpg": {
+    "width": 853,
+    "height": 1280,
+    "originalBytes": 109370,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/6183f86d7ecb-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 16044
+      },
+      {
+        "src": "/images/optimized/6183f86d7ecb-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 39622
+      },
+      {
+        "src": "/images/optimized/6183f86d7ecb-853.webp",
+        "width": 853,
+        "height": 1280,
+        "bytes": 58104
+      }
+    ]
+  },
+  "/images/footer-orchid-mobile.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 1800908,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/ed9eb444f40c-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 21684
+      },
+      {
+        "src": "/images/optimized/ed9eb444f40c-640.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 60404
+      },
+      {
+        "src": "/images/optimized/ed9eb444f40c-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 127496
+      },
+      {
+        "src": "/images/optimized/ed9eb444f40c-1280.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 208906
+      },
+      {
+        "src": "/images/optimized/ed9eb444f40c-1536.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 190356
+      }
+    ]
+  },
+  "/images/footer.png": {
+    "width": 1456,
+    "height": 816,
+    "originalBytes": 1215827,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/404d30d2dae6-320.webp",
+        "width": 320,
+        "height": 179,
+        "bytes": 5950
+      },
+      {
+        "src": "/images/optimized/404d30d2dae6-640.webp",
+        "width": 640,
+        "height": 359,
+        "bytes": 15616
+      },
+      {
+        "src": "/images/optimized/404d30d2dae6-960.webp",
+        "width": 960,
+        "height": 538,
+        "bytes": 29892
+      },
+      {
+        "src": "/images/optimized/404d30d2dae6-1280.webp",
+        "width": 1280,
+        "height": 717,
+        "bytes": 45594
+      },
+      {
+        "src": "/images/optimized/404d30d2dae6-1456.webp",
+        "width": 1456,
+        "height": 816,
+        "bytes": 57674
+      }
+    ]
+  },
+  "/images/gallery-fillianna.jpg": {
+    "width": 1867,
+    "height": 2333,
+    "originalBytes": 3488779,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/5fd37effeabf-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 40952
+      },
+      {
+        "src": "/images/optimized/5fd37effeabf-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 166890
+      },
+      {
+        "src": "/images/optimized/5fd37effeabf-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 362080
+      },
+      {
+        "src": "/images/optimized/5fd37effeabf-1280.webp",
+        "width": 1280,
+        "height": 1599,
+        "bytes": 603274
+      },
+      {
+        "src": "/images/optimized/5fd37effeabf-1600.webp",
+        "width": 1600,
+        "height": 1999,
+        "bytes": 863104
+      },
+      {
+        "src": "/images/optimized/5fd37effeabf-1867.webp",
+        "width": 1867,
+        "height": 2333,
+        "bytes": 1083378
+      }
+    ]
+  },
+  "/images/hero-sunlight.jpg": {
+    "width": 1672,
+    "height": 941,
+    "originalBytes": 307670,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/1fa7f813caca-320.webp",
+        "width": 320,
+        "height": 180,
+        "bytes": 7250
+      },
+      {
+        "src": "/images/optimized/1fa7f813caca-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 26952
+      },
+      {
+        "src": "/images/optimized/1fa7f813caca-960.webp",
+        "width": 960,
+        "height": 540,
+        "bytes": 68030
+      },
+      {
+        "src": "/images/optimized/1fa7f813caca-1280.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 128874
+      },
+      {
+        "src": "/images/optimized/1fa7f813caca-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 175328
+      },
+      {
+        "src": "/images/optimized/1fa7f813caca-1672.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 200046
+      }
+    ]
+  },
+  "/images/portfolio/2693f2d7f91be0e7ac84b42eb9e2b53a.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "originalBytes": 221244,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/fade882b8892-320.webp",
+        "width": 320,
+        "height": 427,
+        "bytes": 46152
+      },
+      {
+        "src": "/images/optimized/fade882b8892-640.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 133896
+      },
+      {
+        "src": "/images/optimized/fade882b8892-960.webp",
+        "width": 960,
+        "height": 1280,
+        "bytes": 232148
+      },
+      {
+        "src": "/images/portfolio/2693f2d7f91be0e7ac84b42eb9e2b53a.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 221244
+      }
+    ]
+  },
+  "/images/portfolio/5B9C7EA2-E3D3-47A7-8195-F0D46150D883_e9f4f705-e388-4e4e-98eb-b104fd968e5c (1).png": {
+    "width": 1024,
+    "height": 1536,
+    "originalBytes": 515450,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/8d858d2f5aef-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 6880
+      },
+      {
+        "src": "/images/optimized/8d858d2f5aef-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 40476
+      },
+      {
+        "src": "/images/optimized/8d858d2f5aef-960.webp",
+        "width": 960,
+        "height": 1440,
+        "bytes": 83840
+      },
+      {
+        "src": "/images/optimized/8d858d2f5aef-1024.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 94804
+      }
+    ]
+  },
+  "/images/portfolio/610974098_17870155233506883_7656635994878217710_n (2).jpg": {
+    "width": 1372,
+    "height": 1715,
+    "originalBytes": 1404564,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/a988a6db5237-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 27924
+      },
+      {
+        "src": "/images/optimized/a988a6db5237-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 79162
+      },
+      {
+        "src": "/images/optimized/a988a6db5237-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 141300
+      },
+      {
+        "src": "/images/optimized/a988a6db5237-1280.webp",
+        "width": 1280,
+        "height": 1600,
+        "bytes": 208098
+      },
+      {
+        "src": "/images/optimized/a988a6db5237-1372.webp",
+        "width": 1372,
+        "height": 1715,
+        "bytes": 237196
+      }
+    ]
+  },
+  "/images/portfolio/ChatGPTImage28.Dez.2025_13_52_30.png": {
+    "width": 1134,
+    "height": 1418,
+    "originalBytes": 492520,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/0c535d52be9e-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 9668
+      },
+      {
+        "src": "/images/optimized/0c535d52be9e-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 28250
+      },
+      {
+        "src": "/images/optimized/0c535d52be9e-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 51420
+      },
+      {
+        "src": "/images/optimized/0c535d52be9e-1134.webp",
+        "width": 1134,
+        "height": 1418,
+        "bytes": 66050
+      }
+    ]
+  },
+  "/images/portfolio/ChatGPTImage28.Dez.2025_14_12_13.png": {
+    "width": 758,
+    "height": 947,
+    "originalBytes": 303645,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/7e40fdad6ae1-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 8490
+      },
+      {
+        "src": "/images/optimized/7e40fdad6ae1-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 22908
+      },
+      {
+        "src": "/images/optimized/7e40fdad6ae1-758.webp",
+        "width": 758,
+        "height": 947,
+        "bytes": 28604
+      }
+    ]
+  },
+  "/images/portfolio/DSC08033 (1).jpg": {
+    "width": 2274,
+    "height": 3185,
+    "originalBytes": 1153447,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/175c917ed533-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 23928
+      },
+      {
+        "src": "/images/optimized/175c917ed533-640.webp",
+        "width": 640,
+        "height": 896,
+        "bytes": 72908
+      },
+      {
+        "src": "/images/optimized/175c917ed533-960.webp",
+        "width": 960,
+        "height": 1345,
+        "bytes": 152508
+      },
+      {
+        "src": "/images/optimized/175c917ed533-1280.webp",
+        "width": 1280,
+        "height": 1793,
+        "bytes": 262302
+      },
+      {
+        "src": "/images/optimized/175c917ed533-1600.webp",
+        "width": 1600,
+        "height": 2241,
+        "bytes": 404794
+      },
+      {
+        "src": "/images/optimized/175c917ed533-1920.webp",
+        "width": 1920,
+        "height": 2689,
+        "bytes": 550240
+      }
+    ]
+  },
+  "/images/portfolio/Ohringe_1_1.jpg": {
+    "width": 3303,
+    "height": 4128,
+    "originalBytes": 3460369,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/582a9ab7fe97-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 11590
+      },
+      {
+        "src": "/images/optimized/582a9ab7fe97-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 31514
+      },
+      {
+        "src": "/images/optimized/582a9ab7fe97-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 60132
+      },
+      {
+        "src": "/images/optimized/582a9ab7fe97-1280.webp",
+        "width": 1280,
+        "height": 1600,
+        "bytes": 102628
+      },
+      {
+        "src": "/images/optimized/582a9ab7fe97-1600.webp",
+        "width": 1600,
+        "height": 2000,
+        "bytes": 164094
+      },
+      {
+        "src": "/images/optimized/582a9ab7fe97-1920.webp",
+        "width": 1920,
+        "height": 2400,
+        "bytes": 239942
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-1.jpg": {
+    "width": 1023,
+    "height": 1280,
+    "originalBytes": 277867,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/325b747bab16-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 35836
+      },
+      {
+        "src": "/images/optimized/325b747bab16-640.webp",
+        "width": 640,
+        "height": 801,
+        "bytes": 112266
+      },
+      {
+        "src": "/images/optimized/325b747bab16-960.webp",
+        "width": 960,
+        "height": 1201,
+        "bytes": 205652
+      },
+      {
+        "src": "/images/optimized/325b747bab16-1023.webp",
+        "width": 1023,
+        "height": 1280,
+        "bytes": 222198
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-10.jpg": {
+    "width": 960,
+    "height": 1280,
+    "originalBytes": 191390,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/f66811d8b339-320.webp",
+        "width": 320,
+        "height": 427,
+        "bytes": 29528
+      },
+      {
+        "src": "/images/optimized/f66811d8b339-640.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 78258
+      },
+      {
+        "src": "/images/optimized/f66811d8b339-960.webp",
+        "width": 960,
+        "height": 1280,
+        "bytes": 133452
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-11.jpg": {
+    "width": 1066,
+    "height": 1600,
+    "originalBytes": 290249,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/4d70fbfc89cd-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 20752
+      },
+      {
+        "src": "/images/optimized/4d70fbfc89cd-640.webp",
+        "width": 640,
+        "height": 961,
+        "bytes": 59920
+      },
+      {
+        "src": "/images/optimized/4d70fbfc89cd-960.webp",
+        "width": 960,
+        "height": 1441,
+        "bytes": 107656
+      },
+      {
+        "src": "/images/optimized/4d70fbfc89cd-1066.webp",
+        "width": 1066,
+        "height": 1600,
+        "bytes": 127392
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-12.jpg": {
+    "width": 1066,
+    "height": 1600,
+    "originalBytes": 391330,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/738b5607b1a6-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 29784
+      },
+      {
+        "src": "/images/optimized/738b5607b1a6-640.webp",
+        "width": 640,
+        "height": 961,
+        "bytes": 102284
+      },
+      {
+        "src": "/images/optimized/738b5607b1a6-960.webp",
+        "width": 960,
+        "height": 1441,
+        "bytes": 179690
+      },
+      {
+        "src": "/images/optimized/738b5607b1a6-1066.webp",
+        "width": 1066,
+        "height": 1600,
+        "bytes": 211704
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-13.jpg": {
+    "width": 1142,
+    "height": 1600,
+    "originalBytes": 527804,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/110f7a6a51bc-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 33450
+      },
+      {
+        "src": "/images/optimized/110f7a6a51bc-640.webp",
+        "width": 640,
+        "height": 897,
+        "bytes": 126688
+      },
+      {
+        "src": "/images/optimized/110f7a6a51bc-960.webp",
+        "width": 960,
+        "height": 1345,
+        "bytes": 229366
+      },
+      {
+        "src": "/images/optimized/110f7a6a51bc-1142.webp",
+        "width": 1142,
+        "height": 1600,
+        "bytes": 303142
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-14.jpg": {
+    "width": 1066,
+    "height": 1600,
+    "originalBytes": 331894,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/4035baca1e20-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 29812
+      },
+      {
+        "src": "/images/optimized/4035baca1e20-640.webp",
+        "width": 640,
+        "height": 961,
+        "bytes": 79736
+      },
+      {
+        "src": "/images/optimized/4035baca1e20-960.webp",
+        "width": 960,
+        "height": 1441,
+        "bytes": 128154
+      },
+      {
+        "src": "/images/optimized/4035baca1e20-1066.webp",
+        "width": 1066,
+        "height": 1600,
+        "bytes": 150570
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-15.jpg": {
+    "width": 1143,
+    "height": 1600,
+    "originalBytes": 562564,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/cde70c4fa6d4-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 33224
+      },
+      {
+        "src": "/images/optimized/cde70c4fa6d4-640.webp",
+        "width": 640,
+        "height": 896,
+        "bytes": 130718
+      },
+      {
+        "src": "/images/optimized/cde70c4fa6d4-960.webp",
+        "width": 960,
+        "height": 1344,
+        "bytes": 260662
+      },
+      {
+        "src": "/images/optimized/cde70c4fa6d4-1143.webp",
+        "width": 1143,
+        "height": 1600,
+        "bytes": 348058
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-16.jpg": {
+    "width": 1143,
+    "height": 1600,
+    "originalBytes": 275808,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/4ebdd28e66d6-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 17514
+      },
+      {
+        "src": "/images/optimized/4ebdd28e66d6-640.webp",
+        "width": 640,
+        "height": 896,
+        "bytes": 49250
+      },
+      {
+        "src": "/images/optimized/4ebdd28e66d6-960.webp",
+        "width": 960,
+        "height": 1344,
+        "bytes": 92094
+      },
+      {
+        "src": "/images/optimized/4ebdd28e66d6-1143.webp",
+        "width": 1143,
+        "height": 1600,
+        "bytes": 122870
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-17.jpg": {
+    "width": 1067,
+    "height": 1600,
+    "originalBytes": 235734,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/10d2da7d9e09-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 17646
+      },
+      {
+        "src": "/images/optimized/10d2da7d9e09-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 50276
+      },
+      {
+        "src": "/images/optimized/10d2da7d9e09-960.webp",
+        "width": 960,
+        "height": 1440,
+        "bytes": 91020
+      },
+      {
+        "src": "/images/optimized/10d2da7d9e09-1067.webp",
+        "width": 1067,
+        "height": 1600,
+        "bytes": 108468
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-18.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "originalBytes": 297155,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/cc2a8dd5b607-320.webp",
+        "width": 320,
+        "height": 427,
+        "bytes": 14344
+      },
+      {
+        "src": "/images/optimized/cc2a8dd5b607-640.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 38956
+      },
+      {
+        "src": "/images/optimized/cc2a8dd5b607-960.webp",
+        "width": 960,
+        "height": 1280,
+        "bytes": 73166
+      },
+      {
+        "src": "/images/optimized/cc2a8dd5b607-1200.webp",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 107288
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-2.jpg": {
+    "width": 853,
+    "height": 1280,
+    "originalBytes": 136557,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/5fad50fe1229-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 21426
+      },
+      {
+        "src": "/images/optimized/5fad50fe1229-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 61042
+      },
+      {
+        "src": "/images/optimized/5fad50fe1229-853.webp",
+        "width": 853,
+        "height": 1280,
+        "bytes": 90276
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-3.jpg": {
+    "width": 953,
+    "height": 1191,
+    "originalBytes": 43657,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/ff9a11f21672-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 4936
+      },
+      {
+        "src": "/images/optimized/ff9a11f21672-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 13106
+      },
+      {
+        "src": "/images/optimized/ff9a11f21672-953.webp",
+        "width": 953,
+        "height": 1191,
+        "bytes": 21836
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-4.jpg": {
+    "width": 1023,
+    "height": 1280,
+    "originalBytes": 54388,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/14ef3b47ef30-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 5240
+      },
+      {
+        "src": "/images/optimized/14ef3b47ef30-640.webp",
+        "width": 640,
+        "height": 801,
+        "bytes": 15286
+      },
+      {
+        "src": "/images/optimized/14ef3b47ef30-960.webp",
+        "width": 960,
+        "height": 1201,
+        "bytes": 26618
+      },
+      {
+        "src": "/images/optimized/14ef3b47ef30-1023.webp",
+        "width": 1023,
+        "height": 1280,
+        "bytes": 28732
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-5.jpg": {
+    "width": 914,
+    "height": 1280,
+    "originalBytes": 139799,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/023fd578b010-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 20330
+      },
+      {
+        "src": "/images/optimized/023fd578b010-640.webp",
+        "width": 640,
+        "height": 896,
+        "bytes": 55108
+      },
+      {
+        "src": "/images/optimized/023fd578b010-914.webp",
+        "width": 914,
+        "height": 1280,
+        "bytes": 92672
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-6.jpg": {
+    "width": 1023,
+    "height": 1280,
+    "originalBytes": 314495,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/89779512bbe7-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 45808
+      },
+      {
+        "src": "/images/optimized/89779512bbe7-640.webp",
+        "width": 640,
+        "height": 801,
+        "bytes": 141574
+      },
+      {
+        "src": "/images/optimized/89779512bbe7-960.webp",
+        "width": 960,
+        "height": 1201,
+        "bytes": 249274
+      },
+      {
+        "src": "/images/optimized/89779512bbe7-1023.webp",
+        "width": 1023,
+        "height": 1280,
+        "bytes": 272640
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-7.jpg": {
+    "width": 720,
+    "height": 1280,
+    "originalBytes": 255355,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/0b70230990c2-320.webp",
+        "width": 320,
+        "height": 569,
+        "bytes": 48350
+      },
+      {
+        "src": "/images/optimized/0b70230990c2-640.webp",
+        "width": 640,
+        "height": 1138,
+        "bytes": 186414
+      },
+      {
+        "src": "/images/optimized/0b70230990c2-720.webp",
+        "width": 720,
+        "height": 1280,
+        "bytes": 232774
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-8-chain.webp": {
+    "width": 1346,
+    "height": 1683,
+    "originalBytes": 48642,
+    "format": "WEBP",
+    "variants": [
+      {
+        "src": "/images/optimized/01a398f56ca0-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 24682
+      },
+      {
+        "src": "/images/optimized/01a398f56ca0-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 71432
+      },
+      {
+        "src": "/images/optimized/01a398f56ca0-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 133796
+      },
+      {
+        "src": "/images/optimized/01a398f56ca0-1280.webp",
+        "width": 1280,
+        "height": 1600,
+        "bytes": 208458
+      },
+      {
+        "src": "/images/portfolio/anna-filippi-8-chain.webp",
+        "width": 1346,
+        "height": 1683,
+        "bytes": 48642
+      }
+    ]
+  },
+  "/images/portfolio/anna-filippi-9.jpg": {
+    "width": 849,
+    "height": 1280,
+    "originalBytes": 37940,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/5af5a45ee0cf-320.webp",
+        "width": 320,
+        "height": 482,
+        "bytes": 4126
+      },
+      {
+        "src": "/images/optimized/5af5a45ee0cf-640.webp",
+        "width": 640,
+        "height": 965,
+        "bytes": 11146
+      },
+      {
+        "src": "/images/optimized/5af5a45ee0cf-849.webp",
+        "width": 849,
+        "height": 1280,
+        "bytes": 16946
+      }
+    ]
+  },
+  "/images/portfolio/asdf (1).png": {
+    "width": 1068,
+    "height": 1335,
+    "originalBytes": 578820,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/287f9cf28aa1-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 5876
+      },
+      {
+        "src": "/images/optimized/287f9cf28aa1-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 16876
+      },
+      {
+        "src": "/images/optimized/287f9cf28aa1-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 30048
+      },
+      {
+        "src": "/images/optimized/287f9cf28aa1-1068.webp",
+        "width": 1068,
+        "height": 1335,
+        "bytes": 34400
+      }
+    ]
+  },
+  "/images/portfolio/bcizrs (1).png": {
+    "width": 1476,
+    "height": 2066,
+    "originalBytes": 15137375,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/69981f657298-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 37148
+      },
+      {
+        "src": "/images/optimized/69981f657298-640.webp",
+        "width": 640,
+        "height": 896,
+        "bytes": 122634
+      },
+      {
+        "src": "/images/optimized/69981f657298-960.webp",
+        "width": 960,
+        "height": 1344,
+        "bytes": 239456
+      },
+      {
+        "src": "/images/optimized/69981f657298-1280.webp",
+        "width": 1280,
+        "height": 1792,
+        "bytes": 380076
+      },
+      {
+        "src": "/images/optimized/69981f657298-1476.webp",
+        "width": 1476,
+        "height": 2066,
+        "bytes": 484136
+      }
+    ]
+  },
+  "/images/portfolio/dgft (1).png": {
+    "width": 1024,
+    "height": 1281,
+    "originalBytes": 652350,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/76ef2050169d-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 8090
+      },
+      {
+        "src": "/images/optimized/76ef2050169d-640.webp",
+        "width": 640,
+        "height": 801,
+        "bytes": 25076
+      },
+      {
+        "src": "/images/optimized/76ef2050169d-960.webp",
+        "width": 960,
+        "height": 1201,
+        "bytes": 45178
+      },
+      {
+        "src": "/images/optimized/76ef2050169d-1024.webp",
+        "width": 1024,
+        "height": 1281,
+        "bytes": 50238
+      }
+    ]
+  },
+  "/images/portfolio/hsgdf (1).png": {
+    "width": 950,
+    "height": 1424,
+    "originalBytes": 400420,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/09f920f4a3c6-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 7408
+      },
+      {
+        "src": "/images/optimized/09f920f4a3c6-640.webp",
+        "width": 640,
+        "height": 959,
+        "bytes": 20164
+      },
+      {
+        "src": "/images/optimized/09f920f4a3c6-950.webp",
+        "width": 950,
+        "height": 1424,
+        "bytes": 34696
+      }
+    ]
+  },
+  "/images/portfolio/hvo8v6 (1).jpg": {
+    "width": 2175,
+    "height": 3046,
+    "originalBytes": 2091623,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/e4a4c1ea5a04-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 49438
+      },
+      {
+        "src": "/images/optimized/e4a4c1ea5a04-640.webp",
+        "width": 640,
+        "height": 896,
+        "bytes": 175810
+      },
+      {
+        "src": "/images/optimized/e4a4c1ea5a04-960.webp",
+        "width": 960,
+        "height": 1344,
+        "bytes": 350586
+      },
+      {
+        "src": "/images/optimized/e4a4c1ea5a04-1280.webp",
+        "width": 1280,
+        "height": 1793,
+        "bytes": 578804
+      },
+      {
+        "src": "/images/optimized/e4a4c1ea5a04-1600.webp",
+        "width": 1600,
+        "height": 2241,
+        "bytes": 832960
+      },
+      {
+        "src": "/images/optimized/e4a4c1ea5a04-1920.webp",
+        "width": 1920,
+        "height": 2689,
+        "bytes": 1122612
+      }
+    ]
+  },
+  "/images/portfolio/juhz (1).png": {
+    "width": 1016,
+    "height": 1270,
+    "originalBytes": 265540,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/e9a0f369e2d1-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 4076
+      },
+      {
+        "src": "/images/optimized/e9a0f369e2d1-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 11468
+      },
+      {
+        "src": "/images/optimized/e9a0f369e2d1-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 19810
+      },
+      {
+        "src": "/images/optimized/e9a0f369e2d1-1016.webp",
+        "width": 1016,
+        "height": 1270,
+        "bytes": 21284
+      }
+    ]
+  },
+  "/images/portfolio/lkjh (1).png": {
+    "width": 980,
+    "height": 1225,
+    "originalBytes": 360151,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/003e4326d11e-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 5250
+      },
+      {
+        "src": "/images/optimized/003e4326d11e-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 14902
+      },
+      {
+        "src": "/images/optimized/003e4326d11e-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 25996
+      },
+      {
+        "src": "/images/optimized/003e4326d11e-980.webp",
+        "width": 980,
+        "height": 1225,
+        "bytes": 26450
+      }
+    ]
+  },
+  "/images/portfolio/losder2.png.jpg": {
+    "width": 1121,
+    "height": 1401,
+    "originalBytes": 132110,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/47bb9fc6e4c0-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 8174
+      },
+      {
+        "src": "/images/optimized/47bb9fc6e4c0-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 24434
+      },
+      {
+        "src": "/images/optimized/47bb9fc6e4c0-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 44568
+      },
+      {
+        "src": "/images/optimized/47bb9fc6e4c0-1121.webp",
+        "width": 1121,
+        "height": 1401,
+        "bytes": 54116
+      }
+    ]
+  },
+  "/images/portfolio/oelkj.png": {
+    "width": 2009,
+    "height": 2812,
+    "originalBytes": 3109000,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/d87d20c07967-320.webp",
+        "width": 320,
+        "height": 448,
+        "bytes": 14124
+      },
+      {
+        "src": "/images/optimized/d87d20c07967-640.webp",
+        "width": 640,
+        "height": 896,
+        "bytes": 44604
+      },
+      {
+        "src": "/images/optimized/d87d20c07967-960.webp",
+        "width": 960,
+        "height": 1344,
+        "bytes": 87738
+      },
+      {
+        "src": "/images/optimized/d87d20c07967-1280.webp",
+        "width": 1280,
+        "height": 1792,
+        "bytes": 142604
+      },
+      {
+        "src": "/images/optimized/d87d20c07967-1600.webp",
+        "width": 1600,
+        "height": 2240,
+        "bytes": 212176
+      },
+      {
+        "src": "/images/optimized/d87d20c07967-1920.webp",
+        "width": 1920,
+        "height": 2687,
+        "bytes": 287848
+      }
+    ]
+  },
+  "/images/portfolio/qwret (1).png": {
+    "width": 1158,
+    "height": 1448,
+    "originalBytes": 232276,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/882d47337129-320.webp",
+        "width": 320,
+        "height": 400,
+        "bytes": 5770
+      },
+      {
+        "src": "/images/optimized/882d47337129-640.webp",
+        "width": 640,
+        "height": 800,
+        "bytes": 16154
+      },
+      {
+        "src": "/images/optimized/882d47337129-960.webp",
+        "width": 960,
+        "height": 1200,
+        "bytes": 28570
+      },
+      {
+        "src": "/images/optimized/882d47337129-1158.webp",
+        "width": 1158,
+        "height": 1448,
+        "bytes": 37126
+      }
+    ]
+  },
+  "/images/portfolio/zhdeg (1).png": {
+    "width": 1024,
+    "height": 1536,
+    "originalBytes": 452347,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/a83c4874671a-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 16186
+      },
+      {
+        "src": "/images/optimized/a83c4874671a-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 50486
+      },
+      {
+        "src": "/images/optimized/a83c4874671a-960.webp",
+        "width": 960,
+        "height": 1440,
+        "bytes": 94276
+      },
+      {
+        "src": "/images/optimized/a83c4874671a-1024.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 105128
+      }
+    ]
+  },
+  "/images/projects/dana-desktop.png": {
+    "width": 1440,
+    "height": 900,
+    "originalBytes": 70302,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/f9cf311ffc5e-320.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 35186
+      },
+      {
+        "src": "/images/optimized/f9cf311ffc5e-640.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 92950
+      },
+      {
+        "src": "/images/optimized/f9cf311ffc5e-960.webp",
+        "width": 960,
+        "height": 600,
+        "bytes": 161782
+      },
+      {
+        "src": "/images/optimized/f9cf311ffc5e-1280.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 252558
+      },
+      {
+        "src": "/images/projects/dana-desktop.png",
+        "width": 1440,
+        "height": 900,
+        "bytes": 70302
+      }
+    ]
+  },
+  "/images/projects/dana-mobile.png": {
+    "width": 390,
+    "height": 844,
+    "originalBytes": 28806,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/eca29229b130-320.webp",
+        "width": 320,
+        "height": 693,
+        "bytes": 79782
+      },
+      {
+        "src": "/images/projects/dana-mobile.png",
+        "width": 390,
+        "height": 844,
+        "bytes": 28806
+      }
+    ]
+  },
+  "/images/projects/fillicat-desktop.png": {
+    "width": 1440,
+    "height": 900,
+    "originalBytes": 72016,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/d0d323f71e59-320.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 21274
+      },
+      {
+        "src": "/images/optimized/d0d323f71e59-640.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 54464
+      },
+      {
+        "src": "/images/optimized/d0d323f71e59-960.webp",
+        "width": 960,
+        "height": 600,
+        "bytes": 100000
+      },
+      {
+        "src": "/images/optimized/d0d323f71e59-1280.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 163262
+      },
+      {
+        "src": "/images/projects/fillicat-desktop.png",
+        "width": 1440,
+        "height": 900,
+        "bytes": 72016
+      }
+    ]
+  },
+  "/images/projects/fillicat-mobile.png": {
+    "width": 390,
+    "height": 844,
+    "originalBytes": 36405,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/96ce3d51c268-320.webp",
+        "width": 320,
+        "height": 693,
+        "bytes": 81612
+      },
+      {
+        "src": "/images/projects/fillicat-mobile.png",
+        "width": 390,
+        "height": 844,
+        "bytes": 36405
+      }
+    ]
+  },
+  "/images/projects/kavro-desktop.png": {
+    "width": 1080,
+    "height": 1084,
+    "originalBytes": 214739,
+    "format": "PNG",
+    "variants": [
+      {
+        "src": "/images/optimized/0a6199bbc443-320.webp",
+        "width": 320,
+        "height": 321,
+        "bytes": 25190
+      },
+      {
+        "src": "/images/optimized/0a6199bbc443-640.webp",
+        "width": 640,
+        "height": 642,
+        "bytes": 65620
+      },
+      {
+        "src": "/images/optimized/0a6199bbc443-960.webp",
+        "width": 960,
+        "height": 964,
+        "bytes": 116492
+      },
+      {
+        "src": "/images/optimized/0a6199bbc443-1080.webp",
+        "width": 1080,
+        "height": 1084,
+        "bytes": 108316
+      }
+    ]
+  },
+  "/images/projects/kavro-mobile.jpg": {
+    "width": 768,
+    "height": 1152,
+    "originalBytes": 114179,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/8f02d2199499-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 51254
+      },
+      {
+        "src": "/images/optimized/8f02d2199499-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 169922
+      },
+      {
+        "src": "/images/projects/kavro-mobile.jpg",
+        "width": 768,
+        "height": 1152,
+        "bytes": 114179
+      }
+    ]
+  },
+  "/images/projects/mamma-mia-desktop.jpg": {
+    "width": 1440,
+    "height": 900,
+    "originalBytes": 124121,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/d0a30a1a79dc-320.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 42852
+      },
+      {
+        "src": "/images/optimized/d0a30a1a79dc-640.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 134646
+      },
+      {
+        "src": "/images/optimized/d0a30a1a79dc-960.webp",
+        "width": 960,
+        "height": 600,
+        "bytes": 262308
+      },
+      {
+        "src": "/images/optimized/d0a30a1a79dc-1280.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 431052
+      },
+      {
+        "src": "/images/projects/mamma-mia-desktop.jpg",
+        "width": 1440,
+        "height": 900,
+        "bytes": 124121
+      }
+    ]
+  },
+  "/images/projects/mamma-mia-mobile.jpg": {
+    "width": 390,
+    "height": 844,
+    "originalBytes": 57921,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/4fc004380429-320.webp",
+        "width": 320,
+        "height": 693,
+        "bytes": 163736
+      },
+      {
+        "src": "/images/projects/mamma-mia-mobile.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 57921
+      }
+    ]
+  },
+  "/images/projects/velora-desktop.jpg": {
+    "width": 1440,
+    "height": 900,
+    "originalBytes": 127097,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/8daba3e49764-320.webp",
+        "width": 320,
+        "height": 200,
+        "bytes": 22378
+      },
+      {
+        "src": "/images/optimized/8daba3e49764-640.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 75220
+      },
+      {
+        "src": "/images/optimized/8daba3e49764-960.webp",
+        "width": 960,
+        "height": 600,
+        "bytes": 158306
+      },
+      {
+        "src": "/images/optimized/8daba3e49764-1280.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 268806
+      },
+      {
+        "src": "/images/projects/velora-desktop.jpg",
+        "width": 1440,
+        "height": 900,
+        "bytes": 127097
+      }
+    ]
+  },
+  "/images/projects/velora-mobile.png": {
+    "width": 390,
+    "height": 844,
+    "originalBytes": 43777,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/79c46c5653f1-320.webp",
+        "width": 320,
+        "height": 693,
+        "bytes": 128034
+      },
+      {
+        "src": "/images/projects/velora-mobile.png",
+        "width": 390,
+        "height": 844,
+        "bytes": 43777
+      }
+    ]
+  },
+  "/images/projects/velora-tablet-current.png": {
+    "width": 768,
+    "height": 1024,
+    "originalBytes": 79026,
+    "format": "JPEG",
+    "variants": [
+      {
+        "src": "/images/optimized/312b09bc7e27-320.webp",
+        "width": 320,
+        "height": 427,
+        "bytes": 67502
+      },
+      {
+        "src": "/images/optimized/312b09bc7e27-640.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 231550
+      },
+      {
+        "src": "/images/projects/velora-tablet-current.png",
+        "width": 768,
+        "height": 1024,
+        "bytes": 79026
+      }
+    ]
+  }
+}

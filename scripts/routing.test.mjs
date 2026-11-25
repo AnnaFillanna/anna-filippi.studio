@@ -4,6 +4,16 @@ import { readFile, access } from 'node:fs/promises';
 import vm from 'node:vm';
 import { transformWithEsbuild } from 'vite';
 
+async function loadRoutes(window) {
+  const data = await transformWithEsbuild(await readFile('src/data/insights.ts', 'utf8'), 'insights.ts', { loader: 'ts', format: 'cjs' });
+  const dataContext = { module: { exports: {} } };
+  vm.runInNewContext(data.code, dataContext);
+  const routes = await transformWithEsbuild(await readFile('src/routes.ts', 'utf8'), 'routes.ts', { loader: 'ts', format: 'cjs' });
+  const context = { module: { exports: {} }, window, require: () => dataContext.module.exports };
+  vm.runInNewContext(routes.code, context);
+  return context.module.exports;
+}
+
 const origin = 'https://annafilippi.studio';
 const examples = [
   ['/kontakt', 'Erzähl mir von deiner Idee.', 'Projektanfrage'],
@@ -15,6 +25,7 @@ const examples = [
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Ideen, die', 'Dana Tattoo Studio'],
   ['/fotografie', 'Details, die bleiben.', 'Perlen &amp; Seide'],
+  ['/insights', 'Wissen &amp; Insights', 'Digitale Lösungen verstehen.'],
 ];
 for (const [path, heading, content] of examples) {
   test(`${path}: prerendered content, metadata and internal links`, async () => {
@@ -41,13 +52,10 @@ for (const [path, heading, content] of examples) {
 }
 
 test('legacy hashes migrate with query strings intact', async () => {
-  const source = await readFile('src/routes.ts', 'utf8');
-  const { code } = await transformWithEsbuild(source, 'routes.ts', { loader: 'ts', format: 'cjs' });
   for (const hash of ['#projekte', '#fotografie', '#kontakt', '#ueber-mich', '#leistungen', '#inhalt']) {
     const calls = [];
-    const context = { module: { exports: {} }, window: { location: { pathname: '/', hash, search: '?ref=old' }, history: { state: null, replaceState: (...args) => calls.push(args) } } };
-    vm.runInNewContext(code, context);
-    context.module.exports.migrateLegacyLink();
+    const routes = await loadRoutes({ location: { pathname: '/', hash, search: '?ref=old' }, history: { state: null, replaceState: (...args) => calls.push(args) } });
+    routes.migrateLegacyLink();
     if (hash === '#projekte' || hash === '#fotografie' || hash === '#ueber-mich') assert.equal(calls[0][2], `/${hash.slice(1)}?ref=old`);
     else assert.equal(calls.length, 0, `Anchor must be retained: ${hash}`);
   }
@@ -56,13 +64,16 @@ test('legacy hashes migrate with query strings intact', async () => {
 test('sitemap and Vercel rules cover all portfolio pages', async () => {
   const sitemap = await readFile('dist/sitemap.xml', 'utf8');
   const sourceSitemap = await readFile('public/sitemap.xml', 'utf8');
-  assert.equal(sitemap, sourceSitemap);
-  assert.equal((sitemap.match(/<loc>/g) || []).length, examples.length);
+  for (const [, url] of sourceSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) assert.ok(sitemap.includes(`<loc>${url}</loc>`));
+  const routes = await loadRoutes();
+  assert.equal((sitemap.match(/<loc>/g) || []).length, Object.keys(routes.pages).length);
   for (const [path] of examples) assert.ok(sitemap.includes(`<loc>${origin}${path}</loc>`));
   const config = JSON.parse(await readFile('vercel.json', 'utf8'));
   assert.equal(config.trailingSlash, false);
-  assert.equal(config.rewrites.length, examples.length - 1);
-  for (const rule of config.rewrites) await access(`dist${rule.destination}`);
+  const fixedRules = config.rewrites.filter(rule => !rule.source.includes(':'));
+  assert.equal(fixedRules.length, examples.length - 1);
+  for (const rule of fixedRules) await access(`dist${rule.destination}`);
+  assert.ok(config.rewrites.some(rule => rule.source === '/insights/:slug' && rule.destination === '/insights/:slug/index.html'));
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
 });
 
@@ -119,13 +130,10 @@ test('software page contains only the software project, without the general port
  });
 
 test('SEO metadata stays consistent across prerendered pages and client routes', async () => {
-  const source = await readFile('src/routes.ts', 'utf8');
-  const { code } = await transformWithEsbuild(source, 'routes.ts', { loader: 'ts', format: 'cjs' });
-  const context = { module: { exports: {} } };
-  vm.runInNewContext(code, context);
+  const routes = await loadRoutes();
   const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
   const titles = new Set();
-  for (const [path, meta] of Object.entries(context.module.exports.pages)) {
+  for (const [path, meta] of Object.entries(routes.pages)) {
     const html = await readFile(`dist${path === '/' ? '' : path}/index.html`, 'utf8');
     assert.ok(html.includes(`<title>${escape(meta.title)}</title>`));
     assert.ok(html.includes(`<meta name="description" content="${escape(meta.description)}"`));
@@ -136,8 +144,8 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
     assert.ok(!html.includes('.vercel.app'));
     assert.ok(!titles.has(meta.title));
     titles.add(meta.title);
-    const structuredData = [...html.matchAll(/<script type="application\/ld\+json">([^<]+)<\/script>/g)];
-    assert.equal(structuredData.length, 1, `${path}: one JSON-LD block`);
+    const structuredData = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([^<]+)<\/script>/g)];
+    assert.equal(structuredData.length, path.startsWith('/insights/') ? 2 : 1, `${path}: JSON-LD blocks`);
     assert.equal((html.match(/<meta name="description"/g) || []).length, 1);
     const data = JSON.parse(structuredData[0][1]);
     assert.equal(data['@context'], 'https://schema.org');

@@ -1,3 +1,4 @@
+import { imageProps } from "../../data/responsiveImage";
 import { motion, useReducedMotion } from "motion/react";
 import styles from "./About.module.scss";
 
@@ -11,14 +12,14 @@ export default function About() {
         whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: .18 }}
         transition={{ duration: reduced ? 0 : 1.1, ease: [.22, 1, .36, 1] }}>
         <motion.img
-          src="/images/about-anna-red.jpg"
+          {...imageProps("/images/about-anna-red.jpg", "(max-width: 760px) min(86vw, 440px), 460px")}
           alt="Anna Filippi in einem roten Kleid vor einer hellen Wand"
           loading="lazy"
           initial={reduced ? false : { scale: 1.04 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: reduced ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] }}
-        />
+        decoding="async" />
       </motion.div>
       <motion.div className={styles.content}
         initial={reduced ? false : { opacity: 0, x: 55 }}

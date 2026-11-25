@@ -1,3 +1,4 @@
+import { imageProps } from "../../data/responsiveImage";
 import { legal } from "../../config/legal";
 import { contact } from "../../config/contact";
 import styles from "./Footer.module.scss";
@@ -13,12 +14,10 @@ export default function Footer() {
     <footer className={styles.footer} aria-label="Seitenabschluss">
       <img
         className={styles.background}
-        src="/images/footer.png"
+        {...imageProps("/images/footer.png", "100vw")}
         alt=""
-        width="1456"
-        height="816"
         loading="lazy"
-      />
+      decoding="async" />
       <div className={styles.inner} data-nosnippet="">
         <div className={styles.topline}>
           <span>DIGITAL ATELIER</span>
@@ -39,7 +38,7 @@ export default function Footer() {
           <p className={styles.personalNote}>Mit Kreativität, Technologie und einem Blick fürs Detail entwickle ich digitale Lösungen für dein Business.</p>
           <p className={styles.signature}>Mit Liebe,<br /><span>Anna Filippi</span></p>
         </div>
-        <img className={styles.mobileFlower} src="/images/footer-orchid-mobile.png" alt="" aria-hidden="true" width="1536" height="1024" loading="lazy" decoding="async" />
+        <img className={styles.mobileFlower} {...imageProps("/images/footer-orchid-mobile.png", "100vw")} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Anna Filippi</span>
           <nav className={styles.legal} aria-label="Rechtliche Informationen">

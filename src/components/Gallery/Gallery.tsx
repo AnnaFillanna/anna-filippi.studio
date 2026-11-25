@@ -1,3 +1,4 @@
+import { imageProps } from "../../data/responsiveImage";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import styles from "./Gallery.module.scss";
@@ -272,12 +273,10 @@ export default function Gallery() {
         </div>
         <div className={styles.heroVisual}>
           <img
-            src="/images/gallery-fillianna.jpg"
+            {...imageProps("/images/gallery-fillianna.jpg", "(max-width: 760px) min(86vw, 320px), 380px")}
             alt="FILLIANNA-Schmuckschachtel mit goldfarbener Halskette auf Leopardenmuster und hellem Stoff"
-            width="1867"
-            height="2333"
             fetchPriority="high"
-          />
+          decoding="async" />
         </div>
       </div>
       <div
@@ -327,7 +326,7 @@ export default function Gallery() {
               aria-haspopup="dialog"
             >
               <img
-                src={photoSource(item.id)}
+                {...imageProps(photoSource(item.id), "(max-width: 760px) min(86vw, 320px), 40vw")}
                 alt={item.alt}
                 width={dimensions[item.id].width}
                 height={dimensions[item.id].height}
@@ -379,9 +378,9 @@ export default function Gallery() {
             </div>
             <img
               className={styles.fullImage}
-              src={photoSource(photo.id)}
+              {...imageProps(photoSource(photo.id), "(max-width: 760px) 92vw, 70vw")}
               alt={photo.alt}
-            />
+            decoding="async" />
             <div className={styles.viewerBottom}>
               <button type="button" onClick={() => step(-1)}>
                 ZURÜCK

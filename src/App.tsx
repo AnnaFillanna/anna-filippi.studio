@@ -1,7 +1,9 @@
+import { imageProps } from "./data/responsiveImage";
 import { useEffect, useRef, useState } from "react";
 import { MotionConfig } from "motion/react";
 import { BrowserRouter, StaticRouter, Route, Routes, useLocation, useNavigate } from "react-router";
-import { pages, origin, pageForPath, type PagePath } from "./routes";
+import { pages, origin, pageForPath, insightStructuredData, type PagePath } from "./routes";
+import { getInsight } from "./data/insights";
 import AboutPage from "./components/AboutPage/AboutPage";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
@@ -17,6 +19,8 @@ import FormSolutions from './components/BookingDemo/FormSolutions';
 import Contact from "./components/Contact/Contact";
 import Impressum from "./components/LegalPages/Impressum";
 import Datenschutz from "./components/LegalPages/Datenschutz";
+import Insights from "./components/Insights/Insights";
+import InsightPage from "./components/Insights/InsightPage";
 
 export type InfoTopic =
   | "Über mich"
@@ -71,14 +75,37 @@ function Site() {
     return () => document.removeEventListener('click', followLink);
   }, [navigate]);
   useEffect(() => {
-    const meta = pages[pagePath];
+    const meta = pages[pagePath] ?? { title: 'Artikel nicht gefunden | Anna Filippi Studio', description: 'Dieser Artikel ist nicht verfügbar.' };
     const canonical = origin + pagePath;
+    const article = pagePath.startsWith('/insights/') ? getInsight(pagePath.slice('/insights/'.length)) : undefined;
     document.title = meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', meta.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', meta.description);
     document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonical);
+    document.querySelector('meta[property="og:type"]')?.setAttribute('content', article ? 'article' : 'website');
+    document.getElementById('insight-structured-data')?.remove();
+    document.getElementById('insight-og-image')?.remove();
+    document.getElementById('insight-robots')?.remove();
+    if (article) {
+      const structuredData = document.createElement('script');
+      structuredData.id = 'insight-structured-data';
+      structuredData.type = 'application/ld+json';
+      structuredData.textContent = JSON.stringify(insightStructuredData(article)).replaceAll('<', '\\u003c');
+      document.head.append(structuredData);
+      const image = document.createElement('meta');
+      image.id = 'insight-og-image';
+      image.setAttribute('property', 'og:image');
+      image.content = origin + article.image.src;
+      document.head.append(image);
+    } else if (pagePath.startsWith('/insights/')) {
+      const robots = document.createElement('meta');
+      robots.id = 'insight-robots';
+      robots.name = 'robots';
+      robots.content = 'noindex, nofollow';
+      document.head.append(robots);
+    }
     const frame = requestAnimationFrame(() => {
       let id = location.hash.slice(1);
       try { id = decodeURIComponent(id); } catch { /* Retain malformed hashes as harmless literal anchors. */ }
@@ -86,7 +113,7 @@ function Site() {
       if (target) target.scrollIntoView();
       else {
         window.scrollTo({ top: 0, behavior: 'instant' });
-        const heading = pagePath === '/kontakt' ? 'contact-title' : pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : (pagePath === '/softwareentwicklung' || pagePath === '/dana-tattoo-studio') ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : null;
+        const heading = pagePath === '/kontakt' ? 'contact-title' : pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : (pagePath === '/softwareentwicklung' || pagePath === '/dana-tattoo-studio') ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : pagePath === '/insights' ? 'insights-title' : pagePath.startsWith('/insights/') ? 'insight-title' : null;
         if (heading) document.getElementById(heading)?.focus({ preventScroll: true });
       }
     });
@@ -109,6 +136,8 @@ function Site() {
           <Route path="/fotografie" element={<Gallery />} />
           <Route path="/ueber-mich" element={<AboutPage />} />
           <Route path="/kontakt" element={<Contact />} />
+          <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/:slug" element={<InsightPage />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
         </Routes>
@@ -116,7 +145,7 @@ function Site() {
       </main>
       {pagePath === '/' || pagePath === '/softwareentwicklung' ? (
         <div className="floral-closing">
-          <img className="floral-closing-image" src="/images/footer.png" alt="" width="1456" height="816" loading="lazy" />
+          <img className="floral-closing-image" {...imageProps("/images/footer.png", "100vw")} alt="" loading="lazy" decoding="async" />
           <BookingDemo />
           <Footer />
         </div>

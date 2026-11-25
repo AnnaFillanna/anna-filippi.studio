@@ -1,0 +1,79 @@
+@use '../../styles/variables' as *;
+
+.page {
+  background: $ivory;
+  color: $bordeaux;
+  padding: clamp(110px, 12vw, 150px) $page-gutter $space-section;
+  min-height: 60vh;
+}
+.header { max-width: 760px; margin-bottom: $space-xl; }
+.eyebrow { font-size: .875rem; font-weight: 600; letter-spacing: .1em; margin-bottom: $space-sm; }
+.header h1, .page > h1 { font: 400 #{$text-page}/1.12 $serif; margin: 0 0 $space-md; }
+.lead { @include reading-text; color: $text-muted; max-width: 62ch; }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: $space-lg; }
+.filters button {
+  padding: 10px 16px;
+  min-height: 44px;
+  border: 1px solid #650d2055;
+  border-radius: 999px;
+  background: transparent;
+  font-size: .875rem;
+  color: $bordeaux;
+  &[aria-pressed='true'] { background: $bordeaux; color: $ivory; }
+}
+.empty { @include reading-text; color: $text-muted; max-width: 60ch; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: $space-lg; list-style: none; margin: 0; padding: 0; }
+.card {
+  min-width: 0;
+  img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; margin-bottom: $space-md; }
+  h2 { font: 500 1.8rem/1.2 $serif; margin-bottom: $space-sm; }
+  p:not(.eyebrow) { color: $text-muted; }
+}
+.textLink { display: inline-block; margin-top: $space-sm; border-bottom: 1px solid; }
+.article { max-width: 1200px; margin: auto; }
+.breadcrumbs { font-size: .875rem; margin-bottom: $space-lg; a { text-decoration: underline; text-underline-offset: 3px; } }
+.cover { width: 100%; height: auto; max-height: 600px; object-fit: cover; }
+.content {
+  max-width: 72ch;
+  color: $black;
+  @include reading-text;
+  section { margin-top: $space-xl; scroll-margin-top: 24px; }
+  h2 { font: 500 2rem/1.2 $serif; color: $bordeaux; margin: 0 0 $space-md; }
+  h3 { font: 500 1.5rem/1.3 $serif; color: $bordeaux; margin: $space-md 0 $space-sm; }
+  p + p { margin-top: $space-sm; }
+  p + ul, ul + p { margin-top: $space-sm; }
+  ul { padding-left: 1.5em; }
+  a:not(.cta) { color: $bordeaux; text-decoration: underline; text-underline-offset: 3px; }
+}
+.content .meta { color: $text-muted; font-size: .875rem; margin-top: $space-xl; }
+.toc {
+  margin-top: $space-md;
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    width: fit-content;
+    color: $bordeaux;
+    font: 500 1.25rem/1.3 $serif;
+    cursor: pointer;
+    list-style: none;
+    &::-webkit-details-marker { display: none; }
+    &:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
+  }
+  details[open] summary svg { transform: rotate(180deg); }
+  ul { margin: 0 0 $space-sm; }
+}
+.content .toc + section { margin-top: $space-md; }
+.example { border-left: 2px solid $bordeaux; padding-left: $space-md; }
+.tableWrap { max-width: 100%; overflow-x: auto; margin: $space-md 0; }
+.tableWrap table { border-collapse: collapse; width: 100%; text-align: left; }
+.tableWrap caption { text-align: left; font-weight: 600; margin-bottom: $space-sm; }
+.tableWrap th, .tableWrap td { padding: 10px; border-bottom: 1px solid #650d2033; vertical-align: top; }
+.cta { display: inline-block; max-width: 100%; margin-top: $space-xl; padding: 12px 20px; border-radius: 999px; background: $bordeaux; color: $ivory; text-align: center; text-wrap: balance; }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .page { padding-top: 110px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .content h2 { font-size: 1.75rem; }
+}

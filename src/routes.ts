@@ -1,5 +1,7 @@
+import { publishedInsights, validateInsights, type InsightArticle } from './data/insights';
+
 export const origin = 'https://annafilippi.studio';
-export const pages = {
+const basePages = {
   '/': {
     title: 'Webdesign für kleine Unternehmen in Andernach | Anna Filippi',
     description: 'Website erstellen lassen in Andernach bei Koblenz: Webdesign für Selbstständige und kleine Unternehmen, Website-Relaunch und Online-Shops. Persönlich betreut.',
@@ -27,12 +29,53 @@ export const pages = {
   '/kontakt': { title: 'Kontakt — Anna Filippi Studio', description: 'Erzähl mir von deiner Idee. Gemeinsam setzen wir dein Projekt um – persönlich und mit Liebe zum Detail.' },
   '/impressum': { title: 'Impressum — Anna Filippi', description: 'Impressum von Anna Filippi Studio in Andernach: Anbieterkennzeichnung und Kontaktdaten.' },
   '/datenschutz': { title: 'Datenschutzerklärung — Anna Filippi', description: 'Datenschutzerklärung für annafilippi.studio: Informationen zur Verarbeitung personenbezogener Daten und zu deinen Rechten.' },
+  '/insights': { title: 'Wissen & Insights | Anna Filippi Studio', description: 'Wissen und Insights zu Webdesign, SEO, E-Commerce, KI und Produktfotografie für fundierte digitale Entscheidungen.' },
 } as const;
-export type PagePath = keyof typeof pages;
+
+export function insightPath(article: InsightArticle): string {
+  return `/insights/${article.slug}`;
+}
+
+validateInsights(publishedInsights);
+export const pages: Record<string, { title: string; description: string }> = {
+  ...basePages,
+  ...Object.fromEntries(publishedInsights.map(article => [
+    insightPath(article), { title: article.metaTitle, description: article.metaDescription },
+  ])),
+};
+export type PagePath = string;
+
+export function insightStructuredData(article: InsightArticle) {
+  const url = origin + insightPath(article);
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${url}#article`,
+        headline: article.title,
+        description: article.description,
+        image: origin + article.image.src,
+        datePublished: article.publishedAt,
+        dateModified: article.updatedAt,
+        author: { '@type': 'Person', '@id': `${origin}/#anna-filippi`, name: article.author, url: `${origin}/ueber-mich` },
+        mainEntityOfPage: url,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${origin}/` },
+          { '@type': 'ListItem', position: 2, name: 'Wissen & Insights', item: `${origin}/insights` },
+          { '@type': 'ListItem', position: 3, name: article.title, item: url },
+        ],
+      },
+    ],
+  };
+}
 
 export function pageForPath(pathname: string): PagePath {
   const path = pathname.replace(/\/+$/, '') || '/';
-  return path === '/kontakt' || path === '/dana-tattoo-studio' || path === '/impressum' || path === '/datenschutz' || path === '/softwareentwicklung' || path === '/projekte' || path === '/fotografie' || path === '/ueber-mich' ? path : '/';
+  return Object.hasOwn(pages, path) || path.startsWith('/insights/') ? path : '/';
 }
 
 export function migrateLegacyLink() {

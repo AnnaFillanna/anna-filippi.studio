@@ -41,6 +41,7 @@ export default function Header() {
         </a>
 
         <a href="/ueber-mich" onClick={() => setOpen(false)}>Über mich</a>
+        <a href="/insights" onClick={() => setOpen(false)}>Insights</a>
         <a href="/kontakt" onClick={() => setOpen(false)}>Kontakt</a>
       </nav>
     </header>

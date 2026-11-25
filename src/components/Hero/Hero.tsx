@@ -1,3 +1,4 @@
+import { imageProps } from "../../data/responsiveImage";
 import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import styles from "./Hero.module.scss";
@@ -18,12 +19,10 @@ export default function Hero() {
     >
       <div className={styles.portrait}>
         <img
-          src="/images/anna-laptop-original.jpg"
+          {...imageProps("/images/anna-laptop-original.jpg", "(max-width: 600px) min(72vw, 310px), (max-width: 760px) 88vw, max(480px, 37.5vw)")}
           alt="Anna Filippi im schwarzen Blazer mit einem Laptop."
-          width="853"
-          height="1280"
           fetchPriority="high"
-        />
+        decoding="async" />
       </div>
       <svg className={styles.curve} viewBox="0 0 1280 720" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 515 C70 700 290 665 455 730 M1000 460 C1080 365 1160 325 1300 290" /></svg>
       <div className={styles.copy}>

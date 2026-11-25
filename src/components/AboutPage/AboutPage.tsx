@@ -1,3 +1,4 @@
+import { imageProps } from "../../data/responsiveImage";
 import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router';
 import styles from './AboutPage.module.scss';
@@ -40,7 +41,7 @@ export default function AboutPage() {
           </ul>
         </motion.div>
         <motion.div className={styles.portrait} {...reveal(30)}>
-          <img src="/images/about-anna-red.jpg" alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" width="993" height="1600" fetchPriority="high" />
+          <img {...imageProps("/images/about-anna-red.jpg", "(max-width: 760px) min(86vw, 440px), 460px")} alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" fetchPriority="high" decoding="async" />
         </motion.div>
       </div>
       <a className={styles.back} href="/kontakt">Erzähl mir von deiner Idee</a>

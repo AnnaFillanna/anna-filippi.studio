@@ -1,3 +1,4 @@
+import { imageProps } from "../../data/responsiveImage";
 import { projects } from "../../data/projects";
 import { useState } from "react";
 import { motion } from "motion/react";
@@ -43,26 +44,22 @@ export default function Projects({
         <div className={styles.laptop}>
           <div className={`${styles.laptopScreen} ${project.imagePrefix === "kavro" ? styles.kavroScreen : ""}`}>
             <img
-              src={`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`}
+              {...imageProps(`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`, "(max-width: 1000px) 80vw, 40vw")}
               alt={`Desktop-Ansicht von ${project.name}`}
-              width="1440"
-              height="900"
               loading={index % projects.length === 0 ? "eager" : "lazy"}
-            />
+            decoding="async" />
           </div>
           <div className={styles.laptopBase} aria-hidden="true" />
         </div>
         <div className={styles.tablet} aria-hidden="true">
-          <img src={project.tabletImage ?? `/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`} alt="" loading="lazy" />
+          <img {...imageProps(project.tabletImage ?? `/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`, "(max-width: 1000px) 28vw, 16vw")} alt="" loading="lazy" decoding="async" />
         </div>
         <div className={`${styles.phone} ${project.imagePrefix === "kavro" ? styles.kavroPhone : ""}`}>
           <img
-            src={`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
+            {...imageProps(`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`, "(max-width: 1000px) 20vw, 12vw")}
             alt={project.mobileImageAlt ?? `Mobile Ansicht von ${project.name}`}
-            width="390"
-            height="844"
             loading="lazy"
-          />
+          decoding="async" />
         </div>
       </a>
       <div className={styles.copy}>
@@ -145,25 +142,21 @@ export default function Projects({
             <div className={styles.laptop}>
               <div className={styles.laptopScreen}>
                 <img
-                  src={`/images/projects/${selected.imagePrefix}-desktop.${selected.imageExtension}`}
+                  {...imageProps(`/images/projects/${selected.imagePrefix}-desktop.${selected.imageExtension}`, "(max-width: 1000px) 80vw, 40vw")}
                   alt={`Startseite von ${selected.name}`}
-                  width="1440"
-                  height="900"
                   fetchPriority="high"
-                />
+                decoding="async" />
               </div>
               <div className={styles.laptopBase} aria-hidden="true" />
             </div>
             <div className={styles.tablet} aria-hidden="true">
-              <img src={selected.tabletImage ?? `/images/projects/${selected.imagePrefix}-mobile.${selected.mobileImageExtension ?? selected.imageExtension}`} alt="" loading="lazy" />
+              <img {...imageProps(selected.tabletImage ?? `/images/projects/${selected.imagePrefix}-mobile.${selected.mobileImageExtension ?? selected.imageExtension}`, "(max-width: 1000px) 28vw, 16vw")} alt="" loading="lazy" decoding="async" />
             </div>
             <div className={styles.phone}>
               <img
-                src={`/images/projects/${selected.imagePrefix}-mobile.${selected.mobileImageExtension ?? selected.imageExtension}`}
+                {...imageProps(`/images/projects/${selected.imagePrefix}-mobile.${selected.mobileImageExtension ?? selected.imageExtension}`, "(max-width: 1000px) 20vw, 12vw")}
                 alt={selected.mobileImageAlt ?? `Mobile Ansicht von ${selected.name}`}
-                width="390"
-                height="844"
-              />
+              decoding="async" />
             </div>
           </a>
           <div className={styles.caseDetails}>

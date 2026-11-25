@@ -33,6 +33,14 @@
     {
       "source": "/kontakt",
       "destination": "/kontakt/index.html"
+    },
+    {
+      "source": "/insights",
+      "destination": "/insights/index.html"
+    },
+    {
+      "source": "/insights/:slug",
+      "destination": "/insights/:slug/index.html"
     }
   ]
 }

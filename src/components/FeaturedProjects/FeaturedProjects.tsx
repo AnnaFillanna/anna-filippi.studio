@@ -1,3 +1,4 @@
+import { imageProps } from "../../data/responsiveImage";
 import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { projects } from '../../data/projects';
@@ -119,16 +120,16 @@ export default function FeaturedProjects() {
                 <div className={styles.image}>
                   <div className={styles.deviceScene}>
                     <div className={styles.desktopDevice}>
-                      <img src={`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`}
-                        alt={`Desktop-Vorschau: ${project.name}`} width={1440} height={900}
+                      <img {...imageProps(`/images/projects/${project.imagePrefix}-desktop.${project.imageExtension}`, "(max-width: 760px) 70vw, 460px")}
+                        alt={`Desktop-Vorschau: ${project.name}`}
                         loading="lazy" decoding="async" />
                     </div>
                     <div className={styles.tabletDevice} aria-hidden="true">
-                      <img src={project.tabletImage ?? `/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
+                      <img {...imageProps(project.tabletImage ?? `/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`, "(max-width: 760px) 26vw, 180px")}
                         alt="" loading="lazy" decoding="async" />
                     </div>
                     <div className={styles.phoneDevice} aria-hidden="true">
-                      <img src={`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`}
+                      <img {...imageProps(`/images/projects/${project.imagePrefix}-mobile.${project.mobileImageExtension ?? project.imageExtension}`, "(max-width: 760px) 16vw, 110px")}
                         alt="" loading="lazy" decoding="async" />
                     </div>
                   </div>
