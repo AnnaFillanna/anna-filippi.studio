@@ -122,6 +122,17 @@ test('about page includes the requested personal text and original portrait', as
   assert.match(html, /<a\b[^>]*href="\/kontakt"[^>]*>Kontakt aufnehmen<\/a>/);
 });
 
+test('about page presents the professional focus areas as accessible text', async () => {
+  const html = await readFile('dist/ueber-mich/index.html', 'utf8');
+  const portrait = html.indexOf('alt="Anna Filippi in einem roten Kleid vor einer hellen Wand"');
+  const heading = html.indexOf('Meine fachlichen Schwerpunkte');
+  assert.ok(portrait >= 0 && heading > portrait);
+  const map = html.slice(html.lastIndexOf('<section', heading), html.indexOf('</section>', heading));
+  for (const text of ['Fachliche Ausrichtung und Weiterentwicklungsbereiche', 'Full-Stack Webentwicklung', 'Technical SEO', 'AEO &amp; GEO', 'Analytics', 'Automation', 'E-Commerce', 'KI-Integration']) assert.ok(map.includes(text), text);
+  assert.match(map, /<svg[^>]*aria-hidden="true"[^>]*>/);
+  assert.equal((map.match(/<line\b/g) ?? []).length, 6);
+});
+
 test('software page contains only the software project, without the general portfolio introduction', async () => {
   const html = await readFile('dist/softwareentwicklung/index.html', 'utf8');
   assert.ok(!html.includes('Ideen werden digital.'));

@@ -1,7 +1,10 @@
 import { imageProps } from "../../data/responsiveImage";
 import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router';
+import ExpertiseMap from '../ExpertiseMap/ExpertiseMap';
 import styles from './AboutPage.module.scss';
+
+const expertiseAreas = ['Technical SEO', 'Automation', 'Analytics', 'AEO & GEO', 'E-Commerce', 'KI-Integration'];
 
 export default function AboutPage() {
   const reduced = useReducedMotion();
@@ -40,10 +43,9 @@ export default function AboutPage() {
         </motion.div>
         <motion.div className={styles.portrait} {...reveal(30)}>
           <img {...imageProps("/images/about-anna-red.jpg", "(max-width: 760px) min(86vw, 440px), 460px")} alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" fetchPriority="high" decoding="async" />
+          <ExpertiseMap title="Meine fachlichen Schwerpunkte" center="Full-Stack Webentwicklung" areas={expertiseAreas} />
         </motion.div>
-      </div>
-      <div className={styles.details}>
-        <section>
+        <section className={styles.journey}>
           <h2>Mein Weg zur Webentwicklung</h2>
           <div className={styles.text}>
             <p>Mein Interesse an Technik begann bereits während meiner Schulzeit. Ich absolvierte die <strong>Fachoberschule im Bereich Technik und Elektronik</strong>.</p>
@@ -53,27 +55,29 @@ export default function AboutPage() {
             <p>Was ich lerne, setze ich gerne direkt in meinen Projekten um.</p>
           </div>
         </section>
-        <section>
+        <section className={styles.approach}>
           <h2>So arbeite ich</h2>
           <div className={styles.text}>
             <p>Mir ist der <strong>persönliche Kontakt</strong> wichtig. Ich möchte wissen, was du mit deiner Webseite erreichen möchtest, bevor ich mit der Entwicklung beginne.</p>
             <p>Du musst dich dabei nicht mit technischen Details auskennen. Ich erkläre dir, welche Möglichkeiten es gibt und welche davon für dein Unternehmen sinnvoll sind.</p>
           </div>
         </section>
-        <section>
-          <h2>Weiterbildung &amp; Zertifikate</h2>
-          <div className={styles.text}>
-            <p>Neben der <strong>Webentwicklung</strong> bilde ich mich in den Bereichen <strong>digitales Marketing</strong>, <strong>Suchmaschinenoptimierung</strong> und <strong>E-Commerce</strong> weiter.</p>
-            <p>Meine abgeschlossenen Zertifizierungen und aktuellen Weiterbildungen findest du hier im Überblick.</p>
-          </div>
-        </section>
-        <section>
-          <h2>Lass uns über deine Idee sprechen.</h2>
-          <div className={styles.text}>
-            <p>Ob du eine neue Webseite brauchst oder deine bestehende verbessern möchtest – schreib mir einfach. Ich freue mich, von dir zu hören.</p>
-          </div>
-          <Link className={styles.back} to="/kontakt">Kontakt aufnehmen</Link>
-        </section>
+        <div className={styles.details}>
+          <section>
+            <h2>Weiterbildung &amp; Zertifikate</h2>
+            <div className={styles.text}>
+              <p>Neben der <strong>Webentwicklung</strong> bilde ich mich in den Bereichen <strong>digitales Marketing</strong>, <strong>Suchmaschinenoptimierung</strong> und <strong>E-Commerce</strong> weiter.</p>
+              <p>Meine abgeschlossenen Zertifizierungen und aktuellen Weiterbildungen findest du hier im Überblick.</p>
+            </div>
+          </section>
+          <section>
+            <h2>Lass uns über deine Idee sprechen.</h2>
+            <div className={styles.text}>
+              <p>Ob du eine neue Webseite brauchst oder deine bestehende verbessern möchtest – schreib mir einfach. Ich freue mich, von dir zu hören.</p>
+            </div>
+            <Link className={styles.back} to="/kontakt">Kontakt aufnehmen</Link>
+          </section>
+        </div>
       </div>
       <motion.div className={styles.portraitDivider} aria-hidden="true"
         initial={reduced ? false : { scaleX: 0 }} whileInView={{ scaleX: 1 }}
