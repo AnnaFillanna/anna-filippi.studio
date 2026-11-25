@@ -29,7 +29,10 @@ export default function Insights() {
               <li key={article.slug}>
                 <article className={styles.card}>
                   <Link to={insightPath(article)}>
-                    <img src={article.image.src} alt={article.image.alt} width={article.image.width} height={article.image.height} loading="lazy" decoding="async" />
+                    <picture>
+                      {article.image.webpSrc && <source srcSet={article.image.webpSrc} type="image/webp" />}
+                      <img src={article.image.src} alt={article.image.alt} width={article.image.width} height={article.image.height} loading="lazy" decoding="async" />
+                    </picture>
                     <p className={styles.eyebrow}>{article.category} · {article.readingMinutes} Min. Lesezeit</p>
                     <h2>{article.title}</h2>
                     <p>{article.description}</p>

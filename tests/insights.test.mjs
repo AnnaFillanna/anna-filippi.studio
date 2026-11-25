@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
+import { cp, mkdir, mkdtemp, readFile, rm, stat, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { execFile } from 'node:child_process';
@@ -113,4 +113,106 @@ test('der zweite Artikel enthält den Vergleich und ist mit dem ersten Artikel v
   assert.ok(article.includes('>Kontakt aufnehmen</a>'));
   assert.ok(first.includes(`/insights/${slug}`));
   assert.ok(article.includes('/insights/was-kostet-eine-professionelle-website'));
+});
+
+test('der SEO-und-AEO-Artikel wird mit Tabelle, FAQ und Metadaten erzeugt', async () => {
+  const slug = 'seo-und-aeo-fuer-kleine-unternehmen';
+  const overview = await readFile('dist/insights/index.html', 'utf8');
+  const article = await readFile(`dist/insights/${slug}/index.html`, 'utf8');
+  const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert.ok(overview.includes('SEO und AEO: Wie werden kleine Unternehmen online sichtbar?'));
+  assert.ok(sitemap.includes(`${origin}/insights/${slug}`));
+  assert.ok(article.includes('alt="Lupe auf hellem Untergrund"'));
+  assert.ok(article.includes('<th scope="col">SEO</th>'));
+  assert.ok(article.includes('<td>Sichtbarkeit in generierten Antworten</td>'));
+  assert.ok(article.includes('E-E-A-T ist dabei kein einzelner Rankingfaktor mit einem messbaren Punktestand.'));
+  assert.ok(article.includes('Kann eine Erwähnung in ChatGPT garantiert werden?'));
+  assert.ok(article.includes('Entdecke individuelle digitale Lösungen für dein Unternehmen.'));
+  assert.ok(article.includes('/insights/was-kostet-eine-professionelle-website'));
+  assert.ok(article.includes(`rel="canonical" href="${origin}/insights/${slug}"`));
+  const raw = article.match(/<script id="insight-structured-data" type="application\/ld\+json">([^<]+)<\/script>/)?.[1];
+  assert.ok(raw);
+  assert.equal(JSON.parse(raw)['@graph'][0].headline, 'SEO und AEO: Wie werden kleine Unternehmen online sichtbar?');
+});
+
+test('der E-Commerce-Artikel enthält beide Vergleiche, FILLANNA und FAQ', async () => {
+  const slug = 'e-commerce-fuer-kleine-unternehmen';
+  const overview = await readFile('dist/insights/index.html', 'utf8');
+  const article = await readFile(`dist/insights/${slug}/index.html`, 'utf8');
+  const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert.ok(overview.includes(`/insights/${slug}`));
+  assert.ok(sitemap.includes(`${origin}/insights/${slug}`));
+  assert.ok(article.includes('/images/insights/e-commerce-arbeitsplatz.jpg'));
+  assert.ok(article.includes('aria-label="Shopsysteme im Vergleich" tabindex="0"'));
+  assert.ok(article.includes('<th scope="col">WooCommerce</th>'));
+  assert.ok(article.includes('aria-label="Wichtige Kennzahlen im E-Commerce" tabindex="0"'));
+  assert.ok(article.includes('<td>Repeat Purchase Rate</td>'));
+  assert.ok(article.includes('Einblick in die Praxis: FILLANNA'));
+  assert.ok(article.includes('Kann ein Online-Shop mit meinem Unternehmen wachsen?'));
+  assert.ok(article.includes('Deine Produkte. Deine Marke. Deine digitalen Möglichkeiten.'));
+  assert.ok(article.includes(`rel="canonical" href="${origin}/insights/${slug}"`));
+  const raw = article.match(/<script id="insight-structured-data" type="application\/ld\+json">([^<]+)<\/script>/)?.[1];
+  assert.ok(raw);
+  assert.equal(JSON.parse(raw)['@graph'][0].headline, 'E-Commerce für kleine Unternehmen – vom Produkt zum professionellen Online-Shop');
+});
+
+test('der KI-Artikel enthält Praxisbeispiele, Vergleiche, FAQ und SEO-Daten', async () => {
+  const slug = 'ki-und-automatisierung-fuer-kleine-unternehmen';
+  const overview = await readFile('dist/insights/index.html', 'utf8');
+  const article = await readFile(`dist/insights/${slug}/index.html`, 'utf8');
+  const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert.ok(overview.includes(`/insights/${slug}`));
+  assert.ok(sitemap.includes(`${origin}/insights/${slug}`));
+  assert.ok(article.includes('/images/insights/ki-automatisierung-roboter.webp'));
+  assert.ok(article.includes('alt="Weißer Roboter vor unscharfem violettem Hintergrund"'));
+  assert.ok(article.includes('aria-label="Klassische und KI-gestützte Automatisierung im Vergleich" tabindex="0"'));
+  assert.ok(article.includes('aria-label="Technologien und Einsatzbereiche" tabindex="0"'));
+  assert.ok(article.includes('<h3>Vertriebsmanagement und CRM</h3>'));
+  assert.ok(article.includes('Ist für jede Automatisierung künstliche Intelligenz notwendig?'));
+  assert.ok(article.includes('Weniger Routine. Mehr Raum für dein Business.'));
+  assert.ok(article.includes(`rel="canonical" href="${origin}/insights/${slug}"`));
+  const raw = article.match(/<script id="insight-structured-data" type="application\/ld\+json">([^<]+)<\/script>/)?.[1];
+  assert.ok(raw);
+  assert.equal(JSON.parse(raw)['@graph'][0].headline, 'KI & Automatisierung für kleine Unternehmen – intelligente Lösungen für den Arbeitsalltag');
+});
+
+test('der Artikel zur Produktfotografie enthält Bild, Tabellen, FAQ und SEO-Daten', async () => {
+  const slug = 'professionelle-produktfotografie';
+  const overview = await readFile('dist/insights/index.html', 'utf8');
+  const article = await readFile(`dist/insights/${slug}/index.html`, 'utf8');
+  const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert.ok(overview.includes(`/insights/${slug}`));
+  assert.ok(sitemap.includes(`${origin}/insights/${slug}`));
+  assert.ok(article.includes('alt="Granatapfel und Granatapfelkerne auf einer spiegelnden Oberfläche"'));
+  assert.ok(article.includes('aria-label="Arten der Produktfotografie und ihre Einsatzbereiche" tabindex="0"'));
+  assert.ok(article.includes('aria-label="Technische Anforderungen an Produktbilder" tabindex="0"'));
+  assert.ok(article.includes('Einblick in die Praxis: FILLANNA'));
+  assert.ok(article.includes('Können Produktfotografie und Webdesign gemeinsam geplant werden?'));
+  assert.ok(article.includes('Dein Produkt. Deine Geschichte. Deine visuelle Identität.'));
+  assert.ok(article.includes(`rel="canonical" href="${origin}/insights/${slug}"`));
+  const raw = article.match(/<script id="insight-structured-data" type="application\/ld\+json">([^<]+)<\/script>/)?.[1];
+  assert.ok(raw);
+  assert.equal(JSON.parse(raw)['@graph'][0].headline, 'Professionelle Produktfotografie – wie Bilder Produkte und Marken zum Leben erwecken');
+});
+
+test('Artikelbilder liefern kleinere WebP-Kopien und behalten JPEG für Social Sharing', async () => {
+  const slugs = [
+    'was-kostet-eine-professionelle-website',
+    'webdesign-agentur-oder-freelancer',
+    'seo-und-aeo-fuer-kleine-unternehmen',
+    'e-commerce-fuer-kleine-unternehmen',
+    'ki-und-automatisierung-fuer-kleine-unternehmen',
+    'professionelle-produktfotografie',
+  ];
+  for (const slug of slugs) {
+    const article = await readFile(`dist/insights/${slug}/index.html`, 'utf8');
+    const webp = article.match(/<source srcSet="(\/images\/insights\/[^"]+\.webp)" type="image\/webp"\/>/)?.[1];
+    const jpeg = article.match(/property="og:image" content="https:\/\/annafilippi\.studio(\/images\/insights\/[^"]+\.jpg)"/)?.[1];
+    assert.ok(webp, slug);
+    assert.ok(jpeg, slug);
+    const data = await readFile(`public${webp}`);
+    assert.equal(data.toString('ascii', 0, 4), 'RIFF');
+    assert.equal(data.toString('ascii', 8, 12), 'WEBP');
+    assert.ok(data.length < (await stat(`public${jpeg}`)).size, slug);
+  }
 });

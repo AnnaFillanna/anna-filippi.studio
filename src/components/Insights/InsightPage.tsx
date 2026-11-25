@@ -49,7 +49,10 @@ export default function InsightPage() {
         <h1 id="insight-title" tabIndex={-1}>{article.title}</h1>
         <p className={styles.lead}>{article.description}</p>
       </header>
-      <img className={styles.cover} src={article.image.src} alt={article.image.alt} width={article.image.width} height={article.image.height} fetchPriority="high" decoding="async" />
+      <picture>
+        {article.image.webpSrc && <source srcSet={article.image.webpSrc} type="image/webp" />}
+        <img className={styles.cover} src={article.image.src} alt={article.image.alt} width={article.image.width} height={article.image.height} fetchPriority="high" decoding="async" />
+      </picture>
       <div className={styles.content}>
         <nav className={styles.toc} aria-label="Inhaltsverzeichnis">
           <details>

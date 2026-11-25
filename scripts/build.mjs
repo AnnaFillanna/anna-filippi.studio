@@ -24,6 +24,7 @@ try {
     const article = articleMetadata(path);
     if (article) {
       await access(`public${new URL(article.image).pathname}`);
+      if (article.webpSrc) await access(`public${article.webpSrc}`);
       html = html.replace('property="og:type" content="website"', 'property="og:type" content="article"');
       const structuredData = JSON.stringify(article.structuredData).replaceAll('<', '\\u003c');
       html = html.replace('</head>', `<meta id="insight-og-image" property="og:image" content="${escape(article.image)}"/><script id="insight-structured-data" type="application/ld+json">${structuredData}</script></head>`);

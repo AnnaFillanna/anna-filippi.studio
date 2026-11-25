@@ -6,7 +6,7 @@ import { getInsight } from './data/insights';
 export { pages, origin };
 export function articleMetadata(path: string) {
   const article = path.startsWith('/insights/') ? getInsight(path.slice('/insights/'.length)) : undefined;
-  return article ? { image: origin + article.image.src, structuredData: insightStructuredData(article) } : null;
+  return article ? { image: origin + article.image.src, webpSrc: article.image.webpSrc, structuredData: insightStructuredData(article) } : null;
 }
 export function render(path: PagePath) {
   return renderToString(<App initialPath={path} />);
