@@ -93,5 +93,24 @@ test('der freigegebene Artikel erscheint mit Inhalt und Bild in Übersicht und S
   assert.ok(article.includes('Wird eine individuell entwickelte Website bei Google besser gefunden?'));
   assert.ok(article.includes('href="#abschluss"'));
   assert.ok(article.includes('Jetzt unverbindlich Kontakt aufnehmen'));
-  assert.ok(!sitemap.includes('/insights/webdesign-agentur-oder-freelancer'));
+});
+
+test('der zweite Artikel enthält den Vergleich und ist mit dem ersten Artikel verknüpft', async () => {
+  const slug = 'webdesign-agentur-oder-freelancer';
+  const overview = await readFile('dist/insights/index.html', 'utf8');
+  const first = await readFile('dist/insights/was-kostet-eine-professionelle-website/index.html', 'utf8');
+  const article = await readFile(`dist/insights/${slug}/index.html`, 'utf8');
+  const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert.ok(overview.includes('Webdesign-Agentur oder Freelancer'));
+  assert.ok(sitemap.includes(`${origin}/insights/${slug}`));
+  assert.ok(article.includes('Arbeitsplatz mit Laptop und Entwurfsplänen an einer Wand'));
+  assert.ok(article.includes('aria-label="Agentur und Freelancer im Vergleich" tabindex="0"'));
+  assert.ok(article.includes('<th scope="col">Freelancer</th>'));
+  assert.ok(article.includes('<td>Abhängig von Spezialisierung und Kapazität</td>'));
+  assert.ok(article.includes('<li>Transparente Angebote</li>'));
+  assert.ok(article.includes('Was ist für kleine Unternehmen sinnvoller?'));
+  assert.ok(article.includes('Lass uns gemeinsam über dein digitales Projekt sprechen.'));
+  assert.ok(article.includes('>Kontakt aufnehmen</a>'));
+  assert.ok(first.includes(`/insights/${slug}`));
+  assert.ok(article.includes('/insights/was-kostet-eine-professionelle-website'));
 });

@@ -66,14 +66,20 @@
 }
 .content .toc + section { margin-top: $space-md; }
 .example { border-left: 2px solid $bordeaux; padding-left: $space-md; }
+.tableHint { display: none; }
 .tableWrap { max-width: 100%; overflow-x: auto; margin: $space-md 0; }
+.tableWrap:focus-visible { outline: 2px solid $bordeaux; outline-offset: 4px; }
 .tableWrap table { border-collapse: collapse; width: 100%; text-align: left; }
 .tableWrap caption { text-align: left; font-weight: 600; margin-bottom: $space-sm; }
 .tableWrap th, .tableWrap td { padding: 10px; border-bottom: 1px solid #650d2033; vertical-align: top; }
 .cta { display: inline-block; max-width: 100%; margin-top: $space-xl; padding: 12px 20px; border-radius: 999px; background: $bordeaux; color: $ivory; text-align: center; text-wrap: balance; }
+.content .ctaIntro { margin-top: $space-xl; }
+.ctaIntro + p .cta { margin-top: $space-sm; }
 @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) {
   .page { padding-top: 110px; }
   .grid { grid-template-columns: minmax(0, 1fr); }
   .content h2 { font-size: 1.75rem; }
+  .tableHint { display: block; color: $text-muted; font-size: .875rem; }
+  .tableHint + .tableWrap { margin-top: $space-xs; }
 }

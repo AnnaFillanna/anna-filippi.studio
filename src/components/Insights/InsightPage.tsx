@@ -12,13 +12,16 @@ function Block({ block }: { block: InsightBlock }) {
     case 'example': return <div className={styles.example}><h3>{block.title}</h3><p>{block.text}</p></div>;
     case 'list': return <ul>{block.items.map((item, index) => <li key={index}>{item}</li>)}</ul>;
     case 'table': return (
-      <div className={styles.tableWrap}>
-        <table>
-          <caption>{block.caption}</caption>
-          <thead><tr>{block.headers.map((header, index) => <th scope="col" key={index}>{header}</th>)}</tr></thead>
-          <tbody>{block.rows.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody>
-        </table>
-      </div>
+      <>
+        <p className={styles.tableHint}>Tabelle bei Bedarf seitlich scrollen →</p>
+        <div className={styles.tableWrap} role="region" aria-label={block.caption} tabIndex={0}>
+          <table>
+            <caption>{block.caption}</caption>
+            <thead><tr>{block.headers.map((header, index) => <th scope="col" key={index}>{header}</th>)}</tr></thead>
+            <tbody>{block.rows.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      </>
     );
   }
 }
@@ -76,6 +79,7 @@ export default function InsightPage() {
         {article.sources.length > 0 && <section id="quellen"><h2>Quellen</h2><ul>{article.sources.map(source => <li key={source.url}><a href={source.url}>{source.label}</a></li>)}</ul></section>}
         {article.links.length > 0 && <section><h2>Mehr entdecken</h2><ul>{article.links.map(link => <li key={link.href}><Link to={link.href}>{link.label}</Link></li>)}</ul></section>}
         {article.closing && <section id="abschluss"><h2>{article.closing.title}</h2>{article.closing.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</section>}
+        {article.cta.text && <p className={styles.ctaIntro}><strong>{article.cta.text}</strong></p>}
         <p><Link className={styles.cta} to={article.cta.href}>{article.cta.label}</Link></p>
         {related.length > 0 && <section><h2>Verwandte Artikel</h2><ul>{related.map(item => <li key={item.slug}><Link to={insightPath(item)}>{item.title}</Link></li>)}</ul></section>}
         <p className={styles.meta}>Von {article.author} · Veröffentlicht <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time> · Aktualisiert <time dateTime={article.updatedAt}>{formatDate(article.updatedAt)}</time></p>
