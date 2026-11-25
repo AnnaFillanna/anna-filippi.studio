@@ -12,8 +12,9 @@ const data = {
 };
 const env = {
   CONTACT_ENABLED: "true",
-  VITE_SUPABASE_URL: "https://test.supabase.co",
-  SUPABASE_SECRET_KEY: "sb_secret_testOnly",
+  SUPABASE_URL: "",
+  VITE_SUPABASE_URL: "",
+  SUPABASE_SECRET_KEY: "",
   CONTACT_FROM: "test@example.org",
   CONTACT_TO: "owner@example.org",
   CONTACT_EMAIL_FROM: "",
@@ -34,7 +35,7 @@ async function request(
   Object.assign(process.env, env, envOverrides);
   let calls = 0;
   const records = new Map();
-  const inserts = [];
+  const externalUrls = [];
   const mails = [];
   const res = {
     headers: {},
@@ -51,12 +52,8 @@ async function request(
     },
   };
   globalThis.fetch = async (url, options) => {
-    if (url === 'https://test.supabase.co/rest/v1/kontaktanfragen') {
-      inserts.push(JSON.parse(options.body));
-      assert.equal(options.headers.Prefer, 'return=minimal');
-      assert.equal(options.headers.apikey, env.SUPABASE_SECRET_KEY);
-      return { status: 201 };
-    }
+    externalUrls.push(url);
+    assert.ok([env.UPSTASH_REDIS_REST_URL, 'https://api.resend.com/emails'].includes(url), 'Unexpected external service');
     if (url === env.UPSTASH_REDIS_REST_URL) {
       const args = JSON.parse(options.body);
       if (args[1] === reserveScript) {
@@ -95,7 +92,7 @@ async function request(
       },
       res,
     );
-    return { ...res, calls, inserts, mails };
+    return { ...res, calls, externalUrls, mails };
   } finally {
     globalThis.fetch = originalFetch;
     for (const k of Object.keys(process.env))
@@ -198,21 +195,24 @@ test('fehlender Absender oder Empfänger verhindert sämtliche externen Aufrufe'
     const r = await request({}, undefined, overrides);
     assert.equal(r.code, 503);
     assert.equal(r.calls, 0);
-    assert.equal(r.inserts.length, 0);
+    assert.ok(!r.externalUrls.some(url => url.includes('supabase')));
     assert.equal(r.mails.length, 0);
   }
 });
 
-test('API stores only the five normalized fields, never request metadata', async () => {
-  const r = await request({ body: { ...data, name: '  Test  ', id: 'injected', status: 'erledigt', created_at: 'invalid' } });
+test('API sends all normalized fields by email without database calls', async () => {
+  const r = await request({ body: { ...data, name: '  Test  ', id: 'injected', status: 'erledigt' } });
   assert.equal(r.code, 200);
-  assert.deepEqual(r.inserts, [{ name: 'Test', email: data.email, project: data.project, budget: '', message: data.message }]);
+  assert.equal(r.mails[0].reply_to, data.email);
+  for (const value of ['Name: Test', data.email, data.project, data.message, 'Keine Angabe']) assert.ok(r.mails[0].text.includes(value));
+  assert.ok(!r.mails[0].text.includes('injected'));
 });
-test('missing server secret fails closed before any external call', async () => {
-  const r = await request({}, undefined, { SUPABASE_SECRET_KEY: '' });
-  assert.equal(r.code, 503);
-  assert.equal(r.calls, 0);
-  assert.equal(r.inserts.length, 0);
+test('missing or unreachable Supabase configuration cannot block contact delivery', async () => {
+  for (const overrides of [{}, { SUPABASE_URL: 'https://paused.invalid', VITE_SUPABASE_URL: 'invalid', SUPABASE_SECRET_KEY: 'invalid' }]) {
+    const r = await request({}, undefined, overrides);
+    assert.equal(r.code, 200);
+    assert.ok(r.externalUrls.every(url => [env.UPSTASH_REDIS_REST_URL, 'https://api.resend.com/emails'].includes(url)));
+  }
 });
 
 test('invalid UUID, missing IP, bad budget and malformed data never reach delivery', async () => {
@@ -229,7 +229,7 @@ test('invalid UUID, missing IP, bad budget and malformed data never reach delive
     const r = await request(overrides);
     assert.notEqual(r.body.ok, true);
     assert.equal(r.calls, 0);
-    assert.equal(r.inserts.length, 0);
+    assert.ok(!r.externalUrls.some(url => url.includes('supabase')));
   }
 });
 test('allowlist rejects missing origins and non-exact production host variants', async () => {
@@ -241,18 +241,18 @@ test('allowlist rejects missing origins and non-exact production host variants',
     assert.equal(r.code, 403);
     assert.equal(r.body.ok, false);
     assert.equal(r.calls, 0);
-    assert.equal(r.inserts.length, 0);
+    assert.ok(!r.externalUrls.some(url => url.includes('supabase')));
   }
 });
 test('explicitly configured production origin is accepted', async () => {
   const r = await request({ headers: { origin: 'https://annafilippi.studio' } }, undefined, { CONTACT_ALLOWED_ORIGINS: 'https://annafilippi.studio' });
   assert.equal(r.code, 200);
-  assert.equal(r.inserts.length, 1);
+  assert.equal(r.mails.length, 1);
 });
 test('rate limit response never reports successful submission or writes to Supabase', async () => {
   const r = await request({}, [{ result: 6 }]);
   assert.equal(r.code, 429);
   assert.equal(r.body.ok, false);
   assert.equal(r.headers['Retry-After'], '600');
-  assert.equal(r.inserts.length, 0);
+  assert.ok(!r.externalUrls.some(url => url.includes('supabase')));
 });

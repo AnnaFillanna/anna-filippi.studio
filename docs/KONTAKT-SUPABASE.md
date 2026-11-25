@@ -1,3 +1,5 @@
+> Historischer Stand vor der Umstellung auf reinen E-Mail-Versand. Für den aktuellen Kontaktablauf gilt [Kontakt über Resend](KONTAKT-RESEND.md). Keine Supabase-Kontaktmigration erneut ausführen.
+
 # Kontaktformular: Supabase und E-Mail
 
 Implementiert, nicht deployed. Kein echter INSERT und keine echte E-Mail wurden ausgeführt. Die produktive Datenbank und ihre Rechte wurden nicht verändert. Der bestehende Schalter `formEnabled: false` bleibt unverändert.

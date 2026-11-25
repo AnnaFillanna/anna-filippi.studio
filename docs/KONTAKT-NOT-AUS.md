@@ -1,3 +1,5 @@
+> Historischer Stand vor der Umstellung auf reinen E-Mail-Versand. Für den aktuellen Kontaktablauf gilt [Kontakt über Resend](KONTAKT-RESEND.md). Keine Supabase-Kontaktmigration erneut ausführen.
+
 # Serverseitiger Kontakt-Schalter
 
 Lokal implementiert, noch nicht veröffentlicht. Production und src/config/contact.ts bleiben deaktiviert. Es wurden keine produktiven Redis-Werte geändert.

@@ -1,3 +1,5 @@
+> Historischer Stand vor der Umstellung auf reinen E-Mail-Versand. Für den aktuellen Kontaktablauf gilt [Kontakt über Resend](KONTAKT-RESEND.md). Keine Supabase-Kontaktmigration erneut ausführen.
+
 # Kontrollierter Kontakt-Live-Test – vorbereitet, nicht ausgeführt
 
 Production bleibt unverändert: CONTACT_ENABLED=false und formEnabled:false.

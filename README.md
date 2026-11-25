@@ -21,7 +21,7 @@ Meine Website für Webentwicklung und Produktfotografie. Sie verbindet Kundenpro
 ## Technische Entscheidungen
 
 - **Vorgerenderte Seiten:** Der Build rendert die React-Komponenten für jede Route als HTML, ergänzt Metadaten und erstellt die Sitemap. Inhalte stehen dadurch schon vor dem Start von JavaScript bereit. → [Build-Skript](scripts/build.mjs)
-- **Kontaktanfragen:** Eine wiederholte Anfrage verwendet denselben Idempotenzschlüssel. Die serverseitige Verarbeitung koordiniert Speicherung und E-Mail-Versand, damit ein erneuter Versuch keine doppelte Anfrage erzeugt. → [Kontaktverarbeitung](server/contact-delivery.js)
+- **Kontaktanfragen:** Eine wiederholte Anfrage verwendet denselben Idempotenzschlüssel. Resend übernimmt den E-Mail-Versand, Redis schützt Wiederholungen. Kontaktanfragen werden nicht mehr in Supabase gespeichert; ein pausiertes Supabase-Projekt blockiert den Versand nicht. → [Kontaktverarbeitung](server/contact-delivery.js)
 - **Projektbewertungen:** Ein gemeinsamer Store bündelt Leseanfragen und aktualisiert mehrere Ansichten desselben Projekts. Fehlgeschlagene Antworten werden als Fehler angezeigt. → [ratingsStore.ts](src/components/ProjectRating/ratingsStore.ts)
 
 ## Tech Stack
@@ -48,6 +48,8 @@ npm run lint
 npm test
 ```
 
-`npm test` erstellt zuerst den TypeScript- und Produktionsbuild und führt anschließend alle 90 Tests aus. Geprüft werden unter anderem gerenderte Routen, Kontaktverarbeitung, Fehlerfälle und Bewertungen. API-Tests verwenden simulierte Dienste. GitHub Actions führt die Prüfungen bei Änderungen an `main` und Pull Requests aus.
+`npm test` erstellt zuerst den TypeScript- und Produktionsbuild und führt anschließend alle vorhandenen Tests aus. Geprüft werden unter anderem gerenderte Routen, Kontaktverarbeitung, Fehlerfälle und Bewertungen. API-Tests verwenden simulierte Dienste. GitHub Actions führt die Prüfungen bei Änderungen an `main` und Pull Requests aus.
 
-Weitere Details: [Kontakt-Setup](docs/KONTAKT-PRODUKTIONSSTART.md) · [Supabase](docs/SUPABASE.md) · [Projektbewertungen](docs/PROJECT-RATINGS.md)
+Weitere Details: [Kontakt-Setup](docs/KONTAKT-RESEND.md) · [Supabase](docs/SUPABASE.md) · [Projektbewertungen](docs/PROJECT-RATINGS.md)
+
+Die erforderlichen Kontakt-Variablen und Hinweise zur Umstellung stehen im [aktuellen Kontakt-Setup](docs/KONTAKT-RESEND.md). Der vorhandene allgemeine Supabase-Client bleibt unverändert; der Kontaktprozess verwendet ihn nicht.

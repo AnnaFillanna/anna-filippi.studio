@@ -1,12 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { deliverContact, storageConfig, replaceStateScript, reserveScript, mailGateScript, controlKey } from '../server/contact-delivery.js';
-const env = { SUPABASE_SECRET_KEY: 'sb_secret_testOnly', VITE_SUPABASE_URL: 'https://test.supabase.co', RATE_LIMIT_SECRET: 'x'.repeat(32), RESEND_API_KEY: 'test-only' };
+import { deliverContact, replaceStateScript, reserveScript, mailGateScript, controlKey } from '../server/contact-delivery.js';
+const env = { RATE_LIMIT_SECRET: 'x'.repeat(32), RESEND_API_KEY: 'test-only' };
 const data = { name: 'Example', email: 'test@example.org', project: 'Etwas anderes', budget: '', message: 'Test message only.' };
-const payload = { from: 'from@example.org', to: ['to@example.org'], text: data.message };
+const payload = { from: 'from@example.org', to: ['to@example.org'], reply_to: data.email, text: data.message };
 function fixture() {
   const records = new Map(), calls = [];
-  const f = { enabled: 'true', gateError: false, records, calls, time: 100000, dbStatus: 201, emailOk: true, emailId: 'receipt', failDb: false, failMail: false, failPhase: '', blockDb: null };
+  const f = { enabled: 'true', gateError: false, records, calls, time: 100000, emailOk: true, emailId: 'receipt', failMail: false, failPhase: '', blockMail: null };
   f.redis = async args => {
     if (args[1] === reserveScript) {
       assert.deepEqual(args.slice(2, 4), ['2', controlKey]);
@@ -26,157 +26,112 @@ function fixture() {
     records.set(args[3], args[5]); return 1;
   };
   f.fetchImpl = async (url, options) => {
+    assert.equal(url, 'https://api.resend.com/emails', 'No database or other service may be contacted');
     calls.push({ url, options });
-    if (url.includes('/rest/v1/')) {
-      assert.equal(options.headers.Prefer, 'return=minimal');
-      assert.equal(options.headers.apikey, env.SUPABASE_SECRET_KEY);
-      assert.equal(options.headers.Authorization, undefined);
-      assert.equal(options.redirect, 'error');
-      assert.deepEqual(JSON.parse(options.body), data);
-      if (f.blockDb) await f.blockDb;
-      if (f.failDb) throw Error('private infrastructure details');
-      return { status: f.dbStatus };
-    }
-    if (f.failMail) throw Error('email timeout');
+    assert.equal(options.redirect, 'error');
+    if (f.blockMail) await f.blockMail;
+    if (f.failMail) throw Error('private email timeout');
     return { ok: f.emailOk, json: async () => ({ id: f.emailId }) };
   };
-  f.run = overrides => deliverContact({ env, data, payload, config: storageConfig(env), id: 'test-request', redis: f.redis, fetchImpl: f.fetchImpl, now: () => f.time, ...overrides });
+  f.run = overrides => deliverContact({ env, data, payload, id: 'test-request', redis: f.redis, fetchImpl: f.fetchImpl, now: () => f.time, ...overrides });
   return f;
 }
-test('storage precedes mail; completed retry never sends or inserts again', async () => {
+test('only Resend is called; completed retries never send again', async () => {
   const f = fixture();
   assert.equal((await f.run()).code, 200);
   assert.equal((await f.run()).code, 200);
-  assert.equal(f.calls.length, 2);
-  assert.ok(f.calls[0].url.includes('/rest/v1/'));
-  assert.equal(f.calls[1].url, 'https://api.resend.com/emails');
+  assert.equal(f.calls.length, 1);
   const stored = [...f.records.values()].join('');
-  for (const value of [data.email, data.message, env.SUPABASE_SECRET_KEY, env.RESEND_API_KEY]) assert.ok(!stored.includes(value));
+  for (const value of [data.email, data.message, env.RESEND_API_KEY]) assert.ok(!stored.includes(value));
 });
-test('same request ID with modified payload or destination is rejected', async () => {
+test('same ID with modified payload or destination is rejected', async () => {
   const f = fixture(); await f.run();
   assert.equal((await f.run({ data: { ...data, name: 'Changed' } })).code, 409);
   assert.equal((await f.run({ payload: { ...payload, to: ['other@example.org'] } })).code, 409);
-  assert.equal(f.calls.length, 2);
+  assert.equal(f.calls.length, 1);
 });
-test('concurrent submissions reserve only one database insert', async () => {
+test('concurrent submissions use the same Resend idempotency key', async () => {
   const f = fixture(); let release;
-  f.blockDb = new Promise(resolve => { release = resolve; });
-  const first = f.run();
+  f.blockMail = new Promise(resolve => { release = resolve; });
+  const first = f.run(), second = f.run();
   await new Promise(resolve => setImmediate(resolve));
-  assert.equal((await f.run()).code, 503);
-  release(); assert.equal((await first).code, 200);
   assert.equal(f.calls.length, 2);
-});
-test('storage errors and timeouts never trigger mail or a blind insert retry', async () => {
-  for (const fault of [403, 500, 'timeout']) {
-    const f = fixture(); f.dbStatus = fault; f.failDb = fault === 'timeout';
-    const r = await f.run(); assert.equal(r.code, 503);
-    f.failDb = false; f.dbStatus = 201;
-    assert.equal((await f.run()).code, 503);
-    assert.equal(f.calls.length, 1);
-    assert.ok(!JSON.stringify(r).includes('private infrastructure'));
-  }
+  assert.equal(f.calls[0].options.headers['Idempotency-Key'], f.calls[1].options.headers['Idempotency-Key']);
+  release();
+  assert.equal((await first).code, 200); assert.equal((await second).code, 200);
 });
 test('Redis outage before reservation prevents all delivery', async () => {
   const f = fixture();
   assert.equal((await f.run({ redis: async () => { throw Error('outage'); } })).code, 503);
   assert.equal(f.calls.length, 0);
 });
-test('lost storage acknowledgement in Redis blocks reinsertion', async () => {
-  const f = fixture(); f.failPhase = 'stored';
-  assert.equal((await f.run()).code, 503);
-  f.failPhase = '';
-  assert.equal((await f.run()).code, 503);
-  assert.equal(f.calls.length, 1);
-});
-test('mail rejection, missing receipt and timeout can retry mail only with stable idempotency key', async () => {
+test('rejection, missing receipt and timeout retry with stable provider key', async () => {
   for (const fault of ['rejected', 'receipt', 'timeout']) {
     const f = fixture(); f.emailOk = fault !== 'rejected'; f.emailId = fault === 'receipt' ? undefined : 'receipt'; f.failMail = fault === 'timeout';
-    assert.notEqual((await f.run()).code, 200);
+    const result = await f.run(); assert.notEqual(result.code, 200); assert.ok(!JSON.stringify(result).includes('private'));
     f.emailOk = true; f.emailId = 'receipt'; f.failMail = false;
     assert.equal((await f.run()).code, 200);
-    assert.equal(f.calls.filter(c => c.url.includes('/rest/v1/')).length, 1);
-    assert.equal(f.calls[1].options.headers['Idempotency-Key'], f.calls[2].options.headers['Idempotency-Key']);
+    assert.equal(f.calls[0].options.headers['Idempotency-Key'], f.calls[1].options.headers['Idempotency-Key']);
   }
 });
 test('mail replay stops before provider idempotency expires', async () => {
   const f = fixture(); f.failMail = true; await f.run();
   f.time += 23 * 60 * 60 * 1000; f.failMail = false;
-  assert.equal((await f.run()).code, 503); assert.equal(f.calls.length, 2);
+  assert.equal((await f.run()).code, 503); assert.equal(f.calls.length, 1);
 });
-test('failed done persistence never reports success; mail retry retains key', async () => {
+test('failed completion persistence never reports success; retry retains key', async () => {
   const f = fixture(); f.failPhase = 'done';
   assert.equal((await f.run()).code, 503);
   f.failPhase = ''; assert.equal((await f.run()).code, 200);
-  assert.equal(f.calls.length, 3);
-  assert.equal(f.calls[1].options.headers['Idempotency-Key'], f.calls[2].options.headers['Idempotency-Key']);
+  assert.equal(f.calls.length, 2);
+  assert.equal(f.calls[0].options.headers['Idempotency-Key'], f.calls[1].options.headers['Idempotency-Key']);
 });
-test('server configuration rejects public keys and unsafe URLs', () => {
-  for (const key of ['', 'sb_publishable_test', 'eyJserviceRole']) assert.throws(() => storageConfig({ ...env, SUPABASE_SECRET_KEY: key }));
-  for (const url of ['http://example.org', 'https://user:pass@example.org', 'https://example.org/path', 'https://example.org/?secret=x']) assert.throws(() => storageConfig({ ...env, SUPABASE_URL: url }));
-});
-
-test('lost reservation acknowledgement cannot cause a second INSERT', async () => {
+test('lost reservation acknowledgement is recoverable without a database', async () => {
   const f = fixture(); const redis = f.redis;
   assert.equal((await f.run({ redis: async args => {
     const result = await redis(args);
     if (args[1] === reserveScript) throw Error('response lost');
     return result;
   } })).code, 503);
-  assert.equal((await f.run()).code, 503);
   assert.equal(f.calls.length, 0);
+  assert.equal((await f.run()).code, 200);
+  assert.equal(f.calls.length, 1);
 });
-test('corrupt persisted state fails closed without leaking its contents', async () => {
-  const f = fixture(); await f.run();
-  const key = [...f.records.keys()][0];
-  f.records.set(key, 'private-corrupt-state');
-  const r = await f.run();
-  assert.equal(r.code, 503);
-  assert.ok(!JSON.stringify(r).includes('private-corrupt-state'));
-  assert.equal(f.calls.length, 2);
-});
-test('pending mail clock is retained and is not extended by retries', async () => {
-  const f = fixture(); f.failMail = true;
-  await f.run(); const started = JSON.parse([...f.records.values()][0]).mailStartedAt;
-  f.time += 60 * 60 * 1000;
-  await f.run();
-  assert.equal(JSON.parse([...f.records.values()][0]).mailStartedAt, started);
-  assert.equal(f.calls.filter(c => c.url.includes('/rest/v1/')).length, 1);
-});
-
-test('only exact true permits reservation; disabled states never insert or send', async () => {
-  for (const value of [undefined, null, '', 'false', 'TRUE', '1', ' true', 'true ', true]) {
-    const f = fixture(); f.enabled = value;
-    assert.equal((await f.run()).code, 503);
-    assert.equal(f.records.size, 0);
-    assert.equal(f.calls.length, 0);
+test('legacy and corrupt states never cause a blind replay or expose data', async () => {
+  for (const legacy of ['private-corrupt-state', JSON.stringify({ fingerprint: 'legacy-bound-to-database', phase: 'done' })]) {
+    const f = fixture(); await f.run();
+    const key = [...f.records.keys()][0]; f.records.set(key, legacy);
+    const r = await f.run(); assert.notEqual(r.code, 200);
+    assert.ok(!JSON.stringify(r).includes(legacy)); assert.equal(f.calls.length, 1);
+    assert.equal(f.records.get(key), legacy);
   }
 });
-test('switch is checked again after INSERT and re-enable never repeats INSERT', async () => {
-  const f = fixture(); let release;
-  f.blockDb = new Promise(resolve => { release = resolve; });
-  const pending = f.run(); await new Promise(resolve => setImmediate(resolve));
-  f.enabled = 'false'; release();
-  assert.equal((await pending).code, 503);
-  assert.equal(f.calls.length, 1);
-  f.enabled = 'true';
-  assert.equal((await f.run()).code, 200);
-  assert.equal(f.calls.length, 2);
-});
-test('Redis failure at mail gate preserves stored request and does not send', async () => {
+test('pending clock is retained, including retries after an unavailable mail gate', async () => {
   const f = fixture(); f.gateError = true;
-  const r = await f.run(); assert.equal(r.code, 503);
-  assert.ok(!JSON.stringify(r).includes('private redis'));
-  assert.equal(f.calls.length, 1);
-  f.gateError = false; assert.equal((await f.run()).code, 200);
-  assert.equal(f.calls.length, 2);
+  await f.run(); const started = JSON.parse([...f.records.values()][0]).mailStartedAt;
+  assert.equal(f.calls.length, 0);
+  f.time += 60 * 60 * 1000; f.gateError = false; f.failMail = true;
+  await f.run();
+  assert.equal(JSON.parse([...f.records.values()][0]).mailStartedAt, started);
 });
-test('disabled switch blocks completed and pending retries without external calls', async () => {
+test('only exact true permits reservation; disabled states never send', async () => {
+  for (const value of [undefined, null, '', 'false', 'TRUE', '1', ' true', 'true ', true]) {
+    const f = fixture(); f.enabled = value;
+    assert.equal((await f.run()).code, 503); assert.equal(f.records.size, 0); assert.equal(f.calls.length, 0);
+  }
+});
+test('switch is checked again after reservation and before mail', async () => {
+  const f = fixture(); const redis = f.redis;
+  assert.equal((await f.run({ redis: async args => {
+    const value = await redis(args); if (args[1] === reserveScript) f.enabled = 'false'; return value;
+  } })).code, 503);
+  assert.equal(f.calls.length, 0);
+  f.enabled = 'true'; assert.equal((await f.run()).code, 200);
+});
+test('disabled switch blocks completed and pending retries', async () => {
   for (const failed of [false, true]) {
     const f = fixture(); f.failMail = failed; await f.run();
     const count = f.calls.length; f.enabled = 'false';
-    assert.equal((await f.run()).code, 503);
-    assert.equal(f.calls.length, count);
+    assert.equal((await f.run()).code, 503); assert.equal(f.calls.length, count);
   }
 });

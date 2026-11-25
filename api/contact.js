@@ -1,5 +1,5 @@
 import { createHmac } from 'node:crypto';
-import { storageConfig, deliverContact } from '../server/contact-delivery.js';
+import { deliverContact } from '../server/contact-delivery.js';
 
 const projects = ['Website / Onlineshop', 'Software / Web-App', 'Produktfotografie', 'Etwas anderes'];
 const budgets = ['', 'Bis 500 €', '500–1.500 €', '1.500–3.000 €', 'Über 3.000 €', 'Noch offen / Ich brauche Beratung'];
@@ -18,8 +18,6 @@ export default async function handler(req, res) {
   const to = env.CONTACT_EMAIL_TO || env.CONTACT_TO;
   const required = ['RESEND_API_KEY', 'CONTACT_ALLOWED_ORIGINS', 'UPSTASH_REDIS_REST_URL', 'RATE_LIMIT_SECRET'];
   if (required.some(key => !env[key]) || !from || !to || !redisToken || env.CONTACT_ENABLED !== 'true' || env.RATE_LIMIT_SECRET.length < 32) return send(503, unavailable);
-  let config;
-  try { config = storageConfig(env); } catch { return send(503, unavailable); }
   const redis = async command => {
     const response = await fetch(env.UPSTASH_REDIS_REST_URL, {
       method: 'POST', headers: { Authorization: `Bearer ${redisToken}`, 'Content-Type': 'application/json' },
@@ -63,7 +61,7 @@ export default async function handler(req, res) {
       text: `Name: ${data.name}\nE-Mail: ${data.email}\nProjekt: ${data.project}\nBudget (unverbindlich): ${data.budget || 'Keine Angabe'}\n\n${data.message}`,
     };
     const fields = Object.fromEntries(Object.keys(limits).map(key => [key, data[key]]));
-    const result = await deliverContact({ data: fields, id: id.toLowerCase(), payload, env, config, redis });
+    const result = await deliverContact({ data: fields, id: id.toLowerCase(), payload, env, redis });
     return send(result.code, result.message);
   } catch { return send(503, unavailable); }
 }

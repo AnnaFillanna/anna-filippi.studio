@@ -1,3 +1,5 @@
+> Historischer Stand vor der Umstellung auf reinen E-Mail-Versand. Für den aktuellen Kontaktablauf gilt [Kontakt über Resend](KONTAKT-RESEND.md). Keine Supabase-Kontaktmigration erneut ausführen.
+
 # Kontrollierter Produktionsstart – nur Vorbereitung
 
 Dieser Plan ersetzt die Preview-Strategie für den nächsten freizugebenden Test. Die ältere Preview-Anleitung bleibt als Dokument erhalten. Keine Aktivierung, Live-Anfrage, Migration, Änderung produktiver Variablen, kein Commit/Push/Deployment durchgeführt.
