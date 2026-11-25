@@ -104,13 +104,22 @@ test('home presents six services and introduces the personal collaboration appro
 
 test('about page includes the requested personal text and original portrait', async () => {
   const html = await readFile('dist/ueber-mich/index.html', 'utf8');
-  assert.ok(html.includes('mit Licht, Materialien und kleinen Details'));
-  assert.ok(html.includes('künstlicher Intelligenz'));
+  assert.ok(html.replace(/<[^>]*>/g, '').includes('Ich komme aus Andernach und entwickle Webseiten für Selbstständige sowie kleine und mittlere Unternehmen.'));
+  assert.ok(html.includes('<strong>Gestaltung und Technik</strong>'));
+  assert.ok(html.includes('<strong>Weiterbildung zur Full-Stack-Entwicklerin</strong>'));
+  assert.ok(html.includes('Mein Weg zur Webentwicklung'));
+  assert.ok(html.includes('Weiterbildung zur Full-Stack-Entwicklerin'));
+  assert.ok(html.includes('künstliche Intelligenz'));
+  assert.ok(html.includes('So arbeite ich'));
+  assert.ok(html.includes('Weiterbildung &amp; Zertifikate'));
+  for (const term of ['Webentwicklung', 'digitales Marketing', 'Suchmaschinenoptimierung', 'E-Commerce']) assert.ok(html.includes(`<strong>${term}</strong>`));
+  assert.ok(html.includes('Meine abgeschlossenen Zertifizierungen und aktuellen Weiterbildungen findest du hier im Überblick.'));
+  assert.ok(html.includes('Lass uns über deine Idee sprechen.'));
   assert.ok(html.includes('/images/about-anna-red.jpg'));
   assert.ok(html.includes('width="993" height="1600"'));
   assert.ok(html.includes('href="/#start"'));
   assert.ok(!html.includes('ausgebildete Berufsfotografin'));
-  assert.ok(html.includes('href="/kontakt">Erzähl mir von deiner Idee</a>'));
+  assert.match(html, /<a\b[^>]*href="\/kontakt"[^>]*>Kontakt aufnehmen<\/a>/);
 });
 
 test('software page contains only the software project, without the general portfolio introduction', async () => {
