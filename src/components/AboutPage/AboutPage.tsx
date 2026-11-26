@@ -63,11 +63,14 @@ export default function AboutPage() {
           </div>
         </section>
         <div className={styles.details}>
-          <section>
-            <h2>Weiterbildung &amp; Zertifikate</h2>
+          <section id="weiterbildung">
+            <h2>Weiterbildung</h2>
             <div className={styles.text}>
               <p>Neben der <strong>Webentwicklung</strong> bilde ich mich in den Bereichen <strong>digitales Marketing</strong>, <strong>Suchmaschinenoptimierung</strong> und <strong>E-Commerce</strong> weiter.</p>
-              <p>Meine abgeschlossenen Zertifizierungen und aktuellen Weiterbildungen findest du hier im Überblick.</p>
+              <p>Aktuell absolviere ich eine Weiterbildung zur Full-Stack-Entwicklerin.</p>
+              {/* Bestätigte abgeschlossene Zertifikate später hier als eigene Liste ergänzen:
+                  Bezeichnung, Aussteller und belegtes Abschlussdatum; nur freigegebene öffentliche Nachweise.
+                  Laufende Weiterbildungen getrennt aufführen, keine privaten Dokumente einbetten. */}
             </div>
           </section>
           <section>

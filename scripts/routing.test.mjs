@@ -111,9 +111,10 @@ test('about page includes the requested personal text and original portrait', as
   assert.ok(html.includes('Weiterbildung zur Full-Stack-Entwicklerin'));
   assert.ok(html.includes('künstliche Intelligenz'));
   assert.ok(html.includes('So arbeite ich'));
-  assert.ok(html.includes('Weiterbildung &amp; Zertifikate'));
+  assert.ok(html.includes('<h2>Weiterbildung</h2>'));
   for (const term of ['Webentwicklung', 'digitales Marketing', 'Suchmaschinenoptimierung', 'E-Commerce']) assert.ok(html.includes(`<strong>${term}</strong>`));
-  assert.ok(html.includes('Meine abgeschlossenen Zertifizierungen und aktuellen Weiterbildungen findest du hier im Überblick.'));
+  assert.ok(html.includes('Aktuell absolviere ich eine Weiterbildung zur Full-Stack-Entwicklerin.'));
+  assert.ok(!html.includes('Meine abgeschlossenen Zertifizierungen'));
   assert.ok(html.includes('Lass uns über deine Idee sprechen.'));
   assert.ok(html.includes('/images/about-anna-red.jpg'));
   assert.ok(html.includes('width="993" height="1600"'));
@@ -172,11 +173,13 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
     const websites = data['@graph'].filter(item => item['@type'] === 'WebSite');
     assert.equal(websites.length, 1);
     assert.equal(websites[0].name, 'ANNA FILIPPI Studio');
-    assert.equal(websites[0].alternateName, 'Fillanna');
+    assert.equal(websites[0].alternateName, undefined);
+    assert.equal(websites[0].sameAs, undefined);
     assert.equal(websites[0].url, `${origin}/`);
     const person = data['@graph'].find(item => item['@type'] === 'Person');
     assert.equal(person.name, 'Anna Filippi');
-    assert.equal(person.alternateName, 'Fillanna');
+    assert.equal(person.alternateName, undefined);
+    assert.equal(person.sameAs, undefined);
     assert.equal(websites[0].publisher['@id'], person['@id']);
     assert.equal(person.homeLocation.name, 'Andernach, Deutschland');
   }
