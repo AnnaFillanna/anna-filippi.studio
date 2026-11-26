@@ -6,7 +6,7 @@ export default function Header() {
   const toggle = useRef<HTMLButtonElement>(null);
 
   return (
-    <header className={`${styles.header} ${styles.atelier}`} onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); toggle.current?.focus(); } }}>
+    <header data-site-header className={`${styles.header} ${styles.atelier}`} onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); toggle.current?.focus(); } }}>
       <a
         href="/#start"
         className={styles.monogram}
@@ -17,6 +17,7 @@ export default function Header() {
 
       <button
         type="button"
+        data-menu-toggle
         className={styles.menuToggle}
         ref={toggle}
         aria-controls="hauptnavigation"

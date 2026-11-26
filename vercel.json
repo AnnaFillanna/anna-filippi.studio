@@ -42,5 +42,98 @@
       "source": "/insights/:slug",
       "destination": "/insights/:slug/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "https://annafilippi.studio/",
+      "permanent": true
+    },
+    {
+      "source": "/ueber-mich/index.html",
+      "destination": "https://annafilippi.studio/ueber-mich",
+      "permanent": true
+    },
+    {
+      "source": "/projekte/index.html",
+      "destination": "https://annafilippi.studio/projekte",
+      "permanent": true
+    },
+    {
+      "source": "/softwareentwicklung/index.html",
+      "destination": "https://annafilippi.studio/softwareentwicklung",
+      "permanent": true
+    },
+    {
+      "source": "/dana-tattoo-studio/index.html",
+      "destination": "https://annafilippi.studio/dana-tattoo-studio",
+      "permanent": true
+    },
+    {
+      "source": "/fotografie/index.html",
+      "destination": "https://annafilippi.studio/fotografie",
+      "permanent": true
+    },
+    {
+      "source": "/kontakt/index.html",
+      "destination": "https://annafilippi.studio/kontakt",
+      "permanent": true
+    },
+    {
+      "source": "/impressum/index.html",
+      "destination": "https://annafilippi.studio/impressum",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz/index.html",
+      "destination": "https://annafilippi.studio/datenschutz",
+      "permanent": true
+    },
+    {
+      "source": "/insights/index.html",
+      "destination": "https://annafilippi.studio/insights",
+      "permanent": true
+    },
+    {
+      "source": "/insights/was-kostet-eine-professionelle-website/index.html",
+      "destination": "https://annafilippi.studio/insights/was-kostet-eine-professionelle-website",
+      "permanent": true
+    },
+    {
+      "source": "/insights/webdesign-agentur-oder-freelancer/index.html",
+      "destination": "https://annafilippi.studio/insights/webdesign-agentur-oder-freelancer",
+      "permanent": true
+    },
+    {
+      "source": "/insights/seo-und-aeo-fuer-kleine-unternehmen/index.html",
+      "destination": "https://annafilippi.studio/insights/seo-und-aeo-fuer-kleine-unternehmen",
+      "permanent": true
+    },
+    {
+      "source": "/insights/e-commerce-fuer-kleine-unternehmen/index.html",
+      "destination": "https://annafilippi.studio/insights/e-commerce-fuer-kleine-unternehmen",
+      "permanent": true
+    },
+    {
+      "source": "/insights/ki-und-automatisierung-fuer-kleine-unternehmen/index.html",
+      "destination": "https://annafilippi.studio/insights/ki-und-automatisierung-fuer-kleine-unternehmen",
+      "permanent": true
+    },
+    {
+      "source": "/insights/professionelle-produktfotografie/index.html",
+      "destination": "https://annafilippi.studio/insights/professionelle-produktfotografie",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.annafilippi.studio"
+        }
+      ],
+      "destination": "https://annafilippi.studio/:path*",
+      "permanent": true
+    }
   ]
 }

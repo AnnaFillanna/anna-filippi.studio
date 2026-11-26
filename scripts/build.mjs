@@ -30,7 +30,7 @@ try {
       html = html.replace('</head>', `<meta id="insight-og-image" property="og:image" content="${escape(article.image)}"/><script id="insight-structured-data" type="application/ld+json">${structuredData}</script></head>`);
     }
     // Motion stays unchanged with JavaScript; make the rendered content visible without it.
-    html = html.replace('</head>', '<noscript><style>#root *{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript></head>');
+    html = html.replace('</head>', '<noscript><style>#root *{opacity:1!important;transform:none!important;clip-path:none!important}[data-menu-toggle]{display:none!important}[data-site-header]{position:relative!important;height:auto!important;flex-wrap:wrap;padding-top:16px;padding-bottom:16px}#hauptnavigation{display:flex!important;position:static!important;flex:1 1 100%;max-height:none!important;overflow:visible!important;box-shadow:none!important}</style></noscript></head>');
     if (!html.includes('<main') || !html.includes('<h1')) throw new Error(`Empty prerender: ${path}`);
     const folder = path === '/' ? 'dist' : `dist${path}`;
     await mkdir(folder, { recursive: true });
