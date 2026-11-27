@@ -56,10 +56,10 @@ export const publishedInsights: InsightArticle[] = [
     },
     author: 'Anna Filippi',
     publishedAt: '2026-11-25',
-    updatedAt: '2026-11-25',
+    updatedAt: '2026-11-26',
     readingMinutes: 2,
     question: 'Was kostet eine professionelle Website?',
-    answer: 'Die Kosten hängen davon ab, welche Anforderungen, Funktionen und individuellen Gestaltungsmöglichkeiten benötigt werden.',
+    answer: 'Der Aufwand hängt vom Umfang deiner Website, der Gestaltung und den gewünschten Funktionen ab. Ein Webauftritt mit wenigen Unterseiten und Kontaktformular benötigt andere Arbeitsschritte als ein Online-Shop mit Zahlungsabwicklung oder eine Anwendung mit KI-Integration. Den konkreten Leistungsumfang stimmen wir gemeinsam ab.',
     sections: [
       {
         id: 'kostenfaktoren',
@@ -68,6 +68,7 @@ export const publishedInsights: InsightArticle[] = [
           { type: 'paragraph', text: 'Der Preis einer Website setzt sich aus verschiedenen Leistungen zusammen:' },
           { type: 'list', items: ['Individuelles Webdesign', 'Anzahl und Umfang der Unterseiten', 'Technische Entwicklung', 'Mobile Optimierung', 'Suchmaschinenoptimierung (SEO)', 'Erstellung und Integration von Inhalten', 'Individuelle Funktionen wie Kontaktformulare, Online-Terminbuchungen oder KI-Chatbots'] },
           { type: 'paragraph', text: 'Je komplexer die Anforderungen sind, desto größer ist der Entwicklungsaufwand.' },
+          { type: 'example', title: 'Was macht den Unterschied im Aufwand?', text: 'Für eine Website mit Startseite, Leistungsübersicht und Kontaktformular planen wir Inhalte, Gestaltung und die Anfragefunktion. Soll zusätzlich ein Shop entstehen, kommen etwa Produktvarianten, Warenkorb, Zahlungen und Versand hinzu. Schnittstellen zu Kalendern oder anderen Systemen müssen angebunden und getestet werden. Bei einer KI-Funktion gehören auch die Aufbereitung der Wissensgrundlage und die Prüfung der Antworten dazu. Das sind Beispiele für unterschiedliche Anforderungen, keine festen Leistungspakete.' },
         ],
       },
       {
@@ -93,7 +94,7 @@ export const publishedInsights: InsightArticle[] = [
         blocks: [
           { type: 'paragraph', text: 'Neben der eigentlichen Entwicklung können weitere Kosten entstehen:' },
           { type: 'list', items: ['Domain und Hosting', 'Technische Wartung', 'Aktualisierung von Inhalten', 'Externe Dienste und Schnittstellen', 'Erweiterung bestehender Funktionen'] },
-          { type: 'paragraph', text: 'Eine transparente Planung hilft dabei, unerwartete Ausgaben zu vermeiden.' },
+          { type: 'paragraph', text: 'Eine transparente Planung hilft dabei, unerwartete Ausgaben zu vermeiden. Laufende Betreuung und spätere Anpassungen vereinbaren wir nach Bedarf; sie sind nicht automatisch im Entwicklungsumfang enthalten.' },
         ],
       },
     ],
@@ -220,7 +221,7 @@ export const publishedInsights: InsightArticle[] = [
     },
     author: 'Anna Filippi',
     publishedAt: '2026-11-25',
-    updatedAt: '2026-11-25',
+    updatedAt: '2026-11-26',
     readingMinutes: 3,
     question: 'Wie werden kleine Unternehmen online sichtbar?',
     answer: 'Neben der klassischen Suchmaschinenoptimierung gewinnt die Optimierung für KI-gestützte Antwortmaschinen an Bedeutung. Beide Ansätze ergänzen sich. Eine technisch gut entwickelte Website mit relevanten, zuverlässigen Inhalten bildet eine wichtige Grundlage.',
@@ -294,7 +295,10 @@ export const publishedInsights: InsightArticle[] = [
       { question: 'Kann eine Erwähnung in ChatGPT garantiert werden?', answer: 'Nein. Ob und welche Quellen eine KI-Antwortmaschine verwendet, hängt von verschiedenen Faktoren ab.' },
       { question: 'Ist SEO nur für große Unternehmen sinnvoll?', answer: 'Nein. Auch kleine Unternehmen können von relevanten Inhalten, technischer Optimierung und lokaler Sichtbarkeit profitieren.' },
     ],
-    sources: [],
+    sources: [
+      { label: 'Google Search Central: Hilfreiche Inhalte und E-E-A-T', url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content' },
+      { label: 'Google Search Central: Voraussetzungen für KI-Funktionen in der Suche', url: 'https://developers.google.com/search/docs/appearance/ai-features' },
+    ],
     links: [
       { label: 'Webprojekte entdecken', href: '/projekte' },
       { label: 'Individuelle Webanwendungen', href: '/softwareentwicklung' },
@@ -322,7 +326,7 @@ export const publishedInsights: InsightArticle[] = [
     },
     author: 'Anna Filippi',
     publishedAt: '2026-11-25',
-    updatedAt: '2026-11-25',
+    updatedAt: '2026-11-26',
     readingMinutes: 6,
     question: 'Was bietet ein professioneller Online-Shop kleinen Unternehmen?',
     answer: 'Ob kleine Manufaktur, Einzelhandel oder eine eigenständige Produktmarke – ein professioneller Online-Shop kann neue Vertriebsmöglichkeiten schaffen und bestehende Geschäftsmodelle erweitern.',
@@ -441,7 +445,10 @@ export const publishedInsights: InsightArticle[] = [
       { question: 'Kann ich meinen Online-Shop mit KI und Automatisierungen erweitern?', answer: 'Ja. Über geeignete Schnittstellen können beispielsweise automatisierte Kundenkommunikation, Produktberatung, Datenanalysen und individuelle Geschäftsprozesse integriert werden.' },
       { question: 'Kann ein Online-Shop mit meinem Unternehmen wachsen?', answer: 'Eine durchdachte technische Architektur ermöglicht es, neue Produkte, Funktionen und Vertriebsmöglichkeiten schrittweise zu integrieren.' },
     ],
-    sources: [],
+    sources: [
+      { label: 'Shopify: Plattformfunktionen, Themes und Erweiterungen', url: 'https://help.shopify.com/en/manual/intro-to-shopify/overview' },
+      { label: 'WooCommerce: WordPress-Grundlage und Shopaufbau', url: 'https://woocommerce.com/document/build-online-store/' },
+    ],
     links: [
       { label: 'Individuelle Webanwendungen', href: '/softwareentwicklung' },
       { label: 'Produktfotografie entdecken', href: '/fotografie' },
@@ -473,7 +480,7 @@ export const publishedInsights: InsightArticle[] = [
     },
     author: 'Anna Filippi',
     publishedAt: '2026-11-25',
-    updatedAt: '2026-11-25',
+    updatedAt: '2026-11-26',
     readingMinutes: 7,
     question: 'Wie können KI und Automatisierung kleine Unternehmen unterstützen?',
     answer: 'Künstliche Intelligenz und digitale Automatisierung eröffnen neue Möglichkeiten, wiederkehrende Prozesse effizienter zu gestalten und wertvolle Zeit zu gewinnen. Dabei geht es nicht darum, Menschen durch Technologie zu ersetzen. Es geht darum, Technologie dort einzusetzen, wo sie einen tatsächlichen Mehrwert schafft.',
@@ -539,7 +546,7 @@ export const publishedInsights: InsightArticle[] = [
           { type: 'paragraph', text: 'Anders als ein klassischer Chatbot, der ausschließlich mit vorgegebenen Antwortmöglichkeiten arbeitet, kann ein KI-gestützter Assistent flexibler auf unterschiedliche Formulierungen reagieren.' },
           { type: 'paragraph', text: 'Mögliche Einsatzbereiche sind:' },
           { type: 'list', items: ['Beratung zu Produkten und Dienstleistungen', 'Beantwortung häufig gestellter Fragen', 'Unterstützung bei der Terminanfrage', 'Orientierung innerhalb einer Website', 'Vorbereitung individueller Kundenanfragen'] },
-          { type: 'paragraph', text: 'Damit ein KI-Chatbot zuverlässige Informationen liefert, benötigt er eine geeignete Wissensgrundlage, klare Vorgaben und definierte Grenzen.' },
+          { type: 'paragraph', text: 'Ein KI-Chatbot benötigt eine geeignete Wissensgrundlage, klare Vorgaben und definierte Grenzen. Trotzdem kann er falsche oder erfundene Angaben machen, die überzeugend klingen – sogenannte Halluzinationen. Wichtige Antworten sollten deshalb anhand verlässlicher Informationen von einem Menschen geprüft werden, bevor daraus Entscheidungen oder Aktionen entstehen.' },
           { type: 'paragraph', text: 'Bei komplexen oder sensiblen Anliegen sollte eine Weiterleitung an einen menschlichen Ansprechpartner möglich sein.' },
         ],
       },
@@ -624,7 +631,10 @@ export const publishedInsights: InsightArticle[] = [
       { question: 'Ist für jede Automatisierung künstliche Intelligenz notwendig?', answer: 'Nein. Klar definierte und vorhersehbare Prozesse lassen sich häufig ohne künstliche Intelligenz einfacher und zuverlässiger automatisieren.' },
       { question: 'Kann künstliche Intelligenz meine Mitarbeiter ersetzen?', answer: 'KI kann bestimmte Aufgaben unterstützen oder teilweise übernehmen. Menschliche Erfahrung, persönliche Kommunikation, Verantwortung und Qualitätskontrolle bleiben jedoch in vielen Geschäftsbereichen unverzichtbar.' },
     ],
-    sources: [],
+    sources: [
+      { label: 'OpenAI: Menschliche Kontrolle und Grenzen von KI-Systemen', url: 'https://developers.openai.com/api/docs/guides/safety-best-practices' },
+      { label: 'OpenAI: Fehlerhafte Antworten und Halluzinationen', url: 'https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth' },
+    ],
     links: [
       { label: 'Individuelle Webanwendungen', href: '/softwareentwicklung' },
       { label: 'Webprojekte entdecken', href: '/projekte' },
