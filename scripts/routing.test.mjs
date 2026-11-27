@@ -104,17 +104,24 @@ test('home presents six services and introduces the personal collaboration appro
 
 test('about page includes the requested personal text and original portrait', async () => {
   const html = await readFile('dist/ueber-mich/index.html', 'utf8');
-  assert.ok(html.replace(/<[^>]*>/g, '').includes('Ich komme aus Andernach und entwickle Webseiten für Selbstständige sowie kleine und mittlere Unternehmen.'));
-  assert.ok(html.includes('<strong>Gestaltung und Technik</strong>'));
-  assert.ok(html.includes('<strong>Weiterbildung zur Full-Stack-Entwicklerin</strong>'));
-  assert.ok(html.includes('Mein Weg zur Webentwicklung'));
-  assert.ok(html.includes('Weiterbildung zur Full-Stack-Entwicklerin'));
-  assert.ok(html.includes('künstliche Intelligenz'));
+  for (const text of [
+    'Technologie, Business und Kreativität',
+    'sechsmonatiges Praktikum im Bereich E-Commerce und Fulfillment',
+    'Shopify-Onlineshop <strong>FILLANNA</strong>',
+    'Seit Februar 2026',
+    'zehnmonatige Weiterbildung zur E-Commerce-Managerin',
+    'IHK-Zertifikat',
+    'Digitales Marketing, SEO, GEO und AEO',
+    'SEO, GEO und AEO',
+    'Dafür steht Anna Filippi Studio.',
+  ]) assert.ok(html.includes(text), text);
   assert.ok(html.includes('So arbeite ich'));
-  assert.ok(html.includes('<h2>Weiterbildung</h2>'));
-  for (const term of ['Webentwicklung', 'digitales Marketing', 'Suchmaschinenoptimierung', 'E-Commerce']) assert.ok(html.includes(`<strong>${term}</strong>`));
-  assert.ok(html.includes('Aktuell absolviere ich eine Weiterbildung zur Full-Stack-Entwicklerin.'));
-  assert.ok(!html.includes('Meine abgeschlossenen Zertifizierungen'));
+  for (const heading of ['Ausbildung &amp; Qualifikationen', 'Ausbildung &amp; praktische Erfahrung', 'Aktuelle Weiterbildungen', 'Zertifikate &amp; ergänzende Kenntnisse']) assert.ok(html.includes(`<h2>${heading}</h2>`) || html.includes(`<h3>${heading}</h3>`), heading);
+  for (const item of ['Fachoberschule – Technik und Elektronik', 'Abgeschlossene Ausbildung zur Verkäuferin', 'E-Commerce &amp; Fulfillment', '2026–2027 · 20 Monate', 'Abschluss mit internationalem Zertifikat', 'E-Commerce Management (10 Monate; IHK-Zertifikat als Abschlussziel)']) assert.ok(html.includes(item), item);
+  assert.match(html, /<strong>Full-Stack-Webentwicklung<\/strong>/);
+  assert.ok(!html.includes('Zukünftige Spezialisierung'));
+  assert.ok(!html.includes('<li>Erworbene Zertifikate der HubSpot Academy</li>'));
+  assert.ok(!html.includes('IHK-Zertifikat erworben'));
   assert.ok(html.includes('Lass uns über deine Idee sprechen.'));
   assert.ok(html.includes('/images/about-anna-red.jpg'));
   assert.ok(html.includes('width="993" height="1600"'));
@@ -129,7 +136,7 @@ test('about page presents the professional focus areas as accessible text', asyn
   const heading = html.indexOf('Meine fachlichen Schwerpunkte');
   assert.ok(portrait >= 0 && heading > portrait);
   const map = html.slice(html.lastIndexOf('<section', heading), html.indexOf('</section>', heading));
-  for (const text of ['Fachliche Ausrichtung und Weiterentwicklungsbereiche', 'Full-Stack Webentwicklung', 'Technical SEO', 'AEO &amp; GEO', 'Analytics', 'Automation', 'E-Commerce', 'KI-Integration']) assert.ok(map.includes(text), text);
+  for (const text of ['Fachliche Ausrichtung und Weiterentwicklungsbereiche', 'Full-Stack Webentwicklung', 'Technical SEO', 'AEO &amp; GEO', 'Web Analytics', 'Automation', 'E-Commerce', 'KI-Integration']) assert.ok(map.includes(text), text);
   assert.match(map, /<svg[^>]*aria-hidden="true"[^>]*>/);
   assert.equal((map.match(/<line\b/g) ?? []).length, 6);
 });
@@ -178,6 +185,10 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
     assert.equal(websites[0].url, `${origin}/`);
     const person = data['@graph'].find(item => item['@type'] === 'Person');
     assert.equal(person.name, 'Anna Filippi');
+    assert.equal(person.url, `${origin}/ueber-mich`);
+    assert.equal(person.jobTitle, 'Webentwicklerin (in Weiterbildung)');
+    assert.ok(person.knowsAbout.includes('E-Commerce'));
+    assert.ok(!person.knowsAbout.includes('KI-Integrationen'));
     assert.equal(person.alternateName, undefined);
     assert.equal(person.sameAs, undefined);
     assert.equal(websites[0].publisher['@id'], person['@id']);

@@ -8,7 +8,7 @@ const basePages = {
   },
   '/ueber-mich': {
     title: 'Über mich — Anna Filippi | Webentwicklung & Fotografie',
-    description: 'Lerne Anna Filippi kennen: moderne Websites, digitale Ideen und Begeisterung für KI, Design und Schmuckfotografie. Persönlich, kreativ und mit Liebe zum Detail.',
+    description: 'Lerne Anna Filippi kennen: ihr beruflicher Weg, praktische E-Commerce-Erfahrung mit FILLANNA und ihre laufenden Weiterbildungen.',
   },
   '/projekte': {
     title: 'Web & Software – Projekte | Anna Filippi',

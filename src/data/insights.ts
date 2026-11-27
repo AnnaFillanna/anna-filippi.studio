@@ -430,7 +430,7 @@ export const publishedInsights: InsightArticle[] = [
         title: 'Einblick in die Praxis: FILLANNA',
         blocks: [
           { type: 'paragraph', text: 'Mit meinem eigenen E-Commerce-Projekt FILLANNA verbinde ich Webentwicklung, Produktfotografie, Markenentwicklung und unternehmerische Erfahrung.' },
-          { type: 'paragraph', text: 'Nach meinen bisherigen Erfahrungen mit Shopify entwickle ich derzeit einen individuellen Online-Shop auf Basis von Next.js, TypeScript und Supabase.' },
+          { type: 'paragraph', text: 'Aufbauend auf meiner Shopify-Erfahrung arbeite ich aktuell am Relaunch meines eigenen Onlineshops FILLANNA. Die technische Umsetzung entwickle ich mit Next.js, TypeScript und Supabase weiter.' },
           { type: 'paragraph', text: 'Der Schwerpunkt liegt auf einer eigenständigen visuellen Identität, einer flexiblen Produktverwaltung und der schrittweisen Integration automatisierter Geschäftsprozesse.' },
           { type: 'paragraph', text: 'Das Projekt bietet mir die Möglichkeit, digitale Lösungen nicht ausschließlich aus technischer Perspektive zu betrachten, sondern auch aus Sicht einer Shopbetreiberin.' },
           { type: 'paragraph', text: 'Welche Funktionen sind im Alltag wirklich notwendig? Welche Prozesse lassen sich vereinfachen? Welche Daten helfen dabei, bessere Entscheidungen zu treffen?' },

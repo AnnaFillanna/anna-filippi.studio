@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import ExpertiseMap from '../ExpertiseMap/ExpertiseMap';
 import styles from './AboutPage.module.scss';
 
-const expertiseAreas = ['Technical SEO', 'Automation', 'Analytics', 'AEO & GEO', 'E-Commerce', 'KI-Integration'];
+const expertiseAreas = ['Technical SEO', 'Automation', 'Web Analytics', 'AEO & GEO', 'E-Commerce', 'KI-Integration'];
 
 export default function AboutPage() {
   const reduced = useReducedMotion();
@@ -22,9 +22,12 @@ export default function AboutPage() {
           <p className={styles.eyebrow}>ANNA FILIPPI / PERSÖNLICH</p>
           <h1 id="about-page-title" tabIndex={-1}>Hallo, ich bin Anna.</h1>
           <div className={styles.text}>
-            <p>Ich komme aus <strong>Andernach</strong> und entwickle Webseiten für <strong>Selbstständige sowie kleine und mittlere Unternehmen</strong>.</p>
-            <p>Mir gefällt die Verbindung von <strong>Gestaltung und Technik</strong>. Ich möchte verstehen, wie ein Unternehmen funktioniert, was seine Kunden brauchen und wie ich das auf einer Webseite sinnvoll umsetzen kann.</p>
-            <p>Dabei geht es mir nicht nur um das Aussehen. Eine Webseite soll <strong>schnell laden, einfach zu bedienen sein</strong> und vor allem zum Unternehmen passen.</p>
+            <p><strong>Technologie, Business und Kreativität</strong> – drei Bereiche, die mich begeistern und die ich miteinander verbinde.</p>
+            <p>Mein beruflicher Weg begann an einer Fachoberschule mit dem Schwerpunkt Technik und Elektronik. Nach einer Familienphase, in der ich mich meinen Kindern widmete, absolvierte ich eine Ausbildung zur Verkäuferin.</p>
+            <p>Durch ein sechsmonatiges Praktikum im Bereich E-Commerce und Fulfillment sowie meinen eigenen Shopify-Onlineshop <strong>FILLANNA</strong> sammelte ich praktische und unternehmerische Erfahrungen im Onlinehandel. Aktuell arbeite ich am Relaunch meines Shops.</p>
+            <p>Seit Februar 2026 absolviere ich eine Weiterbildung zur Full-Stack-Webentwicklerin und parallel eine zehnmonatige Weiterbildung zur E-Commerce-Managerin mit angestrebtem IHK-Zertifikat. Ergänzend habe ich Zertifikate der HubSpot Academy erworben und beschäftige mich mit SEO, GEO und AEO.</p>
+            <p>Ich bin neugierig, lerne gerne und möchte beruflich nicht stehen bleiben. In Zukunft möchte ich meine Kenntnisse in Python, strategischem Marketing, Datenanalyse, Market Intelligence und künstlicher Intelligenz – etwa LLM, RAG und AI Agents – vertiefen.</p>
+            <p>Mein Ziel ist es, Technologie und unternehmerisches Denken miteinander zu verbinden, die Herausforderungen von Unternehmen zu verstehen und passende digitale Lösungen zu entwickeln. Dafür steht Anna Filippi Studio.</p>
           </div>
           <ul className={styles.values} aria-label="Was meine Arbeit ausmacht">
             <li>
@@ -45,16 +48,6 @@ export default function AboutPage() {
           <img {...imageProps("/images/about-anna-red.jpg", "(max-width: 760px) min(86vw, 440px), 460px")} alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" fetchPriority="high" decoding="async" />
           <ExpertiseMap title="Meine fachlichen Schwerpunkte" center="Full-Stack Webentwicklung" areas={expertiseAreas} />
         </motion.div>
-        <section className={styles.journey}>
-          <h2>Mein Weg zur Webentwicklung</h2>
-          <div className={styles.text}>
-            <p>Mein Interesse an Technik begann bereits während meiner Schulzeit. Ich absolvierte die <strong>Fachoberschule im Bereich Technik und Elektronik</strong>.</p>
-            <p>Nach einer längeren Familienpause, in der ich mich meinen Kindern widmete, entschied ich mich für eine Ausbildung zur Verkäuferin. Durch meine Arbeit im Verkauf und meine eigenen Erfahrungen im E-Commerce habe ich gelernt, Kundenbedürfnisse zu verstehen und unternehmerisch zu denken.</p>
-            <p>Mit der Zeit zog es mich wieder in Richtung Technik. Heute beschäftige ich mich intensiv mit Webentwicklung und absolviere eine <strong>Weiterbildung zur Full-Stack-Entwicklerin</strong>.</p>
-            <p>Neben der Entwicklung eigener Projekte interessiere ich mich besonders für <strong>Suchmaschinenoptimierung, künstliche Intelligenz und die Automatisierung digitaler Prozesse</strong>.</p>
-            <p>Was ich lerne, setze ich gerne direkt in meinen Projekten um.</p>
-          </div>
-        </section>
         <section className={styles.approach}>
           <h2>So arbeite ich</h2>
           <div className={styles.text}>
@@ -63,14 +56,35 @@ export default function AboutPage() {
           </div>
         </section>
         <div className={styles.details}>
-          <section id="weiterbildung">
-            <h2>Weiterbildung</h2>
-            <div className={styles.text}>
-              <p>Neben der <strong>Webentwicklung</strong> bilde ich mich in den Bereichen <strong>digitales Marketing</strong>, <strong>Suchmaschinenoptimierung</strong> und <strong>E-Commerce</strong> weiter.</p>
-              <p>Aktuell absolviere ich eine Weiterbildung zur Full-Stack-Entwicklerin.</p>
-              {/* Bestätigte abgeschlossene Zertifikate später hier als eigene Liste ergänzen:
-                  Bezeichnung, Aussteller und belegtes Abschlussdatum; nur freigegebene öffentliche Nachweise.
-                  Laufende Weiterbildungen getrennt aufführen, keine privaten Dokumente einbetten. */}
+          <section id="qualifikationen" className={styles.qualifications}>
+            <h2>Ausbildung &amp; Qualifikationen</h2>
+            <div className={styles.qualificationGroups}>
+              <section>
+                <h3>Ausbildung &amp; praktische Erfahrung</h3>
+                <ul>
+                  <li>Fachoberschule – Technik und Elektronik</li>
+                  <li>Abgeschlossene Ausbildung zur Verkäuferin</li>
+                  <li>Sechsmonatiges Praktikum – E-Commerce &amp; Fulfillment</li>
+                  <li>Eigenes E-Commerce-Projekt FILLANNA – Shopify, aktuell im Relaunch</li>
+                </ul>
+              </section>
+              <section>
+                <h3>Aktuelle Weiterbildungen</h3>
+                <ul>
+                  <li>
+                    <strong>Full-Stack-Webentwicklung</strong>
+                    <span>2026–2027 · 20 Monate</span>
+                    <span>Abschluss mit internationalem Zertifikat</span>
+                  </li>
+                  <li>E-Commerce Management (10 Monate; IHK-Zertifikat als Abschlussziel)</li>
+                </ul>
+              </section>
+              <section>
+                <h3>Zertifikate &amp; ergänzende Kenntnisse</h3>
+                <ul>
+                  <li>Digitales Marketing, SEO, GEO und AEO</li>
+                </ul>
+              </section>
             </div>
           </section>
           <section>
