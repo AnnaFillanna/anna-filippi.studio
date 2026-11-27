@@ -23,10 +23,9 @@ export default function AboutPage() {
           <h1 id="about-page-title" tabIndex={-1}>Hallo, ich bin Anna.</h1>
           <div className={styles.text}>
             <p><strong>Technologie, Business und Kreativität</strong> – drei Bereiche, die mich begeistern und die ich miteinander verbinde.</p>
-            <p>Mein beruflicher Weg begann an einer Fachoberschule mit dem Schwerpunkt Technik und Elektronik. Nach einer Familienphase, in der ich mich meinen Kindern widmete, absolvierte ich eine Ausbildung zur Verkäuferin.</p>
-            <p>Durch ein sechsmonatiges Praktikum im Bereich E-Commerce und Fulfillment sowie meinen eigenen Shopify-Onlineshop <strong>FILLANNA</strong> sammelte ich praktische und unternehmerische Erfahrungen im Onlinehandel. Aktuell arbeite ich am Relaunch meines Shops.</p>
-            <p>Seit Februar 2026 absolviere ich eine Weiterbildung zur Full-Stack-Webentwicklerin und parallel eine zehnmonatige Weiterbildung zur E-Commerce-Managerin mit angestrebtem IHK-Zertifikat. Ergänzend habe ich Zertifikate der HubSpot Academy erworben und beschäftige mich mit SEO, GEO und AEO.</p>
-            <p>Ich bin neugierig, lerne gerne und möchte beruflich nicht stehen bleiben. In Zukunft möchte ich meine Kenntnisse in Python, strategischem Marketing, Datenanalyse, Market Intelligence und künstlicher Intelligenz – etwa LLM, RAG und AI Agents – vertiefen.</p>
+            <p>Mein beruflicher Weg begann an einer Fachoberschule mit dem Schwerpunkt <strong>Technik und Elektronik</strong>. Nach einer Familienphase, in der ich mich meinen Kindern widmete, absolvierte ich eine Ausbildung zur Verkäuferin.</p>
+            <p>Durch ein sechsmonatiges Praktikum im Bereich <strong>E-Commerce und Fulfillment</strong> sowie meinen eigenen Shopify-Onlineshop <strong>FILLANNA</strong> sammelte ich praktische und unternehmerische Erfahrungen im Onlinehandel. Aktuell arbeite ich am Relaunch meines Shops.</p>
+            <p>Seit Februar 2026 absolviere ich eine Weiterbildung zur <strong>Full-Stack-Webentwicklerin</strong> und parallel eine zehnmonatige Weiterbildung zur E-Commerce-Managerin mit angestrebtem IHK-Zertifikat. Ergänzend habe ich Zertifikate der HubSpot Academy erworben und beschäftige mich mit SEO, GEO und AEO.</p>
             <p>Mein Ziel ist es, Technologie und unternehmerisches Denken miteinander zu verbinden, die Herausforderungen von Unternehmen zu verstehen und passende digitale Lösungen zu entwickeln. Dafür steht Anna Filippi Studio.</p>
           </div>
           <ul className={styles.values} aria-label="Was meine Arbeit ausmacht">

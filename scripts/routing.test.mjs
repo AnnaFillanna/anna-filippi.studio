@@ -106,7 +106,7 @@ test('about page includes the requested personal text and original portrait', as
   const html = await readFile('dist/ueber-mich/index.html', 'utf8');
   for (const text of [
     'Technologie, Business und Kreativität',
-    'sechsmonatiges Praktikum im Bereich E-Commerce und Fulfillment',
+    'sechsmonatiges Praktikum im Bereich <strong>E-Commerce und Fulfillment</strong>',
     'Shopify-Onlineshop <strong>FILLANNA</strong>',
     'Seit Februar 2026',
     'zehnmonatige Weiterbildung zur E-Commerce-Managerin',
@@ -120,6 +120,8 @@ test('about page includes the requested personal text and original portrait', as
   for (const item of ['Fachoberschule – Technik und Elektronik', 'Abgeschlossene Ausbildung zur Verkäuferin', 'E-Commerce &amp; Fulfillment', '2026–2027 · 20 Monate', 'Abschluss mit internationalem Zertifikat', 'E-Commerce Management (10 Monate; IHK-Zertifikat als Abschlussziel)']) assert.ok(html.includes(item), item);
   assert.match(html, /<strong>Full-Stack-Webentwicklung<\/strong>/);
   assert.ok(!html.includes('Zukünftige Spezialisierung'));
+  assert.ok(!html.includes('In Zukunft'));
+  assert.ok(!html.includes('Market Intelligence'));
   assert.ok(!html.includes('<li>Erworbene Zertifikate der HubSpot Academy</li>'));
   assert.ok(!html.includes('IHK-Zertifikat erworben'));
   assert.ok(html.includes('Lass uns über deine Idee sprechen.'));
