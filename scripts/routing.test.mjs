@@ -117,12 +117,14 @@ test('about page includes the requested personal text and original portrait', as
   ]) assert.ok(html.includes(text), text);
   assert.ok(html.includes('So arbeite ich'));
   for (const heading of ['Ausbildung &amp; Qualifikationen', 'Ausbildung &amp; praktische Erfahrung', 'Aktuelle Weiterbildungen', 'Zertifikate &amp; ergänzende Kenntnisse']) assert.ok(html.includes(`<h2>${heading}</h2>`) || html.includes(`<h3>${heading}</h3>`), heading);
-  for (const item of ['Fachoberschule – Technik und Elektronik', 'Abgeschlossene Ausbildung zur Verkäuferin', 'E-Commerce &amp; Fulfillment', '2026–2027 · 20 Monate', 'Abschluss mit internationalem Zertifikat', 'E-Commerce Management (10 Monate; IHK-Zertifikat als Abschlussziel)']) assert.ok(html.includes(item), item);
+  for (const item of ['Fachoberschule – Technik und Elektronik', 'Abgeschlossene Ausbildung zur Verkäuferin', 'E-Commerce &amp; Fulfillment', '2026–2027 · 20 Monate', 'Abschlussziel: internationales Zertifikat', 'E-Commerce Management (10 Monate; IHK-Zertifikat als Abschlussziel)']) assert.ok(html.includes(item), item);
   assert.match(html, /<strong>Full-Stack-Webentwicklung<\/strong>/);
   assert.ok(!html.includes('Zukünftige Spezialisierung'));
   assert.ok(!html.includes('In Zukunft'));
   assert.ok(!html.includes('Market Intelligence'));
   assert.ok(!html.includes('<li>Erworbene Zertifikate der HubSpot Academy</li>'));
+  assert.ok(!html.includes('Bereits erworben: Zertifikate der HubSpot Academy.'));
+  assert.ok(!/<p\b[^>]*>Ergänzende Kenntnisse<\/p>/.test(html));
   assert.ok(!html.includes('IHK-Zertifikat erworben'));
   assert.ok(html.includes('Lass uns über deine Idee sprechen.'));
   assert.ok(html.includes('/images/about-anna-red.jpg'));

@@ -18,14 +18,22 @@ export default function AboutPage() {
     <section className={styles.aboutPage} aria-labelledby="about-page-title">
       <Link to="/#start" className={styles.back}>ZURÜCK ZUM ATELIER</Link>
       <div className={styles.layout}>
-        <motion.div className={styles.copy} {...reveal(-30)}>
+        <div className={styles.intro}>
           <p className={styles.eyebrow}>ANNA FILIPPI / PERSÖNLICH</p>
           <h1 id="about-page-title" tabIndex={-1}>Hallo, ich bin Anna.</h1>
           <div className={styles.text}>
             <p><strong>Technologie, Business und Kreativität</strong> – drei Bereiche, die mich begeistern und die ich miteinander verbinde.</p>
+          </div>
+        </div>
+        <motion.div className={styles.portrait} {...reveal(30)}>
+          <img {...imageProps("/images/about-anna-red.jpg", "(max-width: 1024px) min(86vw, 440px), 464px")} alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" fetchPriority="high" decoding="async" />
+          <ExpertiseMap title="Meine fachlichen Schwerpunkte" center="Full-Stack Webentwicklung" areas={expertiseAreas} />
+        </motion.div>
+        <motion.div className={styles.copy} {...reveal(-30)}>
+          <div className={styles.text}>
             <p>Mein beruflicher Weg begann an einer Fachoberschule mit dem Schwerpunkt <strong>Technik und Elektronik</strong>. Nach einer Familienphase, in der ich mich meinen Kindern widmete, absolvierte ich eine Ausbildung zur Verkäuferin.</p>
             <p>Durch ein sechsmonatiges Praktikum im Bereich <strong>E-Commerce und Fulfillment</strong> sowie meinen eigenen Shopify-Onlineshop <strong>FILLANNA</strong> sammelte ich praktische und unternehmerische Erfahrungen im Onlinehandel. Aktuell arbeite ich am Relaunch meines Shops.</p>
-            <p>Seit Februar 2026 absolviere ich eine Weiterbildung zur <strong>Full-Stack-Webentwicklerin</strong> und parallel eine zehnmonatige Weiterbildung zur E-Commerce-Managerin mit angestrebtem IHK-Zertifikat. Ergänzend habe ich Zertifikate der HubSpot Academy erworben und beschäftige mich mit SEO, GEO und AEO.</p>
+            <p>Seit Februar 2026 absolviere ich eine Weiterbildung zur <strong>Full-Stack-Webentwicklerin</strong> und parallel eine zehnmonatige Weiterbildung zur E-Commerce-Managerin mit angestrebtem IHK-Zertifikat. Ergänzend habe ich Zertifikate der HubSpot Academy erworben und beschäftige mich mit <strong>SEO, GEO und AEO</strong>.</p>
             <p>Mein Ziel ist es, Technologie und unternehmerisches Denken miteinander zu verbinden, die Herausforderungen von Unternehmen zu verstehen und passende digitale Lösungen zu entwickeln. Dafür steht Anna Filippi Studio.</p>
           </div>
           <ul className={styles.values} aria-label="Was meine Arbeit ausmacht">
@@ -42,10 +50,6 @@ export default function AboutPage() {
               <h2>Mit Liebe</h2><p>Zum Detail</p>
             </li>
           </ul>
-        </motion.div>
-        <motion.div className={styles.portrait} {...reveal(30)}>
-          <img {...imageProps("/images/about-anna-red.jpg", "(max-width: 760px) min(86vw, 440px), 460px")} alt="Anna Filippi in einem roten Kleid vor einer hellen Wand" fetchPriority="high" decoding="async" />
-          <ExpertiseMap title="Meine fachlichen Schwerpunkte" center="Full-Stack Webentwicklung" areas={expertiseAreas} />
         </motion.div>
         <section className={styles.approach}>
           <h2>So arbeite ich</h2>
@@ -69,17 +73,19 @@ export default function AboutPage() {
               </section>
               <section>
                 <h3>Aktuelle Weiterbildungen</h3>
+                <p className={styles.status}>In Weiterbildung</p>
                 <ul>
                   <li>
                     <strong>Full-Stack-Webentwicklung</strong>
                     <span>2026–2027 · 20 Monate</span>
-                    <span>Abschluss mit internationalem Zertifikat</span>
+                    <span>Abschlussziel: internationales Zertifikat</span>
                   </li>
                   <li>E-Commerce Management (10 Monate; IHK-Zertifikat als Abschlussziel)</li>
                 </ul>
               </section>
               <section>
                 <h3>Zertifikate &amp; ergänzende Kenntnisse</h3>
+                {/* Bestätigte Zertifikate können hier mit Titel und öffentlichem Nachweis ergänzt werden. */}
                 <ul>
                   <li>Digitales Marketing, SEO, GEO und AEO</li>
                 </ul>
