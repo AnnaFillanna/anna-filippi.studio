@@ -7,10 +7,6 @@
       "destination": "/projekte/index.html"
     },
     {
-      "source": "/fotografie",
-      "destination": "/fotografie/index.html"
-    },
-    {
       "source": "/ueber-mich",
       "destination": "/ueber-mich/index.html"
     },
@@ -45,6 +41,11 @@
   ],
   "redirects": [
     {
+      "source": "/fotografie",
+      "destination": "https://annafilippi.studio/projekte",
+      "permanent": true
+    },
+    {
       "source": "/index.html",
       "destination": "https://annafilippi.studio/",
       "permanent": true
@@ -71,7 +72,7 @@
     },
     {
       "source": "/fotografie/index.html",
-      "destination": "https://annafilippi.studio/fotografie",
+      "destination": "https://annafilippi.studio/projekte",
       "permanent": true
     },
     {

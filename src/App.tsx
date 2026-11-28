@@ -1,7 +1,7 @@
 import { imageProps } from "./data/responsiveImage";
 import { useEffect, useRef, useState } from "react";
 import { MotionConfig } from "motion/react";
-import { BrowserRouter, StaticRouter, Route, Routes, useLocation, useNavigate } from "react-router";
+import { BrowserRouter, StaticRouter, Navigate, Route, Routes, useLocation, useNavigate } from "react-router";
 import { pages, origin, pageForPath, insightStructuredData, type PagePath } from "./routes";
 import { getInsight } from "./data/insights";
 import AboutPage from "./components/AboutPage/AboutPage";
@@ -10,7 +10,6 @@ import Hero from "./components/Hero/Hero";
 import FeaturedProjects from "./components/FeaturedProjects/FeaturedProjects";
 import Services from "./components/Services/Services";
 import ProjectProcess from "./components/ProjectProcess/ProjectProcess";
-import Gallery from "./components/Gallery/Gallery";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
 import HomeContact from "./components/HomeContact/HomeContact";
@@ -26,8 +25,7 @@ export type InfoTopic =
   | "Über mich"
   | "Projekte"
   | "Kontakt"
-  | "WEB"
-  | "FOTO";
+  | "WEB";
 const descriptions: Record<InfoTopic, string> = {
   "Über mich":
     "Die persönliche Vorstellung folgt im nächsten Entwicklungsschritt.",
@@ -37,8 +35,6 @@ const descriptions: Record<InfoTopic, string> = {
     "Der Kontaktbereich wird im nächsten Schritt ergänzt. Es ist noch keine Kontaktadresse hinterlegt.",
   WEB:
     "Websites, Web-Applikationen und KI-Integrationen. Weitere Informationen zu diesen Leistungen folgen.",
-  FOTO:
-    "Produktfotografie, visuelles Storytelling und Markenästhetik. Weitere Informationen zu diesen Leistungen folgen.",
 };
 export default function App({ initialPath = '/' }: { initialPath?: PagePath }) {
   return typeof window === 'undefined'
@@ -52,7 +48,8 @@ function Site() {
   const pagePath = pageForPath(location.pathname);
   useEffect(() => {
     if (location.pathname === '/' && (location.hash === '#projekte' || location.hash === '#fotografie' || location.hash === '#ueber-mich')) {
-      void navigate(`/${location.hash.slice(1)}${location.search}`, { replace: true });
+      const destination = location.hash === '#fotografie' ? '/projekte' : `/${location.hash.slice(1)}`;
+      void navigate(`${destination}${location.search}`, { replace: true });
     }
   }, [location.pathname, location.hash, location.search, navigate]);
   useEffect(() => {
@@ -113,7 +110,7 @@ function Site() {
       if (target) target.scrollIntoView();
       else {
         window.scrollTo({ top: 0, behavior: 'instant' });
-        const heading = pagePath === '/kontakt' ? 'contact-title' : pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : (pagePath === '/softwareentwicklung' || pagePath === '/dana-tattoo-studio') ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/fotografie' ? 'gallery-title' : pagePath === '/ueber-mich' ? 'about-page-title' : pagePath === '/insights' ? 'insights-title' : pagePath.startsWith('/insights/') ? 'insight-title' : null;
+        const heading = pagePath === '/kontakt' ? 'contact-title' : pagePath === '/impressum' || pagePath === '/datenschutz' ? 'legal-title' : (pagePath === '/softwareentwicklung' || pagePath === '/dana-tattoo-studio') ? 'software-title' : pagePath === '/projekte' ? 'projects-title' : pagePath === '/ueber-mich' ? 'about-page-title' : pagePath === '/insights' ? 'insights-title' : pagePath.startsWith('/insights/') ? 'insight-title' : null;
         if (heading) document.getElementById(heading)?.focus({ preventScroll: true });
       }
     });
@@ -133,7 +130,7 @@ function Site() {
           <Route path="/softwareentwicklung" element={<><Projects softwareOnly /><FormSolutions /></>} />
           <Route path="/dana-tattoo-studio" element={<Projects danaOnly />} />
           <Route path="/projekte" element={<Projects />} />
-          <Route path="/fotografie" element={<Gallery />} />
+          <Route path="/fotografie" element={<Navigate to="/projekte" replace />} />
           <Route path="/ueber-mich" element={<AboutPage />} />
           <Route path="/kontakt" element={<Contact />} />
           <Route path="/insights" element={<Insights />} />

@@ -26,7 +26,7 @@ test('responsive derivatives exist, retain source association and never upscale'
 });
 
 test('all prerendered images have valid responsive paths, intrinsic dimensions and alt attributes', async () => {
-  for (const route of ['', 'projekte', 'fotografie', 'softwareentwicklung', 'dana-tattoo-studio', 'ueber-mich', 'kontakt', 'impressum', 'datenschutz']) {
+  for (const route of ['', 'projekte', 'softwareentwicklung', 'dana-tattoo-studio', 'ueber-mich', 'kontakt', 'impressum', 'datenschutz']) {
     const html = await readFile(`dist/${route ? `${route}/` : ''}index.html`, 'utf8');
     for (const [tag] of html.matchAll(/<img\b[^>]*>/g)) {
       assert.match(tag, /\balt="[^"]*"/);

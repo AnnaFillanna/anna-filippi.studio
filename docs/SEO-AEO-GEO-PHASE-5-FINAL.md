@@ -106,7 +106,7 @@ Bestehende Build-Warnung: JavaScript-Chunk über 500 kB (ca. 571 kB minifiziert)
 - [ ] Kontakt und Rechtsseiten funktional prüfen; reale Formularsendung nur als bewusst abgestimmten Test behandeln.
 - [ ] Google Search Console: richtige Property, Sitemap `https://annafilippi.studio/sitemap.xml`, Abrufstatus, URL-Prüfung wichtiger Seiten und Indexierungsberichte kontrollieren. Sitemapaufnahme ist kein Indexierungsnachweis.
 - [ ] GSC-Auswertung/OIDC bestätigen; Top-100-CSV nicht als vollständigen Trafficbericht interpretieren. Bing ergänzend prüfen.
-- [ ] PageSpeed Insights/Lighthouse für Startseite, Fotografie, Software, Kontakt und einen Artikel auf Mobil/Desktop messen; mehrere vergleichbare Laborläufe, Toolversion, Zeitpunkt und Gerät dokumentieren. CrUX-Felddaten getrennt behandeln.
+- [ ] PageSpeed Insights/Lighthouse für Startseite, Projekte, Software, Kontakt und einen Artikel auf Mobil/Desktop messen; mehrere vergleichbare Laborläufe, Toolversion, Zeitpunkt und Gerät dokumentieren. CrUX-Felddaten getrennt behandeln.
 - [ ] Baseline erfassen: Deploymentdatum/Commit, letzte vollständige 28 Tage vor Veröffentlichung, erste vollständige 28 Tage danach, GSC-Klicks/Impressionen/CTR/Position und indexierte Seiten. Fehlende Werte ausdrücklich als nicht verfügbar markieren.
 - [ ] Monatliche KI-Stichproben und wöchentliche/monatliche/quartalsweise Prüfungen gemäß Phase-5-Audit fortführen. Keine garantierte KI-Sichtbarkeit ableiten.
 

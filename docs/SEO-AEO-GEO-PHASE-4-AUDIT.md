@@ -2,6 +2,8 @@
 
 Stand: 26. November 2026 · Anna Filippi Studio · HEAD `d10a4db`
 
+> Historische Bestandsaufnahme. Die damalige Leistungsbeschreibung und Hinweise zu Fotodienstleistungen sind durch die Neupositionierung vom 28. November 2026 überholt. Fotografische Dienstleistungen werden nicht mehr angeboten; vorhandene Bilddateien bleiben erhalten.
+
 ## 1. Ergebnis und Prüfrahmen
 
 Die Website besitzt bereits eine tragfähige Grundlage: verständliche Leistungen, persönliche Anbieterinformationen, nachvollziehbare Projektstatus, sechs strukturierte Fachartikel, direkte Kurzantworten, echte interne Links und vorgerenderte Inhalte. Die Korrekturen aus Phase 3 sind erhalten. Ein umfassender Textumbau, zusätzliche Schema-Typen, neue Ortsseiten oder flächendeckende FAQ-Erweiterungen sind nicht erforderlich.

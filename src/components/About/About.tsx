@@ -28,7 +28,7 @@ export default function About() {
         <div>
           <p className={styles.label}>ÜBER MICH</p>
           <h2 id="about-title">Hallo, ich bin Anna.</h2>
-          <p className={styles.subtitle}>Webentwicklung · Softwareentwicklung · Produktfotografie</p>
+          <p className={styles.subtitle}>Webdesign · Softwareentwicklung · E-Commerce</p>
           <div className={styles.intro}>
             <p>Ich liebe es, kreative Ideen mit Technologie zu verbinden. Für mich erzählt eine Website deine Geschichte, zeigt, was dich besonders macht, und verbindet dich mit den richtigen Menschen.</p>
             <p>Mir ist wichtig, deine Wünsche zu verstehen und dir von der ersten Idee bis zur fertigen Umsetzung als direkte Ansprechpartnerin zur Seite zu stehen.</p>

@@ -1,6 +1,6 @@
 # Wissen & Insights
 
-Die Übersicht unter `/insights` zeigt ausschließlich Artikel aus `publishedInsights` in [insights.ts](../src/data/insights.ts). Die Artikel zu Website-Kosten, zum Vergleich von Agentur und Freelancer, zu SEO und AEO, E-Commerce, KI und Automatisierung sowie Produktfotografie sind für die Veröffentlichung freigegeben. Die folgenden weiteren Themen sind nur eine redaktionelle Planung und erzeugen weder öffentliche Seiten noch Sitemap-Einträge:
+Die Übersicht unter `/insights` zeigt ausschließlich Artikel aus `publishedInsights` in [insights.ts](../src/data/insights.ts). Die Artikel zu Website-Kosten, zum Vergleich von Agentur und Freelancer, zu SEO und AEO, E-Commerce, KI und Automatisierung sowie zur Wirkung von Produktbildern im E-Commerce sind für die Veröffentlichung freigegeben. Der Artikel zu Produktbildern ist redaktioneller Inhalt und kein Angebot fotografischer Dienstleistungen. Die folgenden weiteren Themen sind nur eine redaktionelle Planung und erzeugen weder öffentliche Seiten noch Sitemap-Einträge:
 
 1. Website für Selbstständige und kleine Unternehmen
 2. Website-Baukasten oder individuelles Webdesign?

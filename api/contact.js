@@ -1,7 +1,7 @@
 import { createHmac } from 'node:crypto';
 import { deliverContact } from '../server/contact-delivery.js';
 
-const projects = ['Website / Onlineshop', 'Software / Web-App', 'Produktfotografie', 'Etwas anderes'];
+const projects = ['Webdesign / Website', 'Software / Web-App', 'E-Commerce / Onlineshop', 'SEO / AEO / GEO', 'KI-Integration / Automatisierung', 'Markt- / Wettbewerbsanalyse', 'Etwas anderes'];
 const budgets = ['', 'Bis 500 €', '500–1.500 €', '1.500–3.000 €', 'Über 3.000 €', 'Noch offen / Ich brauche Beratung'];
 const email = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
 const unavailable = 'Der Formularversand ist momentan nicht verfügbar. Bitte versuchen Sie es später erneut oder nutzen Sie WhatsApp.';

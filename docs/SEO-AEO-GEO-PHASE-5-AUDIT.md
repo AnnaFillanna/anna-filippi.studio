@@ -102,7 +102,7 @@ Bildvarianten, intrinsische Abmessungen, Lazy Loading außerhalb des Hero-Bereic
 
 PSI verbindet Lighthouse-Labordaten mit CrUX-Felddaten, sofern genügend Daten verfügbar sind. CrUX verwendet ein rollierendes 28-Tage-Fenster; fehlende URL-/Origin-Daten bedeuten nicht schlechte Performance oder null Besucher. Labor und Feld dürfen nicht vermischt werden. [PSI-Dokumentation](https://developers.google.com/speed/docs/insights/v5/about).
 
-Vorgeschlagene spätere Baseline: Startseite, Fotografie, Softwareseite, Kontakt und ein längerer Artikel; je drei identisch konfigurierte mobile/desktop Laborläufe, Median plus Streuung, Toolversion und Zeitpunkt festhalten. Feldwerte separat mit Gerät, URL/Origin und Zeitraum dokumentieren. Kein Score-Ziel als Rankingversprechen.
+Vorgeschlagene spätere Baseline: Startseite, Projekte, Softwareseite, Kontakt und ein längerer Artikel; je drei identisch konfigurierte mobile/desktop Laborläufe, Median plus Streuung, Toolversion und Zeitpunkt festhalten. Feldwerte separat mit Gerät, URL/Origin und Zeitraum dokumentieren. Kein Score-Ziel als Rankingversprechen.
 
 ## 5. AEO-/GEO-Monitoring: wiederholbare Stichproben
 
@@ -122,7 +122,7 @@ Pro Beobachtung dokumentieren: Datum/Uhrzeit, Dienst, angezeigtes Modell soweit 
 **Ohne Marke – Entdeckung und fachliche Zitation:**
 
 5. „Wer entwickelt individuelle Websites für kleine Unternehmen in Andernach oder bei Koblenz?“
-6. „Welche Anbieter in der Region Andernach/Koblenz verbinden Webentwicklung mit Produktfotografie?“
+6. „Welche Anbieter in der Region Andernach/Koblenz verbinden Webentwicklung mit E-Commerce?“
 7. „Welche Faktoren bestimmen den Aufwand für eine Unternehmenswebsite mit Kontaktformular oder Online-Buchung?“
 8. „Worauf sollte ein kleines Unternehmen bei einem KI-Chatbot für Kundenanfragen achten?“
 

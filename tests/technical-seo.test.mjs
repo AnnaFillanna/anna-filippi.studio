@@ -85,8 +85,17 @@ test('crawler policy is unchanged and no-script navigation has real links and a 
     assert.match(html, /<nav[^>]*id="hauptnavigation"[^>]*aria-label="Hauptnavigation"/);
     assert.match(html, /<noscript><style>[^<]*#hauptnavigation\{display:flex!important;position:static!important/);
     assert.match(html, /<noscript><style>[^<]*\[data-menu-toggle\]\{display:none!important\}/);
-    for (const target of ['/softwareentwicklung', '/projekte', '/fotografie', '/ueber-mich', '/insights', '/kontakt']) {
+    for (const target of ['/softwareentwicklung', '/projekte', '/ueber-mich', '/insights', '/kontakt']) {
       assert.ok(html.includes(`href="${target}"`), `${path}: ${target}`);
     }
   }
+});
+
+test('die eingestellte Fotografie-Route leitet dauerhaft zum Projektportfolio weiter', () => {
+  assert.ok(!paths.includes('/fotografie'));
+  assert.ok(!sitemap.includes(`${origin}/fotografie`));
+  const redirect = config.redirects.find(rule => rule.source === '/fotografie');
+  assert.equal(redirect?.destination, `${origin}/projekte`);
+  assert.equal(redirect?.permanent, true);
+  assert.ok(!config.rewrites.some(rule => rule.source === '/fotografie'));
 });

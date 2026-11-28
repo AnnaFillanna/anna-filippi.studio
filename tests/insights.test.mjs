@@ -180,23 +180,29 @@ test('der KI-Artikel enthält Praxisbeispiele, Vergleiche, FAQ und SEO-Daten', a
   assert.equal(JSON.parse(raw)['@graph'][0].headline, 'KI & Automatisierung für kleine Unternehmen – intelligente Lösungen für den Arbeitsalltag');
 });
 
-test('der Artikel zur Produktfotografie enthält Bild, Tabellen, FAQ und SEO-Daten', async () => {
+test('der Artikel zu Produktbildern bleibt redaktioneller E-Commerce-Inhalt ohne Fotodienstleistungs-CTA', async () => {
   const slug = 'professionelle-produktfotografie';
   const overview = await readFile('dist/insights/index.html', 'utf8');
   const article = await readFile(`dist/insights/${slug}/index.html`, 'utf8');
   const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert.ok(article.includes('<title>Produktbilder im E-Commerce | Anna Filippi Studio</title>'));
+  assert.ok(article.includes('<h1 id="insight-title" tabindex="-1">Produktbilder im E-Commerce – Gestaltung und Wirkung</h1>'));
+  assert.match(article, /E-Commerce(?:<!-- -->)?\s*·/);
   assert.ok(overview.includes(`/insights/${slug}`));
   assert.ok(sitemap.includes(`${origin}/insights/${slug}`));
   assert.ok(article.includes('alt="Granatapfel und Granatapfelkerne auf einer spiegelnden Oberfläche"'));
   assert.ok(article.includes('aria-label="Arten der Produktfotografie und ihre Einsatzbereiche" tabindex="0"'));
   assert.ok(article.includes('aria-label="Technische Anforderungen an Produktbilder" tabindex="0"'));
   assert.ok(article.includes('Einblick in die Praxis: FILLANNA'));
-  assert.ok(article.includes('Können Produktfotografie und Webdesign gemeinsam geplant werden?'));
-  assert.ok(article.includes('Dein Produkt. Deine Geschichte. Deine visuelle Identität.'));
+  assert.ok(article.includes('Wie lassen sich Produktbilder und Webdesign aufeinander abstimmen?'));
+  assert.ok(article.includes('Dein Shop. Deine Ziele. Deine digitale Lösung.'));
+  assert.ok(article.includes('Lass uns über dein E-Commerce-Projekt sprechen.'));
+  assert.ok(!article.includes('href="/fotografie"'));
+  assert.ok(!article.includes('Meine Fotografien entdecken'));
   assert.ok(article.includes(`rel="canonical" href="${origin}/insights/${slug}"`));
   const raw = article.match(/<script id="insight-structured-data" type="application\/ld\+json">([^<]+)<\/script>/)?.[1];
   assert.ok(raw);
-  assert.equal(JSON.parse(raw)['@graph'][0].headline, 'Professionelle Produktfotografie – wie Bilder Produkte und Marken zum Leben erwecken');
+  assert.equal(JSON.parse(raw)['@graph'][0].headline, 'Produktbilder im E-Commerce – Gestaltung und Wirkung');
 });
 
 test('Artikelbilder liefern kleinere WebP-Kopien und behalten JPEG für Social Sharing', async () => {

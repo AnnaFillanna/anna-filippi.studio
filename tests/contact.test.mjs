@@ -5,7 +5,7 @@ import { reserveScript, mailGateScript } from '../server/contact-delivery.js';
 const data = {
   name: "Test",
   email: "test@example.org",
-  project: "Website / Onlineshop",
+  project: "Webdesign / Website",
   budget: "",
   message: "Eine neue Website gestalten.",
   website: "",
@@ -117,11 +117,24 @@ test("oversized message rejected", async () =>
     (await request({ body: { ...data, message: "x".repeat(5001) } })).code,
     400,
   ));
-test("invalid choice rejected", async () =>
+test("retired photography service is rejected as a project choice", async () =>
   assert.equal(
-    (await request({ body: { ...data, project: "other" } })).code,
+    (await request({ body: { ...data, project: "Produktfotografie" } })).code,
     400,
   ));
+test("current strategic services are accepted as project choices", async () => {
+  for (const project of [
+    "Webdesign / Website",
+    "Software / Web-App",
+    "E-Commerce / Onlineshop",
+    "SEO / AEO / GEO",
+    "KI-Integration / Automatisierung",
+    "Markt- / Wettbewerbsanalyse",
+    "Etwas anderes",
+  ]) {
+    assert.equal((await request({ body: { ...data, project } })).code, 200, project);
+  }
+});
 test("foreign origin rejected", async () =>
   assert.equal(
     (await request({ headers: { origin: "https://evil.example" } })).code,

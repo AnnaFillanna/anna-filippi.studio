@@ -2,6 +2,8 @@
 
 Stand: 25. November 2026 · Hauptdomain: https://annafilippi.studio · Projektstand: `327dd8f`
 
+> Historische Bestandsaufnahme. Die hier aufgeführten Fotografiedienstleistungen und die Route `/fotografie` beschreiben den damaligen Stand. Seit dem 28. November 2026 werden keine Fotodienstleistungen mehr angeboten; `/fotografie` leitet dauerhaft auf `/projekte` weiter. Bilddateien bleiben erhalten.
+
 ## 1. Ergebnis und Prüfrahmen
 
 Die Website hat bereits eine tragfähige technische Grundlage: neun vorgerenderte öffentliche Seiten, individuelle Metadaten, selbstreferenzierende Canonicals, eine vollständige Sitemap und echte interne HTML-Links. Alle neun Hauptseiten antworteten bei dieser Prüfung mit HTTP 200. Ein kritischer, seitenweiter Indexierungsblocker wurde **nicht nachgewiesen**.

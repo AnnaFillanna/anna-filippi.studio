@@ -41,7 +41,7 @@ export default function Hero() {
         <nav className={styles.mobileServices} aria-label="Leistungen im Überblick">
           <a href="/softwareentwicklung">SOFTWARE & DIGITALE LÖSUNGEN<span aria-hidden="true">→</span></a>
           <a href="/projekte">MEINE PROJEKTE<span aria-hidden="true">→</span></a>
-          <a href="/fotografie">PRODUKTFOTOGRAFIE<span aria-hidden="true">→</span></a>
+          <a href="/#leistungen">E-COMMERCE & ONLINESHOPS<span aria-hidden="true">→</span></a>
         </nav>
         <motion.p {...intro(0.4)} className={styles.description}>
           Du hast eine Idee, möchtest dein <strong>Business online sichtbar</strong> machen oder deinen Kundinnen und Kunden etwas Besonderes bieten? Ich helfe dir dabei. Mit <strong>individuellem Webdesign</strong>, <strong>durchdachter Webentwicklung</strong> und kreativen Lösungen, die zu dir passen. Aus Andernach bei Koblenz – für dein Business, deutschlandweit.

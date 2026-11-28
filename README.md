@@ -1,6 +1,6 @@
 # Anna Filippi — Digital Atelier
 
-Meine Website für Webentwicklung und Produktfotografie. Sie verbindet Kundenprojekte, interaktive Demos und fotografische Arbeiten mit einem Kontaktformular für Projektanfragen.
+Mein digitales Studio für Webdesign und Webentwicklung, Software, E-Commerce, SEO, KI-Lösungen und digitale Marktanalysen. Die Website verbindet Kundenprojekte, interaktive Demos und redaktionelle Inhalte mit einem Kontaktformular für Projektanfragen.
 
 **[Website ansehen](https://annafilippi.studio/)**
 
@@ -12,8 +12,8 @@ Meine Website für Webentwicklung und Produktfotografie. Sie verbindet Kundenpro
 
 ## Funktionen
 
-- Eigene Seiten für Webentwicklung, Software, Fotografie, Über mich und Kontakt
-- Projektpräsentationen, Fotogalerie und interaktive Buchungsdemo
+- Eigene Seiten für Webentwicklung, Software, Projekte, Über mich und Kontakt
+- Projektpräsentationen und interaktive Buchungsdemo
 - Kontaktformular mit serverseitiger Prüfung und Schutz vor mehrfacher Übermittlung
 - Projektbewertungen mit gemeinsamem Zustand für wiederholte Projektkarten
 - Responsive Navigation, Tastaturbedienung und Reduced-Motion-Unterstützung

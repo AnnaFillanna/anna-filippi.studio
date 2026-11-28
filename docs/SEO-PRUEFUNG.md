@@ -13,7 +13,7 @@ Vite baut bereits statisches HTML für jede Route (scripts/build.mjs). React akt
 - Services.tsx und Services.module.scss: dezenter Abschnitt über Webentwicklung in Koblenz und Umgebung, mit tatsächlichem Standort Andernach und deutschlandweiter Zusammenarbeit. Bestehende Farben und Schriften verwendet.
 - scripts/routing.test.mjs: Prüfung auf konsistente Metadaten, eindeutige Canonicals, Produktions-URLs, Favicon, Standort und crawlbare Inhalte ergänzt.
 
-Der Homepage-Titel hat 56 Zeichen, die Meta Description 133. Das ist eine kompakte Formulierung; die sichtbare Länge und tatsächliche Darstellung legt die Suchmaschine fest. Softwareentwicklung und Produktfotografie bleiben im sichtbaren Leistungsangebot und auf eigenen Seiten berücksichtigt.
+Der Homepage-Titel hat 56 Zeichen, die Meta Description 133. Das ist eine kompakte Formulierung; die sichtbare Länge und tatsächliche Darstellung legt die Suchmaschine fest. Zum Auditstand am 22. Oktober 2026 standen Softwareentwicklung und Produktfotografie im sichtbaren Leistungsangebot. Die kommerzielle Fotodienstleistung wurde mit der Aktualisierung vom 28. November 2026 eingestellt.
 
 Keine Änderung an Kontaktformular, Impressum, Datenschutz, Cookie Consent, robots.txt, Sitemap, Vercel-Routing oder Abhängigkeiten. Keine Veröffentlichung und keine Kontaktanfragen.
 

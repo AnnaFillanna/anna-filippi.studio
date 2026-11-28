@@ -34,11 +34,11 @@ export default function Header() {
       >
         <a href="/softwareentwicklung" onClick={() => setOpen(false)}>Softwareentwicklung</a>
         <a href="/projekte" onClick={() => setOpen(false)}>
-          Webentwicklung
+          Projekte
         </a>
 
-        <a href="/fotografie" onClick={() => setOpen(false)}>
-          Produktfotografie
+        <a href="/#leistungen" onClick={() => setOpen(false)}>
+          Leistungen
         </a>
 
         <a href="/ueber-mich" onClick={() => setOpen(false)}>Über mich</a>

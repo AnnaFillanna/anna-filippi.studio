@@ -2,12 +2,12 @@ import { motion, useReducedMotion } from 'motion/react';
 import styles from './Services.module.scss';
 
 const services = [
-  { title: 'Websites & Webdesign', area: 'DIGITAL', text: 'Ich gestalte deine Website so, dass sie nicht nur schön aussieht, sondern auch deine Persönlichkeit und dein Angebot widerspiegelt.', items: ['Unternehmenswebsites & Landingpages', 'Website-Relaunch für dein Unternehmen', 'Für Smartphone, Tablet & Desktop gestaltet'], href: '/kontakt', link: 'Deine Website planen' },
-  { title: 'Webentwicklung & E-Commerce', area: 'DIGITAL', text: 'Du möchtest Produkte verkaufen, Buchungen ermöglichen oder deinen Arbeitsalltag vereinfachen? Ich entwickle eine passende digitale Lösung für dich.', items: ['Individuelle Web-Anwendungen', 'Interaktive Funktionen & Online-Buchung', 'Shopify-Shops'], href: '/softwareentwicklung', link: 'Möglichkeiten entdecken' },
-  { title: 'KI & Automatisierung', area: 'DIGITAL', text: 'Weniger Routine, mehr Zeit für dein Business. Gemeinsam finden wir heraus, welche Aufgaben sich sinnvoll automatisieren lassen.', items: ['KI-Chatbots für häufige Fragen', 'Automatisierte Kundenanfragen', 'Intelligente Workflows'], note: 'Bei komplexen KI-Lösungen klären wir Umfang und technische Machbarkeit gemeinsam.', href: '/kontakt', link: 'Lass uns darüber sprechen' },
-  { title: 'SEO & Website-Betreuung', area: 'DIGITAL', text: 'Ich unterstütze dich dabei, deine Website technisch zu optimieren, besser gefunden zu werden und sie langfristig weiterzuentwickeln.', items: ['Technische Suchmaschinenoptimierung', 'Wartung & Performance-Optimierung', 'Weiterentwicklung nach Bedarf'], href: '/kontakt', link: 'Website optimieren' },
-  { title: 'Produktfotografie', area: 'VISUAL', text: 'Deine Produkte verdienen Bilder, die ihre Besonderheiten zeigen. Ich fange Details, Materialien und Atmosphäre ein.', items: ['Schmuckfotografie für Onlineshops', 'Stimmige Bildwelten für Website & Shop', 'Visuelles Storytelling'], href: '/fotografie', link: 'Meine Fotografien entdecken' },
-  { title: 'Beratung & Website-Check', area: 'DIGITAL', text: 'Du hast schon eine Website, bist aber noch nicht ganz zufrieden? Gemeinsam schauen wir, was sich verbessern lässt.', items: ['Gestaltung & Inhalte prüfen', 'Nutzerführung gemeinsam verbessern', 'Konkrete Empfehlungen erhalten'], href: '/kontakt', link: 'Gemeinsam genauer hinschauen' },
+  { title: 'Webdesign & Websites', area: 'WEB', text: 'Ich gestalte Websites, die deine Persönlichkeit und dein Angebot verständlich vermitteln und auf allen Geräten funktionieren.', items: ['Unternehmenswebsites & Landingpages', 'Website-Relaunch und Weiterentwicklung', 'Responsive Gestaltung für Smartphone, Tablet & Desktop'], href: '/kontakt', link: 'Website-Projekt besprechen' },
+  { title: 'Software & Web-Apps', area: 'SOFTWARE', text: 'Wenn Standardlösungen nicht ausreichen, entwickle ich passende Web-Anwendungen und digitale Funktionen für deine Abläufe.', items: ['Individuelle Web-Anwendungen', 'Interaktive Funktionen & Formulare', 'Online-Terminbuchung'], href: '/softwareentwicklung', link: 'Softwarelösungen entdecken' },
+  { title: 'E-Commerce & Onlineshops', area: 'E-COMMERCE', text: 'Ich unterstütze dich bei der Planung und Umsetzung eines Onlineshops, der zu deinem Sortiment und deinen Abläufen passt.', items: ['Shopify-Onlineshops', 'Produktverwaltung & Bestellabläufe', 'Weiterentwicklung bestehender Shops'], href: '/kontakt', link: 'Onlineshop-Projekt besprechen' },
+  { title: 'SEO, AEO & GEO', area: 'SUCHSYSTEME', text: 'Ich unterstütze dich dabei, die technischen und inhaltlichen Grundlagen für die Sichtbarkeit deiner Website in Suchsystemen zu stärken.', items: ['Technische Suchmaschinenoptimierung', 'Strukturierte Inhalte und Metadaten', 'AEO und GEO für Such- und Antwortsysteme'], href: '/kontakt', link: 'Sichtbarkeit besprechen' },
+  { title: 'KI-Integration & Automatisierung', area: 'AUTOMATISIERUNG', text: 'Weniger Routine, mehr Zeit für dein Business. Gemeinsam finden wir heraus, welche Aufgaben sich sinnvoll automatisieren lassen.', items: ['KI-Chatbots für häufige Fragen', 'Automatisierte Kundenanfragen', 'Intelligente Workflows'], note: 'Bei komplexen KI-Lösungen klären wir Umfang und technische Machbarkeit gemeinsam.', href: '/kontakt', link: 'Lass uns darüber sprechen' },
+  { title: 'Digitale Markt- & Wettbewerbsanalyse', area: 'ANALYSE', text: 'Ich ordne digitale Markt- und Wettbewerbsinformationen, damit du Chancen und Positionierung fundierter bewerten kannst.', items: ['Digitale Wettbewerbsauftritte vergleichen', 'Marktentwicklungen und Trends einordnen', 'Erkenntnisse als Entscheidungsgrundlage aufbereiten'], href: '/kontakt', link: 'Analyse besprechen' },
 ] as const;
 
 export default function Services() {
@@ -31,7 +31,7 @@ export default function Services() {
               {service.items.map(item => <li key={item}>{item}</li>)}
             </ul>
             {'note' in service && <p className={styles.serviceNote}>{service.note}</p>}
-            {'href' in service && <a className={styles.galleryLink} href={service.href}>{service.link} <span aria-hidden="true">→</span></a>}
+            <a className={styles.serviceLink} href={service.href}>{service.link} <span aria-hidden="true">→</span></a>
           </motion.li>
         ))}
       </ul>

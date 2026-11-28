@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import ExpertiseMap from '../ExpertiseMap/ExpertiseMap';
 import styles from './AboutPage.module.scss';
 
-const expertiseAreas = ['Technical SEO', 'Automation', 'Web Analytics', 'AEO & GEO', 'E-Commerce', 'KI-Integration'];
+const expertiseAreas = ['Technical SEO', 'Automation', 'Web Analytics', 'AEO & GEO', 'E-Commerce', 'KI-Integration', 'Markt- & Wettbewerbsanalyse'];
 
 export default function AboutPage() {
   const reduced = useReducedMotion();

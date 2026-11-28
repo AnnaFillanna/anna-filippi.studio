@@ -2,6 +2,8 @@
 
 Stand: 26. November 2026 · Anna Filippi Studio · Ausgangsstand `d10a4db`
 
+> Historischer Abschlussbericht. Die Prüfung bildet den Stand vor der Neupositionierung vom 28. November 2026 ab; `/fotografie` ist inzwischen dauerhaft auf `/projekte` umgeleitet.
+
 ## Ergebnis
 
 Die beauftragten gezielten redaktionellen Verbesserungen sind lokal abgeschlossen. Vier vorhandene Artikel wurden punktuell ergänzt. Es wurden keine Preise, Preisbereiche, Mindestpreise oder verbindlichen Angebote veröffentlicht. Bestehende Autoreninformationen, Projektkennzeichnungen, Leistungen und Schema-Strukturen bleiben erhalten.

@@ -3,7 +3,6 @@ export const insightCategories = [
   'SEO & AEO',
   'E-Commerce',
   'KI & Automatisierung',
-  'Produktfotografie',
 ] as const;
 
 export type InsightCategory = typeof insightCategories[number];
@@ -315,7 +314,7 @@ export const publishedInsights: InsightArticle[] = [
     title: 'E-Commerce für kleine Unternehmen – vom Produkt zum professionellen Online-Shop',
     description: 'Der eigene Online-Shop eröffnet Unternehmen die Möglichkeit, ihre Produkte unabhängig von Öffnungszeiten und geografischen Grenzen anzubieten. Doch erfolgreicher E-Commerce beginnt nicht erst mit dem Verkauf. Er beginnt mit einer klaren Strategie, einer durchdachten technischen Grundlage und einem Verständnis für die Bedürfnisse der Kunden.',
     metaTitle: 'E-Commerce für kleine Unternehmen | Anna Filippi Studio',
-    metaDescription: 'Vom Shopsystem bis zur Produktfotografie: Erfahre, was kleine Unternehmen beim Aufbau und Betrieb eines professionellen Online-Shops beachten sollten.',
+    metaDescription: 'Vom Shopsystem bis zur Produktdarstellung: Erfahre, was kleine Unternehmen beim Aufbau und Betrieb eines professionellen Online-Shops beachten sollten.',
     category: 'E-Commerce',
     image: {
       src: '/images/insights/e-commerce-arbeitsplatz.jpg',
@@ -429,7 +428,7 @@ export const publishedInsights: InsightArticle[] = [
         id: 'fillanna',
         title: 'Einblick in die Praxis: FILLANNA',
         blocks: [
-          { type: 'paragraph', text: 'Mit meinem eigenen E-Commerce-Projekt FILLANNA verbinde ich Webentwicklung, Produktfotografie, Markenentwicklung und unternehmerische Erfahrung.' },
+          { type: 'paragraph', text: 'Mit meinem eigenen E-Commerce-Projekt FILLANNA verbinde ich Webentwicklung, Markenentwicklung und unternehmerische Erfahrung.' },
           { type: 'paragraph', text: 'Aufbauend auf meiner Shopify-Erfahrung arbeite ich aktuell am Relaunch meines eigenen Onlineshops FILLANNA. Die technische Umsetzung entwickle ich mit Next.js, TypeScript und Supabase weiter.' },
           { type: 'paragraph', text: 'Der Schwerpunkt liegt auf einer eigenständigen visuellen Identität, einer flexiblen Produktverwaltung und der schrittweisen Integration automatisierter Geschäftsprozesse.' },
           { type: 'paragraph', text: 'Das Projekt bietet mir die Möglichkeit, digitale Lösungen nicht ausschließlich aus technischer Perspektive zu betrachten, sondern auch aus Sicht einer Shopbetreiberin.' },
@@ -451,7 +450,7 @@ export const publishedInsights: InsightArticle[] = [
     ],
     links: [
       { label: 'Individuelle Webanwendungen', href: '/softwareentwicklung' },
-      { label: 'Produktfotografie entdecken', href: '/fotografie' },
+      { label: 'E-Commerce-Projekt besprechen', href: '/kontakt' },
     ],
     closing: {
       title: 'E-Commerce ist mehr als Verkaufen',
@@ -652,11 +651,11 @@ export const publishedInsights: InsightArticle[] = [
   },
   {
     slug: 'professionelle-produktfotografie',
-    title: 'Professionelle Produktfotografie – wie Bilder Produkte und Marken zum Leben erwecken',
+    title: 'Produktbilder im E-Commerce – Gestaltung und Wirkung',
     description: 'Ein Produktbild vermittelt mehr als das Aussehen eines Artikels. Es transportiert Qualität, Atmosphäre, Emotionen und die Identität einer Marke.',
-    metaTitle: 'Professionelle Produktfotografie | Anna Filippi Studio',
-    metaDescription: 'Wie stärken Produktbilder die Marke und unterstützen Kaufentscheidungen? Erfahre mehr über Bildsprache, Schmuckfotografie und technische Optimierung.',
-    category: 'Produktfotografie',
+    metaTitle: 'Produktbilder im E-Commerce | Anna Filippi Studio',
+    metaDescription: 'Welche Rolle spielen Produktbilder im Online-Shop? Erfahre, wie Bildsprache, Details und technische Optimierung die Produktpräsentation unterstützen.',
+    category: 'E-Commerce',
     image: {
       src: '/images/insights/produktfotografie-granatapfel.jpg',
       webpSrc: '/images/insights/produktfotografie-granatapfel.webp',
@@ -668,8 +667,8 @@ export const publishedInsights: InsightArticle[] = [
     publishedAt: '2026-11-25',
     updatedAt: '2026-11-25',
     readingMinutes: 6,
-    question: 'Welche Aufgabe erfüllt professionelle Produktfotografie?',
-    answer: 'Besonders im E-Commerce übernimmt die Fotografie eine entscheidende Aufgabe: Sie macht Produkte digital erlebbar, obwohl Kunden sie vor dem Kauf weder anfassen noch unmittelbar betrachten können. Professionelle Produktfotografie verbindet deshalb ästhetische Gestaltung mit einer klaren Kommunikations- und Verkaufsstrategie.',
+    question: 'Welche Rolle spielen Produktbilder im E-Commerce?',
+    answer: 'Produktbilder helfen Kundinnen und Kunden, Aussehen, Material und Details eines Artikels online besser einzuschätzen. Zusammen mit verständlichen Produktinformationen unterstützen sie die Orientierung im Shop.',
     sections: [
       {
         id: 'warum-produktfotografie',
@@ -751,7 +750,7 @@ export const publishedInsights: InsightArticle[] = [
         id: 'bildoptimierung',
         title: 'Wie werden Produktbilder für einen Online-Shop optimiert?',
         blocks: [
-          { type: 'paragraph', text: 'Professionelle Produktfotografie endet nicht mit der Aufnahme oder Bildbearbeitung. Auch die technische Integration in eine Website spielt eine wichtige Rolle.' },
+          { type: 'paragraph', text: 'Auch die technische Einbindung von Produktbildern spielt eine wichtige Rolle für ihre Darstellung im Online-Shop.' },
           { type: 'paragraph', text: 'Hochauflösende Originalbilder müssen für digitale Anwendungen entsprechend aufbereitet werden.' },
           {
             type: 'table',
@@ -785,21 +784,21 @@ export const publishedInsights: InsightArticle[] = [
         id: 'fillanna',
         title: 'Einblick in die Praxis: FILLANNA',
         blocks: [
-          { type: 'paragraph', text: 'Mit meinem eigenen Schmuckprojekt FILLANNA beschäftige ich mich intensiv mit der Verbindung von Produktfotografie, Markenidentität und E-Commerce.' },
-          { type: 'paragraph', text: 'Dabei steht nicht nur die fotografische Präsentation einzelner Schmuckstücke im Mittelpunkt, sondern auch die Entwicklung einer konsistenten visuellen Sprache für den gesamten Online-Shop.' },
-          { type: 'paragraph', text: 'Besonderen Wert lege ich auf natürliche Lichtstimmungen, eine authentische Darstellung der Produkte und eine harmonische Integration der Bilder in das Webdesign.' },
-          { type: 'paragraph', text: 'Durch die Verbindung von Fotografie und Webentwicklung kann ich sowohl gestalterische als auch technische Anforderungen berücksichtigen.' },
-          { type: 'paragraph', text: 'Denn ein hochwertiges Produktbild sollte nicht nur für sich allein funktionieren. Es sollte auch innerhalb einer Website, einer Produktübersicht oder einer digitalen Markenkommunikation seine Wirkung entfalten.' },
+          { type: 'paragraph', text: 'Für den Relaunch meines eigenen Shopify-Onlineshops FILLANNA denke ich Produktdarstellung, Markenidentität und E-Commerce zusammen.' },
+          { type: 'paragraph', text: 'Die vorhandenen Produktbilder zeigen, wie Bildsprache und Markenauftritt im eigenen Shop zusammenwirken.' },
+          { type: 'paragraph', text: 'Eine authentische Darstellung und eine harmonische Einbindung in den Shop sind wichtige gestalterische Aspekte.' },
+          { type: 'paragraph', text: 'Auch die technische Einbindung beeinflusst, wie Bilder zusammen mit Layout und Produktinformationen wirken.' },
+          { type: 'paragraph', text: 'Produktbilder sollten nicht nur für sich allein funktionieren, sondern auch innerhalb einer Produktübersicht und der digitalen Markenkommunikation stimmig sein.' },
         ],
       },
       {
         id: 'kosten',
-        title: 'Was kostet professionelle Produktfotografie?',
+        title: 'Welche Faktoren beeinflussen Aufwand und Budget für Produktbilder?',
         blocks: [
-          { type: 'paragraph', text: 'Die Kosten für professionelle Produktfotografie hängen vom Umfang und den individuellen Anforderungen eines Projekts ab.' },
+          { type: 'paragraph', text: 'Der Aufwand für eine Bildserie hängt vom Umfang und den Anforderungen des jeweiligen Shops ab.' },
           { type: 'paragraph', text: 'Wichtige Einflussfaktoren sind die Anzahl der Produkte, die benötigten Perspektiven, die Komplexität der Lichtgestaltung, das gewünschte Bildkonzept und der Aufwand für die Nachbearbeitung.' },
           { type: 'paragraph', text: 'Auch der spätere Verwendungszweck spielt eine Rolle. Produktbilder für einen Online-Shop haben teilweise andere Anforderungen als Aufnahmen für eine umfangreiche Markenkampagne.' },
-          { type: 'paragraph', text: 'Eine individuelle Planung hilft dabei, den fotografischen Aufwand sinnvoll auf die Ziele und das Budget eines Unternehmens abzustimmen.' },
+          { type: 'paragraph', text: 'Eine klare Planung hilft, Bildumfang und technische Anforderungen vorab festzulegen.' },
         ],
       },
     ],
@@ -808,22 +807,21 @@ export const publishedInsights: InsightArticle[] = [
       { question: 'Ist professionelle Produktfotografie auch für kleine Unternehmen sinnvoll?', answer: 'Ja. Eine hochwertige und konsistente Produktpräsentation kann auch kleinen Unternehmen dabei helfen, Vertrauen aufzubauen und ihre Markenidentität sichtbar zu machen.' },
       { question: 'Können Produktbilder mit künstlicher Intelligenz bearbeitet werden?', answer: 'Ja. KI kann bestimmte Bearbeitungsschritte unterstützen. Die authentische Darstellung des tatsächlichen Produkts sollte dabei erhalten bleiben.' },
       { question: 'Welches Bildformat eignet sich für einen Online-Shop?', answer: 'Moderne Formate wie WebP und AVIF können eine gute Bildqualität bei vergleichsweise geringer Dateigröße ermöglichen. Die Wahl des Formats hängt von den technischen Anforderungen der Website ab.' },
-      { question: 'Können Produktfotografie und Webdesign gemeinsam geplant werden?', answer: 'Ja. Eine gemeinsame Planung ermöglicht es, Bildsprache, Seitenstruktur, Farbkonzept und technische Anforderungen von Anfang an aufeinander abzustimmen.' },
+      { question: 'Wie lassen sich Produktbilder und Webdesign aufeinander abstimmen?', answer: 'Eine abgestimmte Farbwelt, passende Bildformate und eine klare Seitenstruktur helfen dabei, Produktbilder und Shopgestaltung stimmig zusammenzuführen.' },
     ],
     sources: [],
     links: [
-      { label: 'Produktfotografie entdecken', href: '/fotografie' },
       { label: 'Webprojekte entdecken', href: '/projekte' },
     ],
     closing: {
-      title: 'Bilder, die mehr erzählen',
+      title: 'Produktbilder im digitalen Verkauf',
       paragraphs: [
-        'Professionelle Produktfotografie schafft eine Verbindung zwischen einem Produkt, seiner Geschichte und den Menschen, für die es entwickelt wurde.',
-        'Anna Filippi Studio verbindet visuelles Storytelling, fotografische Gestaltung und moderne Webentwicklung zu einer individuellen digitalen Markenpräsenz.',
-        'Mit einem Blick für Ästhetik, Details und technische Qualität entstehen visuelle Konzepte, die Produkte authentisch präsentieren und die Persönlichkeit einer Marke unterstützen.',
+        'Produktbilder vermitteln Informationen zu Aussehen, Material und Details eines Artikels und ergänzen die schriftliche Produktbeschreibung.',
+        'Für eine stimmige Produktpräsentation müssen Bildsprache, Seitenstruktur und technische Einbindung zusammenspielen.',
+        'Anna Filippi Studio entwickelt digitale Lösungen für E-Commerce und Online-Shops.',
       ],
     },
-    cta: { text: 'Dein Produkt. Deine Geschichte. Deine visuelle Identität.', label: 'Lass uns gemeinsam deine Marke sichtbar machen.', href: '/kontakt' },
+    cta: { text: 'Dein Shop. Deine Ziele. Deine digitale Lösung.', label: 'Lass uns über dein E-Commerce-Projekt sprechen.', href: '/kontakt' },
     relatedSlugs: ['e-commerce-fuer-kleine-unternehmen', 'was-kostet-eine-professionelle-website'],
   },
 ];

@@ -1,5 +1,7 @@
 # Website-Erweiterungen und SEO-Abgleich
 
+> Historischer Arbeitsabgleich. Die nachfolgenden Bestandsangaben beschreiben den Stand vor der Neupositionierung am 28. November 2026. Fotografische Dienstleistungen werden nicht mehr angeboten; `/fotografie` leitet dauerhaft zu `/projekte` weiter. Bilddateien wurden nicht gelöscht.
+
 ## Bereits vorhanden
 
 - 43 Dateien in public/images/portfolio, davon 42 eindeutige Galeriemotive: 20 Kompositionen und 22 Aufnahmen auf hellem Hintergrund. Keine neuen unzugeordneten Uploads gefunden. anna-filippi-8.jpg bleibt als Original erhalten; angezeigt wird bereits anna-filippi-8-chain.webp.

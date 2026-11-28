@@ -24,7 +24,6 @@ const examples = [
   ['/', 'Deine Vision. Meine Kreativität.', 'Meine Leistungen'],
   ['/ueber-mich', 'Über mich', 'Hallo, ich bin Anna.'],
   ['/projekte', 'Ideen, die', 'Dana Tattoo Studio'],
-  ['/fotografie', 'Details, die bleiben.', 'Perlen &amp; Seide'],
   ['/insights', 'Wissen &amp; Insights', 'Digitale Lösungen verstehen.'],
 ];
 for (const [path, heading, content] of examples) {
@@ -39,7 +38,7 @@ for (const [path, heading, content] of examples) {
     assert.ok(!/content="noindex/.test(html));
     assert.ok(!/href="#(?:projekte|fotografie)"/.test(html));
     assert.ok(html.includes('href="/projekte"'));
-    assert.ok(html.includes('href="/fotografie"'));
+    assert.ok(!html.includes('href="/fotografie"'));
     assert.ok(html.includes('href="/ueber-mich"'));
     for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) {
       assert.ok(html.includes(`id="${id}"`), `Missing local anchor: ${id}`);
@@ -56,7 +55,8 @@ test('legacy hashes migrate with query strings intact', async () => {
     const calls = [];
     const routes = await loadRoutes({ location: { pathname: '/', hash, search: '?ref=old' }, history: { state: null, replaceState: (...args) => calls.push(args) } });
     routes.migrateLegacyLink();
-    if (hash === '#projekte' || hash === '#fotografie' || hash === '#ueber-mich') assert.equal(calls[0][2], `/${hash.slice(1)}?ref=old`);
+    if (hash === '#projekte' || hash === '#ueber-mich') assert.equal(calls[0][2], `/${hash.slice(1)}?ref=old`);
+    else if (hash === '#fotografie') assert.equal(calls[0][2], '/projekte?ref=old');
     else assert.equal(calls.length, 0, `Anchor must be retained: ${hash}`);
   }
 });
@@ -75,12 +75,17 @@ test('sitemap and Vercel rules cover all portfolio pages', async () => {
   for (const rule of fixedRules) await access(`dist${rule.destination}`);
   assert.ok(config.rewrites.some(rule => rule.source === '/insights/:slug' && rule.destination === '/insights/:slug/index.html'));
   assert.ok(!config.rewrites.some(rule => rule.source.includes('(.*)')));
+  const photographyRedirect = config.redirects.find(rule => rule.source === '/fotografie');
+  assert.equal(photographyRedirect?.destination, `${origin}/projekte`);
+  assert.equal(photographyRedirect?.permanent, true);
+  assert.equal(config.redirects.find(rule => rule.source === '/fotografie/index.html')?.destination, `${origin}/projekte`);
+  assert.ok(!config.rewrites.some(rule => rule.source === '/fotografie'));
 });
 
 test('home presents six services and introduces the personal collaboration approach', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   for (const id of ['start', 'leistungen', 'kontakt']) assert.ok(html.includes(`id="${id}"`));
-  for (const title of ['Websites &amp; Webdesign', 'Webentwicklung &amp; E-Commerce', 'KI &amp; Automatisierung', 'SEO &amp; Website-Betreuung', 'Produktfotografie', 'Beratung &amp; Website-Check']) {
+  for (const title of ['Webdesign &amp; Websites', 'Software &amp; Web-Apps', 'E-Commerce &amp; Onlineshops', 'SEO, AEO &amp; GEO', 'KI-Integration &amp; Automatisierung', 'Digitale Markt- &amp; Wettbewerbsanalyse']) {
     assert.ok(html.includes(title), `Missing service: ${title}`);
   }
   assert.ok(!html.includes('id="ueber-mich"'));
@@ -89,8 +94,10 @@ test('home presents six services and introduces the personal collaboration appro
   assert.ok(html.includes('Meine Leistungen'));
   assert.ok(html.includes('Bei komplexen KI-Lösungen klären wir Umfang und technische Machbarkeit gemeinsam.'));
   assert.equal((html.match(/class="[^"]*serviceArea[^"]*"/g) ?? []).length, 6);
-  assert.ok(html.includes('Möglichkeiten entdecken'));
-  assert.ok(html.includes('Meine Fotografien entdecken'));
+  assert.ok(html.includes('Softwarelösungen entdecken'));
+  assert.ok(!html.includes('Produktfotografie'));
+  assert.ok(!html.includes('VISUAL'));
+  assert.ok(!html.includes('href="/fotografie"'));
   assert.ok(html.includes('Warum mit mir arbeiten?'));
   assert.match(html, /<h2[^>]*id="services-title"[^>]*>Meine Leistungen<\/h2>/);
   for (const benefit of ['Deine Idee steht im Mittelpunkt', 'Transparente Zusammenarbeit', 'Direkter Kontakt']) assert.ok(html.includes(benefit));
@@ -142,7 +149,7 @@ test('about page presents the professional focus areas as accessible text', asyn
   const map = html.slice(html.lastIndexOf('<section', heading), html.indexOf('</section>', heading));
   for (const text of ['Fachliche Ausrichtung und Weiterentwicklungsbereiche', 'Full-Stack Webentwicklung', 'Technical SEO', 'AEO &amp; GEO', 'Web Analytics', 'Automation', 'E-Commerce', 'KI-Integration']) assert.ok(map.includes(text), text);
   assert.match(map, /<svg[^>]*aria-hidden="true"[^>]*>/);
-  assert.equal((map.match(/<line\b/g) ?? []).length, 6);
+  assert.equal((map.match(/<line\b/g) ?? []).length, 7);
 });
 
 test('software page contains only the software project, without the general portfolio introduction', async () => {
@@ -192,6 +199,7 @@ test('SEO metadata stays consistent across prerendered pages and client routes',
     assert.equal(person.url, `${origin}/ueber-mich`);
     assert.equal(person.jobTitle, 'Webentwicklerin (in Weiterbildung)');
     assert.ok(person.knowsAbout.includes('E-Commerce'));
+    assert.ok(!person.knowsAbout.includes('Produktfotografie'));
     assert.ok(!person.knowsAbout.includes('KI-Integrationen'));
     assert.equal(person.alternateName, undefined);
     assert.equal(person.sameAs, undefined);

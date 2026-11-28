@@ -7,7 +7,7 @@ const basePages = {
     description: 'Website erstellen lassen in Andernach bei Koblenz: Webdesign für Selbstständige und kleine Unternehmen, Website-Relaunch und Online-Shops. Persönlich betreut.',
   },
   '/ueber-mich': {
-    title: 'Über mich — Anna Filippi | Webentwicklung & Fotografie',
+    title: 'Über mich — Anna Filippi | Webentwicklung & E-Commerce',
     description: 'Lerne Anna Filippi kennen: ihr beruflicher Weg, praktische E-Commerce-Erfahrung mit FILLANNA und ihre laufenden Weiterbildungen.',
   },
   '/projekte': {
@@ -22,14 +22,10 @@ const basePages = {
     title: 'Website für ein Tattoo-Studio in Andernach | Anna Filippi',
     description: 'Webdesign für Dana Tattoo Studio in Andernach: responsive Website mit Tattoo- und Piercing-Galerien und WhatsApp-Kontakt. Kundenprojekt von Anna Filippi.',
   },
-  '/fotografie': {
-    title: 'Schmuckfotografie für Onlineshops | Anna Filippi Andernach',
-    description: 'Produkt- und Schmuckfotografie für Onlineshops und Websites: klare Produktaufnahmen und kreative Inszenierungen von Anna Filippi aus Andernach bei Koblenz.',
-  },
   '/kontakt': { title: 'Kontakt — Anna Filippi Studio', description: 'Erzähl mir von deiner Idee. Gemeinsam setzen wir dein Projekt um – persönlich und mit Liebe zum Detail.' },
   '/impressum': { title: 'Impressum — Anna Filippi', description: 'Impressum von Anna Filippi Studio in Andernach: Anbieterkennzeichnung und Kontaktdaten.' },
   '/datenschutz': { title: 'Datenschutzerklärung — Anna Filippi', description: 'Datenschutzerklärung für annafilippi.studio: Informationen zur Verarbeitung personenbezogener Daten und zu deinen Rechten.' },
-  '/insights': { title: 'Wissen & Insights | Anna Filippi Studio', description: 'Wissen und Insights zu Webdesign, SEO, E-Commerce, KI und Produktfotografie für fundierte digitale Entscheidungen.' },
+  '/insights': { title: 'Wissen & Insights | Anna Filippi Studio', description: 'Wissen und Insights zu Webdesign, SEO, E-Commerce, KI, Automatisierung und digitaler Marktanalyse.' },
 } as const;
 
 export function insightPath(article: InsightArticle): string {
@@ -75,12 +71,14 @@ export function insightStructuredData(article: InsightArticle) {
 
 export function pageForPath(pathname: string): PagePath {
   const path = pathname.replace(/\/+$/, '') || '/';
+  if (path === '/fotografie') return '/projekte';
   return Object.hasOwn(pages, path) || path.startsWith('/insights/') ? path : '/';
 }
 
 export function migrateLegacyLink() {
   const { pathname, hash, search } = window.location;
   if (pathname === '/' && (hash === '#projekte' || hash === '#fotografie' || hash === '#ueber-mich')) {
-    window.history.replaceState(window.history.state, '', `/${hash.slice(1)}${search}`);
+    const destination = hash === '#fotografie' ? '/projekte' : `/${hash.slice(1)}`;
+    window.history.replaceState(window.history.state, '', `${destination}${search}`);
   }
 }
