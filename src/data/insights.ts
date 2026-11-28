@@ -44,7 +44,7 @@ export const publishedInsights: InsightArticle[] = [
     slug: 'was-kostet-eine-professionelle-website',
     title: 'Was kostet eine professionelle Website für kleine Unternehmen?',
     description: 'Eine professionelle Website ist weit mehr als eine digitale Visitenkarte. Sie präsentiert dein Unternehmen, schafft Vertrauen und hilft potenziellen Kunden, deine Leistungen zu finden und Kontakt aufzunehmen.',
-    metaTitle: 'Was kostet eine professionelle Website? | Anna Filippi Studio',
+    metaTitle: 'Was kostet eine Website? | Anna Filippi Studio',
     metaDescription: 'Welche Faktoren beeinflussen die Kosten einer Website? Erfahre, welche Leistungen und laufenden Kosten kleine Unternehmen einplanen sollten.',
     category: 'Webdesign & Webentwicklung',
     image: {
@@ -468,7 +468,7 @@ export const publishedInsights: InsightArticle[] = [
     slug: 'ki-und-automatisierung-fuer-kleine-unternehmen',
     title: 'KI & Automatisierung für kleine Unternehmen – intelligente Lösungen für den Arbeitsalltag',
     description: 'Kundenanfragen beantworten, Termine koordinieren, Bestellungen verwalten, E-Mails versenden und Geschäftsdaten auswerten – viele dieser Aufgaben gehören zum täglichen Arbeitsalltag eines Unternehmens.',
-    metaTitle: 'KI & Automatisierung für kleine Unternehmen | Anna Filippi Studio',
+    metaTitle: 'KI-Automatisierung für KMU | Anna Filippi Studio',
     metaDescription: 'Wie können KI und Automatisierung den Arbeitsalltag erleichtern? Entdecke praktische Anwendungen, Kosten und wichtige Aspekte für kleine Unternehmen.',
     category: 'KI & Automatisierung',
     image: {

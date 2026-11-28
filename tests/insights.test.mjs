@@ -86,6 +86,8 @@ test('der freigegebene Artikel erscheint mit Inhalt und Bild in Übersicht und S
   const html = await readFile('dist/insights/index.html', 'utf8');
   const article = await readFile('dist/insights/was-kostet-eine-professionelle-website/index.html', 'utf8');
   const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert.ok(article.includes('<title>Was kostet eine Website? | Anna Filippi Studio</title>'));
+  assert.ok(article.includes('<h1 id="insight-title" tabindex="-1">Was kostet eine professionelle Website für kleine Unternehmen?</h1>'));
   assert.ok(html.includes('Was kostet eine professionelle Website für kleine Unternehmen?'));
   assert.ok(sitemap.includes(`${origin}/insights/was-kostet-eine-professionelle-website`));
   assert.ok(article.includes('Arbeitsplatz mit Laptop, Kamera und Grafiktablett'));
@@ -161,6 +163,8 @@ test('der KI-Artikel enthält Praxisbeispiele, Vergleiche, FAQ und SEO-Daten', a
   const overview = await readFile('dist/insights/index.html', 'utf8');
   const article = await readFile(`dist/insights/${slug}/index.html`, 'utf8');
   const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+  assert.ok(article.includes('<title>KI-Automatisierung für KMU | Anna Filippi Studio</title>'));
+  assert.ok(article.includes('<h1 id="insight-title" tabindex="-1">KI &amp; Automatisierung für kleine Unternehmen – intelligente Lösungen für den Arbeitsalltag</h1>'));
   assert.ok(overview.includes(`/insights/${slug}`));
   assert.ok(sitemap.includes(`${origin}/insights/${slug}`));
   assert.ok(article.includes('/images/insights/ki-automatisierung-roboter.webp'));
